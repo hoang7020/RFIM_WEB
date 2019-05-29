@@ -1,0 +1,131 @@
+﻿@model IEnumerable<RFIM_Web.ModelView.ListUserView>
+
+@{
+    ViewData["Title"] = "ListAllUser";
+}
+
+<div class="all-content-wrapper">
+    <div class="data-table-area mg-tb-15">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="sparkline13-list">
+                        <div class="sparkline13-hd">
+                            <div class="main-sparkline13-hd">
+                                <h1>User List</h1>
+                            </div>
+                        </div>
+                        <div class="sparkline13-graph">
+                            <div class="datatable-dashv1-list custom-datatable-overright">
+
+                                <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true"
+                                       data-show-toggle="true" data-show-export="true">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Fullname</th>
+                                            <th>Username</th>
+                                            <th>Password</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Role</th>
+                                            <th>Status</th>
+                                            <th>Setting</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var user in Model)
+                                        {
+                                            <tr>
+                                                <td>@user.UserId</td>
+                                                <td>@user.Fullname</td>
+                                                <td>@user.Username</td>
+                                                <td>@user.Password</td>
+                                                <td>@user.Email</td>
+                                                <td>@user.Phone</td>
+                                                <td>@user.Role</td>
+                                                <td>
+                                                    @if (user.Status)
+                                                    {
+                                                        <button class="btn btn-success">Active</button>
+                                                    }
+                                                    else
+                                                    {
+                                                        <button class="btn btn-warning">Disabled</button>
+                                                    }
+                                                </td>
+                                                <td>
+                                                    <button class="pd-setting-ed" data-toggle="modal" data-target="#DangerModalhdbgcl"><i class="fas fa-edit" aria-hidden="true"></i></button>
+                                                    <button class="pd-setting-ed"><i class="fas fa-trash" aria-hidden="true"></i></button>
+                                                    <div id="DangerModalhdbgcl" class="modal modal-adminpro-general FullColor-popup-DangerModal fade" role="dialog">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header header-color-modal bg-color-4">
+                                                                    <h4 class="modal-title">Edit User</h4>
+                                                                    <div class="modal-close-area modal-close-df">
+                                                                        <a class="close" data-dismiss="modal"><i class="fas fa-times"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form>
+                                                                        <div class="input-group mg-b-pro-edt">
+                                                                            <span class="input-group-addon"><i class="fas fa-user" aria-hidden="true"></i></span>
+                                                                            <input type="text" class="form-control" placeholder="Fullname">
+                                                                        </div>
+                                                                        <div class="input-group mg-b-pro-edt">
+                                                                            <span class="input-group-addon"><i class="fas fa-user" aria-hidden="true"></i></span>
+                                                                            <input type="text" class="form-control" placeholder="Username">
+                                                                        </div>
+                                                                        <div class="input-group mg-b-pro-edt">
+                                                                            <span class="input-group-addon"><i class="fas fa-unlock" aria-hidden="true"></i></span>
+                                                                            <input type="text" class="form-control" placeholder="Password">
+                                                                        </div>
+                                                                        <div class="input-group mg-b-pro-edt">
+                                                                            <span class="input-group-addon"><i class="fas fa-envelope" aria-hidden="true"></i></span>
+                                                                            <input type="text" class="form-control" placeholder="Email">
+                                                                        </div>
+                                                                        <div class="input-group mg-b-pro-edt">
+                                                                            <span class="input-group-addon"><i class="fas fa-mobile-alt" aria-hidden="true"></i></span>
+                                                                            <input type="text" class="form-control" placeholder="Phone">
+                                                                        </div>
+                                                                        <div class="input-group mg-b-pro-edt">
+                                                                            <span class="input-group-addon"><i class="fas fa-user-tag" aria-hidden="true"></i></span>
+                                                                            <select type="text" class="form-control">
+                                                                                <option>Account</option>
+                                                                                <option>Stock keeper</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="input-group mg-b-pro-edt">
+                                                                            <span class="input-group-addon"><i class="fas fa-address-card" aria-hidden="true"></i></span>
+                                                                            <input type="text" class="form-control" placeholder="Address">
+                                                                        </div>
+                                                                        <div class="input-group mg-b-pro-edt">
+                                                                            <span class="input-group-addon"><i class="fas fa-question-square" aria-hidden="true"></i></span>
+                                                                            <select type="text" class="form-control">
+                                                                                <option>Active</option>
+                                                                                <option>Deactive</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <a>Confirm</a>
+                                                                    <a>Cancel</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    @await Html.PartialAsync("EditUser")
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

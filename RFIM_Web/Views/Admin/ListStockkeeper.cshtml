@@ -1,0 +1,72 @@
+﻿@model IEnumerable<RFIM_Web.ModelView.ListUserView>
+
+@{
+    ViewData["Title"] = "ListStockkeeper";
+}
+
+<div class="all-content-wrapper">
+    <div class="data-table-area mg-tb-15">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="sparkline13-list">
+                        <div class="sparkline13-hd">
+                            <div class="main-sparkline13-hd">
+                                <h1>Stock keeper List</h1>
+                            </div>
+                        </div>
+                        <div class="sparkline13-graph">
+                            <div class="datatable-dashv1-list custom-datatable-overright">
+
+                                <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true"
+                                       data-show-toggle="true" data-show-export="true">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Fullname</th>
+                                            <th>Username</th>
+                                            <th>Password</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Role</th>
+                                            <th>Status</th>
+                                            <th>Setting</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var user in Model)
+                                        {
+                                            <tr>
+                                                <td>@user.UserId</td>
+                                                <td>@user.Fullname</td>
+                                                <td>@user.Username</td>
+                                                <td>@user.Password</td>
+                                                <td>@user.Email</td>
+                                                <td>@user.Phone</td>
+                                                <td>@user.Role</td>
+                                                <td>
+                                                    @if (user.Status)
+                                                    {
+                                                        <button class="btn btn-success">Active</button>
+                                                    }
+                                                    else
+                                                    {
+                                                        <button class="btn btn-warning">Disabled</button>
+                                                    }
+                                                </td>
+                                                <td>
+                                                    <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fas fa-edit" aria-hidden="true"></i></button>
+                                                    <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fas fa-trash" aria-hidden="true"></i></button>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
