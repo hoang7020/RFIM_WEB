@@ -15,9 +15,10 @@
                                 <h1>User List</h1>
                             </div>
                         </div>
+                        
                         <div class="sparkline13-graph">
                             <div class="datatable-dashv1-list custom-datatable-overright">
-
+                                <a asp-action="CreateUser" asp-controller="Admin" class="btn btn-success">Create User</a>
                                 <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true"
                                        data-show-toggle="true" data-show-export="true">
                                     <thead>
@@ -55,67 +56,9 @@
                                                     }
                                                 </td>
                                                 <td>
-                                                    <button class="pd-setting-ed" data-toggle="modal" data-target="#DangerModalhdbgcl"><i class="fas fa-edit" aria-hidden="true"></i></button>
-                                                    <button class="pd-setting-ed"><i class="fas fa-trash" aria-hidden="true"></i></button>
-                                                    <div id="DangerModalhdbgcl" class="modal modal-adminpro-general FullColor-popup-DangerModal fade" role="dialog">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header header-color-modal bg-color-4">
-                                                                    <h4 class="modal-title">Edit User</h4>
-                                                                    <div class="modal-close-area modal-close-df">
-                                                                        <a class="close" data-dismiss="modal"><i class="fas fa-times"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <form>
-                                                                        <div class="input-group mg-b-pro-edt">
-                                                                            <span class="input-group-addon"><i class="fas fa-user" aria-hidden="true"></i></span>
-                                                                            <input type="text" class="form-control" placeholder="Fullname">
-                                                                        </div>
-                                                                        <div class="input-group mg-b-pro-edt">
-                                                                            <span class="input-group-addon"><i class="fas fa-user" aria-hidden="true"></i></span>
-                                                                            <input type="text" class="form-control" placeholder="Username">
-                                                                        </div>
-                                                                        <div class="input-group mg-b-pro-edt">
-                                                                            <span class="input-group-addon"><i class="fas fa-unlock" aria-hidden="true"></i></span>
-                                                                            <input type="text" class="form-control" placeholder="Password">
-                                                                        </div>
-                                                                        <div class="input-group mg-b-pro-edt">
-                                                                            <span class="input-group-addon"><i class="fas fa-envelope" aria-hidden="true"></i></span>
-                                                                            <input type="text" class="form-control" placeholder="Email">
-                                                                        </div>
-                                                                        <div class="input-group mg-b-pro-edt">
-                                                                            <span class="input-group-addon"><i class="fas fa-mobile-alt" aria-hidden="true"></i></span>
-                                                                            <input type="text" class="form-control" placeholder="Phone">
-                                                                        </div>
-                                                                        <div class="input-group mg-b-pro-edt">
-                                                                            <span class="input-group-addon"><i class="fas fa-user-tag" aria-hidden="true"></i></span>
-                                                                            <select type="text" class="form-control">
-                                                                                <option>Account</option>
-                                                                                <option>Stock keeper</option>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="input-group mg-b-pro-edt">
-                                                                            <span class="input-group-addon"><i class="fas fa-address-card" aria-hidden="true"></i></span>
-                                                                            <input type="text" class="form-control" placeholder="Address">
-                                                                        </div>
-                                                                        <div class="input-group mg-b-pro-edt">
-                                                                            <span class="input-group-addon"><i class="fas fa-question-square" aria-hidden="true"></i></span>
-                                                                            <select type="text" class="form-control">
-                                                                                <option>Active</option>
-                                                                                <option>Deactive</option>
-                                                                            </select>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <a>Confirm</a>
-                                                                    <a>Cancel</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    @await Html.PartialAsync("EditUser")
+                                                    <a asp-action="EditUser" asp-controller="Admin" asp-route-id="@user.UserId" class="pd-setting-ed"><i class="fas fa-edit" aria-hidden="true"></i></a>
+                                                    <a asp-action="DeleteUser" asp-controller="Admin" asp-route-id="@user.UserId" class="pd-setting-ed" data-toggle="modal" data-target="#DangerModalalert">
+                                                    <i class="fas fa-trash" aria-hidden="true"></i></a>
                                                 </td>
                                             </tr>
                                         }
@@ -129,3 +72,4 @@
         </div>
     </div>
 </div>
+ 

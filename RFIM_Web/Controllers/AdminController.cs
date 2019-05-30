@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RFIM_Web.Models;
 using RFIM_Web.ModelView;
@@ -75,18 +76,90 @@ namespace RFIM_Web.Controllers
             return View(dsStockkeeper);
         }
         [HttpGet]
-        public IActionResult EditUser(int id)
+        public async Task<IActionResult> EditUser(int? id)
         {
-            if(id != null)
+            if(id == null)
             {
                 return NotFound();
             }
-            var user = context.Users.SingleOrDefault(p => p.UserId == id);
-            if(user != null)
+            var user = await context.Users.FindAsync(id);
+            if(user == null)
             {
                 return NotFound();
             }
-            return PartialView("EditUser", user);
+            return View(user);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditUser(int id, User user)
+        {
+            if(id != user.UserId)
+            {
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    context.Update(user);
+                    await context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!UserExists(user.UserId)){
+                        return NotFound();
+                    } else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction("ListAllUser");
+            }
+            return View(user);
+        }
+        [HttpGet]
+        public IActionResult CreateUser()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateUser(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                context.Add(user);
+                await context.SaveChangesAsync();
+                return RedirectToAction("ListAllUser");
+            }
+            return View(user);
+        }
+
+        public async Task<IActionResult> DeleteUser(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var user = await context.Users.FirstOrDefaultAsync(p => p.UserId == id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View();
+        }
+        [HttpPost, ActionName("DeleteUser")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ConfirmDelete(int id)
+        {
+            var user = await context.Users.FindAsync(id);
+            context.Users.Remove(user);
+            await context.SaveChangesAsync();
+            return RedirectToAction("ListAllUser");
+        }
+        public bool UserExists(int id)
+        {
+            return context.Users.Any(p => p.UserId == id);
         }
     }
 }

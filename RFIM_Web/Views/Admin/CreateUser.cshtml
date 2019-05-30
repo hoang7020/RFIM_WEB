@@ -1,0 +1,156 @@
+﻿@model RFIM_Web.Models.User
+
+@{
+    ViewData["Title"] = "CreateUser";
+}
+
+<div class="all-content-wrapper">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="sparkline12-list">
+                <div class="sparkline12-hd">
+                    <div class="main-sparkline12-hd">
+                        <h1>Create User</h1>
+                    </div>
+                </div>
+                <div class="sparkline12-graph">
+                    <div class="basic-login-form-ad">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="all-form-element-inner">
+                                    <form asp-action="CreateUser" asp-controller="Admin">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                    <label class="login2 pull-right pull-right-pro">Fullname</label>
+                                                </div>
+                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                    <input asp-for="Fullname" class="form-control" />
+                                                    <span asp-validation-for="Fullname" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                    <label class="login2 pull-right pull-right-pro">Username</label>
+                                                </div>
+                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                    <input asp-for="Username" class="form-control" />
+                                                    <span asp-validation-for="Username" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                    <label class="login2 pull-right pull-right-pro">Password</label>
+                                                </div>
+                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                    <input asp-for="Password" class="form-control" />
+                                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                    <label class="login2 pull-right pull-right-pro">Email</label>
+                                                </div>
+                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                    <input asp-for="Email" class="form-control" />
+                                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                    <label class="login2 pull-right pull-right-pro">Status</label>
+                                                </div>
+                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                    <input asp-for="Status" class="checkbox" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                    <label class="login2 pull-right pull-right-pro">Phone</label>
+                                                </div>
+                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                    <input asp-for="Phone" class="form-control" />
+                                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                    <label class="login2 pull-right pull-right-pro">Role</label>
+                                                </div>
+                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                    <input asp-for="RoleId" class="form-control" />
+                                                    <span asp-validation-for="RoleId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                    <label class="login2 pull-right pull-right-pro">Address</label>
+                                                </div>
+                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                    <input asp-for="Address" class="form-control" />
+                                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                    <label class="login2 pull-right pull-right-pro">Date of Birth</label>
+                                                </div>
+                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                    <input asp-for="DateOfBirth" class="form-control" />
+                                                    <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                    <label class="login2 pull-right pull-right-pro">Note</label>
+                                                </div>
+                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                    <input asp-for="Note" class="form-control" />
+                                                    <span asp-validation-for="Note" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-inner">
+                                            <div class="login-btn-inner">
+                                                <div class="row">
+                                                    <div class="col-lg-3"></div>
+                                                    <div class="col-lg-9">
+                                                        <div class="login-horizental cancel-wp pull-left">
+                                                            <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Confirm</button>
+                                                            <button class="btn btn-white" type="submit">Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

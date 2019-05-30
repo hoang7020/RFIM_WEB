@@ -12224,11 +12224,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HieuDT\\Documents\\Visual Studio 2017\\Projects\\RFIM_Web\\RFIM_Web\\RFIM_Web.csproj",
+      "projectUniqueName": "C:\\Users\\HieuDT\\Documents\\Visual Studio 2017\\Projects\\Capstone\\RFIM_WEB\\RFIM_Web\\RFIM_Web.csproj",
       "projectName": "RFIM_Web",
-      "projectPath": "C:\\Users\\HieuDT\\Documents\\Visual Studio 2017\\Projects\\RFIM_Web\\RFIM_Web\\RFIM_Web.csproj",
+      "projectPath": "C:\\Users\\HieuDT\\Documents\\Visual Studio 2017\\Projects\\Capstone\\RFIM_WEB\\RFIM_Web\\RFIM_Web.csproj",
       "packagesPath": "C:\\Users\\HieuDT\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HieuDT\\Documents\\Visual Studio 2017\\Projects\\RFIM_Web\\RFIM_Web\\obj\\",
+      "outputPath": "C:\\Users\\HieuDT\\Documents\\Visual Studio 2017\\Projects\\Capstone\\RFIM_WEB\\RFIM_Web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
