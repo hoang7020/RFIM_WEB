@@ -1,0 +1,21 @@
+﻿@model RFIM_Web.ModelView.RoleSelectModel
+@{
+    int roleSelect = (Model.Select != null && Model.Select.HasValue) ? Model.Select.Value : 0;
+}
+<select name="RoleId" class="form-control">
+    <option value="0">--------</option>
+    @{
+        var dsRole = Model.Data;
+    }
+    @foreach (var role in dsRole)
+    {
+        <option value="@role.RoleId">
+            @role.RoleName
+        </option>
+    }
+</select>
+<script>
+    $(function () {
+        $("select[name='RoleId']").val(@roleSelect.ToString());
+    });
+</script>

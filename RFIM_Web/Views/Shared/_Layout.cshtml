@@ -73,17 +73,72 @@
                 <div class="left-custom-menu-adp-wrap comment-scrollbar">
                     <nav class="sidebar-nav left-sidebar-menu-pro">
                         <ul class="metismenu" id="menu1">
-                            <li class="active">
-                                <a class="has-arrow" href="index.html">
-                                    <i class="fas fa-users"></i>
-                                    <span class="mini-click-non">Staff</span>
-                                </a>
-                                <ul class="submenu-angle" aria-expanded="true">
-                                    <li><a asp-action="ListAllUser" asp-controller="Admin"><i class="fas fa-user" aria-hidden="true"></i> <span class="mini-sub-pro">All</span></a></li>
-                                    <li><a asp-action="ListAccountant" asp-controller="Admin"><i class="fas fa-calculator" aria-hidden="true"></i> <span class="mini-sub-pro">Accountant</span></a></li>
-                                    <li><a asp-action="ListStockkeeper" asp-controller="Admin"><i class="fas fa-warehouse" aria-hidden="true"></i> <span class="mini-sub-pro">Store Keeper</span></a></li>
-                                </ul>
-                            </li>
+
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="active">
+                                    <a class="has-arrow" href="index.html">
+                                        <i class="fas fa-users"></i>
+                                        <span class="mini-click-non">Staffs</span>
+                                    </a>
+                                    <ul class="submenu-angle" aria-expanded="true">
+
+                                        <li><a asp-action="ListAllUser" asp-controller="Admin"><i class="fas fa-user" aria-hidden="true"></i> <span class="mini-sub-pro">All</span></a></li>
+                                        <li><a asp-action="ListAccountant" asp-controller="Admin"><i class="fas fa-calculator" aria-hidden="true"></i> <span class="mini-sub-pro">Accountants</span></a></li>
+                                        <li><a asp-action="ListStockkeeper" asp-controller="Admin"><i class="fas fa-warehouse" aria-hidden="true"></i> <span class="mini-sub-pro">Stock Keepers</span></a></li>
+                                    </ul>
+                                </li>
+                            }
+                            @if (User.IsInRole("Accountant"))
+                            {
+                                <li class="active">
+                                    <a class="has-arrow" href="index.html">
+                                        <i class="fas fa-file-invoice"></i>
+                                        <span class="mini-click-non">Invoices</span>
+                                    </a>
+                                    <ul class="submenu-angle" aria-expanded="true">
+                                        <li><a asp-action="" asp-controller=""><i class="fas fa-money-check" aria-hidden="true"></i> <span class="mini-sub-pro">Purchase Invoice</span></a></li>
+                                        <li><a asp-action="" asp-controller=""><i class="fas fa-pager" aria-hidden="true"></i> <span class="mini-sub-pro">Receipt Invoice</span></a></li>
+                                    </ul>
+                                </li>
+                            }
+                            @if (User.IsInRole("Stockkeeper"))
+                            {
+                                <li>
+                                    <a class="has-arrow">
+                                        <i class="fas fa-money-check"></i>
+                                        <span class="mini-click-non">Sheets</span>
+                                    </a>
+                                    <ul class="submenu-angle" aria-expanded="true">
+                                        <li><a asp-action="" asp-controller=""><i class="fas fa-truck-moving" aria-hidden="true"></i> <span class="mini-sub-pro">Good Receipts</span></a></li>
+                                        <li><a asp-action="" asp-controller=""><i class="fas fa-truck-loading" aria-hidden="true"></i> <span class="mini-sub-pro">Good Issues</span></a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a asp-action="" asp-controller="" class="has-arrow">
+                                        <i class="fas fa-pallet"></i>
+                                        <span class="mini-click-non">Categories</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-action="" asp-controller="" class="has-arrow">
+                                        <i class="fas fa-box"></i>
+                                        <span class="mini-click-non">Products</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-action="" asp-controller="" class="has-arrow">
+                                        <i class="fas fa-luggage-cart"></i>
+                                        <span class="mini-click-non">Shelves</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-action="" asp-controller="" class="has-arrow">
+                                        <i class="fas fa-chart-bar"></i>
+                                        <span class="mini-click-non">Reports</span>
+                                    </a>
+                                </li>
+                            }
                         </ul>
                     </nav>
                 </div>
@@ -146,14 +201,49 @@
                                 <div class="mobile-menu">
                                     <nav id="dropdown">
                                         <ul class="mobile-menu-nav">
-                                            <li>
-                                                <a data-toggle="collapse" data-target="#Charts" href="#">Home <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
-                                                <ul class="collapse dropdown-header-top">
-                                                    <li><a href="index.html">All</a></li>
-                                                    <li><a href="index-1.html">Accountant</a></li>
-                                                    <li><a href="index-3.html">Store Keeper</a></li>
-                                                </ul>
-                                            </li>
+                                            @if (User.IsInRole("Admin"))
+                                            {
+                                                <li>
+                                                    <a data-toggle="collapse" data-target="#Charts">Staffs <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
+                                                    <ul class="collapse dropdown-header-top">
+                                                        <li><a>All</a></li>
+                                                        <li><a>Accountant</a></li>
+                                                        <li><a>Store Keeper</a></li>
+                                                    </ul>
+                                                </li>
+                                            }
+                                            @if (User.IsInRole("Accountant"))
+                                            {
+                                                <li>
+                                                    <a data-toggle="collapse" data-target="#Charts">Invoice <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
+                                                    <ul class="collapse dropdown-header-top">
+                                                        <li><a>Purchase Invoice</a></li>
+                                                        <li><a>Receipt Invoice</a></li>
+                                                    </ul>
+                                                </li>
+                                            }
+                                            @if (User.IsInRole("Stockkeeper"))
+                                            {
+                                                <li>
+                                                    <a data-toggle="collapse" data-target="#Charts">Sheets <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
+                                                    <ul class="collapse dropdown-header-top">
+                                                        <li><a>Good Receipts</a></li>
+                                                        <li><a>Good Issues</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="collapse" data-target="#Charts">Categories <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="collapse" data-target="#Charts">Products <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="collapse" data-target="#Charts">Shelves <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="collapse" data-target="#Charts">Reports <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
+                                                </li>
+                                            }
                                         </ul>
                                     </nav>
                                 </div>
@@ -167,7 +257,7 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="breadcome-list">
-                                    
+
                                 </div>
                             </div>
                         </div>

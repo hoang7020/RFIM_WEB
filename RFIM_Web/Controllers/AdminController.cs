@@ -87,6 +87,11 @@ namespace RFIM_Web.Controllers
             {
                 return NotFound();
             }
+            ViewBag.RoleSelect = new RoleSelectModel
+            {
+                Data = context.Roles.ToList(),
+                Select = user.RoleId
+            };
             return View(user);
         }
         [HttpPost]
@@ -115,14 +120,19 @@ namespace RFIM_Web.Controllers
                 }
                 return RedirectToAction("ListAllUser");
             }
+            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleId", user.RoleId);
             return View(user);
         }
         [HttpGet]
         public IActionResult CreateUser()
         {
+            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleId");
+            ViewBag.RoleSelect = new RoleSelectModel
+            {
+                Data = context.Roles.ToList()
+            };
             return View();
         }
-
         [HttpPost]
         public async Task<IActionResult> CreateUser(User user)
         {
@@ -130,23 +140,23 @@ namespace RFIM_Web.Controllers
             {
                 context.Add(user);
                 await context.SaveChangesAsync();
-                return RedirectToAction("ListAllUser");
+                return RedirectToAction(nameof(ListAllUser));
             }
+            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleId", user.RoleId);
             return View(user);
         }
-
         public async Task<IActionResult> DeleteUser(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var user = await context.Users.FirstOrDefaultAsync(p => p.UserId == id);
+            var user = await context.Users.Include(u => u.Role).FirstOrDefaultAsync(p => p.UserId == id);
             if (user == null)
             {
                 return NotFound();
             }
-            return View();
+            return PartialView("DeleteUser", user);
         }
         [HttpPost, ActionName("DeleteUser")]
         [ValidateAntiForgeryToken]
@@ -155,7 +165,7 @@ namespace RFIM_Web.Controllers
             var user = await context.Users.FindAsync(id);
             context.Users.Remove(user);
             await context.SaveChangesAsync();
-            return RedirectToAction("ListAllUser");
+            return RedirectToAction(nameof(ListAllUser));
         }
         public bool UserExists(int id)
         {

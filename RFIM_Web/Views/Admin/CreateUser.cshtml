@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "CreateUser";
 }
-
 <div class="all-content-wrapper">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -18,7 +17,7 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="all-form-element-inner">
-                                    <form asp-action="CreateUser" asp-controller="Admin">
+                                    <form asp-action="CreateUser" asp-controller="Admin" id="frmCreateUser">
                                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                         <div class="form-group-inner">
                                             <div class="row">
@@ -69,8 +68,8 @@
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                     <label class="login2 pull-right pull-right-pro">Status</label>
                                                 </div>
-                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                    <input asp-for="Status" class="checkbox" />
+                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 checkbox">
+                                                    <input asp-for="Status" />
                                                 </div>
                                             </div>
                                         </div>
@@ -85,14 +84,25 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @*<div class="form-group-inner">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                        <label class="login2 pull-right pull-right-pro">Role</label>
+                                                    </div>
+                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                        <input asp-for="RoleId" class="form-control" />
+                                                        <span asp-validation-for="RoleId" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                            </div>*@
                                         <div class="form-group-inner">
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                     <label class="login2 pull-right pull-right-pro">Role</label>
                                                 </div>
                                                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                    <input asp-for="RoleId" class="form-control" />
-                                                    <span asp-validation-for="RoleId" class="text-danger"></span>
+                                                    @using RFIM_Web.ModelView
+                                                    @await Html.PartialAsync("RoleSelect", (RoleSelectModel)ViewBag.RoleSelect)
                                                 </div>
                                             </div>
                                         </div>
@@ -136,7 +146,7 @@
                                                     <div class="col-lg-9">
                                                         <div class="login-horizental cancel-wp pull-left">
                                                             <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Confirm</button>
-                                                            <button class="btn btn-white" type="submit">Cancel</button>
+                                                            <button class="btn btn-white">Cancel</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -152,5 +162,38 @@
         </div>
     </div>
 </div>
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+
+    <script>
+        $(function () {
+
+            function checkGmail(value, element) {
+                var regex = /^[a-z]+@@gmail.com$/;
+                return this.optional(element) || regex.test(value);
+            }
+
+            $.validator.addMethod("gmail", checkGmail, "Gmail format is wrong!!");
+
+            $("#frmCreateUser").validate({
+                rules: {
+                    txtFullname: { required: true, maxLength: 32 },
+                    txtUsername: { required: true, maxLength: 32 },
+                    txtPassword: { required: true, maxLength: 32 },
+                    txtEmail: { required: true, email: true, gmail: true },
+                    txtPhone: { required: true },
+                    txtDob: { date: true }
+                },
+                messages: {
+                    txtFullname: { require: "Please input this field", maxLength: "Maximum 32 characters" },
+                    txtUsername: { require: "Please input this field", maxLength: "Maximum 32 characters" },
+                    txtPassword: { require: "Please input this field", maxLength: "Maximum 32 characters" },
+                    txtPhone: { require: "Please input this field" }
+                }
+            });
+        });
+    </script>
+}
 
 

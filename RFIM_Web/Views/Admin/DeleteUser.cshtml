@@ -1,0 +1,16 @@
+﻿@model RFIM_Web.Models.User
+
+<form method="post" asp-action="DeleteUser">
+    <div class="modal-header">
+        <button type="button" class="close" datadismiss="modal-user">&times;</button>
+        <h4 class="modal-title">Delete user @Model.Username</h4>
+    </div>
+    <div class="modal-body form-horizontal">
+        Are you sure to delete <b>@Model.Username</b>?
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary">Delete</button>
+        <button type="button" class="btn btn-default" datadismiss="modal-user">Cancel</button>
+    </div>
+</form>
+

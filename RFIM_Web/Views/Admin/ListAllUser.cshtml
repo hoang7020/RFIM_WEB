@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "ListAllUser";
 }
-
 <div class="all-content-wrapper">
     <div class="data-table-area mg-tb-15">
         <div class="container-fluid">
@@ -15,7 +14,7 @@
                                 <h1>User List</h1>
                             </div>
                         </div>
-                        
+
                         <div class="sparkline13-graph">
                             <div class="datatable-dashv1-list custom-datatable-overright">
                                 <a asp-action="CreateUser" asp-controller="Admin" class="btn btn-success">Create User</a>
@@ -23,7 +22,6 @@
                                        data-show-toggle="true" data-show-export="true">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
                                             <th>Fullname</th>
                                             <th>Username</th>
                                             <th>Password</th>
@@ -38,7 +36,6 @@
                                         @foreach (var user in Model)
                                         {
                                             <tr>
-                                                <td>@user.UserId</td>
                                                 <td>@user.Fullname</td>
                                                 <td>@user.Username</td>
                                                 <td>@user.Password</td>
@@ -57,8 +54,17 @@
                                                 </td>
                                                 <td>
                                                     <a asp-action="EditUser" asp-controller="Admin" asp-route-id="@user.UserId" class="pd-setting-ed"><i class="fas fa-edit" aria-hidden="true"></i></a>
-                                                    <a asp-action="DeleteUser" asp-controller="Admin" asp-route-id="@user.UserId" class="pd-setting-ed" data-toggle="modal" data-target="#DangerModalalert">
-                                                    <i class="fas fa-trash" aria-hidden="true"></i></a>
+                                                    <a asp-action="DeleteUser" asp-controller="Admin" asp-route-id="@user.UserId" class="pd-setting-ed" data-toggle="modal" data-target="#modal-user">
+                                                        <i class="fas fa-trash" aria-hidden="true"></i>
+                                                    </a>
+                                                    <div id="modal-user" aria-hidden="true" class="modal fade" role="dialog">
+                                                        <div class="modal-dialog">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         }
@@ -72,4 +78,3 @@
         </div>
     </div>
 </div>
- 
