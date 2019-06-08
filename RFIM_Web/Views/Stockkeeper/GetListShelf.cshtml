@@ -1,8 +1,9 @@
-﻿@model IEnumerable<RFIM_Web.ModelView.ListUserView>
+﻿@model IEnumerable<RFIM_Web.Models.Shelf>
 
 @{
-    ViewData["Title"] = "ListAllUser";
+    ViewData["Title"] = "GetListShelf";
 }
+
 <div class="all-content-wrapper">
     <div class="data-table-area mg-tb-15">
         <div class="container-fluid">
@@ -11,53 +12,38 @@
                     <div class="sparkline13-list">
                         <div class="sparkline13-hd">
                             <div class="main-sparkline13-hd">
-                                <h1>User List</h1>
+                                <h1>Shelf List</h1>
                             </div>
                         </div>
 
                         <div class="sparkline13-graph">
                             <div class="datatable-dashv1-list custom-datatable-overright">
-                                <a asp-action="CreateUser" asp-controller="Admin" class="btn btn-success" data-toggle="modal" data-target="#modal-user">Create User</a>
+                                <a asp-action="CreateShelf" asp-controller="Stockkeeper" class="btn btn-success" data-toggle="modal" data-target="#modal-shelf">Create Shelf</a>
                                 <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true"
                                        data-show-toggle="true" data-show-export="true">
                                     <thead>
                                         <tr>
-                                            <th>Fullname</th>
-                                            <th>Username</th>
-                                            <th>Password</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>Role</th>
-                                            <th>Status</th>
-                                            <th>Setting</th>
+                                            <th>Shelf Code</th>
+                                            <th>Description</th>
+                                            <th>Floor Number</th>
+                                            <th>Cell Number</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var user in Model)
+                                        @foreach (var shelf in Model)
                                         {
                                             <tr>
-                                                <td>@user.Fullname</td>
-                                                <td>@user.Username</td>
-                                                <td>@user.Password</td>
-                                                <td>@user.Email</td>
-                                                <td>@user.Phone</td>
-                                                <td>@user.Role</td>
+                                                <td>@shelf.ShelfCode</td>
+                                                <td>@shelf.Description</td>
+                                                <td>@shelf.FloorNumber</td>
+                                                <td>@shelf.CellNumber</td>
+                                               
                                                 <td>
-                                                    @if (user.Status)
-                                                    {
-                                                        <button class="btn btn-success">Active</button>
-                                                    }
-                                                    else
-                                                    {
-                                                        <button class="btn btn-warning">Disabled</button>
-                                                    }
-                                                </td>
-                                                <td>
-                                                    <a asp-action="EditUser" asp-controller="Admin" asp-route-id="@user.UserId" class="pd-setting-ed"><i class="fas fa-edit" aria-hidden="true"></i></a>
-                                                    <a asp-action="DeleteUser" asp-controller="Admin" asp-route-id="@user.UserId" class="pd-setting-ed" data-toggle="modal" data-target="#modal-user-delete">
+                                                    <a asp-action="EditShelf" asp-controller="Stockkeeper" asp-route-id="@shelf.ShelfId" class="pd-setting-ed"><i class="fas fa-edit" aria-hidden="true"></i></a>
+                                                    <a asp-action="DeleteShelf" asp-controller="Stockkeeper" asp-route-id="@shelf.ShelfId" class="pd-setting-ed" data-toggle="modal" data-target="#modal-shelf-delete">
                                                         <i class="fas fa-trash" aria-hidden="true"></i>
                                                     </a>
-                                                    <div id="modal-user" aria-hidden="true" class="modal fade" role="dialog">
+                                                    <div id="modal-shelf" aria-hidden="true" class="modal fade" role="dialog">
                                                         <div class="modal-dialog">
                                                             <!-- Modal content-->
                                                             <div class="modal-content">
@@ -65,7 +51,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div id="modal-user-delete" aria-hidden="true" class="modal fade" role="dialog">
+                                                    <div id="modal-shelf-delete" aria-hidden="true" class="modal fade" role="dialog">
                                                         <div class="modal-dialog">
                                                             <!-- Modal content-->
                                                             <div class="modal-content">

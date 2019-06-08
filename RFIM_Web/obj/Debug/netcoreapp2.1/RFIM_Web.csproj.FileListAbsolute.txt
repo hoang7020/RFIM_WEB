@@ -69,6 +69,9 @@ C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.pdb
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.csproj.CopyComplete
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\EditUser.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\CreateUser.g.cshtml.cs
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\DeleteUser.g.cshtml.cs
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\RoleSelect.g.cshtml.cs
+C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\CreateUser.g.cshtml.cs
+C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Stockkeeper\GetListShelf.g.cshtml.cs
+C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Stockkeeper\CreateShelf.g.cshtml.cs
+C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Stockkeeper\DeleteShelf.g.cshtml.cs

@@ -164,4 +164,41 @@
     </div>
 </div>
 
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+
+    <script>
+        $(function () {
+
+            function checkGmail(value, element) {
+                var regex = /^[a-z]+@@gmail.com$/;
+                return this.optional(element) || regex.test(value);
+            }
+
+            $.validator.addMethod("gmail", checkGmail, "Gmail format is wrong!!");
+
+            $("#frmCreateUser").validate({
+                rules: {
+                    txtFullname: { required: true, maxLength: 32 },
+                    txtUsername: { required: true, maxLength: 32 },
+                    txtPassword: { required: true, maxLength: 32 },
+                    txtEmail: { required: true, email: true, gmail: true },
+                    txtPhone: { required: true },
+                    txtDob: { date: true }
+                },
+                messages: {
+                    txtFullname: { require: "Please input this field", maxLength: "Maximum 32 characters" },
+                    txtUsername: { require: "Please input this field", maxLength: "Maximum 32 characters" },
+                    txtPassword: { require: "Please input this field", maxLength: "Maximum 32 characters" },
+                    txtPhone: { require: "Please input this field" }
+                }
+            });
+        });
+    </script>
+}
+
+
+
+
 
