@@ -131,7 +131,7 @@ namespace RFIM_Web.Controllers
             {
                 Data = context.Roles.ToList()
             };
-            return View();
+            return PartialView("CreateUser");
         }
         [HttpPost]
         public async Task<IActionResult> CreateUser(User user)
@@ -143,7 +143,7 @@ namespace RFIM_Web.Controllers
                 return RedirectToAction(nameof(ListAllUser));
             }
             ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleId", user.RoleId);
-            return View(user);
+            return PartialView("CreateUser", user);
         }
         public async Task<IActionResult> DeleteUser(int? id)
         {
