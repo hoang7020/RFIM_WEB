@@ -45,7 +45,7 @@
                                                 <td>
                                                     @if (user.Status)
                                                     {
-                                                        <button class="btn btn-success">Active</button>
+                                                        <a asp-action="DeactiveUser" asp-controller="Admin" class="btn btn-success">Active</a>
                                                     }
                                                     else
                                                     {
@@ -57,27 +57,27 @@
                                                     <a asp-action="DeleteUser" asp-controller="Admin" asp-route-id="@user.UserId" class="pd-setting-ed" data-toggle="modal" data-target="#modal-user-delete">
                                                         <i class="fas fa-trash" aria-hidden="true"></i>
                                                     </a>
-                                                    <div id="modal-user" aria-hidden="true" class="modal fade" role="dialog">
-                                                        <div class="modal-dialog">
-                                                            <!-- Modal content-->
-                                                            <div class="modal-content">
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div id="modal-user-delete" aria-hidden="true" class="modal fade" role="dialog">
-                                                        <div class="modal-dialog">
-                                                            <!-- Modal content-->
-                                                            <div class="modal-content">
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </td>
                                             </tr>
                                         }
                                     </tbody>
                                 </table>
+                                <div id="modal-user-delete" aria-hidden="true" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="modal-user" aria-hidden="true" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -86,3 +86,13 @@
         </div>
     </div>
 </div>
+
+@section Scripts{
+    <script>
+ $(function () {
+    $("#modal-user-delete").on('hidden.bs.modal', function () {
+       $(this).removeData('bs.modal');
+    });
+ });
+    </script>
+}

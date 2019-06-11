@@ -1,0 +1,15 @@
+﻿@model RFIM_Web.Models.User
+
+<form method="post" asp-action="DeactiveUser">
+    <div class="modal-header">
+        <button type="button" class="close" datadismiss="modal-user-deactive">&times;</button>
+        <h4 class="modal-title">Deactive user @Model.Username</h4>
+    </div>
+    <div class="modal-body form-horizontal">
+        Deactivated user cannot log in to system. Are you sure?
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary">Confirm</button>
+        <button type="button" class="btn btn-default" datadismiss="modal-user">Cancel</button>
+    </div>
+</form>

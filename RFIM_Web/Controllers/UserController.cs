@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using RFIM_Web.Constants;
 using RFIM_Web.Models;
 using RFIM_Web.ModelView;
 
@@ -37,12 +38,12 @@ namespace RFIM_Web.Controllers
                 .SingleOrDefault(p => p.Username == model.Username && p.Password == model.Password);
             if (loggedUser == null)
             {
-                ViewBag.LoiDangNhap = "The username or password that you've entered doesn't match any account.Please try again";
+                ViewBag.LoiDangNhap = ErrorMessage.LoginFail;
                 return View();
             }
             else if (!loggedUser.Status)
             {
-                ViewBag.HetHieuLuc = "The account is not actived";
+                ViewBag.HetHieuLuc = ErrorMessage.LoginDeactive;
                 return View();
             }
             var claims = new List<Claim> {

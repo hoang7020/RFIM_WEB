@@ -1,8 +1,8 @@
 ﻿@model RFIM_Web.ModelView.RoleSelectModel
 @{
-    int roleSelect = (Model.Select != null && Model.Select.HasValue) ? Model.Select.Value : 0;
+    int roleSelect = Model.Select.HasValue ? Model.Select.Value : 0;
 }
-<select name="RoleId" class="form-control">
+<select name="RoleID" class="form-control">
     <option value="0">--------</option>
     @{
         var dsRole = Model.Data;
@@ -16,6 +16,6 @@
 </select>
 <script>
     $(function () {
-        $("select[name='RoleId']").val(@roleSelect.ToString());
+        $("select[name='RoleID']").val(@roleSelect.ToString());
     });
 </script>

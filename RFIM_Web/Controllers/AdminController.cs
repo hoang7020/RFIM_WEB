@@ -167,6 +167,30 @@ namespace RFIM_Web.Controllers
             await context.SaveChangesAsync();
             return RedirectToAction(nameof(ListAllUser));
         }
+
+        public async Task<IActionResult> DeactiveUser(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+            var user = await context.Users.Include(p => p.Role).FirstOrDefaultAsync(p => p.UserId == id);
+            if(user == null)
+            {
+                return NotFound();
+            }
+            return PartialView("DeactiveUser");
+        }
+        [HttpPost, ActionName("DeactiveUser")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ConfirmDeactive(int id)
+        {
+            var user = await context.Users.FindAsync(id);
+            user.Status = !user.Status;
+            context.Update(user);
+            await context.SaveChangesAsync();
+            return RedirectToAction(nameof(ListAllUser));
+        } 
         public bool UserExists(int id)
         {
             return context.Users.Any(p => p.UserId == id);

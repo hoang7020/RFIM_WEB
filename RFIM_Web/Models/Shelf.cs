@@ -12,10 +12,17 @@ namespace RFIM_Web.Models
     {
         [Key]
         public int ShelfId { get; set; }
-        [MinLength(16)]
+        [Display(Name = "Shelf Code*")]
+        [Required(ErrorMessage = "Shelf Code is required")]
+        [MaxLength(16, ErrorMessage = "Shelf Code has less than 16 characters")]
         public string ShelfCode { get; set; }
+        [Display(Name = "Description")]
         public string Description { get; set; }
+        [Required(ErrorMessage = "Floor Number is required")]
+        [Display(Name = "Floor Number*")]
         public int FloorNumber { get; set; }
+        [Display(Name = "Cell Number*")]
+        [Required(ErrorMessage = "Cell Number is required")]
         public int CellNumber { get; set; }
     }
 }
