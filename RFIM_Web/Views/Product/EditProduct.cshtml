@@ -116,8 +116,10 @@
                                                     <label class="login2 pull-right pull-right-pro">Category</label>
                                                 </div>
                                                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                    @using RFIM_Web.ModelView
-                                                    @await Html.PartialAsync("CategorySelect", (CategorySelect)ViewBag.CategorySelect)
+                                                    @*@using RFIM_Web.ModelView
+                                                    @await Html.PartialAsync("CategorySelect", (CategorySelect)ViewBag.CategorySelect)*@
+                                                    <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                                                    <span asp-validation-for="CategoryId" class="text-danger"></span> 
                                                 </div>
                                             </div>
                                         </div>
@@ -128,7 +130,7 @@
                                                     <div class="col-lg-9">
                                                         <div class="login-horizental cancel-wp pull-left">
                                                             <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Confirm</button>
-                                                            <button class="btn btn-white" asp-action="BackToProductList" asp-controller="Product">Cancel</button>
+                                                            <a class="btn btn-sm btn-primary login-submit-cs" asp-action="ListAllProduct" asp-controller="Product">Cancel</a>
                                                         </div>
                                                     </div>
                                                 </div>

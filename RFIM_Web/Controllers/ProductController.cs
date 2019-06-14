@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RFIM_Web.Models;
 using RFIM_Web.ModelView;
@@ -27,10 +28,11 @@ namespace RFIM_Web.Controllers
 
         public IActionResult CreateProduct()
         {
-            ViewBag.CategorySelect = new CategorySelect
-            {
-                Data = ctx.Categories.ToList()
-            };
+            //ViewBag.CategorySelect = new CategorySelect
+            //{
+            //    Data = ctx.Categories.ToList()
+            //};
+            ViewData["CategoryId"] = new SelectList(ctx.Categories, "CategoryId", "CategoryName");
             return View();
         }
         [HttpPost]
@@ -47,6 +49,7 @@ namespace RFIM_Web.Controllers
                 await ctx.SaveChangesAsync();
                 return RedirectToAction(nameof(ListAllProduct));
             }
+            ViewData["CategoryId"] = new SelectList(ctx.Categories, "CategoryId", "CategoryName", product.CategoryId);
             return View(product);
         }
         [HttpGet]
@@ -61,11 +64,12 @@ namespace RFIM_Web.Controllers
             {
                 return NotFound();
             }
-            ViewBag.CategorySelect = new CategorySelect
-            {
-                Data = ctx.Categories.ToList(),
-                Select = product.ProductId
-            };
+            //ViewBag.CategorySelect = new CategorySelect
+            //{
+            //    Data = ctx.Categories.ToList(),
+            //    Select = product.ProductId
+            //};
+            ViewData["CategoryId"] = new SelectList(ctx.Categories, "CategoryId", "CategoryName", product.CategoryId);
             return View(product);
         }
         [HttpPost]
@@ -100,6 +104,7 @@ namespace RFIM_Web.Controllers
                 }
                 return RedirectToAction(nameof(ListAllProduct));
             }
+            ViewData["CategoryId"] = new SelectList(ctx.Categories, "CategoryId", "CategoryName", product.CategoryId);
             return View(product);
         }
         [HttpGet]

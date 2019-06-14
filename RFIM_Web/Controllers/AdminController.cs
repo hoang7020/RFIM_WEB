@@ -87,11 +87,12 @@ namespace RFIM_Web.Controllers
             {
                 return NotFound();
             }
-            ViewBag.RoleSelect = new RoleSelectModel
-            {
-                Data = context.Roles.ToList(),
-                Select = user.RoleId
-            };
+            //ViewBag.RoleSelect = new RoleSelectModel
+            //{
+            //    Data = context.Roles.ToList(),
+            //    Select = user.RoleId
+            //};
+            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleName", user.RoleId);
             return View(user);
         }
         [HttpPost]
@@ -120,17 +121,17 @@ namespace RFIM_Web.Controllers
                 }
                 return RedirectToAction("ListAllUser");
             }
-            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleId", user.RoleId);
+            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleName", user.RoleId);
             return View(user);
         }
         [HttpGet]
         public IActionResult CreateUser()
         {
-            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleId");
-            ViewBag.RoleSelect = new RoleSelectModel
-            {
-                Data = context.Roles.ToList()
-            };
+            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleName");
+            //ViewBag.RoleSelect = new RoleSelectModel
+            //{
+            //    Data = context.Roles.ToList()
+            //};
             return PartialView("CreateUser");
         }
         [HttpPost]
@@ -142,7 +143,7 @@ namespace RFIM_Web.Controllers
                 await context.SaveChangesAsync();
                 return RedirectToAction(nameof(ListAllUser));
             }
-            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleId", user.RoleId);
+            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleName", user.RoleId);
             return PartialView("CreateUser", user);
         }
         public async Task<IActionResult> DeleteUser(int? id)

@@ -58,7 +58,11 @@
     <!-- modals CSS
         ============================================ -->
     <link rel="stylesheet" href="~/lib_gui/css/modals.css">
+    <!-- Preloader CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/lib_gui/css/preloader/preloader-style.css">
     <script src="~/lib_gui/js/vendor/modernizr-2.8.3.min.js"></script>
+ 
 </head>
 <body>
 
@@ -270,7 +274,11 @@
     {
         await Html.PartialAsync("Login");
     }
+ 
     @RenderBody()
+
+
+
     <!-- jquery
             ============================================ -->
     <script src="~/lib_gui/js/vendor/jquery-1.11.3.min.js"></script>
@@ -327,5 +335,7 @@
           ============================================ -->
     <script src="~/lib_gui/js/main.js"></script>
     @RenderSection("Scripts", required: false)
+
+
 </body>
 </html>
