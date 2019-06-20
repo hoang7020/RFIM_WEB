@@ -25,7 +25,7 @@ namespace RFIM_Web.Controllers
             var dsProduct = ctx.Products.Include(p => p.Category).ToList();
             return View(dsProduct);
         }
-
+        //Return view create product
         public IActionResult CreateProduct()
         {
             //ViewBag.CategorySelect = new CategorySelect
@@ -39,21 +39,34 @@ namespace RFIM_Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateProduct(Product product, IFormFile fHinh)
         {
+            //check model validation 
             if (ModelState.IsValid)
             {
-                if(fHinh != null)
+                //check if product id already existed 
+                bool productIdExist = ctx.Products.Any(p => p.ProductId == product.ProductId);
+                //if product id is not existed
+                if (!productIdExist)
                 {
-                    product.Image = UploadImageTool.UploadImage(fHinh, "product");
+                    if (fHinh != null)
+                    {
+                        product.Image = UploadImageTool.UploadImage(fHinh, "product");
+                    }
+                    ctx.Add(product);
+                    await ctx.SaveChangesAsync();
+                    return RedirectToAction(nameof(ListAllProduct));
                 }
-                ctx.Add(product);
-                await ctx.SaveChangesAsync();
-                return RedirectToAction(nameof(ListAllProduct));
+                //product id is existed
+                else
+                {
+                    ModelState.AddModelError("", "Product Id already existed !!!");
+                }
             }
             ViewData["CategoryId"] = new SelectList(ctx.Categories, "CategoryId", "CategoryName", product.CategoryId);
+            //if validation is error return view with error messages
             return View(product);
         }
         [HttpGet]
-        public async Task<IActionResult> EditProduct(int? id)
+        public async Task<IActionResult> EditProduct(string id)
         {
             if (id == null)
             {
@@ -74,7 +87,7 @@ namespace RFIM_Web.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditProduct(int id, Product product, IFormFile fHinh)
+        public async Task<IActionResult> EditProduct(string id, Product product, IFormFile fHinh)
         {
             if (id != product.ProductId)
             {
@@ -84,7 +97,7 @@ namespace RFIM_Web.Controllers
             {
                 try
                 {
-                    if(fHinh != null)
+                    if (fHinh != null)
                     {
                         product.Image = UploadImageTool.UploadImage(fHinh, "product");
                     }
@@ -108,14 +121,14 @@ namespace RFIM_Web.Controllers
             return View(product);
         }
         [HttpGet]
-        public async Task<IActionResult> DeleteProduct(int? id)
+        public async Task<IActionResult> DeleteProduct(string id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return NotFound();
             }
             var product = await ctx.Products.Include(p => p.Category).SingleOrDefaultAsync(p => p.ProductId == id);
-            if(product == null)
+            if (product == null)
             {
                 return NotFound();
             }
@@ -123,15 +136,15 @@ namespace RFIM_Web.Controllers
         }
         [HttpPost, ActionName("DeleteProduct")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirm(int id)
+        public async Task<IActionResult> DeleteConfirm(string id)
         {
-            var product =await ctx.Products.FindAsync(id);
+            var product = await ctx.Products.FindAsync(id);
             ctx.Products.Remove(product);
             await ctx.SaveChangesAsync();
             return RedirectToAction(nameof(ListAllProduct));
         }
 
-        private bool ProductExist(int id)
+        private bool ProductExist(string id)
         {
             return ctx.Products.Any(p => p.ProductId == id);
         }
@@ -139,6 +152,20 @@ namespace RFIM_Web.Controllers
         public IActionResult BackToProductList()
         {
             return RedirectToAction(nameof(ListAllProduct));
+        }
+        
+        public async Task<IActionResult> DetailProduct(string id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+            var product = await ctx.Products.Include(p => p.Category).FirstOrDefaultAsync(p => p.ProductId == id);
+            if(product == null)
+            {
+                return NotFound();
+            }
+            return View(product);
         }
     }
 }
