@@ -58,6 +58,10 @@
     <!-- modals CSS
         ============================================ -->
     <link rel="stylesheet" href="~/lib_gui/css/modals.css">
+    <!-- Jquerry and Jquerry Form Validator
+        ============================================ -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
     <script src="~/lib_gui/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
@@ -115,7 +119,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a asp-action="" asp-controller="" class="has-arrow">
+                                    <a asp-action="ListAllCategory" asp-controller="Category" class="has-arrow">
                                         <i class="fas fa-cube"></i>
                                         <span class="mini-click-non">Categories</span>
                                     </a>

@@ -133,3 +133,7 @@ C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.View
 C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.dll
 C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.pdb
 C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.csproj.CopyComplete
+C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Category\ListAllCategory.g.cshtml.cs
+C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Category\CreateCategory.g.cshtml.cs
+C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Category\DeleteCategory.g.cshtml.cs
+C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Category\EditCategory.g.cshtml.cs
