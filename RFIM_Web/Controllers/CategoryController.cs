@@ -17,7 +17,7 @@ namespace RFIM_Web.Controllers
         }
         public IActionResult ListAllCategory()
         {
-            return View(ctx.Shelfs.ToList());
+            return View(ctx.Categories.ToList());
         }
 
         public IActionResult CreateCategory()
@@ -79,6 +79,7 @@ namespace RFIM_Web.Controllers
             }
             return View(category);
         }
+
         [HttpGet]
         public async Task<IActionResult> DeleteCategory(int? id)
         {
@@ -93,6 +94,7 @@ namespace RFIM_Web.Controllers
             }
             return PartialView("DeleteCategory", category);
         }
+
         [HttpPost, ActionName("DeleteCategory")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteCategoryConfirm(int id)
