@@ -4,6 +4,9 @@
     ViewData["Title"] = "CreateCategory";
 }
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+<script src="~/lib_gui/js/vendor/modernizr-2.8.3.min.js"></script>
+
 <div class="all-content-wrapper">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -26,8 +29,8 @@
                                                     <label class="login2 pull-right pull-right-pro">Category Name</label>
                                                 </div>
                                                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                    <input asp-for="CategoryName" class="form-control" data-validation="length alphanumeric" data-validation-length="1-36" 
-                                                                                                       data-validation-error-msg="Category Name has to be an alphanumeric value (1-36 chars)" />
+                                                    <input asp-for="CategoryName" class="form-control" data-validation="length alphanumeric" data-validation-length="1-36"
+                                                           data-validation-error-msg="Category Name has to be an alphanumeric value (1-36 chars)" />
                                                     <span asp-validation-for="CategoryName" class="text-danger"></span>
                                                 </div>
                                             </div>

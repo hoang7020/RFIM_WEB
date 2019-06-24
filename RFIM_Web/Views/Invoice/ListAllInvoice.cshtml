@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RFIM_Web.Models.I>
+﻿@model IEnumerable<RFIM_Web.Models.Category>
 @{
     ViewData["Title"] = "ListAllInvoice";
 }
@@ -31,7 +31,7 @@
                                         @foreach (var category in Model)
                                         {
                                             <tr>
-                                                <td>@category.CategoryName</td>
+                                                <td>@category.CategoryId</td>
                                                 <td>@category.Description</td>
                                                 <td>
                                                     <a asp-action="EditCategory" asp-controller="Category" asp-route-id="@category.CategoryId" class="pd-setting-ed"><i class="fas fa-edit" aria-hidden="true"></i></a>
