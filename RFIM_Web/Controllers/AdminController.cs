@@ -87,11 +87,12 @@ namespace RFIM_Web.Controllers
             {
                 return NotFound();
             }
-            ViewBag.RoleSelect = new RoleSelectModel
-            {
-                Data = context.Roles.ToList(),
-                Select = user.RoleId
-            };
+            //ViewBag.RoleSelect = new RoleSelectModel
+            //{
+            //    Data = context.Roles.ToList(),
+            //    Select = user.RoleId
+            //};
+            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleName", user.RoleId);
             return View(user);
         }
         [HttpPost]
@@ -120,18 +121,18 @@ namespace RFIM_Web.Controllers
                 }
                 return RedirectToAction("ListAllUser");
             }
-            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleId", user.RoleId);
+            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleName", user.RoleId);
             return View(user);
         }
         [HttpGet]
         public IActionResult CreateUser()
         {
-            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleId");
-            ViewBag.RoleSelect = new RoleSelectModel
-            {
-                Data = context.Roles.ToList()
-            };
-            return PartialView("CreateUser");
+            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleName");
+            //ViewBag.RoleSelect = new RoleSelectModel
+            //{
+            //    Data = context.Roles.ToList()
+            //};
+            return View();
         }
         [HttpPost]
         public async Task<IActionResult> CreateUser(User user)
@@ -142,8 +143,8 @@ namespace RFIM_Web.Controllers
                 await context.SaveChangesAsync();
                 return RedirectToAction(nameof(ListAllUser));
             }
-            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleId", user.RoleId);
-            return PartialView("CreateUser", user);
+            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleName", user.RoleId);
+            return View(user);
         }
         public async Task<IActionResult> DeleteUser(int? id)
         {
@@ -194,6 +195,11 @@ namespace RFIM_Web.Controllers
         public bool UserExists(int id)
         {
             return context.Users.Any(p => p.UserId == id);
+        }
+
+        public IActionResult BackToUserList()
+        {
+            return RedirectToAction(nameof(ListAllUser));
         }
     }
 }

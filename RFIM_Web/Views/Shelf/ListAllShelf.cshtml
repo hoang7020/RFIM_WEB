@@ -22,7 +22,7 @@
                                        data-show-toggle="true" data-show-export="true">
                                     <thead>
                                         <tr>
-                                            <th>Shelf Code</th>
+                                            <th>Shelf Id</th>
                                             <th>Description</th>
                                             <th>Floor Number</th>
                                             <th>Cell Number</th>
@@ -33,7 +33,7 @@
                                         @foreach (var shelf in Model)
                                         {
                                             <tr>
-                                                <td>@shelf.ShelfCode</td>
+                                                <td>@shelf.ShelfId</td>
                                                 <td>@shelf.Description</td>
                                                 <td>@shelf.FloorNumber</td>
                                                 <td>@shelf.CellNumber</td>

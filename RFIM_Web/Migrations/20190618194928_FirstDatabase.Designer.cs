@@ -10,7 +10,7 @@ using RFIM_Web.Models;
 namespace RFIM_Web.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20190528175921_FirstDatabase")]
+    [Migration("20190618194928_FirstDatabase")]
     partial class FirstDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,54 @@ namespace RFIM_Web.Migrations
                 .HasAnnotation("ProductVersion", "2.1.3-rtm-32065")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("RFIM_Web.Models.Category", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired();
+
+                    b.Property<string>("Description");
+
+                    b.HasKey("CategoryId");
+
+                    b.ToTable("Category");
+                });
+
+            modelBuilder.Entity("RFIM_Web.Models.Product", b =>
+                {
+                    b.Property<string>("ProductId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<double>("BoxHeight");
+
+                    b.Property<double>("BoxLength");
+
+                    b.Property<double>("BoxWidth");
+
+                    b.Property<int>("CategoryId");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Image");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasMaxLength(256);
+
+                    b.Property<int>("QuantityPerPackage");
+
+                    b.Property<double>("Weight");
+
+                    b.HasKey("ProductId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Product");
+                });
 
             modelBuilder.Entity("RFIM_Web.Models.Role", b =>
                 {
@@ -35,6 +83,27 @@ namespace RFIM_Web.Migrations
                     b.ToTable("Role");
                 });
 
+            modelBuilder.Entity("RFIM_Web.Models.Shelf", b =>
+                {
+                    b.Property<int>("ShelfId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CellNumber");
+
+                    b.Property<string>("Description");
+
+                    b.Property<int>("FloorNumber");
+
+                    b.Property<string>("ShelfCode")
+                        .IsRequired()
+                        .HasMaxLength(16);
+
+                    b.HasKey("ShelfId");
+
+                    b.ToTable("Shelf");
+                });
+
             modelBuilder.Entity("RFIM_Web.Models.User", b =>
                 {
                     b.Property<int>("UserId")
@@ -47,15 +116,18 @@ namespace RFIM_Web.Migrations
                     b.Property<DateTime>("DateOfBirth");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasMaxLength(50);
 
                     b.Property<string>("Fullname")
+                        .IsRequired()
                         .HasMaxLength(50);
 
                     b.Property<string>("Note")
                         .HasMaxLength(120);
 
                     b.Property<string>("Password")
+                        .IsRequired()
                         .HasMaxLength(32);
 
                     b.Property<string>("Phone");
@@ -65,6 +137,7 @@ namespace RFIM_Web.Migrations
                     b.Property<bool>("Status");
 
                     b.Property<string>("Username")
+                        .IsRequired()
                         .HasMaxLength(32);
 
                     b.HasKey("UserId");
@@ -72,6 +145,14 @@ namespace RFIM_Web.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("User");
+                });
+
+            modelBuilder.Entity("RFIM_Web.Models.Product", b =>
+                {
+                    b.HasOne("RFIM_Web.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("RFIM_Web.Models.User", b =>

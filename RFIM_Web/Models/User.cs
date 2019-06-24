@@ -12,19 +12,26 @@ namespace RFIM_Web.Models
     {
         [Key]
         public int UserId { get; set; }
-        [MaxLength(50)]
+        [Required(ErrorMessage = "This field is required")]
+        [MaxLength(50, ErrorMessage = "Fullname must be less than 50 characters")]
         public string Fullname { get; set; }
-        [MaxLength(32)]
+        [Required(ErrorMessage = "This field is required")]
+        [MaxLength(32, ErrorMessage = "Fullname must be less than 32 characters")]
         public string Username { get; set; }
-        [MaxLength(32)]
+        [Required(ErrorMessage = "This field is required")]
+        [MaxLength(32, ErrorMessage = "Fullname must be less than 32 characters")]
         public string Password { get; set; }
-        [MaxLength(50)]
+        [MaxLength(50, ErrorMessage = "Fullname must be less than 50 characters")]
         public string Address { get; set; }
-        [MaxLength(50)]
+        [Required(ErrorMessage = "This field is required")]
+        [MaxLength(50, ErrorMessage = "Fullname must be less than 50 characters")]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+        [Required(ErrorMessage = "This field is required")]
+        [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
         public string Phone { get; set; }
-        [MaxLength(120)]
+        [MaxLength(120, ErrorMessage = "Fullname must be less than 120 characters")]
         public string Note { get; set; }
         public bool Status { get; set; }
         public int RoleId { get; set; }
