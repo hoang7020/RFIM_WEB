@@ -21,7 +21,6 @@
                                        data-show-toggle="true" data-show-export="true">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
                                             <th>Fullname</th>
                                             <th>Username</th>
                                             <th>Password</th>
@@ -36,7 +35,6 @@
                                         @foreach (var user in Model)
                                         {
                                             <tr>
-                                                <td>@user.UserId</td>
                                                 <td>@user.Fullname</td>
                                                 <td>@user.Username</td>
                                                 <td>@user.Password</td>
@@ -54,13 +52,23 @@
                                                     }
                                                 </td>
                                                 <td>
-                                                    <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fas fa-edit" aria-hidden="true"></i></button>
-                                                    <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fas fa-trash" aria-hidden="true"></i></button>
+                                                    <a asp-action="EditUser" asp-controller="Admin" asp-route-id="@user.UserId" class="pd-setting-ed"><i class="fas fa-edit" aria-hidden="true"></i></a>
+                                                    <a asp-action="DeleteUser" asp-controller="Admin" asp-route-id="@user.UserId" class="pd-setting-ed" data-toggle="modal" data-target="#modal-user-delete">
+                                                        <i class="fas fa-trash" aria-hidden="true"></i>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         }
                                     </tbody>
                                 </table>
+                                <div id="modal-user-delete" aria-hidden="true" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -69,3 +77,12 @@
         </div>
     </div>
 </div>
+@section Scripts{
+    <script>
+ $(function () {
+    $("#modal-user-delete").on('hidden.bs.modal', function () {
+       $(this).removeData('bs.modal');
+    });
+ });
+    </script>
+}

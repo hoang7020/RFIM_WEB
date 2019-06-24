@@ -18,6 +18,7 @@
                         <div class="sparkline13-graph">
                             <div class="datatable-dashv1-list custom-datatable-overright">
                                 <a asp-action="CreateProduct" asp-controller="Product" class="btn btn-success">Create Product</a>
+                                <a asp-action="ImportProduct" asp-controller="Product" class="btn btn-primary">Import Product</a>
                                 <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true"
                                        data-show-toggle="true" data-show-export="true">
                                     <thead>
@@ -26,7 +27,7 @@
                                             <th>Product Name</th>
                                             <th>Weight</th>
                                             <th>Image</th>
-                                            <th>Category
+                                            <th>Category</th>
                                             <th>Setting</th>
                                         </tr>
                                     </thead>
@@ -38,19 +39,19 @@
                                                 <td><a asp-action="DetailProduct" asp-controller="Product" asp-route-id="@product.ProductId">@product.ProductName</a></td>
                                                 <td>@product.Weight g</td>
                                                 <td><img src="~/Hinh/product/@product.Image" height="5" /></td>
-                                                
+
                                                 <td>@product.Category.CategoryName</td>
                                                 <td>
                                                     <a asp-action="EditProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="pd-setting-ed"><i class="fas fa-edit"></i></a>
                                                     <a asp-action="DeleteProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="pd-setting-ed" data-toggle="modal" data-target="#modal-product-delete">
-                                                        <i class="fas fa-trash" ></i>
+                                                        <i class="fas fa-trash"></i>
                                                     </a>
                                                 </td>
                                             </tr>
                                         }
                                     </tbody>
                                 </table>
-                                
+
                                 <div id="modal-product-delete" aria-hidden="true" class="modal fade" role="dialog">
                                     <div class="modal-dialog">
                                         <!-- Modal content-->
