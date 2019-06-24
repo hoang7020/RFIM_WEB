@@ -27,5 +27,9 @@ namespace RFIM_Web.Models
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
 
+        public int? VendorId { get; set; }
+        [ForeignKey("VendorId")]
+        public Vendor Vendor { get; set; }
+
     }
 }

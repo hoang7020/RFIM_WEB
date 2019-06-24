@@ -18,5 +18,8 @@ namespace RFIM_Web.Models
         public DbSet<Shelf> Shelfs { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Vendor> Vendors { get; set; }
+        public DbSet<Floor> Floors { get; set; }
+        public DbSet<Cell> Cells { get; set; }
     }
 }

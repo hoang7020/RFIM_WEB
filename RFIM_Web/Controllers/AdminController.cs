@@ -132,7 +132,7 @@ namespace RFIM_Web.Controllers
             //{
             //    Data = context.Roles.ToList()
             //};
-            return PartialView("CreateUser");
+            return View();
         }
         [HttpPost]
         public async Task<IActionResult> CreateUser(User user)
@@ -144,7 +144,7 @@ namespace RFIM_Web.Controllers
                 return RedirectToAction(nameof(ListAllUser));
             }
             ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleName", user.RoleId);
-            return PartialView("CreateUser", user);
+            return View(user);
         }
         public async Task<IActionResult> DeleteUser(int? id)
         {
@@ -195,6 +195,11 @@ namespace RFIM_Web.Controllers
         public bool UserExists(int id)
         {
             return context.Users.Any(p => p.UserId == id);
+        }
+
+        public IActionResult BackToUserList()
+        {
+            return RedirectToAction(nameof(ListAllUser));
         }
     }
 }

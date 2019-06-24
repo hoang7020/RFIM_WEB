@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using OfficeOpenXml;
 using RFIM_Web.Models;
 using RFIM_Web.ModelView;
 using RFIM_Web.Utils;
@@ -33,6 +35,7 @@ namespace RFIM_Web.Controllers
             //    Data = ctx.Categories.ToList()
             //};
             ViewData["CategoryId"] = new SelectList(ctx.Categories, "CategoryId", "CategoryName");
+            ViewData["VendorId"] = new SelectList(ctx.Vendors, "VendorId", "VendorName");
             return View();
         }
         [HttpPost]
@@ -62,6 +65,7 @@ namespace RFIM_Web.Controllers
                 }
             }
             ViewData["CategoryId"] = new SelectList(ctx.Categories, "CategoryId", "CategoryName", product.CategoryId);
+            ViewData["VendorId"] = new SelectList(ctx.Vendors, "VendorId", "VendorName", product.VendorId);
             //if validation is error return view with error messages
             return View(product);
         }
@@ -83,6 +87,7 @@ namespace RFIM_Web.Controllers
             //    Select = product.ProductId
             //};
             ViewData["CategoryId"] = new SelectList(ctx.Categories, "CategoryId", "CategoryName", product.CategoryId);
+            ViewData["VendorId"] = new SelectList(ctx.Vendors, "VendorId", "VendorName", product.VendorId);
             return View(product);
         }
         [HttpPost]
@@ -118,6 +123,7 @@ namespace RFIM_Web.Controllers
                 return RedirectToAction(nameof(ListAllProduct));
             }
             ViewData["CategoryId"] = new SelectList(ctx.Categories, "CategoryId", "CategoryName", product.CategoryId);
+            ViewData["VendorId"] = new SelectList(ctx.Vendors, "VendorId", "VendorName", product.VendorId);
             return View(product);
         }
         [HttpGet]
@@ -127,7 +133,7 @@ namespace RFIM_Web.Controllers
             {
                 return NotFound();
             }
-            var product = await ctx.Products.Include(p => p.Category).SingleOrDefaultAsync(p => p.ProductId == id);
+            var product = await ctx.Products.Include(p => p.Category).Include(p=>p.Vendor).SingleOrDefaultAsync(p => p.ProductId == id);
             if (product == null)
             {
                 return NotFound();
@@ -153,19 +159,110 @@ namespace RFIM_Web.Controllers
         {
             return RedirectToAction(nameof(ListAllProduct));
         }
-        
+
         public async Task<IActionResult> DetailProduct(string id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return NotFound();
             }
             var product = await ctx.Products.Include(p => p.Category).FirstOrDefaultAsync(p => p.ProductId == id);
-            if(product == null)
+            if (product == null)
             {
                 return NotFound();
             }
             return View(product);
+        }
+        public IActionResult ExportProduct()
+        {
+            var data = ctx.Products.Include(p => p.Category).Include(p => p.Vendor).Select(p => new ProductExcelView
+            {
+                ProductId = p.ProductId,
+                ProductName = p.ProductName,
+                Weight = p.Weight.Value,
+                Category = p.Category.CategoryName,
+                Vendor = p.Vendor.VendorName
+            }).ToList();
+
+            var stream = new MemoryStream();
+            using (var package = new ExcelPackage(stream))
+            {
+                var sheet = package.Workbook.Worksheets.Add("Product");
+                sheet.Cells.LoadFromCollection(data, true);
+                package.Save();
+            }
+            stream.Position = 0;
+            string fileName = $"Product_{DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss")}.xlsx";
+            return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+        }
+
+        [HttpGet]
+        public IActionResult ImportProduct()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ImportProduct(IFormFile fImport)
+        {
+            if (fImport == null || fImport.Length <= 0)
+            {
+                ViewBag.EmptyFileMessage = "File is not existed or fail to upload";
+                return View();
+            }
+            List<Product> productImports = new List<Product>();
+            //tạo stream giữ file upload lên
+            using(var stream = new MemoryStream())
+            {
+                fImport.CopyTo(stream);
+
+                //Map stream với Excel file
+                using(var package = new ExcelPackage(stream))
+                {
+                    var sheet = package.Workbook.Worksheets[0];
+                    int rowCount = sheet.Dimension.Rows;
+
+                    //duyệt qua từng dòng của sheet Excel bóc tách dữ liệu ra
+                    for(int i = 2; i <= rowCount; i++)
+                    {
+                        productImports.Add(new Product
+                        {
+                            ProductId = sheet.Cells[i, 1].Value.ToString(),
+                            ProductName = sheet.Cells[i, 2].Value.ToString(),
+                            Weight = double.Parse(sheet.Cells[i, 3].Value.ToString()),
+                            Image = sheet.Cells[i, 4].Value.ToString(),
+                            Description = sheet.Cells[i, 5].Value.ToString(),
+                            CategoryId = int.Parse(sheet.Cells[i, 6].Value.ToString()),
+                            VendorId = int.Parse(sheet.Cells[i, 7].Value.ToString())
+                        });
+                    }
+                }
+            }
+            if(productImports.Count > 0)
+            {
+                //tiến hành update hoặc insert
+                foreach (Product product in productImports)
+                {
+                    var item = ctx.Products.SingleOrDefault(p => p.ProductId == product.ProductId);
+                    if (item != null)//đã có --> update
+                    {
+                        item.ProductId = product.ProductId;
+                        item.ProductName = product.ProductName;
+                        item.Weight = product.Weight;
+                        item.Image = product.Image;
+                        item.Description = product.Description;
+                        item.CategoryId = product.CategoryId;
+                        item.VendorId = product.VendorId;
+                    }
+                    else
+                    {
+                        ctx.Add(product);
+                    }
+                }
+                ctx.SaveChanges();
+            }
+            ViewBag.SuccessMessage = "Import successfully";
+            return View();
         }
     }
 }

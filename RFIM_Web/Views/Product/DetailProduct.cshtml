@@ -9,18 +9,8 @@
             <div class="col-md-3 col-md-3 col-sm-3 col-xs-12 mg-t-15">
                 <div class="hpanel responsive-mg-b-30">
                     <div class="panel-body">
-                        <form asp-action="SearchProductList" asp-controller="Product">
-                            <input type="text" placeholder="Search..." class="form-control" />
-                            <input type="submit" />
-                        </form>
+                        <input type="text" placeholder="Search..." class="form-control"  id="myInput" onkeyup="myFunction()"/>
                         <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                <a class="btn btn-block" href="#">
-
-                                    All Product <i class="fa fa-sort-down"></i>
-                                </a>
-                            </div>
-
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                 <a class="btn btn-danger btn-block" asp-action="CreateProduct" asp-controller="Product">
                                     <i class="fa fa-plus"></i>
@@ -28,7 +18,7 @@
                                 </a>
                             </div>
                         </div>
-                        <ul class="h-list m-t">
+                        <ul class="h-list m-t" id="myUL">
                             @await Component.InvokeAsync("ProductDetailList")
                         </ul>
                     </div>
@@ -49,17 +39,11 @@
                             </div>
                             <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
                                 <div class="single-product-details res-pro-tb">
-                                    <h1>@Model.ProductName</h1>
+                                    <h1>@Model.ProductName <a asp-action="EditProduct" asp-controller="Product" asp-route-id="@Model.ProductId"><i class="fas fa-edit"></i></a></h1>
                                     <div class="single-pro-cn">
                                         <h3>OVERVIEW</h3>
                                         <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                            tempor
-                                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis
-                                            nostrud
-                                            exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                            @Model.Description
                                         </p>
                                     </div>
                                 </div>
@@ -96,3 +80,22 @@
         </div>
     </div>
 </div>
+
+<script>
+    function myFunction() {
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myUL");
+        li = ul.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+</script>
