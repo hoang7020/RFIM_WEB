@@ -86,7 +86,15 @@ using RFIM_Web.Models;
                                 ");
             EndContext();
             BeginContext(794, 135, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f2bc9ce9e3ba4e3a89bd7b49fd4f42b9", async() => {
+=======
+<<<<<<< HEAD
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c6391bf533c44698b3d750041db6f322", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "98d5bba028fe4ffba2d3145bda35b91e", async() => {
+>>>>>>> dev_thinh2
+>>>>>>> 9f8c8fe2d8385a61db555ae4168100a9208afa47
                 BeginContext(914, 11, true);
                 WriteLiteral("Create User");
                 EndContext();
@@ -207,7 +215,15 @@ using RFIM_Web.Models;
             WriteLiteral("                                                        ");
             EndContext();
             BeginContext(2740, 86, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a506c49cfb0d4228bb172c707b110157", async() => {
+=======
+<<<<<<< HEAD
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0faa163abfcb428aa711a62ccd58ee56", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0b0efc9968264ba2b19f24b0b30d1bdc", async() => {
+>>>>>>> dev_thinh2
+>>>>>>> 9f8c8fe2d8385a61db555ae4168100a9208afa47
                 BeginContext(2816, 6, true);
                 WriteLiteral("Active");
                 EndContext();
@@ -250,7 +266,15 @@ using RFIM_Web.Models;
             WriteLiteral("                                                </td>\r\n                                                <td>\r\n                                                    ");
             EndContext();
             BeginContext(3319, 148, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f752d68d305c4731a4d20563b00819f7", async() => {
+=======
+<<<<<<< HEAD
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "24b23093ce854c6fbbd08a213f9c43f0", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a3a006253f3a4035ac64e65d0ae159ab", async() => {
+>>>>>>> dev_thinh2
+>>>>>>> 9f8c8fe2d8385a61db555ae4168100a9208afa47
                 BeginContext(3417, 46, true);
                 WriteLiteral("<i class=\"fas fa-edit\" aria-hidden=\"true\"></i>");
                 EndContext();
@@ -288,7 +312,15 @@ using RFIM_Web.Models;
             WriteLiteral("\r\n                                                    ");
             EndContext();
             BeginContext(3521, 316, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "11522ee11a154b83ae6007e27bf8fc77", async() => {
+=======
+<<<<<<< HEAD
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0541dc29177e4e67a2064ab7a30f8832", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "42bc8a3e176444ba9516b375c678e2d5", async() => {
+>>>>>>> dev_thinh2
+>>>>>>> 9f8c8fe2d8385a61db555ae4168100a9208afa47
                 BeginContext(3674, 159, true);
                 WriteLiteral("\r\n                                                        <i class=\"fas fa-trash\" aria-hidden=\"true\"></i>\r\n                                                    ");
                 EndContext();

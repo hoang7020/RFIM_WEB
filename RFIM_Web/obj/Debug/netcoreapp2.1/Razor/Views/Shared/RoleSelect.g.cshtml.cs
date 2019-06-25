@@ -60,7 +60,15 @@ using RFIM_Web.Models;
             WriteLiteral("<select name=\"RoleID\" class=\"form-control\">\r\n    ");
             EndContext();
             BeginContext(169, 35, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6513b96ef74b40a1b348d8f62ff095cc", async() => {
+=======
+<<<<<<< HEAD
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "66ffafb87d4c406b9a85e69e512d7d6a", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fc3829861a72473b96f40e7d5d3a095f", async() => {
+>>>>>>> dev_thinh2
+>>>>>>> 9f8c8fe2d8385a61db555ae4168100a9208afa47
                 BeginContext(187, 8, true);
                 WriteLiteral("--------");
                 EndContext();
@@ -101,7 +109,15 @@ using RFIM_Web.Models;
             WriteLiteral("        ");
             EndContext();
             BeginContext(305, 76, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "70b76fc43949482090e35c0cacf00ade", async() => {
+=======
+<<<<<<< HEAD
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "89fd19164a7f4a928e2975daef6fa81c", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b4003a941f2941d38429c047c1529ce1", async() => {
+>>>>>>> dev_thinh2
+>>>>>>> 9f8c8fe2d8385a61db555ae4168100a9208afa47
                 BeginContext(334, 14, true);
                 WriteLiteral("\r\n            ");
                 EndContext();
