@@ -166,11 +166,14 @@ namespace RFIM_Web.Controllers
             {
                 return NotFound();
             }
-            var product = await ctx.Products.Include(p => p.Category).FirstOrDefaultAsync(p => p.ProductId == id);
+            var product = await ctx.Products.Include(p => p.Category).Include(p => p.Vendor).FirstOrDefaultAsync(p => p.ProductId == id);
             if (product == null)
             {
                 return NotFound();
             }
+            var packages = await ctx.Packages.Where(p => p.ProductId == id).ToListAsync();
+            ViewBag.PackageSelectFromProduct = packages;
+            
             return View(product);
         }
         public IActionResult ExportProduct()
@@ -181,7 +184,11 @@ namespace RFIM_Web.Controllers
                 ProductName = p.ProductName,
                 Weight = p.Weight.Value,
                 Category = p.Category.CategoryName,
-                Vendor = p.Vendor.VendorName
+                Vendor = p.Vendor.VendorName,
+                Height = p.Height.Value,
+                Width = p.Width.Value,
+                Lenght = p.Lenght.Value,
+                QuantityPerBox = p.QuantityPerBox.Value
             }).ToList();
 
             var stream = new MemoryStream();
@@ -189,6 +196,30 @@ namespace RFIM_Web.Controllers
             {
                 var sheet = package.Workbook.Worksheets.Add("Product");
                 sheet.Cells.LoadFromCollection(data, true);
+                package.Save();
+            }
+            stream.Position = 0;
+            string fileName = $"Product_{DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss")}.xlsx";
+            return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+        }
+
+        public IActionResult ExampleFile()
+        {
+            var stream = new MemoryStream();
+            using (var package = new ExcelPackage(stream))
+            {
+                var sheet = package.Workbook.Worksheets.Add("Product");
+                sheet.Cells[1, 1].Value = "Product Id";
+                sheet.Cells[1, 2].Value = "Product Name";
+                sheet.Cells[1, 3].Value = "Weight";
+                sheet.Cells[1, 4].Value = "Image";
+                sheet.Cells[1, 5].Value = "Description";
+                sheet.Cells[1, 6].Value = "Height";
+                sheet.Cells[1, 7].Value = "Width";
+                sheet.Cells[1, 8].Value = "Length";
+                sheet.Cells[1, 9].Value = "Quantity Per Box";
+                sheet.Cells[1, 10].Value = "Category";
+                sheet.Cells[1, 11].Value = "Vendor";
                 package.Save();
             }
             stream.Position = 0;
@@ -232,8 +263,12 @@ namespace RFIM_Web.Controllers
                             Weight = double.Parse(sheet.Cells[i, 3].Value.ToString()),
                             Image = sheet.Cells[i, 4].Value.ToString(),
                             Description = sheet.Cells[i, 5].Value.ToString(),
-                            CategoryId = int.Parse(sheet.Cells[i, 6].Value.ToString()),
-                            VendorId = int.Parse(sheet.Cells[i, 7].Value.ToString())
+                            Height = double.Parse(sheet.Cells[i, 6].Value.ToString()),
+                            Width = double.Parse(sheet.Cells[i, 7].Value.ToString()),
+                            Lenght = double.Parse(sheet.Cells[i, 8].Value.ToString()),
+                            QuantityPerBox = int.Parse(sheet.Cells[i, 9].Value.ToString()),
+                            CategoryId = int.Parse(sheet.Cells[i, 10].Value.ToString()),
+                            VendorId = int.Parse(sheet.Cells[i, 11].Value.ToString())
                         });
                     }
                 }
@@ -251,6 +286,10 @@ namespace RFIM_Web.Controllers
                         item.Weight = product.Weight;
                         item.Image = product.Image;
                         item.Description = product.Description;
+                        item.Height = product.Height;
+                        item.Width = product.Width;
+                        item.Lenght = product.Lenght;
+                        item.QuantityPerBox = product.QuantityPerBox;
                         item.CategoryId = product.CategoryId;
                         item.VendorId = product.VendorId;
                     }

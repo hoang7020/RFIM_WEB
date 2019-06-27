@@ -28,26 +28,34 @@
                                             <th>Weight</th>
                                             <th>Image</th>
                                             <th>Category</th>
+                                            <th>Height</th>
+                                            <th>Width</th>
+                                            <th>Length</th>
+                                            <th>Quantity Per Box</th>
                                             <th>Setting</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (var product in Model)
                                         {
-                                            <tr>
-                                                <td>@product.ProductId</td>
-                                                <td><a asp-action="DetailProduct" asp-controller="Product" asp-route-id="@product.ProductId">@product.ProductName</a></td>
-                                                <td>@product.Weight g</td>
-                                                <td><img src="~/Hinh/product/@product.Image" height="5" /></td>
+                                        <tr>
+                                            <td><a asp-action="DetailProduct" asp-controller="Product" asp-route-id="@product.ProductId">@product.ProductId</a></td>
+                                            <td><a asp-action="DetailProduct" asp-controller="Product" asp-route-id="@product.ProductId">@product.ProductName</a></td>
+                                            <td>@product.Weight g</td>
+                                            <td><img src="~/Hinh/product/@product.Image" height="5" /></td>
 
-                                                <td>@product.Category.CategoryName</td>
-                                                <td>
-                                                    <a asp-action="EditProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="pd-setting-ed"><i class="fas fa-edit"></i></a>
-                                                    <a asp-action="DeleteProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="pd-setting-ed" data-toggle="modal" data-target="#modal-product-delete">
-                                                        <i class="fas fa-trash"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
+                                            <td>@product.Category.CategoryName</td>
+                                            <td>@product.Height</td>
+                                            <td>@product.Width</td>
+                                            <td>@product.Lenght</td>
+                                            <td>@product.QuantityPerBox</td>
+                                            <td>
+                                                <a asp-action="EditProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="pd-setting-ed"><i class="fas fa-edit"></i></a>
+                                                <a asp-action="DeleteProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="pd-setting-ed" data-toggle="modal" data-target="#modal-product-delete">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
                                         }
                                     </tbody>
                                 </table>

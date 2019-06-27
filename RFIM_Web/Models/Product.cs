@@ -23,6 +23,13 @@ namespace RFIM_Web.Models
         public string Image { get; set; }
         public string Description { get; set; }
         [Required(ErrorMessage = "This field is required")]
+        public double? Height { get; set; }
+        [Required(ErrorMessage = "This field is required")]
+        public double? Width { get; set; }
+        [Required(ErrorMessage = "This field is required")]
+        public double? Lenght { get; set; }
+        [Required(ErrorMessage = "This field is required")]
+        public int? QuantityPerBox { get; set; }
         public int? CategoryId { get; set; }
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }

@@ -3,13 +3,14 @@
 @{
     ViewData["Title"] = "DetailProduct";
 }
+
 <div class="all-content-wrapper">
     <div class="container-fluid">
         <div class=row>
             <div class="col-md-3 col-md-3 col-sm-3 col-xs-12 mg-t-15">
                 <div class="hpanel responsive-mg-b-30">
                     <div class="panel-body">
-                        <input type="text" placeholder="Search..." class="form-control"  id="myInput" onkeyup="myFunction()"/>
+                        <input type="text" placeholder="Search..." class="form-control" id="myInput" onkeyup="myFunction()" />
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                 <a class="btn btn-danger btn-block" asp-action="CreateProduct" asp-controller="Product">
@@ -18,7 +19,7 @@
                                 </a>
                             </div>
                         </div>
-                        <ul class="h-list m-t" id="myUL">
+                        <ul class="h-list m-t" id="list_detail">
                             @await Component.InvokeAsync("ProductDetailList")
                         </ul>
                     </div>
@@ -46,6 +47,54 @@
                                             @Model.Description
                                         </p>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                            <label>Weight</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                            <label><b>@Model.Weight g</b></label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                            <label>Height</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                            <label><b>@Model.Height cm</b></label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                            <label>Width</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                            <label><b>@Model.Width cm</b></label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                            <label>Length</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                            <label><b>@Model.Lenght cm</b></label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                            <label>Category</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                            <label><b>@Model.Category.CategoryName</b></label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                            <label>Vendor</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                            <label><b>@Model.Vendor.VendorName</b></label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -59,17 +108,30 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <ul class="tab-review-design" id="myTab">
-                                    <li class="active"><a data-toggle="tab" href="#home">Description<span><i class="fa fa-star"></i></span></a></li>
-                                    <li><a data-toggle="tab" href="#menu3">Information</a></li>
+                                    <li class="active"><a data-toggle="tab" href="#home">Package<span><i class="fa fa-star"></i></span></a></li>
+                                    <li><a data-toggle="tab" href="#menu3">Description</a></li>
                                 </ul>
                                 <div class="tab-content">
                                     <div id="home" class="tab-pane fade in active review-content-section">
-                                        <h3>Description</h3>
-                                        <p>Descriptionnnnnnn</p>
+                                        <div class="sparkline8-graph">
+                                            <div class="static-table-list">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Package ID</th>
+                                                            <th>Cell ID</th>
+                                                            <th>Quantity</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @await Html.PartialAsync("PackageView", (List<Package>)ViewBag.PackageSelectFromProduct);
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div id="menu3" class="tab-pane fade review-content-section">
-                                        <h3>Information</h3>
-                                        <p>Informationnn</p>
+                                        <h3>Description</h3>
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +148,7 @@
         var input, filter, ul, li, a, i, txtValue;
         input = document.getElementById("myInput");
         filter = input.value.toUpperCase();
-        ul = document.getElementById("myUL");
+        ul = document.getElementById("list_detail");
         li = ul.getElementsByTagName("li");
         for (i = 0; i < li.length; i++) {
             a = li[i].getElementsByTagName("a")[0];
@@ -98,4 +160,7 @@
             }
         }
     }
+</script>
+<script>
+
 </script>

@@ -21,5 +21,7 @@ namespace RFIM_Web.Models
         public DbSet<Vendor> Vendors { get; set; }
         public DbSet<Floor> Floors { get; set; }
         public DbSet<Cell> Cells { get; set; }
+        public DbSet<Package> Packages { get; set; }
+        public DbSet<Box> Boxes { get; set; }
     }
 }
