@@ -6,25 +6,6 @@
 <div class="all-content-wrapper">
     <div class="container-fluid">
         <div class=row>
-            <div class="col-md-3 col-md-3 col-sm-3 col-xs-12 mg-t-15">
-                <div class="hpanel responsive-mg-b-30">
-                    <div class="panel-body">
-                        <input type="text" placeholder="Search..." class="form-control"  id="myInput" onkeyup="myFunction()"/>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                <a class="btn btn-danger btn-block" asp-action="CreateProduct" asp-controller="Product">
-                                    <i class="fa fa-plus"></i>
-                                    Create
-                                </a>
-                            </div>
-                        </div>
-                        <ul class="h-list m-t" id="myUL">
-                            @await Component.InvokeAsync("ProductDetailList")
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
             <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                 <div class="single-product-tab-area mg-t-15 mg-b-30">
                     <div class="container-fluid">

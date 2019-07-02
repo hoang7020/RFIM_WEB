@@ -12869,23 +12869,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ryan\\.nuget\\packages\\": {},
+    "C:\\Users\\KIROV\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Source\\RFIM_WEB\\RFIM_Web\\RFIM_Web.csproj",
+      "projectUniqueName": "C:\\Users\\KIROV\\Documents\\RFIM_WEB\\RFIM_Web\\RFIM_Web.csproj",
       "projectName": "RFIM_Web",
-      "projectPath": "E:\\Source\\RFIM_WEB\\RFIM_Web\\RFIM_Web.csproj",
-      "packagesPath": "C:\\Users\\Ryan\\.nuget\\packages\\",
-      "outputPath": "E:\\Source\\RFIM_WEB\\RFIM_Web\\obj\\",
+      "projectPath": "C:\\Users\\KIROV\\Documents\\RFIM_WEB\\RFIM_Web\\RFIM_Web.csproj",
+      "packagesPath": "C:\\Users\\KIROV\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\KIROV\\Documents\\RFIM_WEB\\RFIM_Web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Ryan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\KIROV\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<RFIM_Web.Models.Invoice>
+@{
     ViewData["Title"] = "ListAllInvoice";
 }
 
@@ -10,49 +11,45 @@
                     <div class="sparkline13-list">
                         <div class="sparkline13-hd">
                             <div class="main-sparkline13-hd">
-                                <h1>Shelf List</h1>
+                                <h1>Goods Receipt/Issue</h1>
                             </div>
                         </div>
 
                         <div class="sparkline13-graph">
                             <div class="datatable-dashv1-list custom-datatable-overright">
-                                <a asp-action="CreateCategory" asp-controller="Category" class="btn btn-success">Create Category</a>
+                                <a asp-action="CreateInvoice" asp-controller="Invoice" class="btn btn-success">Create</a>
                                 <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true"
                                        data-show-toggle="true" data-show-export="true">
                                     <thead>
                                         <tr>
-                                            <th>Category Name</th>
+                                            <th>Invoice ID</th>
+                                            <th>Date</th>
                                             <th>Description</th>
+                                            <th>Created by</th>
+                                            <th>Receipt/Issue</th>
+                                            <th>Status</th>
                                             <th>Setting</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var category in Model)
+                                        @foreach (var invoice in Model)
                                         {
-                                            <tr>
-                                                <td>@category.CategoryName</td>
-                                                <td>@category.Description</td>
-                                                <td>
-                                                    <a asp-action="EditCategory" asp-controller="Category" asp-route-id="@category.CategoryId" class="pd-setting-ed"><i class="fas fa-edit" aria-hidden="true"></i></a>
-                                                    <a asp-action="DeleteCategory" asp-controller="Category" asp-route-id="@category.CategoryId" class="pd-setting-ed" data-toggle="modal" data-target="#modal-category-delete">
-                                                        <i class="fas fa-trash" aria-hidden="true"></i>
-                                                    </a>
+                                        <tr>
 
-
-                                                </td>
-                                            </tr>
+                                            <td><a asp-action="DetailInvoice" asp-controller="Invoice" asp-route-id="@invoice.InvoiceId">@invoice.InvoiceId</a></td>
+                                            <td>@invoice.Date</td>
+                                            <td>@invoice.Description</td>
+                                            <td>@invoice.User.Username</td>
+                                            <td>@invoice.InvoiceType.InvoiceTypes</td>
+                                            <td></td>
+                                            <td>
+                                                <a asp-action="EditInvoice" asp-controller="Invoice" asp-route-id="@invoice.InvoiceId" class="pd-setting-ed"><i class="fas fa-edit"></i></a>
+                                            </td>
+                                        </tr>
                                         }
                                     </tbody>
                                 </table>
-                                <div id="modal-category-delete" aria-hidden="true" class="modal fade" role="dialog">
-                                    <div class="modal-dialog">
-                                        <!-- Modal content-->
-                                        <div class="modal-content">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="modal-category" aria-hidden="true" class="modal fade" role="dialog">
+                                <div id="modal-invoice" aria-hidden="true" class="modal fade" role="dialog">
                                     <div class="modal-dialog">
                                         <!-- Modal content-->
                                         <div class="modal-content">
@@ -68,15 +65,4 @@
         </div>
     </div>
 </div>
-@section Scripts{
-    <script>
-        $(function () {
-            $("#modal-category-delete").on('hidden.bs.modal', function () {
-                $(this).removeData('bs.modal');
-            });
-        });
-    </script>
-}
-
-
 
