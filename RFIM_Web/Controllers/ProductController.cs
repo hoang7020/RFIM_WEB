@@ -47,16 +47,24 @@ namespace RFIM_Web.Controllers
             {
                 //check if product id already existed 
                 bool productIdExist = ctx.Products.Any(p => p.ProductId == product.ProductId);
+                bool productNameExist = ctx.Products.Any(p => p.ProductName == product.ProductName);
                 //if product id is not existed
                 if (!productIdExist)
                 {
-                    if (fHinh != null)
+                    if (!productNameExist)
                     {
-                        product.Image = UploadImageTool.UploadImage(fHinh, "product");
+                        if (fHinh != null)
+                        {
+                            product.Image = UploadImageTool.UploadImage(fHinh, "product");
+                        }
+                        ctx.Add(product);
+                        await ctx.SaveChangesAsync();
+                        return RedirectToAction(nameof(ListAllProduct));
+                    } else
+                    {
+                        ViewBag.ProductNameExisted = "Product Name is already existed !!!";
+                        return View(product);
                     }
-                    ctx.Add(product);
-                    await ctx.SaveChangesAsync();
-                    return RedirectToAction(nameof(ListAllProduct));
                 }
                 //product id is existed
                 else
@@ -102,12 +110,21 @@ namespace RFIM_Web.Controllers
             {
                 try
                 {
-                    if (fHinh != null)
+                    bool productNameExist = ctx.Products.Any(p => p.ProductName == product.ProductName);
+                    if (!productNameExist)
                     {
-                        product.Image = UploadImageTool.UploadImage(fHinh, "product");
+                        if (fHinh != null)
+                        {
+                            product.Image = UploadImageTool.UploadImage(fHinh, "product");
+                        }
+                        ctx.Update(product);
+                        await ctx.SaveChangesAsync();
                     }
-                    ctx.Update(product);
-                    await ctx.SaveChangesAsync();
+                    else
+                    {
+                        ViewBag.ProductNameExisted = "Product Name is already existed !!!";
+                        return View(product);
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -133,7 +150,8 @@ namespace RFIM_Web.Controllers
             {
                 return NotFound();
             }
-            var product = await ctx.Products.Include(p => p.Category).Include(p=>p.Vendor).SingleOrDefaultAsync(p => p.ProductId == id);
+            var product = await ctx.Products.Include(p => p.Category).Include(p=>p.Vendor)
+                .SingleOrDefaultAsync(p => p.ProductId == id);
             if (product == null)
             {
                 return NotFound();
@@ -172,6 +190,7 @@ namespace RFIM_Web.Controllers
                 return NotFound();
             }
             var packages = await ctx.Packages.Where(p => p.ProductId == id).ToListAsync();
+
             ViewBag.PackageSelectFromProduct = packages;
             
             return View(product);
@@ -209,6 +228,10 @@ namespace RFIM_Web.Controllers
             using (var package = new ExcelPackage(stream))
             {
                 var sheet = package.Workbook.Worksheets.Add("Product");
+                //set chiều dài cho columm
+                sheet.DefaultColWidth = 15;
+                //set tự xuống dòng nếu text dài quá
+                sheet.Cells.Style.WrapText = true;
                 sheet.Cells[1, 1].Value = "Product Id";
                 sheet.Cells[1, 2].Value = "Product Name";
                 sheet.Cells[1, 3].Value = "Weight";
@@ -279,23 +302,38 @@ namespace RFIM_Web.Controllers
                 foreach (Product product in productImports)
                 {
                     var item = ctx.Products.SingleOrDefault(p => p.ProductId == product.ProductId);
+                    var itemNameExist = ctx.Products.Any(p => p.ProductName == product.ProductName);
                     if (item != null)//đã có --> update
                     {
-                        item.ProductId = product.ProductId;
-                        item.ProductName = product.ProductName;
-                        item.Weight = product.Weight;
-                        item.Image = product.Image;
-                        item.Description = product.Description;
-                        item.Height = product.Height;
-                        item.Width = product.Width;
-                        item.Lenght = product.Lenght;
-                        item.QuantityPerBox = product.QuantityPerBox;
-                        item.CategoryId = product.CategoryId;
-                        item.VendorId = product.VendorId;
+                        if (!itemNameExist)
+                        {
+                            item.ProductId = product.ProductId;
+                            item.ProductName = product.ProductName;
+                            item.Weight = product.Weight;
+                            item.Image = product.Image;
+                            item.Description = product.Description;
+                            item.Height = product.Height;
+                            item.Width = product.Width;
+                            item.Lenght = product.Lenght;
+                            item.QuantityPerBox = product.QuantityPerBox;
+                            item.CategoryId = product.CategoryId;
+                            item.VendorId = product.VendorId;
+                        } else
+                        {
+                            ViewBag.ProductNameExist = "Product name is already existed !!!!";
+                            return View();
+                        }
                     }
                     else
                     {
-                        ctx.Add(product);
+                        if (!itemNameExist)
+                        {
+                            ctx.Add(product);
+                        } else
+                        {
+                            ViewBag.ProductNameExist = "Product name is already existed !!!!";
+                            return View();
+                        }
                     }
                 }
                 ctx.SaveChanges();

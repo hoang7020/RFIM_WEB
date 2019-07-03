@@ -11,10 +11,12 @@ namespace RFIM_Web.Controllers
     public class CategoryController : Controller
     {
         private readonly MyDbContext ctx;
+        
         public CategoryController(MyDbContext db)
         {
             ctx = db;
         }
+
         public IActionResult ListAllCategory()
         {
             return View(ctx.Categories.ToList());

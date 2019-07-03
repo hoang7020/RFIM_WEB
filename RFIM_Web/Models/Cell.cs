@@ -12,6 +12,7 @@ namespace RFIM_Web.Models
     {
        [Key]
         public string CellId { get; set; }
+        public string CellRFID { get; set; }
         public string FloorId { get; set; }
         [ForeignKey("FloorId")]
         public Floor Floor { get; set; }

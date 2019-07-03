@@ -82,7 +82,7 @@ using RFIM_Web.Models;
                                 ");
             EndContext();
             BeginContext(786, 91, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f1d99907501440e18ea7e76c9838a2ab", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9f0225626cf6461dba6d5cbfdec3a3f4", async() => {
                 BeginContext(861, 12, true);
                 WriteLiteral("Create Shelf");
                 EndContext();
@@ -169,7 +169,7 @@ using RFIM_Web.Models;
             WriteLiteral("</td>\r\n                                                <td>\r\n                                                    ");
             EndContext();
             BeginContext(2267, 151, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f328d29fc3ad42bcbd20795291b07430", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "62eb8397710d40869a54974f5a727fb9", async() => {
                 BeginContext(2368, 46, true);
                 WriteLiteral("<i class=\"fas fa-edit\" aria-hidden=\"true\"></i>");
                 EndContext();
@@ -207,7 +207,7 @@ using RFIM_Web.Models;
             WriteLiteral("\r\n                                                    ");
             EndContext();
             BeginContext(2472, 320, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1c3177741de84c38b43fe38a64435643", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6ca311a780a0440ab7326bbdf783d8ae", async() => {
                 BeginContext(2629, 159, true);
                 WriteLiteral("\r\n                                                        <i class=\"fas fa-trash\" aria-hidden=\"true\"></i>\r\n                                                    ");
                 EndContext();

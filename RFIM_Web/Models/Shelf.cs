@@ -23,7 +23,9 @@ namespace RFIM_Web.Models
         [Display(Name = "Cell Number*")]
         [Required(ErrorMessage = "Cell Number is required")]
         public int? CellNumber { get; set; }
-        public int CoorX { get; set; }
-        public int CoorY { get; set; }
+        [Required(ErrorMessage = "Cell Number is required")]
+        public int? CoorX { get; set; }
+        [Required(ErrorMessage = "Cell Number is required")]
+        public int? CoorY { get; set; }
     }
 }
