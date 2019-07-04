@@ -1,0 +1,6 @@
+﻿@model RFIM_Web.Models.Invoice
+
+    <div class="modal-header">
+        <a class="close" datadismiss="modal-user" asp-action="BackToInvoiceList" asp-controller="Invoice">&times;</a>
+        <h4 class="modal-title">Invoice @Model.InvoiceId can't be deleted since it already Done</h4>
+    </div>

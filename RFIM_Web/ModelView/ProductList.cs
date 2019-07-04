@@ -4,12 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-
 namespace RFIM_Web.ModelView
 {
-    public class CategorySelect
+    public class ProductList
     {
-        public List<Category> Data { get; set; }
-        public int? Select { get; set; }
+        public string ProductName { get; set; }
+        public int Quantity { get; set; }
     }
 }
