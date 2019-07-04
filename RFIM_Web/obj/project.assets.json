@@ -4806,10 +4806,11 @@
       ]
     },
     "EPPlus/4.5.2": {
-      "sha512": "dc1HqsC9v36QugwQA1pSKdITDZkJVH0FAIhppW2hI/SXJSyWq5M2GfFu//qR8FwVa6zQgYwhdReeci5i0GFCOw==",
+      "sha512": "c1ln9lxW9nIjdVF4Oj4mbL9DUmCkQPYOFLEB1TpF+LLKFPTL0uNvpWdilkG25xCIOw4cb3MNVXwC8xu88ixS2w==",
       "type": "package",
       "path": "epplus/4.5.2",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "epplus.4.5.2.nupkg.sha512",
         "epplus.nuspec",
@@ -7246,7 +7247,11 @@
       ]
     },
     "Microsoft.VisualStudio.Web.CodeGeneration/2.1.9": {
+<<<<<<< HEAD
       "sha512": "elJCdByo45aWfolyQR7baWvzecS0ES/uK4umD3Uj/U7ro1PxLBBXkZqlI/eIi5iW9nptqKqHYZq8EpT1EpYjXA==",
+=======
+      "sha512": "fnArZMBAlGUxuVIffEYoi+IsUR+rTQ/Mz+pIHyOnf5AHBJ5Jp1LvWQmyoWcs5k+Q0xXOhTNiJTvvwdw84H5rZA==",
+>>>>>>> dev_thinh3
       "type": "package",
       "path": "microsoft.visualstudio.web.codegeneration/2.1.9",
       "files": [
@@ -7258,7 +7263,11 @@
       ]
     },
     "Microsoft.VisualStudio.Web.CodeGeneration.Contracts/2.1.9": {
+<<<<<<< HEAD
       "sha512": "kRb569TcU9yyjxYBRFRjdiGz76IbwKjGZawBe4sSXwL+QAPsLjvk24vIX3ADTvbiseDF8lUmoJIn7aphhu66YQ==",
+=======
+      "sha512": "rLQcbV5lbWi1pSTnPk5FAKW9AVi7VP3WVXj5vrzI8M1PlnAXn2LipA3biumlDcDOwCHrLth61I5JnRiqgFi+nA==",
+>>>>>>> dev_thinh3
       "type": "package",
       "path": "microsoft.visualstudio.web.codegeneration.contracts/2.1.9",
       "files": [
@@ -7270,7 +7279,11 @@
       ]
     },
     "Microsoft.VisualStudio.Web.CodeGeneration.Core/2.1.9": {
+<<<<<<< HEAD
       "sha512": "RxrislCEjYQOXstEV182uFAsdWvTYVwtyxa7CPYWyCHPkyr4VihLJ+Gj3FjO5Ng9hJ09Eld91q3ltCNg8LDYdg==",
+=======
+      "sha512": "zL3c+GzGhyN9ycpL/uBEcYe+mvNGyVFIOXwdzROVgOLt6j6ceFvSL38Vdq/ISUz6OFdkBPdIo71Qct8M9Z1QNg==",
+>>>>>>> dev_thinh3
       "type": "package",
       "path": "microsoft.visualstudio.web.codegeneration.core/2.1.9",
       "files": [
@@ -7282,7 +7295,11 @@
       ]
     },
     "Microsoft.VisualStudio.Web.CodeGeneration.Design/2.1.9": {
+<<<<<<< HEAD
       "sha512": "rjYFcVp+7YnWSnw7+ppyTrO4lraCZe38Aa0dEuIYY9yyFe7sS6QdaP6N7oHxyIF0vmGwTLFozq9WTA9+lFlaNg==",
+=======
+      "sha512": "hoMP2Sr2AZF00niWLXXjHM8275c7e11f0P7PlRS3j/ETG6wizByADxRF2Q2Yb/PUhg/hXRwfj4u3vS/sxcqJJw==",
+>>>>>>> dev_thinh3
       "type": "package",
       "path": "microsoft.visualstudio.web.codegeneration.design/2.1.9",
       "files": [
@@ -7304,7 +7321,11 @@
       ]
     },
     "Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore/2.1.9": {
+<<<<<<< HEAD
       "sha512": "PcTJk9b2sNEiq4v+tA6L0gU3S1bQmwdmrxnaVeLFVOkF67R6euJ7yxjQldXY58DL4EE3Urhu0qkmydJfSUtsmg==",
+=======
+      "sha512": "P9qpgTmOHb7odcAo/EqbaofUlaM8JcYu9d5wewX5ZbJMn5GcbnjDQhg5LF7DoKkcpLBCUiXG04F7lqBcsZqtUA==",
+>>>>>>> dev_thinh3
       "type": "package",
       "path": "microsoft.visualstudio.web.codegeneration.entityframeworkcore/2.1.9",
       "files": [
@@ -7317,7 +7338,11 @@
       ]
     },
     "Microsoft.VisualStudio.Web.CodeGeneration.Templating/2.1.9": {
+<<<<<<< HEAD
       "sha512": "3DfUVQHhuunNfKZfNa6LWTQl0iDEZpSNZ//zDBUqNY6yLZdCBxh/yCtmlOFSTp0aHvV6EKaih5rUsim2u/TCCA==",
+=======
+      "sha512": "Vuw0yVKRfj/3/jcFdvJEULf+fu2VoeA/loEyX5wfj2EzFc+lpEQ+6vIvvKCc6gtjh/O3MsZZxtFGFcWcDrNK/g==",
+>>>>>>> dev_thinh3
       "type": "package",
       "path": "microsoft.visualstudio.web.codegeneration.templating/2.1.9",
       "files": [
@@ -7329,7 +7354,11 @@
       ]
     },
     "Microsoft.VisualStudio.Web.CodeGeneration.Utils/2.1.9": {
+<<<<<<< HEAD
       "sha512": "D515l+lXVv4rmtjGvlxsoGzsANkF0ctQh5Qc2LrlbeJeXaMyufQQJp7foZyDpV4PJ7JfDxq0/3n1hg4k2QJTGA==",
+=======
+      "sha512": "HGtpCMW7GEPygFaNjzE/zPt5zP9e7u8galmYQoR3taGL+2JRFDx9P5xd2jsRxlQUdNB0GVf/0OHxjeLJJYWJBw==",
+>>>>>>> dev_thinh3
       "type": "package",
       "path": "microsoft.visualstudio.web.codegeneration.utils/2.1.9",
       "files": [
@@ -7341,7 +7370,11 @@
       ]
     },
     "Microsoft.VisualStudio.Web.CodeGenerators.Mvc/2.1.9": {
+<<<<<<< HEAD
       "sha512": "ZXSl0bvFywsQYNAo1qreqDxETyBqMdIzRfP2RCxoJR2pHbDi/8Rid1MlcuiMCTQmJi+wANI5UgXHAC76hrZzFQ==",
+=======
+      "sha512": "bmqEQaGpXME9ErK6N+Ew3g7hia2t5tJeARZYrD6T21TT/2+OIwDrVuI3cu9RpeoLWXJa76eqcyC7tC+SYGfIZA==",
+>>>>>>> dev_thinh3
       "type": "package",
       "path": "microsoft.visualstudio.web.codegenerators.mvc/2.1.9",
       "files": [
@@ -7540,10 +7573,11 @@
       ]
     },
     "Microsoft.Win32.SystemEvents/4.5.0-preview2-26406-04": {
-      "sha512": "5d/NO7kApqVCAfhvlryQRWwVh1Ksi7R7GZW2+wghb/cjeQZqe3RxD4fSLH2i9GQQ5yVppqtPsgKpmWbkyYRbtA==",
+      "sha512": "iWXz5Qr1ew1wRxOTtTXAuUX7HDiULxDPrkn/v5z7oQXQDdCygc87WHIwNCJijleNMcDIaDGH+O4AfKYVrtiAgg==",
       "type": "package",
       "path": "microsoft.win32.systemevents/4.5.0-preview2-26406-04",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -8663,10 +8697,11 @@
       ]
     },
     "System.Data.Common/4.3.0": {
-      "sha512": "OGX4ifHI67s/2KRrXGMmEjmszCptbhWS4BieBdiBPl/8pn0A1xPMx0Gn0dKK0zKtEaelYNh5M7M5lCZL0EA4eA==",
+      "sha512": "lm6E3T5u7BOuEH0u18JpbJHxBfOJPuCyl4Kg1RH10ktYLp5uEEE1xKrHW56/We4SnZpGAuCc9N0MJpSDhTHZGQ==",
       "type": "package",
       "path": "system.data.common/4.3.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -9155,10 +9190,11 @@
       ]
     },
     "System.Drawing.Common/4.5.0-preview2-26406-04": {
-      "sha512": "Kz5PAWRgtkwLix49ChpJlXHzdoAyVqp9yWa1I7mltCIIkztx5az9t09H3iVpsGw/QyYDWtSm8PilnqR1gYTivw==",
+      "sha512": "iARUNp8vfB1uWJmmpNg4NnhBJ70F/gbveBzhPVBctrZMm8NyMnYGdamuuleN9H3j8j2UHdmhT0Put5wtiX4C4w==",
       "type": "package",
       "path": "system.drawing.common/4.5.0-preview2-26406-04",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -12658,10 +12694,11 @@
       ]
     },
     "System.Xml.XPath.XmlDocument/4.3.0": {
-      "sha512": "91tvfHWHSrYFPolCwWYqbpo1YaoBUCQ3uNZ/O/zr0ev5BnkoATJoie16ywlMVUaXZtfSfNELxhtG3aqpTfwR4w==",
+      "sha512": "A/uxsWi/Ifzkmd4ArTLISMbfFs6XpRPsXZonrIqyTY70xi8t+mDtvSM5Os0RqyRDobjMBwIDHDL4NOIbkDwf7A==",
       "type": "package",
       "path": "system.xml.xpath.xmldocument/4.3.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -12705,23 +12742,39 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\HieuDT\\.nuget\\packages\\": {},
+=======
+    "C:\\Users\\KIROV\\.nuget\\packages\\": {},
+>>>>>>> dev_thinh3
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\HieuDT\\Documents\\Visual Studio 2017\\Projects\\Capstone\\RFIM_WEB\\RFIM_Web\\RFIM_Web.csproj",
       "projectName": "RFIM_Web",
       "projectPath": "C:\\Users\\HieuDT\\Documents\\Visual Studio 2017\\Projects\\Capstone\\RFIM_WEB\\RFIM_Web\\RFIM_Web.csproj",
       "packagesPath": "C:\\Users\\HieuDT\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\HieuDT\\Documents\\Visual Studio 2017\\Projects\\Capstone\\RFIM_WEB\\RFIM_Web\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\KIROV\\Documents\\RFIM_WEB\\RFIM_Web\\RFIM_Web.csproj",
+      "projectName": "RFIM_Web",
+      "projectPath": "C:\\Users\\KIROV\\Documents\\RFIM_WEB\\RFIM_Web\\RFIM_Web.csproj",
+      "packagesPath": "C:\\Users\\KIROV\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\KIROV\\Documents\\RFIM_WEB\\RFIM_Web\\obj\\",
+>>>>>>> dev_thinh3
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\HieuDT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\KIROV\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> dev_thinh3
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

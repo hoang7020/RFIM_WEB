@@ -81,9 +81,15 @@ using RFIM_Web.Models;
                             <div class=""datatable-dashv1-list custom-datatable-overright"">
                                 ");
             EndContext();
+<<<<<<< HEAD
             BeginContext(795, 100, false);
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5239c1c3711e45f09750970937455422", async() => {
                 BeginContext(876, 15, true);
+=======
+            BeginContext(792, 100, false);
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "178bac70786140cfb4e2ae592ed50468", async() => {
+                BeginContext(873, 15, true);
+>>>>>>> dev_thinh3
                 WriteLiteral("Create Category");
                 EndContext();
             }
@@ -146,9 +152,15 @@ using RFIM_Web.Models;
             BeginContext(1905, 113, true);
             WriteLiteral("</td>\r\n                                                <td>\r\n                                                    ");
             EndContext();
+<<<<<<< HEAD
             BeginContext(2018, 163, false);
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1a5d6c5af8284e3eb9bd72d9e9e058c1", async() => {
                 BeginContext(2131, 46, true);
+=======
+            BeginContext(2015, 163, false);
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "52ef3db3058940d18d163431ba3489b4", async() => {
+                BeginContext(2128, 46, true);
+>>>>>>> dev_thinh3
                 WriteLiteral("<i class=\"fas fa-edit\" aria-hidden=\"true\"></i>");
                 EndContext();
             }
@@ -184,9 +196,15 @@ using RFIM_Web.Models;
             BeginContext(2181, 54, true);
             WriteLiteral("\r\n                                                    ");
             EndContext();
+<<<<<<< HEAD
             BeginContext(2235, 335, false);
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bc99e4d274de4f54be4f3cbc515816cb", async() => {
                 BeginContext(2407, 159, true);
+=======
+            BeginContext(2232, 335, false);
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ef1ec2933c8d49969303532b6b8d2364", async() => {
+                BeginContext(2404, 159, true);
+>>>>>>> dev_thinh3
                 WriteLiteral("\r\n                                                        <i class=\"fas fa-trash\" aria-hidden=\"true\"></i>\r\n                                                    ");
                 EndContext();
             }
