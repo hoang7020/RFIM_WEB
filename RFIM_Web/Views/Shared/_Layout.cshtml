@@ -58,11 +58,17 @@
     <!-- modals CSS
         ============================================ -->
     <link rel="stylesheet" href="~/lib_gui/css/modals.css">
-    <!-- Preloader CSS
+    <!-- tree viewer CSS
         ============================================ -->
-    <link rel="stylesheet" href="~/lib_gui/css/preloader/preloader-style.css">
+    <link rel="stylesheet" href="~/lib_gui/css/tree-viewer/tree-viewer.css">
+    <!-- accordions CSS
+         ============================================ -->
+    <link rel="stylesheet" href="css/accordions.css">
+    <!-- Jquerry and Jquerry Form Validator
+        ============================================ -->
+    @*<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>*@
     <script src="~/lib_gui/js/vendor/modernizr-2.8.3.min.js"></script>
- 
 </head>
 <body>
 
@@ -119,7 +125,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a asp-action="" asp-controller="" class="has-arrow">
+                                    <a asp-action="ListAllCategory" asp-controller="Category" class="has-arrow">
                                         <i class="fas fa-cube"></i>
                                         <span class="mini-click-non">Categories</span>
                                     </a>
@@ -274,11 +280,7 @@
     {
         await Html.PartialAsync("Login");
     }
- 
     @RenderBody()
-
-
-
     <!-- jquery
             ============================================ -->
     <script src="~/lib_gui/js/vendor/jquery-1.11.3.min.js"></script>
@@ -321,6 +323,10 @@
     <!-- plugins JS
           ============================================ -->
     <script src="~/lib_gui/js/plugins.js"></script>
+    <!-- Tree Viewer JS
+        ============================================ -->
+    <script src="~/lib_gui/js/tree-line/jstree.min.js"></script>
+    <script src="~/lib_gui/js/tree-line/jstree.active.js"></script>
     <!-- data table JS
     ============================================ -->
     <script src="~/lib_gui/js/data-table/bootstrap-table.js"></script>
@@ -335,7 +341,5 @@
           ============================================ -->
     <script src="~/lib_gui/js/main.js"></script>
     @RenderSection("Scripts", required: false)
-
-
 </body>
 </html>

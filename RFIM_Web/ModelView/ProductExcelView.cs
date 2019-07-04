@@ -14,5 +14,9 @@ namespace RFIM_Web.ModelView
         public double Weight { get; set; }
         public string Category { get; set; }
         public string Vendor { get; set; }
+        public double Height { get; set; }
+        public double Width { get; set; }
+        public double Lenght { get; set; }
+        public int QuantityPerBox { get; set; }
     }
 }

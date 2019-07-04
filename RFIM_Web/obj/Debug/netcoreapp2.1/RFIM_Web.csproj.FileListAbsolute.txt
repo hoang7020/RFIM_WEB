@@ -74,7 +74,6 @@ C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shelf\CreateShelf.g.cshtml.cs
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shelf\DeleteShelf.g.cshtml.cs
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shelf\EditShelf.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\DeactiveUser.g.cshtml.cs
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\ListAllProduct.g.cshtml.cs
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\CreateProduct.g.cshtml.cs
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\CategorySelect.g.cshtml.cs
@@ -82,6 +81,14 @@ C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\EditProduct.g.cshtml.cs
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\DetailProduct.g.cshtml.cs
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\ProductDetailList\Default.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.csprojAssemblyReference.cache
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\ImportProduct.g.cshtml.cs
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\CreateUser.g.cshtml.cs
+C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Category\CreateCategory.g.cshtml.cs
+C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Category\DeleteCategory.g.cshtml.cs
+C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Category\EditCategory.g.cshtml.cs
+C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Category\ListAllCategory.g.cshtml.cs
+C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\PackageView.g.cshtml.cs
+C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\BoxDetailList\Default.g.cshtml.cs
+C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.csprojAssemblyReference.cache
+C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\QuantityBoxInPackage\Default.g.cshtml.cs
+C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\QuantityBoxInProduct\Default.g.cshtml.cs

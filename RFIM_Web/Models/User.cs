@@ -29,7 +29,7 @@ namespace RFIM_Web.Models
         public string Email { get; set; }
         [Required(ErrorMessage = "This field is required")]
         [DataType(DataType.Date)]
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
         public string Phone { get; set; }
         [MaxLength(120, ErrorMessage = "Fullname must be less than 120 characters")]
         public string Note { get; set; }
