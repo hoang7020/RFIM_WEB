@@ -15,31 +15,15 @@
                             <div class="tab-content">
                                 <div id="home" class="tab-pane fade in active review-content-section">
                                     <div class="sparkline13-graph">
+                                        <div class="sparkline13-hd">
+                                            <div class="main-sparkline13-hd">
+                                                <h1>Date: @Model.Invoices.Date</h1>
+                                                <h1>Type: @Model.Invoices.InvoiceType.InvoiceTypes</h1>
+                                                @*<h1>Created by: @Model.Invoices.User.Username</h1>*@
+                                                <h1>Description: @Model.Invoices.Description</h1>
+                                            </div>
+                                        </div>
                                         <div class="datatable-dashv1-list custom-datatable-overright">
-                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                <label class="login2 pull-right pull-right-pro">Date</label>
-                                            </div>
-                                            <div>
-                                                @Model.Invoices.Date
-                                            </div>
-                                            <div>
-                                                <label class="login2 pull-right pull-right-pro">Type</label>
-                                            </div>
-                                            <div>
-                                                @Model.Invoices.InvoiceType.InvoiceTypes
-                                            </div>
-                                            <div>
-                                                <label class="login2 pull-right pull-right-pro">User</label>
-                                            </div>
-                                            <div>
-                                                @Model.Invoices.User.Username
-                                            </div>
-                                            <div>
-                                                <label class="login2 pull-right pull-right-pro">Description</label>
-                                            </div>
-                                            <div>
-                                                @Model.Invoices.Description
-                                            </div>
                                             <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true"
                                                    data-show-toggle="true" data-show-export="true">
                                                 <thead>

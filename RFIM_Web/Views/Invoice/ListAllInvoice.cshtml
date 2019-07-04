@@ -25,7 +25,7 @@
                                             <th>Invoice ID</th>
                                             <th>Date</th>
                                             <th>Description</th>
-                                            <th>Created by</th>
+                                            @*<th>Created by</th>*@
                                             <th>Receipt/Issue</th>
                                             <th>Status</th>
                                             <th>Setting</th>
@@ -34,26 +34,42 @@
                                     <tbody>
                                         @foreach (var invoice in Model)
                                         {
-                                        <tr>
+                                            <tr>
 
-                                            <td><a asp-action="DetailInvoice" asp-controller="Invoice" asp-route-id="@invoice.InvoiceId">@invoice.InvoiceId</a></td>
-                                            <td>@invoice.Date</td>
-                                            <td>@invoice.Description</td>
-                                            <td>@invoice.User.Username</td>
-                                            <td>@invoice.InvoiceType.InvoiceTypes</td>
-                                            <td></td>
-                                            <td>
-                                                <a asp-action="EditInvoice" asp-controller="Invoice" asp-route-id="@invoice.InvoiceId" class="pd-setting-ed"><i class="fas fa-edit"></i></a>
-                                            </td>
-                                        </tr>
+                                                <td><a asp-action="DetailInvoice" asp-controller="Invoice" asp-route-id="@invoice.InvoiceId">@invoice.InvoiceId</a></td>
+                                                <td>@invoice.Date</td>
+                                                <td>@invoice.Description</td>
+                                                @*<td>@invoice.User.Username</td>*@
+                                                <td>@invoice.InvoiceType.InvoiceTypes</td>
+                                                @if (invoice.Status == false)
+                                                {
+                                                    <td>Awaiting</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>Done</td>
+                                                }
+                                                <td>
+                                                    <a asp-action="DeleteInvoice" asp-controller="Invoice" asp-route-id="@invoice.InvoiceId" class="pd-setting-ed" data-toggle="modal" data-target="#modal-invoice-delete">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
                                         }
                                     </tbody>
                                 </table>
-                                <div id="modal-invoice" aria-hidden="true" class="modal fade" role="dialog">
+                                <div id="modal-invoice-delete" aria-hidden="true" class="modal fade" role="dialog">
                                     <div class="modal-dialog">
                                         <!-- Modal content-->
                                         <div class="modal-content">
 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="modal-invoice" aria-hidden="true" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
                                         </div>
                                     </div>
                                 </div>
@@ -65,4 +81,15 @@
         </div>
     </div>
 </div>
+
+@section Scripts{
+    <script>
+ $(function () {
+    $("#modal-invoice-delete").on('hidden.bs.modal', function () {
+       $(this).removeData('bs.modal');
+    });
+ });
+    </script>
+}
+            
 

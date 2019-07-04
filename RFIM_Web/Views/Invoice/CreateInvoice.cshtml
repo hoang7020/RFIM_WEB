@@ -1,4 +1,4 @@
-﻿@model RFIM_Web.Models.Invoice
+﻿@model RFIM_Web.Models.Invoice_Product
 
 @{
     ViewData["Title"] = "CreateInvoice";
@@ -23,11 +23,22 @@
                                         <div class="form-group-inner">
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                    <label class="login2 pull-right pull-right-pro">Invoice Id</label>
+                                                </div>
+                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                    <input asp-for="Invoice.InvoiceId" class="form-control" />
+                                                    <span asp-validation-for="Invoice.InvoiceId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                     <label class="login2 pull-right pull-right-pro">Date</label>
                                                 </div>
                                                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                    <input asp-for="Date" class="form-control" />
-                                                    <span asp-validation-for="Date" class="text-danger"></span>
+                                                    <input asp-for="Invoice.Date" class="form-control" />
+                                                    <span asp-validation-for="Invoice.Date" class="text-danger"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -37,8 +48,8 @@
                                                     <label class="login2 pull-right pull-right-pro">Description</label>
                                                 </div>
                                                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                    <input asp-for="Description" class="form-control" />
-                                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                                    <input asp-for="Invoice.Description" class="form-control" />
+                                                    <span asp-validation-for="Invoice.Description" class="text-danger"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -48,11 +59,73 @@
                                                     <label class="login2 pull-right pull-right-pro">Type</label>
                                                 </div>
                                                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                    <select asp-for="InvoiceTypeId" class="form-control" asp-items="ViewBag.InvoiceTypeId"></select>
-                                                    <span asp-validation-for="InvoiceTypeId" class="text-danger"></span>
+                                                    <select asp-for="Invoice.InvoiceTypeId" class="form-control" asp-items="ViewBag.InvoiceTypeId"></select>
+                                                    <span asp-validation-for="Invoice.InvoiceTypeId" class="text-danger"></span>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="form-group-inner">
+                                            <div class="login-btn-inner">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                    </div>
+                                                    <div class="col-lg-9">
+                                                        <div class="login-horizental cancel-wp pull-left">
+                                                            <a class="btn btn-primary" style="margin: 10px 0;" href="javascript:addMore();"><i class="fas fa-plus"></i></a>
+                                                            <a class="btn btn-primary" style="margin: 10px 0;" href="javascript:deleteMore();"><i class="fas fa-minus"></i></a>
+                                                        </div>
+                                                    </div>
+                                                        
+                                                </div>
+                                            </div>
+                                        </div>
+                                            
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                </div>
+                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+
+                                                    <table id="cloneTable">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>
+                                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                        <label class="login2 pull-right pull-right-pro">Product</label>
+                                                                    </div>
+                                                                </th>
+                                                                <th>
+                                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                        <label class="login2 pull-right pull-right-pro">Quantity</label>
+                                                                    </div>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                        <select asp-for="Product.ProductName" class="form-control" asp-items="ViewBag.ProductId" name="listProduct"></select>
+                                                                        <span asp-validation-for="Product.ProductName" class="text-danger"></span>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                        <input asp-for="Quantity" name="listQuantity" class="form-control" value="0" min="0" />
+                                                                        <span asp-validation-for="Quantity" class="text-danger"></span>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+
                                         <div class="form-group-inner">
                                             <div class="login-btn-inner">
                                                 <div class="row">
@@ -76,3 +149,16 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    // <![CDATA[
+    function addMore() {
+        //copy the table row and clear the value of the input, then append the row to the end of the table
+        $("#cloneTable tbody tr:first").clone(true).find("input").each(function () {
+            $(this).val('');
+        }).end().appendTo("#cloneTable");
+    }
+    function deleteMore() {
+        $('#cloneTable tbody tr:last').remove().end().appendTo('#cloneTable')
+    }
+</script>

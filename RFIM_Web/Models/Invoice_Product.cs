@@ -13,7 +13,7 @@ namespace RFIM_Web.Models
         [Key]
         public int Invoice_ProductID { get; set; }
 
-        public int InvoiceId { get; set; }
+        public string InvoiceId { get; set; }
         [ForeignKey("InvoiceId")]
         public Invoice Invoice { get; set; }
 
