@@ -1,5 +1,5 @@
 ﻿.header {
-    text-align: center;
+    text-align: left;
     color: green;
     padding-bottom: 35px;
 }
@@ -11,8 +11,8 @@ table {
 
 td, th {
     border: 1px solid gray;
-    padding: 15px;
-    font-size: 22px;
+    padding: 45px;
+    font-size: 15px;
     text-align: center;
 }
 

@@ -56,6 +56,7 @@ namespace RFIM_Web.Controllers
             ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(userIdentity);
 
             await HttpContext.SignInAsync(claimsPrincipal);
+            
 
             if (loggedUser.RoleId == 1)
             {

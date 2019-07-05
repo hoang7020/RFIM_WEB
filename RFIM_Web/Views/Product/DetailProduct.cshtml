@@ -95,6 +95,14 @@
                                             <label><b>@Model.Vendor.VendorName</b></label>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                            <label>Total quantity of boxes</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                           @await Component.InvokeAsync("QuantityBoxInProduct", new {productId = Model.ProductId})
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
