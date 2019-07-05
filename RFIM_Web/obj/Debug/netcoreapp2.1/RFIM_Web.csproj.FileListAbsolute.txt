@@ -211,3 +211,11 @@ C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\I
 C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\CreateInvoice.g.cshtml.cs
 C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\DetailInvoice.g.cshtml.cs
 >>>>>>> dev_thinh3
+E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\CreateInvoice.g.cshtml.cs
+E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\DeleteFail.g.cshtml.cs
+E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\DeleteInvoice.g.cshtml.cs
+E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\DetailInvoice.g.cshtml.cs
+E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\BoxDetailList\Default.g.cshtml.cs
+E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\QuantityBoxInPackage\Default.g.cshtml.cs
+E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\QuantityBoxInProduct\Default.g.cshtml.cs
+E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\PackageView.g.cshtml.cs
