@@ -42,7 +42,6 @@ namespace RFIM_Web.Controllers
             ViewData["VendorId"] = new SelectList(ctx.Vendors, "VendorId", "VendorName");
             return View();
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateProduct(Product product, IFormFile fHinh)
