@@ -46,7 +46,7 @@ namespace RFIM_Web.ModelView
                                     <td>{6}</td> 
                                     <td>{7}</td>
                                     <td>{8}</td>
-                                  ", pro.ProductId, pro.ProductName, BoxCount(pro.ProductId), pro.QuantityPerBox,pro.Weight, pro.Height, pro.Width
+                                  ", pro.ProductId, pro.ProductName, BoxCount(pro.ProductId), pro.QuantityPerBox ,pro.Weight, pro.Height, pro.Width
                                   ,pro.Lenght, CellList(pro.ProductId));
             }
             sb.Append(@"

@@ -60,7 +60,7 @@ using RFIM_Web.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(31, 620, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "966e8719325347d791069feae800f886", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "de2a9beacc1b4089a0bff115ef1336f9", async() => {
                 BeginContext(75, 167, true);
                 WriteLiteral("\r\n    <div class=\"modal-header\">\r\n        <button type=\"button\" class=\"close\" datadismiss=\"modal-user\">&times;</button>\r\n        <h4 class=\"modal-title\">Deactive user ");
                 EndContext();
@@ -85,7 +85,7 @@ using RFIM_Web.Models;
                 WriteLiteral("</b>?\r\n    </div>\r\n    <div class=\"modal-footer\">\r\n        <button class=\"btn btn-primary\">Confirm</button>\r\n        ");
                 EndContext();
                 BeginContext(532, 98, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f0fb654775b44aafa3aaa85fe5891ffc", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cda57f3c10bb4ca9b3651d436b81c9db", async() => {
                     BeginContext(615, 6, true);
                     WriteLiteral("Cancel");
                     EndContext();
