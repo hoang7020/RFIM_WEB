@@ -27,7 +27,7 @@ namespace RFIM_Web.Models
         [Required(ErrorMessage = "This field is required")]
         public double? Width { get; set; }
         [Required(ErrorMessage = "This field is required")]
-        public double? Lenght { get; set; }
+        public double? Length { get; set; }
         [Required(ErrorMessage = "This field is required")]
         public int? QuantityPerBox { get; set; }
         public int? CategoryId { get; set; }
