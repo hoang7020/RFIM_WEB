@@ -26,11 +26,12 @@ namespace RFIM_Web.ModelView
                                         <th>Product ID</th>
                                         <th>Product Name</th>
                                         <th>Quantity Box</th>
+                                        <th>Quantity Per Box</th>
                                         <th>Weight</th>
                                         <th>Height</th>
                                         <th>Width</th>
                                         <th>Length</th>
-                                        <th>BoxId</th>
+                                        <th>Cell</th>
                                     </tr>");
 
             foreach (var pro in products)
@@ -44,7 +45,8 @@ namespace RFIM_Web.ModelView
                                     <td>{5}</td>
                                     <td>{6}</td> 
                                     <td>{7}</td>
-                                  ", pro.ProductId, pro.ProductName, BoxCount(pro.ProductId), pro.Weight, pro.Height, pro.Width
+                                    <td>{8}</td>
+                                  ", pro.ProductId, pro.ProductName, BoxCount(pro.ProductId), pro.QuantityPerBox, pro.Weight, pro.Height, pro.Width
                                   ,pro.Lenght, BoxList(pro.ProductId));
             }
             sb.Append(@"
@@ -65,11 +67,11 @@ namespace RFIM_Web.ModelView
         public static string BoxList(string productId)
         {
             var ctx = new MyDbContext();
-            var boxes = ctx.Boxes.Where(p => p.ProductId == productId).ToList();
+            var boxes = ctx.Packages.Where(p => p.ProductId == productId).ToList();
             string box_string = "";
             boxes.ForEach(item =>
             {
-                box_string += item.BoxRFID;
+                box_string += item.CellId;
                 box_string += "<br/>";
             });
             return box_string;
