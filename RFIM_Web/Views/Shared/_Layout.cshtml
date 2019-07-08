@@ -143,6 +143,14 @@
                                         <i class="fas fa-chart-bar"></i>
                                         <span class="mini-click-non">Reports</span>
                                     </a>
+                                    <ul class="submenu-angle" aria-expanded="true">
+                                        <li><a asp-action="GeneratePDF" asp-controller="Report"><span class="mini-sub-pro">Product Report</span></a></li>
+                                        <li><a asp-action="CategoryPDF" asp-controller="Report"><span class="mini-sub-pro">Category Report</span></a></li>
+                                        <li><a asp-action="VendorPDF" asp-controller="Report"><span class="mini-sub-pro">Vendor Report</span></a></li>
+                                        <li><a asp-action="StocktakePDF" asp-controller="Report"><span class="mini-sub-pro">Stocktake Report</span></a></li>
+                                        <li><a asp-action="ReceivePDF" asp-controller="Report"><span class="mini-sub-pro">Receive Report</span></a></li>
+                                        <li><a asp-action="IssuePDF" asp-controller="Report"><span class="mini-sub-pro">Issue Report</span></a></li>
+                                    </ul>
                                 </li>
                             }
                         </ul>

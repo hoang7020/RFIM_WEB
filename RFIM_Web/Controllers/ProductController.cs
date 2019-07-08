@@ -19,11 +19,9 @@ namespace RFIM_Web.Controllers
     public class ProductController : Controller
     {
         private readonly MyDbContext ctx;
-        private readonly IConverter _converter;
-        public ProductController(MyDbContext db, IConverter con)
+        public ProductController(MyDbContext db)
         {
             ctx = db;
-            _converter = con;
         }
 
         public IActionResult ListAllProduct()
@@ -344,43 +342,6 @@ namespace RFIM_Web.Controllers
             }
             ViewBag.SuccessMessage = "Import successfully";
             return View();
-        }
-
-        public IActionResult GeneratePDF()
-        {
-            var globalSettings = new GlobalSettings
-            {
-                ColorMode = ColorMode.Color,
-                Orientation = Orientation.Portrait,
-                PaperSize = PaperKind.A4,
-                Margins = new MarginSettings { Top = 10 },
-                DocumentTitle = "Product Inventory Report"
-            };
-
-            var objectSettings = new ObjectSettings
-            {
-                PagesCount = true,
-                HtmlContent = ProductGeneratePDF.GetHTMLString(),
-                WebSettings = {
-                                DefaultEncoding = "utf-8",
-                                UserStyleSheet = Path.Combine(
-                                            Directory.GetCurrentDirectory(), "assets", "styles.css")
-             },
-                HeaderSettings = {
-                                FontName = "Arial", FontSize = 9,
-                                Right = "Trang [page]/[toPage]", Line = true
-             }
-            };
-
-            var pdf = new HtmlToPdfDocument()
-            {
-                GlobalSettings = globalSettings,
-                Objects = { objectSettings }
-            };
-
-            var file = _converter.Convert(pdf);
-
-            return File(file, "application/pdf");
         }
     }
 }
