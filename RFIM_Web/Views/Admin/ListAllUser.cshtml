@@ -17,9 +17,9 @@
 
                         <div class="sparkline13-graph">
                             <div class="datatable-dashv1-list custom-datatable-overright">
-                                <a asp-action="CreateUser" asp-controller="Admin" class="btn btn-success" data-toggle="modal" data-target="#modal-user">Create User</a>
+                                <a asp-action="CreateUser" asp-controller="Admin" class="btn btn-success">Create User</a>
                                 <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true"
-                                       data-show-toggle="true" data-show-export="true">
+                                       data-show-toggle="true">
                                     <thead>
                                         <tr>
                                             <th>Fullname</th>
@@ -45,18 +45,15 @@
                                                 <td>
                                                     @if (user.Status)
                                                     {
-                                                        <a asp-action="DeactiveUser" asp-controller="Admin" class="btn btn-success">Active</a>
+                                                        <a asp-action="DeleteUser" asp-controller="Admin" asp-route-id="@user.UserId" class="btn btn-success" data-toggle="modal" data-target="#modal-user-delete">Active</a>
                                                     }
                                                     else
                                                     {
-                                                        <button class="btn btn-warning">Disabled</button>
+                                                        <a class="btn btn-warning">Disabled</a>
                                                     }
                                                 </td>
                                                 <td>
                                                     <a asp-action="EditUser" asp-controller="Admin" asp-route-id="@user.UserId" class="pd-setting-ed"><i class="fas fa-edit" aria-hidden="true"></i></a>
-                                                    <a asp-action="DeleteUser" asp-controller="Admin" asp-route-id="@user.UserId" class="pd-setting-ed" data-toggle="modal" data-target="#modal-user-delete">
-                                                        <i class="fas fa-trash" aria-hidden="true"></i>
-                                                    </a>
                                                 </td>
                                             </tr>
                                         }
@@ -89,10 +86,10 @@
 
 @section Scripts{
     <script>
- $(function () {
-    $("#modal-user-delete").on('hidden.bs.modal', function () {
-       $(this).removeData('bs.modal');
-    });
- });
+        $(function () {
+            $("#modal-user-delete").on('hidden.bs.modal', function () {
+                $(this).removeData('bs.modal');
+            });
+        });
     </script>
 }

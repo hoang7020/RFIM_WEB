@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,25 +12,31 @@ namespace RFIM_Web.Models
     public class Product
     {
         [Key]
-        public int ProductId { get; set; }
         [Required(ErrorMessage = "This field is required")]
-        [Display(Name = "Product Name*")]
+        [Display(Name = "Product Id")]
+        public string ProductId { get; set; }
+        [Required(ErrorMessage = "This field is required")]
+        [Display(Name = "Product Name")]
         [MaxLength(256, ErrorMessage = "Input must less than 256 characters")]
         public string ProductName { get; set; }
-        public double Weight { get; set; }
+        public double? Weight { get; set; }
         public string Image { get; set; }
-        [Required(ErrorMessage = "This field is required")]
-        public double BoxLength { get; set; }
-        [Required(ErrorMessage = "This field is required")]
-        public double BoxWidth { get; set; }
-        [Required(ErrorMessage = "This field is required")]
-        public double BoxHeight { get; set; }
         public string Description { get; set; }
-        public int QuantityPerPackage { get; set; }
         [Required(ErrorMessage = "This field is required")]
-        public int CategoryId { get; set; }
+        public double? Height { get; set; }
+        [Required(ErrorMessage = "This field is required")]
+        public double? Width { get; set; }
+        [Required(ErrorMessage = "This field is required")]
+        public double? Lenght { get; set; }
+        [Required(ErrorMessage = "This field is required")]
+        public int? QuantityPerBox { get; set; }
+        public int? CategoryId { get; set; }
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
+
+        public int? VendorId { get; set; }
+        [ForeignKey("VendorId")]
+        public Vendor Vendor { get; set; }
 
     }
 }

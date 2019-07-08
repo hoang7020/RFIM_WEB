@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RFIM_Web.Models;
 using RFIM_Web.ModelView;
+using RFIM_Web.Utils;
 
 namespace RFIM_Web.Controllers
 {
@@ -78,27 +79,28 @@ namespace RFIM_Web.Controllers
         [HttpGet]
         public async Task<IActionResult> EditUser(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return NotFound();
             }
             var user = await context.Users.FindAsync(id);
-            if(user == null)
+            if (user == null)
             {
                 return NotFound();
             }
-            ViewBag.RoleSelect = new RoleSelectModel
-            {
-                Data = context.Roles.ToList(),
-                Select = user.RoleId
-            };
+            //ViewBag.RoleSelect = new RoleSelectModel
+            //{
+            //    Data = context.Roles.ToList(),
+            //    Select = user.RoleId
+            //};
+            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleName", user.RoleId);
             return View(user);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditUser(int id, User user)
         {
-            if(id != user.UserId)
+            if (id != user.UserId)
             {
                 return NotFound();
             }
@@ -111,27 +113,25 @@ namespace RFIM_Web.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(user.UserId)){
+                    if (!UserExists(user.UserId))
+                    {
                         return NotFound();
-                    } else
+                    }
+                    else
                     {
                         throw;
                     }
                 }
                 return RedirectToAction("ListAllUser");
             }
-            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleId", user.RoleId);
+            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleName", user.RoleId);
             return View(user);
         }
         [HttpGet]
         public IActionResult CreateUser()
         {
-            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleId");
-            ViewBag.RoleSelect = new RoleSelectModel
-            {
-                Data = context.Roles.ToList()
-            };
-            return PartialView("CreateUser");
+            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleName");
+            return View();
         }
         [HttpPost]
         public async Task<IActionResult> CreateUser(User user)
@@ -142,8 +142,8 @@ namespace RFIM_Web.Controllers
                 await context.SaveChangesAsync();
                 return RedirectToAction(nameof(ListAllUser));
             }
-            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleId", user.RoleId);
-            return PartialView("CreateUser", user);
+            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleName", user.RoleId);
+            return View(user);
         }
         public async Task<IActionResult> DeleteUser(int? id)
         {
@@ -163,37 +163,21 @@ namespace RFIM_Web.Controllers
         public async Task<IActionResult> ConfirmDelete(int id)
         {
             var user = await context.Users.FindAsync(id);
-            context.Users.Remove(user);
+            user.Status = !user.Status;
+            //context.Users.Remove(user);
+            context.Update(user);
             await context.SaveChangesAsync();
             return RedirectToAction(nameof(ListAllUser));
         }
 
-        public async Task<IActionResult> DeactiveUser(int? id)
-        {
-            if(id == null)
-            {
-                return NotFound();
-            }
-            var user = await context.Users.Include(p => p.Role).FirstOrDefaultAsync(p => p.UserId == id);
-            if(user == null)
-            {
-                return NotFound();
-            }
-            return PartialView("DeactiveUser");
-        }
-        [HttpPost, ActionName("DeactiveUser")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ConfirmDeactive(int id)
-        {
-            var user = await context.Users.FindAsync(id);
-            user.Status = !user.Status;
-            context.Update(user);
-            await context.SaveChangesAsync();
-            return RedirectToAction(nameof(ListAllUser));
-        } 
         public bool UserExists(int id)
         {
             return context.Users.Any(p => p.UserId == id);
+        }
+
+        public IActionResult BackToUserList()
+        {
+            return RedirectToAction(nameof(ListAllUser));
         }
     }
 }

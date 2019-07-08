@@ -23,11 +23,23 @@
                                         <div class="form-group-inner">
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                    <label class="login2 pull-right pull-right-pro">Product Id</label>
+                                                </div>
+                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                    <input asp-for="ProductId" class="form-control" readonly />
+                                                    <span asp-validation-for="ProductId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                     <label class="login2 pull-right pull-right-pro">Product Name</label>
                                                 </div>
                                                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                     <input asp-for="ProductName" class="form-control" />
                                                     <span asp-validation-for="ProductName" class="text-danger"></span>
+                                                    <h6 style="color:red">@ViewBag.ProductNameExisted</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -48,43 +60,10 @@
                                                     <label class="login2 pull-right pull-right-pro">Image</label>
                                                 </div>
                                                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                    <img src="~/Hinh/product/@Model.Image"/>
+                                                    <img src="~/Hinh/product/@Model.Image" />
                                                     <input type="file" name="fHinh" class="form-control" />
                                                     <input asp-for="Image" class="hide form-control" />
                                                     <span asp-validation-for="Image" class="text-danger"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group-inner">
-                                            <div class="row">
-                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                    <label class="login2 pull-right pull-right-pro">Box length</label>
-                                                </div>
-                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                    <input asp-for="BoxLength" class="form-control" />
-                                                    <span asp-validation-for="BoxLength" class="text-danger"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group-inner">
-                                            <div class="row">
-                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                    <label class="login2 pull-right pull-right-pro">Box Width</label>
-                                                </div>
-                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                    <input asp-for="BoxWidth" class="form-control" />
-                                                    <span asp-validation-for="BoxWidth" class="text-danger"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group-inner">
-                                            <div class="row">
-                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                    <label class="login2 pull-right pull-right-pro">Box Height</label>
-                                                </div>
-                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                    <input asp-for="BoxHeight" class="form-control" />
-                                                    <span asp-validation-for="BoxHeight" class="text-danger"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -102,11 +81,44 @@
                                         <div class="form-group-inner">
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                    <label class="login2 pull-right pull-right-pro">Quantity Per Package</label>
+                                                    <label class="login2 pull-right pull-right-pro">Height</label>
                                                 </div>
                                                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                    <input asp-for="QuantityPerPackage" class="form-control" />
-                                                    <span asp-validation-for="QuantityPerPackage" class="text-danger"></span>
+                                                    <input asp-for="Height" class="form-control" />
+                                                    <span asp-validation-for="Height" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                    <label class="login2 pull-right pull-right-pro">Width</label>
+                                                </div>
+                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                    <input asp-for="Width" class="form-control" />
+                                                    <span asp-validation-for="Width" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                    <label class="login2 pull-right pull-right-pro">Length</label>
+                                                </div>
+                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                    <input asp-for="Lenght" class="form-control" />
+                                                    <span asp-validation-for="Lenght" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                    <label class="login2 pull-right pull-right-pro">Quantity Per Box</label>
+                                                </div>
+                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                    <input asp-for="QuantityPerBox" class="form-control" />
+                                                    <span asp-validation-for="QuantityPerBox" class="text-danger"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -116,8 +128,21 @@
                                                     <label class="login2 pull-right pull-right-pro">Category</label>
                                                 </div>
                                                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                    @using RFIM_Web.ModelView
-                                                    @await Html.PartialAsync("CategorySelect", (CategorySelect)ViewBag.CategorySelect)
+                                                    @*@using RFIM_Web.ModelView
+                    @await Html.PartialAsync("CategorySelect", (CategorySelect)ViewBag.CategorySelect)*@
+                                                    <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                                                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                    <label class="login2 pull-right pull-right-pro">Vendor</label>
+                                                </div>
+                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                    <select asp-for="VendorId" class="form-control" asp-items="ViewBag.VendorId"></select>
+                                                    <span asp-validation-for="VendorId" class="text-danger"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -128,7 +153,7 @@
                                                     <div class="col-lg-9">
                                                         <div class="login-horizental cancel-wp pull-left">
                                                             <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Confirm</button>
-                                                            <button class="btn btn-white" asp-action="BackToProductList" asp-controller="Product">Cancel</button>
+                                                            <a class="btn btn-sm btn-primary login-submit-cs" asp-action="ListAllProduct" asp-controller="Product">Cancel</a>
                                                         </div>
                                                     </div>
                                                 </div>

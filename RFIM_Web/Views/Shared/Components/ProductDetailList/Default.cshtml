@@ -1,0 +1,10 @@
+﻿@model IEnumerable<RFIM_Web.Models.Product>
+@{
+    ViewData["Title"] = "Default";
+}
+
+@foreach (var product in Model)
+{
+    <li><a asp-action="DetailProduct" asp-controller="Product" asp-route-id="@product.ProductId">@product.ProductId-@product.ProductName</a></li>
+}
+
