@@ -1,0 +1,95 @@
+﻿@model IEnumerable<RFIM_Web.Models.Invoice>
+@{
+    ViewData["Title"] = "ListAllInvoice";
+}
+
+<div class="all-content-wrapper">
+    <div class="data-table-area mg-tb-15">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="sparkline13-list">
+                        <div class="sparkline13-hd">
+                            <div class="main-sparkline13-hd">
+                                <h1>Goods Receipt/Issue</h1>
+                            </div>
+                        </div>
+
+                        <div class="sparkline13-graph">
+                            <div class="datatable-dashv1-list custom-datatable-overright">
+                                <a asp-action="CreateInvoice" asp-controller="Invoice" class="btn btn-success">Create</a>
+                                <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true"
+                                       data-show-toggle="true" data-show-export="true">
+                                    <thead>
+                                        <tr>
+                                            <th>Invoice ID</th>
+                                            <th>Date</th>
+                                            <th>Description</th>
+                                            @*<th>Created by</th>*@
+                                            <th>Receipt/Issue</th>
+                                            <th>Status</th>
+                                            <th>Setting</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var invoice in Model)
+                                        {
+                                            <tr>
+
+                                                <td><a asp-action="DetailInvoice" asp-controller="Invoice" asp-route-id="@invoice.InvoiceId">@invoice.InvoiceId</a></td>
+                                                <td>@invoice.Date</td>
+                                                <td>@invoice.Description</td>
+                                                @*<td>@invoice.User.Username</td>*@
+                                                <td>@invoice.InvoiceType.InvoiceTypes</td>
+                                                @if (invoice.Status == false)
+                                                {
+                                                    <td>Awaiting</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>Done</td>
+                                                }
+                                                <td>
+                                                    <a asp-action="DeleteInvoice" asp-controller="Invoice" asp-route-id="@invoice.InvoiceId" class="pd-setting-ed" data-toggle="modal" data-target="#modal-invoice-delete">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <div id="modal-invoice-delete" aria-hidden="true" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="modal-invoice" aria-hidden="true" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+ $(function () {
+    $("#modal-invoice-delete").on('hidden.bs.modal', function () {
+       $(this).removeData('bs.modal');
+    });
+ });
+    </script>
+}
+            
+

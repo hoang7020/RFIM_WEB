@@ -46,8 +46,8 @@ namespace RFIM_Web.ModelView
                                     <td>{6}</td> 
                                     <td>{7}</td>
                                     <td>{8}</td>
-                                  ", pro.ProductId, pro.ProductName, BoxCount(pro.ProductId), pro.QuantityPerBox, pro.Weight, pro.Height, pro.Width
-                                  ,pro.Lenght, BoxList(pro.ProductId));
+                                  ", pro.ProductId, pro.ProductName, BoxCount(pro.ProductId), pro.QuantityPerBox,pro.Weight, pro.Height, pro.Width
+                                  ,pro.Lenght, CellList(pro.ProductId));
             }
             sb.Append(@"
                                 </table>
@@ -64,17 +64,17 @@ namespace RFIM_Web.ModelView
             return boxCount;
         }
 
-        public static string BoxList(string productId)
+        public static string CellList(string productId)
         {
             var ctx = new MyDbContext();
-            var boxes = ctx.Packages.Where(p => p.ProductId == productId).ToList();
-            string box_string = "";
-            boxes.ForEach(item =>
+            var packages = ctx.Packages.Where(p => p.ProductId == productId).ToList();
+            string cell_string = "";
+            packages.ForEach(item =>
             {
-                box_string += item.CellId;
-                box_string += "<br/>";
+                cell_string += item.CellId;
+                cell_string += "<br/>";
             });
-            return box_string;
+            return cell_string;
         }
     }
 }

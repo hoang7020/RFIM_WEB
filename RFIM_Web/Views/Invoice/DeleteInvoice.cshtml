@@ -1,0 +1,14 @@
+﻿@model RFIM_Web.Models.Invoice
+
+<form method="post" asp-action="Deleteinvoice">
+    <div class="modal-header">
+        <a class="close" datadismiss="modal-user" asp-action="BackToInvoiceList" asp-controller="Invoice">&times;</a>
+        <h4 class="modal-title">Delete invoice @Model.InvoiceId</h4>
+    </div>
+    <div class="modal-body form-horizontal">
+        Are you sure to delete <b>@Model.InvoiceId</b>?
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary">Delete</button>
+    </div>
+</form>
