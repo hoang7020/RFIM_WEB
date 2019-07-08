@@ -63,8 +63,6 @@ C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.csproj.CopyComplete
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.csprojAssemblyReference.cache
 <<<<<<< HEAD
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\QuantityBoxInPackage\Default.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\QuantityBoxInProduct\Default.g.cshtml.cs
 =======
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.csprojAssemblyReference.cache
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.csproj.CoreCompileInputs.cache
@@ -191,7 +189,8 @@ E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Component
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\QuantityBoxInPackage\Default.g.cshtml.cs
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\QuantityBoxInProduct\Default.g.cshtml.cs
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\PackageView.g.cshtml.cs
-=======
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shelf\DeleteShelfFail.g.cshtml.cs
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shelf\EditShelfSize.g.cshtml.cs
 >>>>>>> dev_test_3
+E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shelf\DeleteShelfFail.g.cshtml.cs
+E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shelf\EditShelfSize.g.cshtml.cs
