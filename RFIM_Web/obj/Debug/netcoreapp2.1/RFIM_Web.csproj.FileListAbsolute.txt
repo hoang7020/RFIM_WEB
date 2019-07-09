@@ -195,4 +195,3 @@ C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shelf\DeleteShelfFail.g.cshtml.cs
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shelf\EditShelfSize.g.cshtml.cs
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Stocktake\ListAllStocktake.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Stocktake\ListAllStocktake.g.cshtml.cs
