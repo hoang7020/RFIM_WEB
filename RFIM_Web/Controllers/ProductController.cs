@@ -208,7 +208,7 @@ namespace RFIM_Web.Controllers
                 Vendor = p.Vendor.VendorName,
                 Height = p.Height.Value,
                 Width = p.Width.Value,
-                Lenght = p.Lenght.Value,
+                Length = p.Length.Value,
                 QuantityPerBox = p.QuantityPerBox.Value
             }).ToList();
 
@@ -290,7 +290,7 @@ namespace RFIM_Web.Controllers
                             Description = sheet.Cells[i, 5].Value.ToString(),
                             Height = double.Parse(sheet.Cells[i, 6].Value.ToString()),
                             Width = double.Parse(sheet.Cells[i, 7].Value.ToString()),
-                            Lenght = double.Parse(sheet.Cells[i, 8].Value.ToString()),
+                            Length = double.Parse(sheet.Cells[i, 8].Value.ToString()),
                             QuantityPerBox = int.Parse(sheet.Cells[i, 9].Value.ToString()),
                             CategoryId = int.Parse(sheet.Cells[i, 10].Value.ToString()),
                             VendorId = int.Parse(sheet.Cells[i, 11].Value.ToString())
@@ -316,7 +316,7 @@ namespace RFIM_Web.Controllers
                             item.Description = product.Description;
                             item.Height = product.Height;
                             item.Width = product.Width;
-                            item.Lenght = product.Lenght;
+                            item.Length = product.Length;
                             item.QuantityPerBox = product.QuantityPerBox;
                             item.CategoryId = product.CategoryId;
                             item.VendorId = product.VendorId;

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RFIM_Web.Models;
+using RFIM_Web.ModelView;
 
 namespace RFIM_Web.Controllers
 {
@@ -29,6 +30,12 @@ namespace RFIM_Web.Controllers
 
         public IActionResult CreateShelf()
         {
+            var standShellSize = ctx.StandardShellSizes.SingleOrDefault(p => p.StandardShellId == 1);
+            ViewBag.StandardSize = new StandardSize
+            {
+                StandardFloor = standShellSize.StandardFloor,
+                StandardCell = standShellSize.StandardCell
+            };
             return View();
         }
 
@@ -42,6 +49,13 @@ namespace RFIM_Web.Controllers
                 bool shelfIdExist = ctx.Shelfs.Any(p => p.ShelfId == shelf.ShelfId);
                 if (!shelfIdExist)
                 {
+                    var standShellSize = ctx.StandardShellSizes.SingleOrDefault(p => p.StandardShellId == 1); 
+                    ViewBag.StandardSize = new StandardSize
+                    {
+                        StandardFloor = standShellSize.StandardFloor,
+                        StandardCell = standShellSize.StandardCell
+                    };
+
                     ctx.Add(shelf);
                     await ctx.SaveChangesAsync();
 
@@ -242,8 +256,26 @@ namespace RFIM_Web.Controllers
             {
                 return NotFound();
             }
-
-            return PartialView("DeleteShelf", shelf);
+            var cells = ctx.Cells.Where(p => p.CellId.Contains(shelf.ShelfId));
+            List<int> packCountList = new List<int>();
+            foreach(var cell in cells)
+            {
+                int packageCount = ctx.Packages.Count(p => p.CellId == cell.CellId);
+                packCountList.Add(packageCount);
+            }
+            int totalInList = 0;
+            packCountList.ForEach(item =>
+            {
+                totalInList += item;
+            });
+            
+            if (totalInList == 0)
+            {
+                return PartialView("DeleteShelf", shelf);
+            } else
+            {
+                return PartialView("DeleteShelfFail", shelf);
+            }
         }
 
         // POST: Shelf/Delete/5
@@ -282,6 +314,53 @@ namespace RFIM_Web.Controllers
         public IActionResult BackToShelfList()
         {
             return RedirectToAction(nameof(ListAllShelf));
+        }
+        [HttpGet]
+        public async Task<IActionResult> EditShelfSize(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+            var standardSize = await ctx.StandardShellSizes.FindAsync(id);
+            if(standardSize == null)
+            {
+                return NotFound();
+            }
+            return View(standardSize);
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditShelfSize(int? id, StandardShellSize standardSize)
+        {
+            if(id != standardSize.StandardShellId)
+            {
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    ctx.Update(standardSize);
+                    await ctx.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!StandardSizeExists(standardSize.StandardShellId))
+                    {
+                        return NotFound();
+                    } else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(ListAllShelf));
+            }
+            return View(standardSize);
+        }
+
+        public bool StandardSizeExists(int id)
+        {
+            return ctx.StandardShellSizes.Any(p => p.StandardShellId == id);
         }
     }
 }

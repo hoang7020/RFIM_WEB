@@ -1,5 +1,7 @@
-﻿@{
-    ViewData["Title"] = "ImportProduct";
+﻿@model RFIM_Web.Models.StandardShellSize
+
+@{
+    ViewData["Title"] = "EditShelfSize";
 }
 
 <div class="all-content-wrapper">
@@ -8,8 +10,7 @@
             <div class="sparkline12-list">
                 <div class="sparkline12-hd">
                     <div class="main-sparkline12-hd">
-                        <h1>Import Product</h1>
-                        <a asp-action="ExampleFile" asp-controller="Product"><i class="fas fa-file-download"></i> Example file</a>
+                        <h1>Edit Shelf Size</h1>
                     </div>
                 </div>
                 <div class="sparkline12-graph">
@@ -17,18 +18,28 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="all-form-element-inner">
-                                    <form enctype="multipart/form-data" asp-action="ImportProduct" asp-controller="Product">
+                                    <form asp-action="EditShelfSize" asp-controller="Shelf">
                                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <input type="hidden" asp-for="StandardShellId" />
                                         <div class="form-group-inner">
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                    <label class="login2 pull-right pull-right-pro">Upload File xlsx</label>
+                                                    <label class="login2 pull-right pull-right-pro">Standard Floor Number</label>
                                                 </div>
-                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                    <input type="file" name="fImport" class="form-control">
-                                                    <h6 style="color:red">@ViewBag.EmptyFileMessage</h6>
-                                                    <h6 style="color:red">@ViewBag.ProductNameExist</h6>
-                                                    <h6 style="color:red">@ViewBag.SuccessMessage</h6>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                    <input asp-for="StandardFloor" class="form-control" />
+                                                    <span asp-validation-for="StandardFloor" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                    <label class="login2 pull-right pull-right-pro">Standard Cell Number</label>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                    <input asp-for="StandardCell" class="form-control" />
+                                                    <span asp-validation-for="StandardCell" class="text-danger"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -39,7 +50,7 @@
                                                     <div class="col-lg-9">
                                                         <div class="login-horizental cancel-wp pull-left">
                                                             <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Confirm</button>
-                                                            <a class="btn btn-sm btn-primary login-submit-cs" asp-action="BackToProductList" asp-controller="Product">Cancel</a>
+                                                            <button class="btn btn-white" asp-action="BackToShelfList" asp-controller="Shelf">Cancel</button>
                                                         </div>
                                                     </div>
                                                 </div>
