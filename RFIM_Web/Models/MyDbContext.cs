@@ -13,6 +13,11 @@ namespace RFIM_Web.Models
 
         }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Invoice_Product>().HasKey(table => new { table.InvoiceId, table.ProductId });
+        }
+
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Shelf> Shelfs { get; set; }
@@ -24,5 +29,7 @@ namespace RFIM_Web.Models
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<InvoiceType> InvoiceTypes { get; set; }
         public DbSet<Invoice_Product> Invoice_Products { get; set; }
+        public DbSet<InvoiceStatus> InvoiceStatuses { get; set; }
+        public DbSet<StocktakeHistory> StocktakeHistories { get; set; }
     }
 }
