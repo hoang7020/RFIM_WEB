@@ -57,7 +57,7 @@ using RFIM_Web.Models;
             WriteLiteral("\r\n<<<<<<< HEAD\r\n<div class=\"modal-header\">\r\n    ");
             EndContext();
             BeginContext(80, 109, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5fde4c9866544a8297aa9aeffaa8031f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e8bf9dc6575f4baea93bc801af652ecc", async() => {
                 BeginContext(178, 7, true);
                 WriteLiteral("&times;");
                 EndContext();
@@ -103,7 +103,7 @@ using RFIM_Web.Models;
             WriteLiteral(" can\'t be deleted since it already Done</strong>\r\n=======\r\n    <div class=\"modal-header\">\r\n        ");
             EndContext();
             BeginContext(521, 109, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c6272a9ce00e49bfb78a2b9216c58f5b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2520ff01302a4018aa77c91d65f8c705", async() => {
                 BeginContext(619, 7, true);
                 WriteLiteral("&times;");
                 EndContext();
