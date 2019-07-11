@@ -14,8 +14,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RFIM_Web.Interfaces;
 using RFIM_Web.Models;
 using RFIM_Web.ModelView;
+using RFIM_Web.Repositories;
 
 namespace RFIM_Web
 {
@@ -57,6 +59,11 @@ namespace RFIM_Web
 
 
             services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
+
+            //Add application services
+            services.AddScoped<IUser, UserRepository>();
+            services.AddScoped<IShelf, ShelfRepository>();
+            services.AddScoped<IProduct, ProductRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
