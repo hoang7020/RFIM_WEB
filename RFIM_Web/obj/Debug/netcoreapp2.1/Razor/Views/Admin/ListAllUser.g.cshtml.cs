@@ -85,7 +85,7 @@ using RFIM_Web.Models;
                                 ");
             EndContext();
             BeginContext(794, 89, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "740fa4b0a59e4e64b7d7c2ab025155b0", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "86ba8ea097ae462da59a2f6782d794b4", async() => {
                 BeginContext(868, 11, true);
                 WriteLiteral("Create User");
                 EndContext();
@@ -204,7 +204,7 @@ using RFIM_Web.Models;
             WriteLiteral("                                                        ");
             EndContext();
             BeginContext(2694, 86, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0e7b04b7d82e44c18d41b3f81f7997b9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "685f83096b524d9682db4a7316bd8530", async() => {
                 BeginContext(2770, 6, true);
                 WriteLiteral("Active");
                 EndContext();
@@ -247,7 +247,7 @@ using RFIM_Web.Models;
             WriteLiteral("                                                </td>\r\n                                                <td>\r\n                                                    ");
             EndContext();
             BeginContext(3273, 148, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "73bc6334074e4e15bc39822caedafe56", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e4ea99f53f9044d8af21102819381197", async() => {
                 BeginContext(3371, 46, true);
                 WriteLiteral("<i class=\"fas fa-edit\" aria-hidden=\"true\"></i>");
                 EndContext();
@@ -285,7 +285,7 @@ using RFIM_Web.Models;
             WriteLiteral("\r\n                                                    ");
             EndContext();
             BeginContext(3475, 316, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "660a82eb2d8340ee8ce772dd9e7d49d8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "06d0ece46d464b70b3ac9bd71c7dd160", async() => {
                 BeginContext(3628, 159, true);
                 WriteLiteral("\r\n                                                        <i class=\"fas fa-trash\" aria-hidden=\"true\"></i>\r\n                                                    ");
                 EndContext();

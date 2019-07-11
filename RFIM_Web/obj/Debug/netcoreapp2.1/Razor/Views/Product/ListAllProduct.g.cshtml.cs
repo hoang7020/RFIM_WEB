@@ -87,7 +87,7 @@ using RFIM_Web.Models;
                                 ");
             EndContext();
             BeginContext(792, 97, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21bd6fd7538144e5a854e34ed2e01140", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8f5411e7f1764b60bb95798e6d4c6729", async() => {
                 BeginContext(871, 14, true);
                 WriteLiteral("Create Product");
                 EndContext();
@@ -112,7 +112,7 @@ using RFIM_Web.Models;
             WriteLiteral("\r\n                                ");
             EndContext();
             BeginContext(923, 97, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5e1aa956152d4f05921bf47bc0cc08d3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3cfd62a39f29413bb81d2c49b5ec82e8", async() => {
                 BeginContext(1002, 14, true);
                 WriteLiteral("Import Product");
                 EndContext();
@@ -170,7 +170,7 @@ using RFIM_Web.Models;
             WriteLiteral("</td>\r\n                                                <td>");
             EndContext();
             BeginContext(2186, 113, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a5485dbeeb4f4862b007d98aa0da33c8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b3f3e74d05c4d799d045314b6f35d2b", async() => {
                 BeginContext(2276, 19, false);
 #line 39 "C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\Views\Product\ListAllProduct.cshtml"
                                                                                                                                         Write(product.ProductName);
@@ -221,7 +221,7 @@ using RFIM_Web.Models;
             WriteLiteral(" g</td>\r\n                                                <td>");
             EndContext();
             BeginContext(2434, 54, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "ac602be46d61472783d4319e94b3132c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "1f8b79ea1438421891f58fe27b4e5367", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -257,7 +257,7 @@ AddHtmlAttributeValue("", 2459, product.Image, 2459, 14, false);
             WriteLiteral("</td>\r\n                                                <td>\r\n                                                    ");
             EndContext();
             BeginContext(2692, 140, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9a8beadb55dd41ed9812b023ff8fbbae", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3745db8d86a241e8879a76f09d662c97", async() => {
                 BeginContext(2801, 27, true);
                 WriteLiteral("<i class=\"fas fa-edit\"></i>");
                 EndContext();
@@ -295,7 +295,7 @@ AddHtmlAttributeValue("", 2459, product.Image, 2459, 14, false);
             WriteLiteral("\r\n                                                    ");
             EndContext();
             BeginContext(2886, 311, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "90e253f5af4b47d0875bf0c80f6afa19", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b9b0325d348b4b4d8d2d789c29cefdac", async() => {
                 BeginContext(3053, 140, true);
                 WriteLiteral("\r\n                                                        <i class=\"fas fa-trash\"></i>\r\n                                                    ");
                 EndContext();

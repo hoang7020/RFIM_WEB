@@ -56,7 +56,7 @@ using RFIM_Web.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(31, 584, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b24da4b9a8384ed2bedaa3f82972bfe0", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c640617887104a4aa9bc53e59c03a672", async() => {
                 BeginContext(77, 176, true);
                 WriteLiteral("\r\n    <div class=\"modal-header\">\r\n        <button type=\"button\" class=\"close\" datadismiss=\"modal-user-deactive\">&times;</button>\r\n        <h4 class=\"modal-title\">Deactive user ");
                 EndContext();

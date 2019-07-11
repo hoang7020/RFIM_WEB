@@ -25,7 +25,6 @@ namespace RFIM_Web.Controllers
         public IActionResult ListAllInvoice()
         {
             var listInvoice = ctx.Invoices.Include(i => i.InvoiceType).Include(i => i.InvoiceStatus).ToList();
-            //var listInvoice = ctx.Invoices.Include(i => i.InvoiceType).Include(i2 => i2.User).ToList();
             return View(listInvoice);
         }
         //Return view create Invoice
