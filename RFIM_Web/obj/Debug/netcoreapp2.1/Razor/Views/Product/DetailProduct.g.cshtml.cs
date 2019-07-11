@@ -79,7 +79,7 @@ using RFIM_Web.Models;
                                 ");
             EndContext();
             BeginContext(637, 235, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "99cc46d7c8f04bc68fd3d708db2238fe", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0eb9b857a4924ad1853d82009a36b0b3", async() => {
                 BeginContext(726, 142, true);
                 WriteLiteral("\r\n                                    <i class=\"fa fa-plus\"></i>\r\n                                    Create\r\n                                ");
                 EndContext();
@@ -126,7 +126,7 @@ using RFIM_Web.Models;
                                         ");
             EndContext();
             BeginContext(1725, 66, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "0747e76550c8418a98deb6fae7ce533d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "be97f6ac32f04f7999279f04dec1496b", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -170,7 +170,7 @@ AddHtmlAttributeValue("", 1750, Model.Image, 1750, 12, false);
             WriteLiteral(" ");
             EndContext();
             BeginContext(2135, 116, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "90e085fc3006471781ea491ea17026d4", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f2390352e3384cdc9c76ee270b0fc950", async() => {
                 BeginContext(2220, 27, true);
                 WriteLiteral("<i class=\"fas fa-edit\"></i>");
                 EndContext();
