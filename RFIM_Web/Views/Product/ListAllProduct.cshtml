@@ -20,7 +20,7 @@
                                 <a asp-action="CreateProduct" asp-controller="Product" class="btn btn-success">Create Product</a>
                                 <a asp-action="ImportProduct" asp-controller="Product" class="btn btn-primary">Import Product</a>
                                 <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true"
-                                       data-show-toggle="true" data-show-export="true">
+                                       data-show-toggle="true">
                                     <thead>
                                         <tr>
                                             <th>Product Id</th>
@@ -28,6 +28,11 @@
                                             <th>Weight</th>
                                             <th>Image</th>
                                             <th>Category</th>
+                                            <th>Height</th>
+                                            <th>Width</th>
+                                            <th>Length</th>
+                                            <th>Quantity Per Box</th>
+                                            <th>Status</th>
                                             <th>Setting</th>
                                         </tr>
                                     </thead>
@@ -35,16 +40,27 @@
                                         @foreach (var product in Model)
                                         {
                                             <tr>
-                                                <td>@product.ProductId</td>
+                                                <td><a asp-action="DetailProduct" asp-controller="Product" asp-route-id="@product.ProductId">@product.ProductId</a></td>
                                                 <td><a asp-action="DetailProduct" asp-controller="Product" asp-route-id="@product.ProductId">@product.ProductName</a></td>
                                                 <td>@product.Weight g</td>
-                                                <td><img src="~/Hinh/product/@product.Image" height="5" /></td>
+                                                <td><img src="~/Hinh/product/@product.Image" height="150" width="150" /></td>
 
                                                 <td>@product.Category.CategoryName</td>
+                                                <td>@product.Height</td>
+                                                <td>@product.Width</td>
+                                                <td>@product.Length</td>
+                                                <td>@product.QuantityPerBox</td>
+                                                <td>@if (product.Status)
+                                                {
+                                                    <a class="btn btn-success">Active</a>
+                                                }
+                                                else {
+                                                    <a class="btn btn-danger">Deactive</a>
+                                                }</td>
                                                 <td>
                                                     <a asp-action="EditProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="pd-setting-ed"><i class="fas fa-edit"></i></a>
                                                     <a asp-action="DeleteProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="pd-setting-ed" data-toggle="modal" data-target="#modal-product-delete">
-                                                        <i class="fas fa-trash"></i>
+                                                        <i class="fas fa-ban"></i>
                                                     </a>
                                                 </td>
                                             </tr>
@@ -76,6 +92,7 @@
         </div>
     </div>
 </div>
+
 
 @section Scripts{
     <script>

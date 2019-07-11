@@ -1,0 +1,13 @@
+﻿@model RFIM_Web.Models.Shelf
+
+<div class="modal-header">
+    <a class="close" datadismiss="modal-user" asp-action="BackToShelfList" asp-controller="Shelf">&times;</a>
+    <h4 class="modal-title">
+        Can't delete shelf @Model.ShelfId
+    </h4>
+</div>
+<div class="modal-body form-horizontal">
+    <div class="alert alert-danger alert-mg-b" role="alert">
+        <strong>Current Shelf @Model.ShelfId has one or more packages inside its cell. Please remove all packages and try again.</strong>
+    </div>
+</div>

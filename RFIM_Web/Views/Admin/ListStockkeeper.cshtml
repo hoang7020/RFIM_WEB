@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RFIM_Web.ModelView.ListUserView>
+﻿@model IEnumerable<RFIM_Web.Models.User>
 
 @{
     ViewData["Title"] = "ListStockkeeper";
@@ -18,7 +18,7 @@
                             <div class="datatable-dashv1-list custom-datatable-overright">
 
                                 <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true"
-                                       data-show-toggle="true" data-show-export="true">
+                                       data-show-toggle="true">
                                     <thead>
                                         <tr>
                                             <th>Fullname</th>
@@ -40,22 +40,20 @@
                                                 <td>@user.Password</td>
                                                 <td>@user.Email</td>
                                                 <td>@user.Phone</td>
-                                                <td>@user.Role</td>
+                                                <td>@user.Role.RoleName</td>
                                                 <td>
                                                     @if (user.Status)
                                                     {
-                                                        <button class="btn btn-success">Active</button>
+                                                        <a class="btn btn-success">Active</a>
                                                     }
                                                     else
                                                     {
-                                                        <button class="btn btn-warning">Disabled</button>
+                                                        <a class="btn btn-danger">Deactive</a>
                                                     }
                                                 </td>
                                                 <td>
                                                     <a asp-action="EditUser" asp-controller="Admin" asp-route-id="@user.UserId" class="pd-setting-ed"><i class="fas fa-edit" aria-hidden="true"></i></a>
-                                                    <a asp-action="DeleteUser" asp-controller="Admin" asp-route-id="@user.UserId" class="pd-setting-ed" data-toggle="modal" data-target="#modal-user-delete">
-                                                        <i class="fas fa-trash" aria-hidden="true"></i>
-                                                    </a>
+                                                    <a asp-action="DeleteUser" asp-controller="Admin" asp-route-id="@user.UserId" class="fas fa-ban" data-toggle="modal" data-target="#modal-user-delete"></a>
                                                 </td>
                                             </tr>
                                         }

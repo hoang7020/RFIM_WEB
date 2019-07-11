@@ -27,30 +27,16 @@
                                             <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true"
                                                    data-show-toggle="true" data-show-export="true">
                                                 <thead>
-                                                    <tr>
-                                                        <th>Product</th>
-                                                        <th>Quantity</th>
-                                                    </tr>
-                                                </thead>
                                                 <tbody>
                                                     @foreach (var productList in Model.productList)
                                                     {
                                                         <tr>
-
                                                             <td>@productList.ProductName</td>
                                                             <td>@productList.Quantity</td>
                                                         </tr>
                                                     }
                                                 </tbody>
                                             </table>
-                                            <div id="modal-invoice" aria-hidden="true" class="modal fade" role="dialog">
-                                                <div class="modal-dialog">
-                                                    <!-- Modal content-->
-                                                    <div class="modal-content">
-
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
