@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
+using RFIM_Web.Interfaces;
 using RFIM_Web.Models;
 using RFIM_Web.ModelView;
 using RFIM_Web.Utils;
@@ -18,26 +19,22 @@ namespace RFIM_Web.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly MyDbContext ctx;
-        public ProductController(MyDbContext db)
+        private readonly IProduct context;
+        public ProductController(IProduct _context)
         {
-            ctx = db;
+            context = _context;
         }
 
         public IActionResult ListAllProduct()
         {
-            var dsProduct = ctx.Products.Include(p => p.Category).ToList();
+            var dsProduct = context.GetAllProduct();
             return View(dsProduct);
         }
         //Return view create product
         public IActionResult CreateProduct()
         {
-            //ViewBag.CategorySelect = new CategorySelect
-            //{
-            //    Data = ctx.Categories.ToList()
-            //};
-            ViewData["CategoryId"] = new SelectList(ctx.Categories, "CategoryId", "CategoryName");
-            ViewData["VendorId"] = new SelectList(ctx.Vendors, "VendorId", "VendorName");
+            ViewData["CategoryId"] = new SelectList(context.GetAllCategory(), "CategoryId", "CategoryName");
+            ViewData["VendorId"] = new SelectList(context.GetAllVendor(), "VendorId", "VendorName");
             return View();
         }
         [HttpPost]
@@ -48,8 +45,8 @@ namespace RFIM_Web.Controllers
             if (ModelState.IsValid)
             {
                 //check if product id already existed 
-                bool productIdExist = ctx.Products.Any(p => p.ProductId == product.ProductId);
-                bool productNameExist = ctx.Products.Any(p => p.ProductName == product.ProductName);
+                bool productIdExist = context.ProductIdExists(product.ProductId);
+                bool productNameExist = context.ProductNameExists(product.ProductName);
                 //if product id is not existed
                 if (!productIdExist)
                 {
@@ -59,23 +56,26 @@ namespace RFIM_Web.Controllers
                         {
                             product.Image = UploadImageTool.UploadImage(fHinh, "product");
                         }
-                        ctx.Add(product);
-                        await ctx.SaveChangesAsync();
+                        product.Status = true;
+                        await context.AddProduct(product);
                         return RedirectToAction(nameof(ListAllProduct));
-                    } else
+                    }
+                    else
                     {
                         ViewBag.ProductNameExisted = "Product Name is already existed !!!";
+                        ViewData["CategoryId"] = new SelectList(context.GetAllCategory(), "CategoryId", "CategoryName", product.CategoryId);
+                        ViewData["VendorId"] = new SelectList(context.GetAllVendor(), "VendorId", "VendorName", product.VendorId);
                         return View(product);
                     }
                 }
                 //product id is existed
                 else
                 {
-                    ModelState.AddModelError("", "Product Id already existed !!!");
+                    ViewBag.ProductIdExistMessage = "Product Id already existed !!!";
                 }
             }
-            ViewData["CategoryId"] = new SelectList(ctx.Categories, "CategoryId", "CategoryName", product.CategoryId);
-            ViewData["VendorId"] = new SelectList(ctx.Vendors, "VendorId", "VendorName", product.VendorId);
+            ViewData["CategoryId"] = new SelectList(context.GetAllCategory(), "CategoryId", "CategoryName", product.CategoryId);
+            ViewData["VendorId"] = new SelectList(context.GetAllVendor(), "VendorId", "VendorName", product.VendorId);
             //if validation is error return view with error messages
             return View(product);
         }
@@ -86,18 +86,13 @@ namespace RFIM_Web.Controllers
             {
                 return NotFound();
             }
-            var product = await ctx.Products.FindAsync(id);
+            var product = await context.FindProductById(id);
             if (product == null)
             {
                 return NotFound();
             }
-            //ViewBag.CategorySelect = new CategorySelect
-            //{
-            //    Data = ctx.Categories.ToList(),
-            //    Select = product.ProductId
-            //};
-            ViewData["CategoryId"] = new SelectList(ctx.Categories, "CategoryId", "CategoryName", product.CategoryId);
-            ViewData["VendorId"] = new SelectList(ctx.Vendors, "VendorId", "VendorName", product.VendorId);
+            ViewData["CategoryId"] = new SelectList(context.GetAllCategory(), "CategoryId", "CategoryName", product.CategoryId);
+            ViewData["VendorId"] = new SelectList(context.GetAllVendor(), "VendorId", "VendorName", product.VendorId);
             return View(product);
         }
         [HttpPost]
@@ -112,19 +107,22 @@ namespace RFIM_Web.Controllers
             {
                 try
                 {
-                    bool productNameExist = ctx.Products.Any(p => p.ProductName == product.ProductName);
+
+                    bool productNameExist = context.ProductNameExistExceptId(product.ProductId, product.ProductName);
                     if (!productNameExist)
                     {
                         if (fHinh != null)
                         {
                             product.Image = UploadImageTool.UploadImage(fHinh, "product");
                         }
-                        ctx.Update(product);
-                        await ctx.SaveChangesAsync();
+                        product.Status = true;
+                        await context.UpdateProduct(product);
                     }
                     else
                     {
                         ViewBag.ProductNameExisted = "Product Name is already existed !!!";
+                        ViewData["CategoryId"] = new SelectList(context.GetAllCategory(), "CategoryId", "CategoryName", product.CategoryId);
+                        ViewData["VendorId"] = new SelectList(context.GetAllVendor(), "VendorId", "VendorName", product.VendorId);
                         return View(product);
                     }
                 }
@@ -141,8 +139,8 @@ namespace RFIM_Web.Controllers
                 }
                 return RedirectToAction(nameof(ListAllProduct));
             }
-            ViewData["CategoryId"] = new SelectList(ctx.Categories, "CategoryId", "CategoryName", product.CategoryId);
-            ViewData["VendorId"] = new SelectList(ctx.Vendors, "VendorId", "VendorName", product.VendorId);
+            ViewData["CategoryId"] = new SelectList(context.GetAllCategory(), "CategoryId", "CategoryName", product.CategoryId);
+            ViewData["VendorId"] = new SelectList(context.GetAllVendor(), "VendorId", "VendorName", product.VendorId);
             return View(product);
         }
         [HttpGet]
@@ -152,8 +150,7 @@ namespace RFIM_Web.Controllers
             {
                 return NotFound();
             }
-            var product = await ctx.Products.Include(p => p.Category).Include(p=>p.Vendor)
-                .SingleOrDefaultAsync(p => p.ProductId == id);
+            var product = await context.GetProduct(id);
             if (product == null)
             {
                 return NotFound();
@@ -164,15 +161,15 @@ namespace RFIM_Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirm(string id)
         {
-            var product = await ctx.Products.FindAsync(id);
-            ctx.Products.Remove(product);
-            await ctx.SaveChangesAsync();
+            var product = await context.FindProductById(id);
+            product.Status = false;
+            await context.UpdateProduct(product);
             return RedirectToAction(nameof(ListAllProduct));
         }
 
         private bool ProductExist(string id)
         {
-            return ctx.Products.Any(p => p.ProductId == id);
+            return context.ProductIdExists(id);
         }
 
         public IActionResult BackToProductList()
@@ -186,42 +183,16 @@ namespace RFIM_Web.Controllers
             {
                 return NotFound();
             }
-            var product = await ctx.Products.Include(p => p.Category).Include(p => p.Vendor).FirstOrDefaultAsync(p => p.ProductId == id);
+            var product = await context.GetProduct(id);
             if (product == null)
             {
                 return NotFound();
             }
-            var packages = await ctx.Packages.Where(p => p.ProductId == id).ToListAsync();
-
+            //var packages = await ctx.Packages.Where(p => p.ProductId == id).ToListAsync();
+            var packages = await context.GetAllPackageById(id);
             ViewBag.PackageSelectFromProduct = packages;
-            
-            return View(product);
-        }
-        public IActionResult ExportProduct()
-        {
-            var data = ctx.Products.Include(p => p.Category).Include(p => p.Vendor).Select(p => new ProductExcelView
-            {
-                ProductId = p.ProductId,
-                ProductName = p.ProductName,
-                Weight = p.Weight.Value,
-                Category = p.Category.CategoryName,
-                Vendor = p.Vendor.VendorName,
-                Height = p.Height.Value,
-                Width = p.Width.Value,
-                Length = p.Length.Value,
-                QuantityPerBox = p.QuantityPerBox.Value
-            }).ToList();
 
-            var stream = new MemoryStream();
-            using (var package = new ExcelPackage(stream))
-            {
-                var sheet = package.Workbook.Worksheets.Add("Product");
-                sheet.Cells.LoadFromCollection(data, true);
-                package.Save();
-            }
-            stream.Position = 0;
-            string fileName = $"Product_{DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss")}.xlsx";
-            return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+            return View(product);
         }
 
         public IActionResult ExampleFile()
@@ -237,14 +208,14 @@ namespace RFIM_Web.Controllers
                 sheet.Cells[1, 1].Value = "Product Id";
                 sheet.Cells[1, 2].Value = "Product Name";
                 sheet.Cells[1, 3].Value = "Weight";
-                sheet.Cells[1, 4].Value = "Image";
-                sheet.Cells[1, 5].Value = "Description";
-                sheet.Cells[1, 6].Value = "Height";
-                sheet.Cells[1, 7].Value = "Width";
-                sheet.Cells[1, 8].Value = "Length";
-                sheet.Cells[1, 9].Value = "Quantity Per Box";
-                sheet.Cells[1, 10].Value = "Category";
-                sheet.Cells[1, 11].Value = "Vendor";
+                //sheet.Cells[1, 4].Value = "Image";
+                //sheet.Cells[1, 5].Value = "Description";
+                sheet.Cells[1, 4].Value = "Height";
+                sheet.Cells[1, 5].Value = "Width";
+                sheet.Cells[1, 6].Value = "Length";
+                sheet.Cells[1, 7].Value = "Quantity Per Box";
+                sheet.Cells[1, 8].Value = "Category";
+                sheet.Cells[1, 9].Value = "Vendor";
                 package.Save();
             }
             stream.Position = 0;
@@ -259,7 +230,7 @@ namespace RFIM_Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult ImportProduct(IFormFile fImport)
+        public async Task<IActionResult> ImportProduct(IFormFile fImport)
         {
             if (fImport == null || fImport.Length <= 0)
             {
@@ -268,79 +239,64 @@ namespace RFIM_Web.Controllers
             }
             List<Product> productImports = new List<Product>();
             //tạo stream giữ file upload lên
-            using(var stream = new MemoryStream())
+            using (var stream = new MemoryStream())
             {
                 fImport.CopyTo(stream);
 
                 //Map stream với Excel file
-                using(var package = new ExcelPackage(stream))
+                using (var package = new ExcelPackage(stream))
                 {
                     var sheet = package.Workbook.Worksheets[0];
                     int rowCount = sheet.Dimension.Rows;
 
                     //duyệt qua từng dòng của sheet Excel bóc tách dữ liệu ra
-                    for(int i = 2; i <= rowCount; i++)
+                    for (int i = 2; i <= rowCount; i++)
                     {
                         productImports.Add(new Product
                         {
                             ProductId = sheet.Cells[i, 1].Value.ToString(),
                             ProductName = sheet.Cells[i, 2].Value.ToString(),
                             Weight = double.Parse(sheet.Cells[i, 3].Value.ToString()),
-                            Image = sheet.Cells[i, 4].Value.ToString(),
-                            Description = sheet.Cells[i, 5].Value.ToString(),
-                            Height = double.Parse(sheet.Cells[i, 6].Value.ToString()),
-                            Width = double.Parse(sheet.Cells[i, 7].Value.ToString()),
-                            Length = double.Parse(sheet.Cells[i, 8].Value.ToString()),
-                            QuantityPerBox = int.Parse(sheet.Cells[i, 9].Value.ToString()),
-                            CategoryId = int.Parse(sheet.Cells[i, 10].Value.ToString()),
-                            VendorId = int.Parse(sheet.Cells[i, 11].Value.ToString())
+                            Image = "",
+                            Description = "",
+                            Height = double.Parse(sheet.Cells[i, 4].Value.ToString()),
+                            Width = double.Parse(sheet.Cells[i, 5].Value.ToString()),
+                            Length = double.Parse(sheet.Cells[i, 6].Value.ToString()),
+                            QuantityPerBox = int.Parse(sheet.Cells[i, 7].Value.ToString()),
+                            CategoryId = int.Parse(sheet.Cells[i, 8].Value.ToString()),
+                            VendorId = int.Parse(sheet.Cells[i, 9].Value.ToString()),
+                            Status = true
                         });
                     }
                 }
             }
-            if(productImports.Count > 0)
+            if (productImports.Count > 0)
             {
                 //tiến hành update hoặc insert
                 foreach (Product product in productImports)
                 {
-                    var item = ctx.Products.SingleOrDefault(p => p.ProductId == product.ProductId);
-                    var itemNameExist = ctx.Products.Any(p => p.ProductName == product.ProductName);
+                    var item = context.GetProductById(product.ProductId);
+                    var itemNameExist = context.ProductNameExists(product.ProductName);
                     if (item != null)//đã có --> update
                     {
-                        if (!itemNameExist)
-                        {
-                            item.ProductId = product.ProductId;
-                            item.ProductName = product.ProductName;
-                            item.Weight = product.Weight;
-                            item.Image = product.Image;
-                            item.Description = product.Description;
-                            item.Height = product.Height;
-                            item.Width = product.Width;
-                            item.Length = product.Length;
-                            item.QuantityPerBox = product.QuantityPerBox;
-                            item.CategoryId = product.CategoryId;
-                            item.VendorId = product.VendorId;
-                        } else
-                        {
-                            ViewBag.ProductNameExist = "Product name is already existed !!!!";
-                            return View();
-                        }
+                        ViewBag.ProductIdExist = "Product Id is already existed !!!";
+                        return View();
                     }
                     else
                     {
                         if (!itemNameExist)
                         {
-                            ctx.Add(product);
-                        } else
+                           await context.AddProduct(product);
+                        }
+                        else
                         {
                             ViewBag.ProductNameExist = "Product name is already existed !!!!";
                             return View();
                         }
                     }
                 }
-                ctx.SaveChanges();
             }
-            ViewBag.SuccessMessage = "Import successfully";
+            ViewBag.SuccessMessage = "List of products was imported successfully!";
             return View();
         }
     }

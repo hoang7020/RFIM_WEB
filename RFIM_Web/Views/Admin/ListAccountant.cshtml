@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RFIM_Web.ModelView.ListUserView>
+﻿@model IEnumerable<RFIM_Web.Models.User>
 
 @{
     ViewData["Title"] = "ListAccountant";
@@ -40,19 +40,20 @@
                                                 <td>@user.Password</td>
                                                 <td>@user.Email</td>
                                                 <td>@user.Phone</td>
-                                                <td>@user.Role</td>
+                                                <td>@user.Role.RoleName</td>
                                                 <td>
                                                     @if (user.Status)
                                                     {
-                                                    <a asp-action="DeleteUser" asp-controller="Admin" asp-route-id="@user.UserId" class="btn btn-success" data-toggle="modal" data-target="#modal-user-delete">Active</a>
+                                                    <a class="btn btn-success">Active</a>
                                                     }
                                                     else
                                                     {
-                                                        <a class="btn btn-warning">Disabled</a>
+                                                        <a class="btn btn-danger">Deactive</a>
                                                     }
                                                 </td>
                                                 <td>
                                                     <a asp-action="EditUser" asp-controller="Admin" asp-route-id="@user.UserId" class="pd-setting-ed"><i class="fas fa-edit" aria-hidden="true"></i></a>
+                                                    <a asp-action="DeleteUser" asp-controller="Admin" asp-route-id="@user.UserId" class="fas fa-ban" data-toggle="modal" data-target="#modal-user-delete"></a>
                                                 </td>
                                             </tr>
                                         }

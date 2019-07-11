@@ -24,7 +24,7 @@ namespace RFIM_Web.Controllers
 
         public IActionResult ListAllInvoice()
         {
-            var listInvoice = ctx.Invoices.Include(i => i.InvoiceType).ToList();
+            var listInvoice = ctx.Invoices.Include(i => i.InvoiceType).Include(i => i.InvoiceStatus).ToList();
             //var listInvoice = ctx.Invoices.Include(i => i.InvoiceType).Include(i2 => i2.User).ToList();
             return View(listInvoice);
         }
@@ -32,6 +32,7 @@ namespace RFIM_Web.Controllers
         public IActionResult CreateInvoice()
         {
             ViewData["InvoiceTypeId"] = new SelectList(ctx.InvoiceTypes, "InvoiceTypeId", "InvoiceTypes");
+            ViewData["InvoiceStatusId"] = new SelectList(ctx.InvoiceStatuses, "StatusId", "Status");
             ViewData["ProductId"] = new SelectList(ctx.Products, "ProductId", "ProductName");
             return View();
         }
@@ -45,8 +46,7 @@ namespace RFIM_Web.Controllers
                  ProductName = p.ProductName,
                  Quantity = ip.Quantity,
              }).ToList();
-            var detail = ctx.Invoices.Include(it => it.InvoiceType).SingleOrDefault(i => i.InvoiceId.Equals(id));
-            //var detail = ctx.Invoices.Include(it => it.InvoiceType).Include(u => u.User).SingleOrDefault(i => i.InvoiceId.Equals(id));
+            var detail = ctx.Invoices.Include(it => it.InvoiceType).Include(it => it.InvoiceStatus).SingleOrDefault(i => i.InvoiceId.Equals(id));
             var model = new InvoiceDetail { Invoices = detail, productList = productList};
             return View(model);
         }
@@ -82,6 +82,7 @@ namespace RFIM_Web.Controllers
                 //if product id is not existed
                 if (!invoiceIdExist)
                 {
+                    invoice.StatusId = 1;
                     ctx.Add(invoice);
                     await ctx.SaveChangesAsync();
                     for (int i = 0; i < combine.Count(); i++)
@@ -90,6 +91,7 @@ namespace RFIM_Web.Controllers
                         ip.InvoiceId = invoiceId;
                         ip.ProductId = combine.ElementAt(i).Key;
                         ip.Quantity = combine.ElementAt(i).Value;
+                        ip.ProcessQuantity = 0;
                         ctx.Add(ip);
                         await ctx.SaveChangesAsync();
                     } 
@@ -113,12 +115,12 @@ namespace RFIM_Web.Controllers
             {
                 return NotFound();
             }
-            var invoice = await ctx.Invoices.Include(i => i.InvoiceType).SingleOrDefaultAsync(i => i.InvoiceId == id);
+            var invoice = await ctx.Invoices.Include(i => i.InvoiceType).Include(i => i.InvoiceStatus).SingleOrDefaultAsync(i => i.InvoiceId == id);
             if (invoice == null)
             {
                 return NotFound();
             }
-            if (invoice.Status == true)
+            if (invoice.InvoiceStatus.Status.Equals("Processing") || invoice.InvoiceStatus.Status.Equals("Done"))
             {
                 return PartialView("DeleteFail",invoice);
             }
