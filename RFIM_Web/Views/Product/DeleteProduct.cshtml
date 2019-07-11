@@ -3,10 +3,10 @@
 <form method="post" asp-action="DeleteProduct">
     <div class="modal-header">
         <a class="close" datadismiss="modal-user" asp-action="BackToProductList" asp-controller="Product">&times;</a>
-        <h4 class="modal-title">Delete product @Model.ProductName</h4>
+        <h4 class="modal-title">Deactive product @Model.ProductName</h4>
     </div>
     <div class="modal-body form-horizontal">
-        Are you sure to delete <b>@Model.ProductName</b>?
+        Are you sure to deactive <b>@Model.ProductName</b>?
     </div>
     <div class="modal-footer">
         <button class="btn btn-primary">Delete</button>

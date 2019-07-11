@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using RFIM_Web.Constants;
+using RFIM_Web.Interfaces;
 using RFIM_Web.Models;
 using RFIM_Web.ModelView;
 
@@ -16,10 +16,10 @@ namespace RFIM_Web.Controllers
     [Authorize]
     public class UserController : Controller
     {
-        private readonly MyDbContext context;
-        public UserController(MyDbContext _ctx)
+        private readonly IUser ctx;
+        public UserController( IUser db)
         {
-            context = _ctx;
+            ctx = db;
         }
         public IActionResult Index()
         {
@@ -33,17 +33,15 @@ namespace RFIM_Web.Controllers
         [HttpPost, AllowAnonymous]
         public async Task<IActionResult> Login(LoginView model)
         {
-            var loggedUser = context.Users
-                .Include(prop => prop.Role)
-                .SingleOrDefault(p => p.Username == model.Username && p.Password == model.Password);
+            var loggedUser = ctx.GetLoggedUser(model);
             if (loggedUser == null)
             {
-                ViewBag.LoiDangNhap = ErrorMessage.LoginFail;
+                ViewBag.LoiDangNhap = "The username or password that you've entered doesn't match any account.Please try again";
                 return View();
             }
             else if (!loggedUser.Status)
             {
-                ViewBag.HetHieuLuc = ErrorMessage.LoginDeactive;
+                ViewBag.HetHieuLuc = "The account is not actived";
                 return View();
             }
             var claims = new List<Claim> {
@@ -58,10 +56,10 @@ namespace RFIM_Web.Controllers
             await HttpContext.SignInAsync(claimsPrincipal);
             
 
-            if (loggedUser.RoleId == 1)
+            if (loggedUser.Role.RoleName == "Admin")
             {
                 return RedirectToAction("Index", "Admin");
-            } else if(loggedUser.RoleId == 2)
+            } else if(loggedUser.Role.RoleName == "Accountant")
             {
                 return RedirectToAction("Index", "Accountant");
             } else
