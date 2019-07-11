@@ -65,6 +65,7 @@ E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.Views.pdb
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.dll
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.pdb
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.csproj.CopyComplete
+<<<<<<< HEAD
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\bin\Debug\netcoreapp2.1\RFIM_Web.deps.json
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\bin\Debug\netcoreapp2.1\RFIM_Web.runtimeconfig.json
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\bin\Debug\netcoreapp2.1\RFIM_Web.runtimeconfig.dev.json
@@ -133,3 +134,5 @@ C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.dll
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.pdb
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.csproj.CopyComplete
+=======
+>>>>>>> f16b3f82b53517ddfc47d8d18427b537023264d7

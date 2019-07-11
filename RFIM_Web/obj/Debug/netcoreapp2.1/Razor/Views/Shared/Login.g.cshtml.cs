@@ -69,7 +69,11 @@ using RFIM_Web.Models;
                     ");
             EndContext();
             BeginContext(546, 1205, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "71d0ce5121924b62a7f1a346e21d55d2", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "732a1b49c7a04371beace21d4b169c50", async() => {
+>>>>>>> f16b3f82b53517ddfc47d8d18427b537023264d7
                 BeginContext(608, 921, true);
                 WriteLiteral(@"
                         <div class=""form-group"">

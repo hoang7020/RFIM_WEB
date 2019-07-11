@@ -60,7 +60,11 @@ using RFIM_Web.Models;
             WriteLiteral("<select name=\"RoleID\" class=\"form-control\">\r\n    ");
             EndContext();
             BeginContext(169, 35, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7557eacdb2294f69a3733914ab19a8c5", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d5861d9e5fb94b89940c8cedd51b8cb6", async() => {
+>>>>>>> f16b3f82b53517ddfc47d8d18427b537023264d7
                 BeginContext(187, 8, true);
                 WriteLiteral("--------");
                 EndContext();
@@ -101,7 +105,11 @@ using RFIM_Web.Models;
             WriteLiteral("        ");
             EndContext();
             BeginContext(305, 76, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aacefbd66fef4d839c80a7298d7ffed0", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d64eefc2f2504e19b4c8c79fb6da288a", async() => {
+>>>>>>> f16b3f82b53517ddfc47d8d18427b537023264d7
                 BeginContext(334, 14, true);
                 WriteLiteral("\r\n            ");
                 EndContext();
