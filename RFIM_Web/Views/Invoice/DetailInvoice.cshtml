@@ -12,29 +12,6 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-<<<<<<< HEAD
-                            <div class="sparkline12-list mg-t-15">
-                                <div class="sparkline12-hd">
-                                    <div class="main-sparkline12-hd">
-                                        <h1>Date: @Model.Invoices.Date</h1>
-                                        <h1>Type: @Model.Invoices.InvoiceType.InvoiceTypes</h1>
-                                        @*<h1>Created by: @Model.Invoices.User.Username</h1>*@
-                                        <h1>Description: @Model.Invoices.Description</h1>
-                                    </div>
-                                </div>
-                                <div class="sparkline12-graph">
-                                    <div class="static-table-list">
-                                        <table class="table hover-table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Product</th>
-                                                    <th>Quantity</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach (var productList in Model.productList)
-                                                {
-=======
                             <div class="tab-content">
                                 <div id="home" class="tab-pane fade in active review-content-section">
                                     <div class="sparkline13-graph">
@@ -50,15 +27,17 @@
                                             <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true"
                                                    data-show-toggle="true" data-show-export="true">
                                                 <thead>
->>>>>>> dev_thinh3
-                                                    <tr>
-
-                                                        <td>@productList.ProductName</td>
-                                                        <td>@productList.Quantity</td>
-                                                    </tr>
-                                                }
-                                            </tbody>
-                                        </table>
+                                                <tbody>
+                                                    @foreach (var productList in Model.productList)
+                                                    {
+                                                        <tr>
+                                                            <td>@productList.ProductName</td>
+                                                            <td>@productList.Quantity</td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
