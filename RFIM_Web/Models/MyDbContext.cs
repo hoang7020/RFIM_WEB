@@ -17,6 +17,7 @@ namespace RFIM_Web.Models
 
         }
 
+<<<<<<< HEAD
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -24,6 +25,11 @@ namespace RFIM_Web.Models
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Server=rfim.clvgsqcm7dqf.ap-southeast-1.rds.amazonaws.com;Database=RFIM_DB;User Id=sa;Password=hoangdien");
             }
+=======
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Invoice_Product>().HasKey(table => new { table.InvoiceId, table.ProductId });
+>>>>>>> dev_thinh3
         }
 
         public DbSet<User> Users { get; set; }
@@ -40,7 +46,12 @@ namespace RFIM_Web.Models
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<InvoiceType> InvoiceTypes { get; set; }
         public DbSet<Invoice_Product> Invoice_Products { get; set; }
+<<<<<<< HEAD
         public DbSet<StocktakeHistory> StocktakeHistories { get; set; }
         public DbSet<StandardShellSize> StandardShellSizes { get; set; }
+=======
+        public DbSet<InvoiceStatus> InvoiceStatuses { get; set; }
+        public DbSet<StocktakeHistory> StocktakeHistories { get; set; }
+>>>>>>> dev_thinh3
     }
 }
