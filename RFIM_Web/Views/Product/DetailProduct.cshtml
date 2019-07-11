@@ -13,7 +13,7 @@
                         <input type="text" placeholder="Search..." class="form-control" id="myInput" onkeyup="myFunction()" />
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                <a class="btn btn-danger btn-block" asp-action="CreateProduct" asp-controller="Product">
+                                <a class="btn btn-success btn-block" asp-action="CreateProduct" asp-controller="Product">
                                     <i class="fa fa-plus"></i>
                                     Create
                                 </a>
@@ -32,7 +32,7 @@
                             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                 <div id="myTabContent1" class="tab-content">
                                     <div class="product-tab-list tab-pane fade active in" id="single-tab1">
-                                        <img src="~/Hinh/product/@Model.Image" alt="" />
+                                        <img src="~/Hinh/product/@Model.Image" height="280" width="280" />
                                     </div>
                                 </div>
 
@@ -80,6 +80,21 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                            <label>Status</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                            <label>@if (Model.Status)
+                                            {
+                                                <b>Active</b>
+                                            }
+                                            else
+                                            {
+                                                <b>Deactive</b>
+                                            }</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                             <label>Category</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
@@ -99,7 +114,7 @@
                                             <label>Total quantity of boxes</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                           @await Component.InvokeAsync("QuantityBoxInProduct", new {productId = Model.ProductId})
+                                            @await Component.InvokeAsync("QuantityBoxInProduct", new { productId = Model.ProductId })
                                         </div>
                                     </div>
                                 </div>

@@ -43,13 +43,12 @@ namespace RFIM_Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateShelf(Shelf shelf)
         {
-
+            var standShellSize = ctx.StandardShellSizes.SingleOrDefault(p => p.StandardShellId == 1);
             if (ModelState.IsValid)
             {
                 bool shelfIdExist = ctx.Shelfs.Any(p => p.ShelfId == shelf.ShelfId);
                 if (!shelfIdExist)
                 {
-                    var standShellSize = ctx.StandardShellSizes.SingleOrDefault(p => p.StandardShellId == 1); 
                     ViewBag.StandardSize = new StandardSize
                     {
                         StandardFloor = standShellSize.StandardFloor,
@@ -85,10 +84,20 @@ namespace RFIM_Web.Controllers
                     return RedirectToAction(nameof(ListAllShelf));
                 } else
                 {
-                    ModelState.AddModelError("", "ShelfId is already existed !!!");
+                    ViewBag.ShelfExistError = "Shelf Id is already existed !!!";
+                    ViewBag.StandardSize = new StandardSize
+                    {
+                        StandardFloor = standShellSize.StandardFloor,
+                        StandardCell = standShellSize.StandardCell
+                    };
+                    return View(shelf);
                 }
             }
-
+            ViewBag.StandardSize = new StandardSize
+            {
+                StandardFloor = standShellSize.StandardFloor,
+                StandardCell = standShellSize.StandardCell
+            };
             return View(shelf);
         }
 
@@ -105,7 +114,12 @@ namespace RFIM_Web.Controllers
             {
                 return NotFound();
             }
-            
+            var standShellSize = ctx.StandardShellSizes.SingleOrDefault(p => p.StandardShellId == 1);
+            ViewBag.StandardSize = new StandardSize
+            {
+                StandardFloor = standShellSize.StandardFloor,
+                StandardCell = standShellSize.StandardCell
+            };
             return View(shelf);
         }
 
@@ -118,6 +132,7 @@ namespace RFIM_Web.Controllers
             {
                 return NotFound();
             }
+            var standShellSize = ctx.StandardShellSizes.SingleOrDefault(p => p.StandardShellId == 1);
             if (ModelState.IsValid)
             {
                 try
@@ -174,56 +189,67 @@ namespace RFIM_Web.Controllers
                             }
                         };
                     }
+                    //if (currentCellNumber > (shelf.CellNumber * shelf.FloorNumber) ||
+                    //    currentFloorNumber > shelf.FloorNumber)
+                    //{
+                    //    int oldCellNumber = currentCellNumber / currentFloorNumber;
+                    //    for (int i = 1; i <= currentFloorNumber; i++)
+                    //    {
+                    //        for (int j = 1; j <= oldCellNumber; j++)
+                    //        {
+                    //            var cellId = $"{shelf.ShelfId}-{i}-{j}";
+                    //            var cell = await ctx.Cells.FindAsync(cellId);
+                    //            ctx.Cells.Remove(cell);
+                    //            await ctx.SaveChangesAsync();
+                    //        }
+                    //    };
 
-                    if(currentCellNumber > (shelf.CellNumber * shelf.FloorNumber) ||
-                        currentFloorNumber > shelf.FloorNumber)
+                    //    for (int i = 1; i <= currentFloorNumber; i++)
+                    //    {
+                    //        var floorId = $"{shelf.ShelfId}-{i}";
+                    //        var floor = await ctx.Floors.FindAsync(floorId);
+                    //        ctx.Floors.Remove(floor);
+                    //        await ctx.SaveChangesAsync();
+                    //    };
+
+                    //    ctx.Update(shelf);
+                    //    await ctx.SaveChangesAsync();
+
+                    //    for (int i = 1; i <= shelf.FloorNumber; i++)
+                    //    {
+                    //        Floor floor = new Floor
+                    //        {
+                    //            FloorId = $"{shelf.ShelfId}-{i}",
+                    //            ShelfId = shelf.ShelfId
+                    //        };
+                    //        ctx.Add(floor);
+                    //        await ctx.SaveChangesAsync();
+                    //    }
+                    //    for (int i = 1; i <= shelf.FloorNumber; i++)
+                    //    {
+                    //        for (int j = 1; j <= shelf.CellNumber; j++)
+                    //        {
+                    //            Cell cell = new Cell
+                    //            {
+                    //                CellId = $"{shelf.ShelfId}-{i}-{j}",
+                    //                FloorId = $"{shelf.ShelfId}-{i}"
+                    //            };
+                    //            ctx.Add(cell);
+                    //            await ctx.SaveChangesAsync();
+                    //        }
+                    //    };
+                    //}
+                   
+                    if ( standShellSize.StandardCell < (currentCellNumber / currentFloorNumber) 
+                        || standShellSize.StandardFloor < currentFloorNumber)
                     {
-                        int oldCellNumber = currentCellNumber / currentFloorNumber;
-                        for(int i = 1; i <= currentFloorNumber; i++)
+                        ViewBag.UpdateShelfSize = "Cant decrease shelf size, please remove all packages !!!";
+                        ViewBag.StandardSize = new StandardSize
                         {
-                            for(int j = 1; j <= oldCellNumber; j++)
-                            {
-                                var cellId = $"{shelf.ShelfId}-{i}-{j}";
-                                var cell = await ctx.Cells.FindAsync(cellId);
-                                ctx.Cells.Remove(cell);
-                                await ctx.SaveChangesAsync();
-                            }
+                            StandardFloor = standShellSize.StandardFloor,
+                            StandardCell = standShellSize.StandardCell
                         };
-
-                        for (int i = 1; i <= currentFloorNumber; i++)
-                        {
-                            var floorId = $"{shelf.ShelfId}-{i}";
-                            var floor = await ctx.Floors.FindAsync(floorId);
-                            ctx.Floors.Remove(floor);
-                            await ctx.SaveChangesAsync();
-                        };
-
-                        ctx.Update(shelf);
-                        await ctx.SaveChangesAsync();
-
-                        for (int i = 1; i <= shelf.FloorNumber; i++)
-                        {
-                            Floor floor = new Floor
-                            {
-                                FloorId = $"{shelf.ShelfId}-{i}",
-                                ShelfId = shelf.ShelfId
-                            };
-                            ctx.Add(floor);
-                            await ctx.SaveChangesAsync();
-                        }
-                        for (int i = 1; i <= shelf.FloorNumber; i++)
-                        {
-                            for (int j = 1; j <= shelf.CellNumber; j++)
-                            {
-                                Cell cell = new Cell
-                                {
-                                    CellId = $"{shelf.ShelfId}-{i}-{j}",
-                                    FloorId = $"{shelf.ShelfId}-{i}"
-                                };
-                                ctx.Add(cell);
-                                await ctx.SaveChangesAsync();
-                            }
-                        };
+                        return View(shelf);
                     }
                 }
                 catch (DbUpdateConcurrencyException)
@@ -239,6 +265,11 @@ namespace RFIM_Web.Controllers
                 }
                 return RedirectToAction(nameof(ListAllShelf));
             }
+            ViewBag.StandardSize = new StandardSize
+            {
+                StandardFloor = standShellSize.StandardFloor,
+                StandardCell = standShellSize.StandardCell
+            };
             return View(shelf);
         }
 
@@ -362,5 +393,16 @@ namespace RFIM_Web.Controllers
         {
             return ctx.StandardShellSizes.Any(p => p.StandardShellId == id);
         }
+
+        public async Task<IActionResult> ShowCell(string id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+            var cells = await ctx.Cells.Include(p => p.Floor)
+                .Where(p => p.CellId.Contains(id)).ToListAsync();
+            return PartialView("ShowCell", cells);
+        }   
     }
 }

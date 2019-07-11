@@ -163,7 +163,7 @@ namespace RFIM_Web.Controllers
         public async Task<IActionResult> ConfirmDelete(int id)
         {
             var user = await context.Users.FindAsync(id);
-            user.Status = !user.Status;
+            user.Status = false;
             //context.Users.Remove(user);
             context.Update(user);
             await context.SaveChangesAsync();

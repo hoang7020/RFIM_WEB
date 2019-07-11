@@ -38,12 +38,12 @@ namespace RFIM_Web.Controllers
                 .SingleOrDefault(p => p.Username == model.Username && p.Password == model.Password);
             if (loggedUser == null)
             {
-                ViewBag.LoiDangNhap = ErrorMessage.LoginFail;
+                ViewBag.LoiDangNhap = "The username or password that you've entered doesn't match any account.Please try again";
                 return View();
             }
             else if (!loggedUser.Status)
             {
-                ViewBag.HetHieuLuc = ErrorMessage.LoginDeactive;
+                ViewBag.HetHieuLuc = "The account is not actived";
                 return View();
             }
             var claims = new List<Claim> {
