@@ -39,7 +39,7 @@ namespace RFIM_Web
             //    options.CheckConsentNeeded = context => true;
             //    options.MinimumSameSitePolicy = SameSiteMode.None;
             //});
-
+            services.AddSession();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<MyDbContext>(options =>
@@ -69,6 +69,7 @@ namespace RFIM_Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseSession();
             app.UseAuthentication();
             if (env.IsDevelopment())
             {
