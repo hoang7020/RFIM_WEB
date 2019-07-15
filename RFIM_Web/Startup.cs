@@ -54,6 +54,8 @@ namespace RFIM_Web
                 opt.AccessDeniedPath = "/User/Access";
             });
 
+            services.AddSession();
+
             var context = new CustomAssemblyLoadContext();
             context.LoadUnmanagedLibrary(Path.Combine(Directory.GetCurrentDirectory(), "libwkhtmltox.dll"));
 
@@ -69,6 +71,7 @@ namespace RFIM_Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseSession();
             app.UseAuthentication();
             if (env.IsDevelopment())
             {

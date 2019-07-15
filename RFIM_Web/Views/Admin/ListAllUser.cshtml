@@ -11,6 +11,7 @@
                     <div class="sparkline13-list">
                         <div class="sparkline13-hd">
                             <div class="main-sparkline13-hd">
+                                @using Microsoft.AspNetCore.Http
                                 <h1>User List</h1>
                             </div>
                         </div>
@@ -45,16 +46,15 @@
                                                 <td>
                                                     @if (user.Status)
                                                     {
-                                                        <a class="btn btn-success">Active</a>
+                                                    <a asp-action="DeleteUser" asp-controller="Admin" asp-route-id="@user.UserId" class="btn btn-success" data-toggle="modal" data-target="#modal-user-delete">Active</a>
                                                     }
                                                     else
                                                     {
-                                                        <a class="btn btn-danger">Deactive</a>
+                                                    <a asp-action="ActiveUser" asp-controller="Admin" asp-route-id="@user.UserId" class="btn btn-danger" data-toggle="modal" data-target="#modal-user-active">Deactive</a>
                                                     }
                                                 </td>
                                                 <td>
                                                     <a asp-action="EditUser" asp-controller="Admin" asp-route-id="@user.UserId" class="pd-setting-ed"><i class="fas fa-edit" aria-hidden="true"></i></a>
-                                                    <a asp-action="DeleteUser" asp-controller="Admin" asp-route-id="@user.UserId" data-toggle="modal" data-target="#modal-user-delete" class="fas fa-ban"></a>
                                                 </td>
                                             </tr>
                                         }
@@ -68,7 +68,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="modal-user" aria-hidden="true" class="modal fade" role="dialog">
+                                <div id="modal-user-active" aria-hidden="true" class="modal fade" role="dialog">
                                     <div class="modal-dialog">
                                         <!-- Modal content-->
                                         <div class="modal-content">
@@ -89,6 +89,9 @@
     <script>
         $(function () {
             $("#modal-user-delete").on('hidden.bs.modal', function () {
+                $(this).removeData('bs.modal');
+            });
+            $("#modal-user-active").on('hidden.bs.modal', function () {
                 $(this).removeData('bs.modal');
             });
         });

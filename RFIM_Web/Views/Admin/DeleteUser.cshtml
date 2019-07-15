@@ -2,7 +2,7 @@
 
 <form method="post" asp-action="DeleteUser">
     <div class="modal-header">
-        <button type="button" class="close" datadismiss="modal-user">&times;</button>
+        <a class="close" datadismiss="modal-user" asp-action="BackToUserList" asp-controller="Admin">&times;</a>
         <h4 class="modal-title">Deactive user @Model.Username</h4>
     </div>
     <div class="modal-body form-horizontal">
@@ -10,7 +10,6 @@
     </div>
     <div class="modal-footer">
         <button class="btn btn-primary">Confirm</button>
-        <button asp-action="BackToUserList" asp-controller="Admin" class="btn btn-default">Cancel</button>
     </div>
 </form>
 

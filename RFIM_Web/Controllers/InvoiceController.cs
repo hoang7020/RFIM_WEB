@@ -40,15 +40,20 @@ namespace RFIM_Web.Controllers
         {
             var productList = (from ip in ctx.Invoice_Products  
                            join p in ctx.Products on ip.ProductId equals p.ProductId
+                           join c in ctx.Categories on p.CategoryId equals c.CategoryId
+                           join v in ctx.Vendors on p.VendorId equals v.VendorId
                            where ip.InvoiceId.Equals(id)
              select new ProductList
              {
+                 ProductId = p.ProductId,
                  ProductName = p.ProductName,
                  Quantity = ip.Quantity,
+                 Category = c.CategoryName,
+                 Vendor = v.VendorName
              }).ToList();
             var detail = ctx.Invoices.Include(it => it.InvoiceType).Include(it => it.InvoiceStatus).SingleOrDefault(i => i.InvoiceId.Equals(id));
             var model = new InvoiceDetail { Invoices = detail, productList = productList};
-            return View(model);
+            return PartialView("InvoiceDetail", model);
         }
         [HttpPost]
         public async Task<IActionResult> CreateInvoice(IFormCollection form, Invoice invoice)
@@ -144,5 +149,6 @@ namespace RFIM_Web.Controllers
         {
             return RedirectToAction(nameof(ListAllInvoice));
         }
+
     }
 }

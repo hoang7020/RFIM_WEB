@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RFIM_Web.Interfaces;
@@ -54,11 +55,12 @@ namespace RFIM_Web.Controllers
             ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(userIdentity);
 
             await HttpContext.SignInAsync(claimsPrincipal);
-            
+
+            HttpContext.Session.SetString("User", loggedUser.Username);
 
             if (loggedUser.Role.RoleName == "Admin")
-            {
-                return RedirectToAction("Index", "Admin");
+            {   
+                return RedirectToAction("ListAllUser", "Admin");
             } else if(loggedUser.Role.RoleName == "Accountant")
             {
                 return RedirectToAction("Index", "Accountant");
@@ -71,6 +73,7 @@ namespace RFIM_Web.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();
+            HttpContext.Session.Remove("User");
             return RedirectToAction("Login", "User");
         }
 

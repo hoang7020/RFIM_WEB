@@ -128,7 +128,28 @@ namespace RFIM_Web.Controllers
             await ctx.UpdateUser(user);
             return RedirectToAction(nameof(ListAllUser));
         }
-
+        public async Task<IActionResult> ActiveUser(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var user = await ctx.GetUser(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return PartialView("ActiveUser", user);
+        }
+        [HttpPost, ActionName("ActiveUser")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ConfirmActive(int id)
+        {
+            var user = await ctx.FindUser(id);
+            user.Status = true;
+            await ctx.UpdateUser(user);
+            return RedirectToAction(nameof(ListAllUser));
+        }
         public bool UserExists(int id)
         {
             return ctx.UserExists(id);

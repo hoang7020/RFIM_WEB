@@ -166,6 +166,29 @@ namespace RFIM_Web.Controllers
             await context.UpdateProduct(product);
             return RedirectToAction(nameof(ListAllProduct));
         }
+        [HttpGet]
+        public async Task<IActionResult> ActiveProduct(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var product = await context.GetProduct(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return PartialView("ActiveProduct", product);
+        }
+        [HttpPost, ActionName("ActiveProduct")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ActiveConfirm(string id)
+        {
+            var product = await context.FindProductById(id);
+            product.Status = true;
+            await context.UpdateProduct(product);
+            return RedirectToAction(nameof(ListAllProduct));
+        }
 
         private bool ProductExist(string id)
         {

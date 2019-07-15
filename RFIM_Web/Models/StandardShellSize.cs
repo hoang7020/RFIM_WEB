@@ -13,8 +13,10 @@ namespace RFIM_Web.Models
         [Key]
         public int StandardShellId { get; set; }
         [Required(ErrorMessage = "This field is required")]
+        [Range(1,1000000000, ErrorMessage = "Number must be more than zero")]
         public int? StandardFloor { get; set; }
         [Required(ErrorMessage = "This field is required")]
+        [Range(1, 1000000000, ErrorMessage = "Number must be more than zero")]
         public int? StandardCell { get; set; }
     }
 }
