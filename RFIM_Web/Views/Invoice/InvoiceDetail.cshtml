@@ -27,6 +27,8 @@
                                     <h4 style="color:green">Status: @Model.Invoices.InvoiceStatus.Status</h4>
                                 }
                                 <h4>Description: @Model.Invoices.Description</h4>
+                                @using Microsoft.AspNetCore.Http
+                                <h4>User create: @Context.Session.GetString("User")</h4>
                             </div>
                         </div>
                         <br />
