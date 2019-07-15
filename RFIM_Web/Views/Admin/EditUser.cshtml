@@ -25,7 +25,7 @@
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                     <label class="login2 pull-right pull-right-pro">Fullname</label>
                                                 </div>
-                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                                     <input asp-for="Fullname" class="form-control" />
                                                     <span asp-validation-for="Fullname" class="text-danger"></span>
                                                 </div>
@@ -36,7 +36,7 @@
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                     <label class="login2 pull-right pull-right-pro">Username</label>
                                                 </div>
-                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                                     <input asp-for="Username" class="form-control" />
                                                     <span asp-validation-for="Username" class="text-danger"></span>
                                                 </div>
@@ -47,7 +47,7 @@
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                     <label class="login2 pull-right pull-right-pro">Password</label>
                                                 </div>
-                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                                     <input asp-for="Password" class="form-control" />
                                                     <span asp-validation-for="Password" class="text-danger"></span>
                                                 </div>
@@ -58,7 +58,7 @@
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                     <label class="login2 pull-right pull-right-pro">Email</label>
                                                 </div>
-                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                                     <input asp-for="Email" class="form-control" />
                                                     <span asp-validation-for="Email" class="text-danger"></span>
                                                 </div>
@@ -79,34 +79,21 @@
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                     <label class="login2 pull-right pull-right-pro">Phone</label>
                                                 </div>
-                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                                     <input asp-for="Phone" class="form-control" />
                                                     <span asp-validation-for="Phone" class="text-danger"></span>
                                                 </div>
                                             </div>
                                         </div>
-                                        @*<div class="form-group-inner">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <label class="login2 pull-right pull-right-pro">Role</label>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <input asp-for="RoleId" class="form-control" />
-                                                        <span asp-validation-for="RoleId" class="text-danger"></span>
-                                                    </div>
-                                                </div>
-                                            </div>*@
+
                                         <div class="form-group-inner">
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                     <label class="login2 pull-right pull-right-pro">Role</label>
                                                 </div>
-                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                    @*@using RFIM_Web.ModelView
-                                                        @await Html.PartialAsync("RoleSelect", (RoleSelectModel)ViewBag.RoleSelect)*@
-                                                    <select asp-for="RoleId" asp-items="ViewBag.RoleId" class="form-control">
-                                                        
-                                                    </select>
+                                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+
+                                                    <select asp-for="RoleId" asp-items="ViewBag.RoleId" class="form-control"></select>
                                                     <span asp-validation-for="RoleId" class="text-danger"></span>
                                                 </div>
                                             </div>
@@ -116,7 +103,7 @@
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                     <label class="login2 pull-right pull-right-pro">Address</label>
                                                 </div>
-                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                                     <input asp-for="Address" class="form-control" />
                                                     <span asp-validation-for="Address" class="text-danger"></span>
                                                 </div>
@@ -127,7 +114,7 @@
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                     <label class="login2 pull-right pull-right-pro">Date of Birth</label>
                                                 </div>
-                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                                     <input asp-for="DateOfBirth" class="form-control" />
                                                     <span asp-validation-for="DateOfBirth" class="text-danger"></span>
                                                 </div>
@@ -138,7 +125,7 @@
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                     <label class="login2 pull-right pull-right-pro">Note</label>
                                                 </div>
-                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                                     <input asp-for="Note" class="form-control" />
                                                     <span asp-validation-for="Note" class="text-danger"></span>
                                                 </div>

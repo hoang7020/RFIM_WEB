@@ -35,7 +35,7 @@
                                         {
                                         <tr>
 
-                                            <td><a asp-action="DetailInvoice" asp-controller="Invoice" asp-route-id="@invoice.InvoiceId">@invoice.InvoiceId</a></td>
+                                            <td><a asp-action="DetailInvoice" asp-controller="Invoice" asp-route-id="@invoice.InvoiceId" data-toggle="modal" data-target="#modal-invoice-detail">@invoice.InvoiceId</a></td>
                                             <td>@invoice.Date</td>
                                             <td>@invoice.Description</td>
                                             <td>@invoice.InvoiceType.InvoiceTypes</td>
@@ -57,7 +57,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="modal-invoice" aria-hidden="true" class="modal fade" role="dialog">
+                                <div id="modal-invoice-detail" aria-hidden="true" class="modal fade" role="dialog">
                                     <div class="modal-dialog">
                                         <!-- Modal content-->
                                         <div class="modal-content">
@@ -78,7 +78,10 @@
  $(function () {
     $("#modal-invoice-delete").on('hidden.bs.modal', function () {
        $(this).removeData('bs.modal');
-    });
+     });
+     $("#modal-invoice-detail").on('hidden.bs.modal', function () {
+         $(this).removeData('bs.modal');
+     });
  });
     </script>
 }

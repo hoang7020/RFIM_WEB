@@ -18,7 +18,10 @@ namespace RFIM_Web.Controllers
         {
             _converter = con;
         }
-
+        public IActionResult ReportListView()
+        {
+            return View();
+        }
         public IActionResult GeneratePDF()
         {
             var globalSettings = new GlobalSettings

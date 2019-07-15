@@ -1,16 +1,14 @@
 ﻿@model RFIM_Web.Models.User
 
-<form method="post" asp-action="DeleteUser">
+<form method="post" asp-action="ActiveUser">
     <div class="modal-header">
         <a class="close" datadismiss="modal-user" asp-action="BackToUserList" asp-controller="Admin">&times;</a>
-        <h4 class="modal-title">Deactive user @Model.Username</h4>
+        <h4 class="modal-title">Active user @Model.Username</h4>
     </div>
     <div class="modal-body form-horizontal">
-        Deactivated user cannot log in to system. Are you sure to deactive <b>@Model.Username</b>?
+        Do you want to active <b>@Model.Username</b>?
     </div>
     <div class="modal-footer">
         <button class="btn btn-primary">Confirm</button>
     </div>
 </form>
-
-

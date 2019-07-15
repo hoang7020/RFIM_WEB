@@ -1,0 +1,14 @@
+﻿@model RFIM_Web.Models.Product
+
+<form method="post" asp-action="ActiveProduct">
+    <div class="modal-header">
+        <a class="close" datadismiss="modal-user" asp-action="BackToProductList" asp-controller="Product">&times;</a>
+        <h4 class="modal-title">Active product @Model.ProductName</h4>
+    </div>
+    <div class="modal-body form-horizontal">
+        Are you sure to active <b>@Model.ProductName</b>?
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary">Confirm</button>
+    </div>
+</form>
