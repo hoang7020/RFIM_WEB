@@ -123,14 +123,14 @@ namespace RFIM_Web.Controllers
             if (HttpContext.Session.Get<List<Product>>("listProduct") == null)
             {
                 var listProduct = ctx.Products.Where(p => p.Status == true).ToList();
-                return View("AddProductList", listProduct);
+                return PartialView("AddProductList", listProduct);
             }
             else
             {
                 var listProduct = ctx.Products.Where(p => p.Status == true).ToList<Product>();
                 List<Product> ssListProduct = HttpContext.Session.Get<List<Product>>("listProduct");
                 var listExcept = listProduct.Where(x => !ssListProduct.Any(z => z.ProductId == x.ProductId)).ToList<Product>();
-                return View("AddProductList", listExcept);
+                return PartialView("AddProductList", listExcept);
             }
         }
 
