@@ -56,10 +56,36 @@ using RFIM_Web.Models;
             BeginContext(30, 34, true);
             WriteLiteral("\r\n<div class=\"modal-header\">\r\n    ");
             EndContext();
+<<<<<<< HEAD:RFIM_Web/obj/Debug/netcoreapp2.1/Razor/Views/Admin/DeactiveUser.g.cshtml.cs
+            BeginContext(31, 584, false);
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c640617887104a4aa9bc53e59c03a672", async() => {
+                BeginContext(77, 176, true);
+                WriteLiteral("\r\n    <div class=\"modal-header\">\r\n        <button type=\"button\" class=\"close\" datadismiss=\"modal-user-deactive\">&times;</button>\r\n        <h4 class=\"modal-title\">Deactive user ");
+                EndContext();
+                BeginContext(254, 14, false);
+#line 6 "C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\Views\Admin\DeactiveUser.cshtml"
+                                         Write(Model.Username);
+
+#line default
+#line hidden
+                EndContext();
+                BeginContext(268, 340, true);
+                WriteLiteral(@"</h4>
+    </div>
+    <div class=""modal-body form-horizontal"">
+        Deactivated user cannot log in to system. Are you sure?
+    </div>
+    <div class=""modal-footer"">
+        <button class=""btn btn-primary"">Confirm</button>
+        <button type=""button"" class=""btn btn-default"" datadismiss=""modal-user"">Cancel</button>
+    </div>
+");
+=======
             BeginContext(64, 105, false);
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1599e51e76ac4c48a1b7dd1fd8ea0b42", async() => {
                 BeginContext(158, 7, true);
                 WriteLiteral("&times;");
+>>>>>>> f16b3f82b53517ddfc47d8d18427b537023264d7:RFIM_Web/obj/Debug/netcoreapp2.1/Razor/Views/Shelf/DeleteShelfFail.g.cshtml.cs
                 EndContext();
             }
             );

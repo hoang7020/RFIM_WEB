@@ -11,6 +11,8 @@ namespace RFIM_Web.Models
     public class Invoice
     {
         [Key]
+        [Required(ErrorMessage = "This field is required")]
+        [DataType(DataType.Text, ErrorMessage = "Input is not valid !!")]
         public string InvoiceId { get; set; }
         [Required(ErrorMessage = "This field is required")]
         [DataType(DataType.Date)]

@@ -70,9 +70,19 @@ using RFIM_Web.Models;
                 <div class=""panel-body"">
                     ");
             EndContext();
+<<<<<<< HEAD
             BeginContext(546, 1391, false);
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1836fc727c28485f999d7f25133d8a91", async() => {
                 BeginContext(608, 384, true);
+=======
+            BeginContext(546, 1205, false);
+<<<<<<< HEAD
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d0eea180ef36411a8a6956c8504dbceb", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "732a1b49c7a04371beace21d4b169c50", async() => {
+>>>>>>> f16b3f82b53517ddfc47d8d18427b537023264d7
+                BeginContext(608, 921, true);
+>>>>>>> dev_thinh3
                 WriteLiteral(@"
                         <div class=""form-group"">
                             <label class=""control-label"" for=""username"">Username</label>

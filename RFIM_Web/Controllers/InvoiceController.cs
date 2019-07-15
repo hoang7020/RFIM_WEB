@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using OfficeOpenXml;
 using RFIM_Web.Models;
 using RFIM_Web.ModelView;
@@ -25,19 +26,12 @@ namespace RFIM_Web.Controllers
         public IActionResult ListAllInvoice()
         {
             var listInvoice = ctx.Invoices.Include(i => i.InvoiceType).Include(i => i.InvoiceStatus).ToList();
-            //var listInvoice = ctx.Invoices.Include(i => i.InvoiceType).Include(i2 => i2.User).ToList();
             return View(listInvoice);
         }
-        //Return view create Invoice
-        public IActionResult CreateInvoice()
-        {
-            ViewData["InvoiceTypeId"] = new SelectList(ctx.InvoiceTypes, "InvoiceTypeId", "InvoiceTypes");
-            ViewData["InvoiceStatusId"] = new SelectList(ctx.InvoiceStatuses, "StatusId", "Status");
-            ViewData["ProductId"] = new SelectList(ctx.Products, "ProductId", "ProductName");
-            return View();
-        }
+
         public IActionResult DetailInvoice(string id)
         {
+<<<<<<< HEAD
             var productList = (from ip in ctx.Invoice_Products  
                            join p in ctx.Products on ip.ProductId equals p.ProductId
                            join c in ctx.Categories on p.CategoryId equals c.CategoryId
@@ -54,63 +48,19 @@ namespace RFIM_Web.Controllers
             var detail = ctx.Invoices.Include(it => it.InvoiceType).Include(it => it.InvoiceStatus).SingleOrDefault(i => i.InvoiceId.Equals(id));
             var model = new InvoiceDetail { Invoices = detail, productList = productList};
             return PartialView("InvoiceDetail", model);
-        }
-        [HttpPost]
-        public async Task<IActionResult> CreateInvoice(IFormCollection form, Invoice invoice)
-        {
-            //get string form dynamic control
-            string[] listProduct = form["listProduct"].ToString().Split(",");
-            string[] listQuantity = form["listQuantity"].ToString().Split(",");
-            int[] listQuantityParsed = listQuantity.Select(int.Parse).ToArray();
-            string invoiceId = invoice.InvoiceId.ToString();
-            List<MergeList> mergeList = new List<MergeList>();
-            for (int i = 0; i < listProduct.Count(); i++)
-            {
-                MergeList ml = new MergeList();
-                ml.ProductId = listProduct[i];
-                ml.Quantity = listQuantityParsed[i];
-                mergeList.Add(ml);
-            }
-            //Combine duplicated Product Code with Quantity sum
-            var combine = new Dictionary<string, int>();
-            foreach (var merge in mergeList)
-            {
-                if (combine.ContainsKey(merge.ProductId))
-                    combine[merge.ProductId] += merge.Quantity;
-                else
-                    combine.Add(merge.ProductId, merge.Quantity);
-            }     
-            if (ModelState.IsValid)
-            {
-                //check if product id already existed 
-                bool invoiceIdExist = ctx.Invoices.Any(i => i.InvoiceId == invoice.InvoiceId);
-                //if product id is not existed
-                if (!invoiceIdExist)
-                {
-                    invoice.StatusId = 1;
-                    ctx.Add(invoice);
-                    await ctx.SaveChangesAsync();
-                    for (int i = 0; i < combine.Count(); i++)
-                    {
-                        Invoice_Product ip = new Invoice_Product();
-                        ip.InvoiceId = invoiceId;
-                        ip.ProductId = combine.ElementAt(i).Key;
-                        ip.Quantity = combine.ElementAt(i).Value;
-                        ip.ProcessQuantity = 0;
-                        ctx.Add(ip);
-                        await ctx.SaveChangesAsync();
-                    } 
-                    return RedirectToAction(nameof(ListAllInvoice));
-                }
-                //product id is existed
-                else
-                {
-                    ModelState.AddModelError("", "Invoice Id already existed !!!");
-                }
-            }
-            //if validation is error return view with error messages
-            return View(invoice);
-
+=======
+            var productList = (from ip in ctx.Invoice_Products
+                               join p in ctx.Products on ip.ProductId equals p.ProductId
+                               where ip.InvoiceId.Equals(id)
+                               select new ProductList
+                               {
+                                   ProductName = p.ProductName,
+                                   Quantity = ip.Quantity,
+                               }).ToList();
+            var detail = ctx.Invoices.Include(it => it.InvoiceType).Include(it => it.InvoiceStatus).SingleOrDefault(i => i.InvoiceId.Equals(id));
+            var model = new InvoiceDetail { Invoices = detail, productList = productList };
+            return View(model);
+>>>>>>> dev_thinh3
         }
 
         [HttpGet]
@@ -127,7 +77,7 @@ namespace RFIM_Web.Controllers
             }
             if (invoice.InvoiceStatus.Status.Equals("Processing") || invoice.InvoiceStatus.Status.Equals("Done"))
             {
-                return PartialView("DeleteFail",invoice);
+                return PartialView("DeleteFail", invoice);
             }
             else
             {
@@ -150,5 +100,93 @@ namespace RFIM_Web.Controllers
             return RedirectToAction(nameof(ListAllInvoice));
         }
 
+<<<<<<< HEAD
+=======
+        public IActionResult CreateInvoiceStep1()
+        {
+            ViewData["InvoiceTypeId"] = new SelectList(ctx.InvoiceTypes, "InvoiceTypeId", "InvoiceTypes");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddInvoiceStep2(Invoice invoice)
+        {
+            ViewData["InvoiceTypeId"] = new SelectList(ctx.InvoiceTypes, "InvoiceTypeId", "InvoiceTypes");
+            if (ModelState.IsValid)
+            {
+                if (ctx.Invoices.Any(i => i.InvoiceId == invoice.InvoiceId))
+                {
+                    ViewBag.invoceExist = "InvoiceId was already existed!";
+                    return View("CreateInvoiceStep1", invoice);
+                }
+                else
+                {
+                    invoice.StatusId = 1;
+                    invoice.Date = DateTime.Now;
+                    ctx.Add(invoice);
+                    await ctx.SaveChangesAsync();
+                    HttpContext.Session.SetString("invoiceId", invoice.InvoiceId);
+                    return RedirectToAction(nameof(RenderProductList));
+
+                }
+            }
+            return View("CreateInvoiceStep1");
+        }
+
+        public IActionResult AddProductList()
+        {
+            if (HttpContext.Session.Get<List<Product>>("listProduct") == null)
+            {
+                var listProduct = ctx.Products.Where(p => p.Status == true).ToList();
+                return View("AddProductList", listProduct);
+            }
+            else
+            {
+                var listProduct = ctx.Products.Where(p => p.Status == true).ToList<Product>();
+                List<Product> ssListProduct = HttpContext.Session.Get<List<Product>>("listProduct");
+                var listExcept = listProduct.Where(x => !ssListProduct.Any(z => z.ProductId == x.ProductId)).ToList<Product>();
+                return View("AddProductList", listExcept);
+            }
+        }
+
+        public IActionResult AddProductListFinished(IFormCollection fm)
+        {
+            string[] listProductId = fm["checkList"].ToString().Split(",");
+            List<Product> listProduct = new List<Product>();
+            foreach (string id in listProductId)
+            {
+                var product = this.ctx.Products.Find(id);
+                listProduct.Add(product);
+            }
+            HttpContext.Session.Set<List<Product>>("listProduct", listProduct);
+            return RedirectToAction(nameof(RenderProductList));
+        }
+
+        public IActionResult RenderProductList()
+        {
+            return View("CreateInvoiceStep2");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddProductInvoice(IFormCollection form)
+        {
+            string[] listProduct = form["listProduct"].ToString().Split(",");
+            string[] listQuantity = form["listQuantity"].ToString().Split(",");
+            int[] listQuantityParsed = listQuantity.Select(int.Parse).ToArray();
+            Invoice_Product ip = new Invoice_Product();
+            for (int i = 0; i < listProduct.Count(); i++)
+            {
+                ip.ProductId = listProduct[i];
+                ip.Quantity = listQuantityParsed[i];
+                ip.InvoiceId = HttpContext.Session.GetString("invoiceId");
+                ip.ProcessQuantity = 0;
+                ctx.Add(ip);
+                await ctx.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(BackToInvoiceList));
+
+        }
+>>>>>>> dev_thinh3
     }
 }

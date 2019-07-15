@@ -60,10 +60,17 @@ using RFIM_Web.Models;
             BeginContext(30, 2, true);
             WriteLiteral("\r\n");
             EndContext();
+<<<<<<< HEAD
+            BeginContext(32, 575, false);
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b12ef0797075486384785c39ffc9ecc2", async() => {
+                BeginContext(77, 174, true);
+                WriteLiteral("\r\n    <div class=\"modal-header\">\r\n        <button type=\"button\" class=\"close\" datadismiss=\"modal-shelf-delete\">&times;</button>\r\n        <h4 class=\"modal-title\">Delete shelf ");
+=======
             BeginContext(32, 499, false);
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "34870d3ac49b45bca3cfb610134cd001", async() => {
                 BeginContext(77, 42, true);
                 WriteLiteral("\r\n    <div class=\"modal-header\">\r\n        ");
+>>>>>>> f16b3f82b53517ddfc47d8d18427b537023264d7
                 EndContext();
                 BeginContext(119, 105, false);
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "01f97b634432480f914c24039a5a5f1b", async() => {

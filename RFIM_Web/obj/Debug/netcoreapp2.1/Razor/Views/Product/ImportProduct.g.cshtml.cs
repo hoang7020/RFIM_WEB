@@ -108,13 +108,27 @@ using RFIM_Web.Models;
                                 <div class=""all-form-element-inner"">
                                     ");
             EndContext();
+<<<<<<< HEAD
+            BeginContext(756, 2108, false);
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "09c0b3251c774bc68c6f1db3a1608bb7", async() => {
+                BeginContext(844, 42, true);
+                WriteLiteral("\r\n                                        ");
+                EndContext();
+                BeginContext(886, 66, false);
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("div", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b91d63098fd4429998f9c403ec66decb", async() => {
+=======
             BeginContext(886, 2540, false);
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "90dde713ce3b41d58894f68f16b1d9b8", async() => {
                 BeginContext(974, 42, true);
                 WriteLiteral("\r\n                                        ");
                 EndContext();
                 BeginContext(1016, 66, false);
+<<<<<<< HEAD
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("div", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5f5788eda9b84eeea9d6a42ac635352e", async() => {
+=======
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("div", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d0b2ab68c0804954b92721a73cecddb2", async() => {
+>>>>>>> f16b3f82b53517ddfc47d8d18427b537023264d7
+>>>>>>> dev_thinh3
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationSummaryTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ValidationSummaryTagHelper>();
@@ -196,9 +210,15 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationSummaryTagHelper.ValidationSumma
                                                             <button class=""btn btn-sm btn-primary login-submit-cs"" type=""submit"">Confirm</button>
                                                             ");
                 EndContext();
+<<<<<<< HEAD
+                BeginContext(2423, 116, false);
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8774f31dab264543bf09f8aa4bd85651", async() => {
+                    BeginContext(2529, 6, true);
+=======
                 BeginContext(2985, 116, false);
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ba4867e7e5574e70a9306081ea75cdca", async() => {
                     BeginContext(3091, 6, true);
+>>>>>>> f16b3f82b53517ddfc47d8d18427b537023264d7
                     WriteLiteral("Cancel");
                     EndContext();
                 }

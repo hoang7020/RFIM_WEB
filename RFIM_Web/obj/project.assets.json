@@ -12705,23 +12705,39 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\HieuDT\\.nuget\\packages\\": {},
+=======
+    "C:\\Users\\KIROV\\.nuget\\packages\\": {},
+>>>>>>> dev_thinh3
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\HieuDT\\Documents\\Visual Studio 2017\\Projects\\Capstone\\RFIM_WEB\\RFIM_Web\\RFIM_Web.csproj",
       "projectName": "RFIM_Web",
       "projectPath": "C:\\Users\\HieuDT\\Documents\\Visual Studio 2017\\Projects\\Capstone\\RFIM_WEB\\RFIM_Web\\RFIM_Web.csproj",
       "packagesPath": "C:\\Users\\HieuDT\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\HieuDT\\Documents\\Visual Studio 2017\\Projects\\Capstone\\RFIM_WEB\\RFIM_Web\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\KIROV\\Documents\\RFIM_WEB\\RFIM_Web\\RFIM_Web.csproj",
+      "projectName": "RFIM_Web",
+      "projectPath": "C:\\Users\\KIROV\\Documents\\RFIM_WEB\\RFIM_Web\\RFIM_Web.csproj",
+      "packagesPath": "C:\\Users\\KIROV\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\KIROV\\Documents\\RFIM_WEB\\RFIM_Web\\obj\\",
+>>>>>>> dev_thinh3
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\HieuDT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\KIROV\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> dev_thinh3
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

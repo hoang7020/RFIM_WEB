@@ -1,0 +1,88 @@
+﻿@model IEnumerable<RFIM_Web.Models.Product>
+@using Microsoft.AspNetCore.Http
+@using RFIM_Web.Utils
+@using RFIM_Web.Models
+@using System.Collections.Generic
+
+<div class="all-content-wrapper">
+    <div class="modal-header">
+        <a class="close" datadismiss="modal-user" asp-action="RenderProductList" asp-controller="Invoice">&times;</a>
+        <h4 class="modal-title">Product List</h4>
+    </div>
+    <div class="modal-body form-horizontal">
+        <div class="sparkline12-graph">
+            <div class="static-table-list">
+                @using (Html.BeginForm("AddProductListFinished", "Invoice", FormMethod.Post))
+                {
+                    <table class="table hover-table">
+                        <thead>
+                            <tr>
+                                <th>Select</th>
+                                <th>Product Id</th>
+                                <th>Product Name</th>
+                                <th>QuantityPerBox</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                if (Context.Session.Get<List<Product>>("listProduct") == null)
+                                {
+                                    foreach (var product in Model)
+                                    {
+                                        <tr>
+                                            <td><input type="checkbox" value="@product.ProductId" id="checkList" name="checkList" on />
+                                            <td>@product.ProductId</td>
+                                            <td>@product.ProductName</td>
+                                            <td>@product.QuantityPerBox</td>
+                                            <td>@product.Description</td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    List<Product> ssListProduct = Context.Session.Get<List<Product>>("listProduct");
+                                    foreach (var product in ssListProduct)
+                                    {
+                                        <tr>
+                                            <td><input type="checkbox" value="@product.ProductId" name="checkList" id="checkList" checked />
+                                            <td>@product.ProductId</td>
+                                            <td>@product.ProductName</td>
+                                            <td>@product.QuantityPerBox</td>
+                                            <td>@product.Description</td>
+                                        </tr>
+                                    }
+                                    foreach (var product in Model)
+                                    {
+                                        <tr>
+                                            <td><input type="checkbox" value="@product.ProductId" name="checkList" id="checkList" />
+                                            <td>@product.ProductId</td>
+                                            <td>@product.ProductName</td>
+                                            <td>@product.QuantityPerBox</td>
+                                            <td>@product.Description</td>
+                                        </tr>
+                                    }
+                                }
+                            }
+                        </tbody>
+                    </table>
+
+                    <input type="submit" value="Confirm" onclick = "return Check()"/>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function Check() {
+        var chkList = document.getElementById("checkList");
+        if (!chkList.checked) {
+            alert("Please check at least 1 item");
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+</script>

@@ -125,8 +125,17 @@ using RFIM_Web.Models;
                                     <div class=""product-tab-list tab-pane fade active in"" id=""single-tab1"">
                                         ");
             EndContext();
+<<<<<<< HEAD
+            BeginContext(713, 48, false);
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "802ea831df464006bc7887e4f0eada11", async() => {
+=======
             BeginContext(1725, 66, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "0493b57edb354191a63113ed226a0df2", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "4eddbdec770f47edb9d319300ceb8b80", async() => {
+>>>>>>> f16b3f82b53517ddfc47d8d18427b537023264d7
+>>>>>>> dev_thinh3
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -169,9 +178,15 @@ AddHtmlAttributeValue("", 1750, Model.Image, 1750, 12, false);
             BeginContext(2134, 1, true);
             WriteLiteral(" ");
             EndContext();
+<<<<<<< HEAD
+            BeginContext(1105, 116, false);
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4d2ab5ea6af34436befaf0c9d0a6b028", async() => {
+                BeginContext(1190, 27, true);
+=======
             BeginContext(2135, 116, false);
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d952ec616a65432cac94ff392ef7bc17", async() => {
                 BeginContext(2220, 27, true);
+>>>>>>> f16b3f82b53517ddfc47d8d18427b537023264d7
                 WriteLiteral("<i class=\"fas fa-edit\"></i>");
                 EndContext();
             }

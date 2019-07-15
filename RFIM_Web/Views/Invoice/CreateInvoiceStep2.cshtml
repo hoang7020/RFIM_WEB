@@ -1,0 +1,139 @@
+﻿@model RFIM_Web.Models.Invoice_Product
+
+@{
+    ViewData["Title"] = "CreateInvoiceStep2";
+}
+
+<div class="all-content-wrapper">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="sparkline12-list">
+                <div class="sparkline12-hd">
+                    <div class="main-sparkline12-hd">
+                        <h1>Create Invoice Step 2/2 </h1>
+                    </div>
+                </div>
+                <div class="sparkline12-graph">
+                    <div class="basic-login-form-ad">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="all-form-element-inner">
+                                    <a asp-action="AddProductList" asp-controller="Invoice" class="btn btn-success">Edit Product List</a>
+                                </div>
+                                <div>
+                                    <form asp-action="AddProductInvoice" enctype="multipart/form-data" id="frmCreateInvoice">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                    <h6 style="color:#e74c3c">@ViewBag.invoceExist</h6>
+                                                </div>
+                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                    <table>
+                                                        <thead>
+                                                            <tr>
+                                                                <th>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                                                        <label class="login2 pull-right pull-right-pro">Product Id</label>
+                                                                    </div>
+                                                                </th>
+                                                                <th>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                                                        <label class="login2 pull-right pull-right-pro">Product Name</label>
+                                                                    </div>
+                                                                </th>
+                                                                <th>
+                                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                        <label class="login2 pull-right pull-right-pro">Quantity (Box)</label>
+                                                                    </div>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @using Microsoft.AspNetCore.Http
+                                                            @using RFIM_Web.Utils
+                                                            @using RFIM_Web.Models
+                                                            @using System.Collections.Generic
+                                                            @{if (Context.Session.Get<List<Product>>("listProduct") != null)
+                                                                {
+                                                                    List<Product> listProduct = Context.Session.Get<List<Product>>("listProduct");
+                                                                    foreach (var product in listProduct)
+                                                                    {
+                                                                        <tr>
+                                                                            <td>
+                                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                                    <input asp-for="ProductId" name="listProduct" class="form-control" value="@product.ProductId" readonly />
+                                                                                    <span asp-validation-for="ProductId" class="text-danger"></span>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                                    <input class="form-control" value="@product.ProductName" readonly />
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                                    <input asp-for="Quantity" name="listQuantity" class="form-control" value="1" min="1" />
+                                                                                    <span asp-validation-for="Quantity" class="text-danger"></span>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    <tr>
+                                                                        <td>
+                                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                                No Data
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                                No Data
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                                No Data
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                }
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-inner">
+                                            <div class="login-btn-inner">
+                                                <div class="row">
+                                                    <div class="col-lg-3"></div>
+                                                    <div class="col-lg-9">
+                                                        <div class="login-horizental cancel-wp pull-left">
+                                                            @if (Context.Session.Get<List<Product>>("listProduct") == null)
+                                                            {
+                                                                <button class="btn btn-sm btn-primary login-submit-cs" type="submit" disabled>Finish</button>
+                                                            }
+                                                            else
+                                                            {
+                                                                <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Finish</button>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

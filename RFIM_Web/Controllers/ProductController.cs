@@ -162,7 +162,7 @@ namespace RFIM_Web.Controllers
         public async Task<IActionResult> DeleteConfirm(string id)
         {
             var product = await context.FindProductById(id);
-            product.Status = false;
+            product.Status = !product.Status;
             await context.UpdateProduct(product);
             return RedirectToAction(nameof(ListAllProduct));
         }
