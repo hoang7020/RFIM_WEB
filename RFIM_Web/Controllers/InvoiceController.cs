@@ -31,7 +31,6 @@ namespace RFIM_Web.Controllers
 
         public IActionResult DetailInvoice(string id)
         {
-<<<<<<< HEAD
             var productList = (from ip in ctx.Invoice_Products  
                            join p in ctx.Products on ip.ProductId equals p.ProductId
                            join c in ctx.Categories on p.CategoryId equals c.CategoryId
@@ -48,19 +47,6 @@ namespace RFIM_Web.Controllers
             var detail = ctx.Invoices.Include(it => it.InvoiceType).Include(it => it.InvoiceStatus).SingleOrDefault(i => i.InvoiceId.Equals(id));
             var model = new InvoiceDetail { Invoices = detail, productList = productList};
             return PartialView("InvoiceDetail", model);
-=======
-            var productList = (from ip in ctx.Invoice_Products
-                               join p in ctx.Products on ip.ProductId equals p.ProductId
-                               where ip.InvoiceId.Equals(id)
-                               select new ProductList
-                               {
-                                   ProductName = p.ProductName,
-                                   Quantity = ip.Quantity,
-                               }).ToList();
-            var detail = ctx.Invoices.Include(it => it.InvoiceType).Include(it => it.InvoiceStatus).SingleOrDefault(i => i.InvoiceId.Equals(id));
-            var model = new InvoiceDetail { Invoices = detail, productList = productList };
-            return View(model);
->>>>>>> dev_thinh3
         }
 
         [HttpGet]
@@ -100,8 +86,6 @@ namespace RFIM_Web.Controllers
             return RedirectToAction(nameof(ListAllInvoice));
         }
 
-<<<<<<< HEAD
-=======
         public IActionResult CreateInvoiceStep1()
         {
             ViewData["InvoiceTypeId"] = new SelectList(ctx.InvoiceTypes, "InvoiceTypeId", "InvoiceTypes");
@@ -187,6 +171,5 @@ namespace RFIM_Web.Controllers
             return RedirectToAction(nameof(BackToInvoiceList));
 
         }
->>>>>>> dev_thinh3
     }
 }

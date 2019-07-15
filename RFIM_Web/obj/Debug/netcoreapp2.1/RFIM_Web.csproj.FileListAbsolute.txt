@@ -1,76 +1,3 @@
-<<<<<<< HEAD
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\bin\Debug\netcoreapp2.1\RFIM_Web.deps.json
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\bin\Debug\netcoreapp2.1\RFIM_Web.runtimeconfig.json
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\bin\Debug\netcoreapp2.1\RFIM_Web.runtimeconfig.dev.json
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\bin\Debug\netcoreapp2.1\RFIM_Web.dll
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\bin\Debug\netcoreapp2.1\RFIM_Web.pdb
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\bin\Debug\netcoreapp2.1\RFIM_Web.Views.dll
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\bin\Debug\netcoreapp2.1\RFIM_Web.Views.pdb
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.csprojAssemblyReference.cache
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.csproj.CoreCompileInputs.cache
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.RazorAssemblyInfo.cache
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.RazorAssemblyInfo.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.AssemblyInfoInputs.cache
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.AssemblyInfo.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.TagHelpers.input.cache
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.TagHelpers.output.cache
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.RazorCoreGenerate.cache
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Accountant\Index.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\CreateUser.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\DeleteUser.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\EditUser.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Index.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\ListAccountant.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\ListAllUser.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\ListStockkeeper.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Category\CreateCategory.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Category\DeleteCategory.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Category\EditCategory.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Category\ListAllCategory.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\CreateInvoice.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\DeleteFail.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\DeleteInvoice.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\ListAllInvoice.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\CreateProduct.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\DeleteProduct.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\DetailProduct.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\EditProduct.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\ImportProduct.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\ListAllProduct.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\CategorySelect.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\BoxDetailList\Default.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\ProductDetailList\Default.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\QuantityBoxInPackage\Default.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\QuantityBoxInProduct\Default.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Login.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\PackageView.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\RoleSelect.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shelf\CreateShelf.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shelf\DeleteShelf.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shelf\DeleteShelfFail.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shelf\EditShelf.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shelf\EditShelfSize.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shelf\ListAllShelf.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shelf\ShowCell.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Stockkeeper\Index.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Stocktake\ListAllStocktake.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.RazorTargetAssemblyInfo.cache
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.RazorTargetAssemblyInfo.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.Views.pdb
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.dll
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.pdb
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.csproj.CopyComplete
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\ActiveProduct.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Report\ReportListView.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\ActiveUser.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\InvoiceDetail.g.cshtml.cs
-=======
 E:\Source\RFIM_WEB\RFIM_Web\bin\Debug\netcoreapp2.1\RFIM_Web.deps.json
 E:\Source\RFIM_WEB\RFIM_Web\bin\Debug\netcoreapp2.1\RFIM_Web.runtimeconfig.json
 E:\Source\RFIM_WEB\RFIM_Web\bin\Debug\netcoreapp2.1\RFIM_Web.runtimeconfig.dev.json
@@ -87,6 +14,7 @@ E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.TagHelpers.input.ca
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.TagHelpers.output.cache
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.RazorCoreGenerate.cache
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Accountant\Index.g.cshtml.cs
+E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\ActiveUser.g.cshtml.cs
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\CreateUser.g.cshtml.cs
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\DeleteUser.g.cshtml.cs
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\EditUser.g.cshtml.cs
@@ -98,17 +26,22 @@ E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Category\CreateC
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Category\DeleteCategory.g.cshtml.cs
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Category\EditCategory.g.cshtml.cs
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Category\ListAllCategory.g.cshtml.cs
+E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\AddProductList.g.cshtml.cs
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\CreateInvoice.g.cshtml.cs
+E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\CreateInvoiceStep1.g.cshtml.cs
+E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\CreateInvoiceStep2.g.cshtml.cs
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\DeleteFail.g.cshtml.cs
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\DeleteInvoice.g.cshtml.cs
-E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\DetailInvoice.g.cshtml.cs
+E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\InvoiceDetail.g.cshtml.cs
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\ListAllInvoice.g.cshtml.cs
+E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\ActiveProduct.g.cshtml.cs
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\CreateProduct.g.cshtml.cs
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\DeleteProduct.g.cshtml.cs
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\DetailProduct.g.cshtml.cs
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\EditProduct.g.cshtml.cs
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\ImportProduct.g.cshtml.cs
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\ListAllProduct.g.cshtml.cs
+E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Report\ReportListView.g.cshtml.cs
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\CategorySelect.g.cshtml.cs
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\BoxDetailList\Default.g.cshtml.cs
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\ProductDetailList\Default.g.cshtml.cs
@@ -138,69 +71,3 @@ E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.Views.pdb
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.dll
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.pdb
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.csproj.CopyComplete
-<<<<<<< HEAD
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\bin\Debug\netcoreapp2.1\RFIM_Web.deps.json
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\bin\Debug\netcoreapp2.1\RFIM_Web.runtimeconfig.json
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\bin\Debug\netcoreapp2.1\RFIM_Web.runtimeconfig.dev.json
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\bin\Debug\netcoreapp2.1\RFIM_Web.dll
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\bin\Debug\netcoreapp2.1\RFIM_Web.pdb
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\bin\Debug\netcoreapp2.1\RFIM_Web.Views.dll
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\bin\Debug\netcoreapp2.1\RFIM_Web.Views.pdb
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.csprojAssemblyReference.cache
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.csproj.CoreCompileInputs.cache
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.RazorAssemblyInfo.cache
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.RazorAssemblyInfo.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.AssemblyInfoInputs.cache
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.AssemblyInfo.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.TagHelpers.input.cache
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.TagHelpers.output.cache
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.RazorCoreGenerate.cache
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Accountant\Index.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\CreateUser.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\DeactiveUser.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\DeleteUser.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\EditUser.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Index.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\ListAccountant.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\ListAllUser.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\ListStockkeeper.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Category\CreateCategory.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Category\DeleteCategory.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Category\EditCategory.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Category\ListAllCategory.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\CreateProduct.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\DeleteProduct.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\DetailProduct.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\EditProduct.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\ImportProduct.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\ListAllProduct.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\CategorySelect.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\ProductDetailList\Default.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Login.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\RoleSelect.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shelf\CreateShelf.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shelf\DeleteShelf.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shelf\EditShelf.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Shelf\ListAllShelf.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Stockkeeper\Index.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.RazorTargetAssemblyInfo.cache
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.RazorTargetAssemblyInfo.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.Views.pdb
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.dll
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.pdb
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.csproj.CopyComplete
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\ListAllInvoice.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\CreateInvoice.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\DetailInvoice.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\DeleteInvoice.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\DeleteFail.g.cshtml.cs
-C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Stocktake\ListAllStocktake.g.cshtml.cs
-=======
->>>>>>> f16b3f82b53517ddfc47d8d18427b537023264d7
->>>>>>> dev_thinh3
