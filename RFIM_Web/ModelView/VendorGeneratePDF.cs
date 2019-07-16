@@ -21,7 +21,7 @@ namespace RFIM_Web.ModelView
                             </head>
                             <body>
                                 <div class='header'><h1>VENDOR LIST</h1></div>
-                                <table align='center' border='1'>
+                                <table border='1'>
                                     <tr>
                                         <th>Vendor ID</th>
                                         <th>Vendor Name</th>
