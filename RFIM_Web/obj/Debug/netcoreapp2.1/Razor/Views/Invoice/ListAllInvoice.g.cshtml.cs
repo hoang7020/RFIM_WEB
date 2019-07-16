@@ -83,7 +83,7 @@ using RFIM_Web.Models;
                                 ");
             EndContext();
             BeginContext(799, 89, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1685ad469615469ba89abd8904b70ac9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b721b5a62b4b4bbd8ff57eb03aefdb13", async() => {
                 BeginContext(878, 6, true);
                 WriteLiteral("Create");
                 EndContext();
@@ -131,7 +131,7 @@ using RFIM_Web.Models;
             WriteLiteral("                                        <tr>\r\n\r\n                                            <td>");
             EndContext();
             BeginContext(1950, 167, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1714d107e12e4be6aa461a2b902dfaba", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d508914f91204490a55f98369723a556", async() => {
                 BeginContext(2096, 17, false);
 #line 38 "C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\Views\Invoice\ListAllInvoice.cshtml"
                                                                                                                                                                                             Write(invoice.InvoiceId);
@@ -214,7 +214,7 @@ using RFIM_Web.Models;
             WriteLiteral("</td>\r\n                                            <td>\r\n                                                ");
             EndContext();
             BeginContext(2537, 303, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "94ff5c2f795545cbabb5f1b73cec5ad9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "db86ed7f81224f48a1dfa31608baebad", async() => {
                 BeginContext(2704, 132, true);
                 WriteLiteral("\r\n                                                    <i class=\"fas fa-trash\"></i>\r\n                                                ");
                 EndContext();
