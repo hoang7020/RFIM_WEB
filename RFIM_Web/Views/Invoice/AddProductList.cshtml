@@ -1,11 +1,11 @@
-﻿@model IEnumerable<RFIM_Web.Models.Product>
+﻿@model IEnumerable<RFIM_Web.ModelView.ProductInvoiceList>
 @using Microsoft.AspNetCore.Http
 @using RFIM_Web.Utils
-@using RFIM_Web.Models
+@using RFIM_Web.ModelView
 @using System.Collections.Generic
 
 <div class="modal-header">
-    <a class="close" datadismiss="modal-user" asp-action="BackToInvoiceList" asp-controller="Invoice">&times;</a>
+    <a class="close" datadismiss="modal-user" asp-action="RenderProductList" asp-controller="Invoice">&times;</a>
     <h4 class="modal-title">Product List</h4>
 </div>
 <div class="modal-body form-horizontal">
@@ -21,27 +21,31 @@
                             <th>Product Id</th>
                             <th>Product Name</th>
                             <th>QuantityPerBox</th>
+                            <th>Vendor</th>
+                            <th>Category</th>
                             <th>Description</th>
                         </tr>
                     </thead>
                     <tbody>
                         @{
-                            if (Context.Session.Get<List<Product>>("listProduct") == null)
+                            if (Context.Session.Get<List<ProductInvoiceList>>("listProduct") == null)
                             {
                                 foreach (var product in Model)
                                 {
                                     <tr>
-                                        <td><input type="checkbox" value="@product.ProductId" id="checkList" name="checkList" on />
+                                        <td><input type="checkbox" value="@product.ProductId" id="checkList" name="checkList" />
                                         <td>@product.ProductId</td>
                                         <td>@product.ProductName</td>
                                         <td>@product.QuantityPerBox</td>
+                                        <td>@product.Vendor</td>
+                                        <td>@product.Category</td>
                                         <td>@product.Description</td>
                                     </tr>
                                 }
                             }
                             else
                             {
-                                List<Product> ssListProduct = Context.Session.Get<List<Product>>("listProduct");
+                                List<ProductInvoiceList> ssListProduct = Context.Session.Get<List<ProductInvoiceList>>("listProduct");
                                 foreach (var product in ssListProduct)
                                 {
                                     <tr>
@@ -49,6 +53,8 @@
                                         <td>@product.ProductId</td>
                                         <td>@product.ProductName</td>
                                         <td>@product.QuantityPerBox</td>
+                                        <td>@product.Vendor</td>
+                                        <td>@product.Category</td>
                                         <td>@product.Description</td>
                                     </tr>
                                 }
@@ -59,6 +65,8 @@
                                         <td>@product.ProductId</td>
                                         <td>@product.ProductName</td>
                                         <td>@product.QuantityPerBox</td>
+                                        <td>@product.Vendor</td>
+                                        <td>@product.Category</td>
                                         <td>@product.Description</td>
                                     </tr>
                                 }
@@ -67,7 +75,7 @@
                     </tbody>
                 </table>
                 <div class="modal-footer">
-                    <button type="submit" onclick="Check" class="btn btn-success">Confirm</button>
+                    <button type="submit" onclick="Check()" class="btn btn-success">Confirm</button>
                 </div>
             }
         </div>
@@ -76,33 +84,23 @@
 
 
 <script type="text/javascript">
-    function Check() {
-        var chkList = document.getElementById("checkList");
-        if (!chkList.checked) {
-            alert("Please check at least 1 item");
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
-    //function myFunction() {
-    //    var input, filter, table, tr, td, i, txtValue;
-    //    input = document.getElementById("myInput");
-    //    filter = input.value.toUpperCase();
-    //    table = document.getElementById("myTable");
-    //    tr = table.getElementsByTagName("tr");
+        //function myFunction() {
+        //    var input, filter, table, tr, td, i, txtValue;
+        //    input = document.getElementById("myInput");
+        //    filter = input.value.toUpperCase();
+        //    table = document.getElementById("myTable");
+        //    tr = table.getElementsByTagName("tr");
 
-    //    for (i = 0; i < tr.length; i++) {
-    //        td = tr[i].getElementsByTagName("td")[0];
-    //        if (td) {
-    //            txtValue = td.textContent || td.innerText;
-    //            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-    //                tr[i].style.display = "";
-    //            } else {
-    //                tr[i].style.display = "none";
-    //            }
-    //        }
-    //    }
-    //}
+        //    for (i = 0; i < tr.length; i++) {
+        //        td = tr[i].getElementsByTagName("td")[0];
+        //        if (td) {
+        //            txtValue = td.textContent || td.innerText;
+        //            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        //                tr[i].style.display = "";
+        //            } else {
+        //                tr[i].style.display = "none";
+        //            }
+        //        }
+        //    }
+        //}
 </script>
