@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RFIM_Web.Interfaces
 {
-    public interface IShelf
+    public interface IShelfRepository
     {
         Task<List<Shelf>> GetAllShelf();
         Task<Shelf> GetShelf(string id);

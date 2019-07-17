@@ -17,8 +17,8 @@ namespace RFIM_Web.Controllers
     [Authorize]
     public class UserController : Controller
     {
-        private readonly IUser ctx;
-        public UserController( IUser db)
+        private readonly IUserRepository ctx;
+        public UserController( IUserRepository db)
         {
             ctx = db;
         }
@@ -58,16 +58,7 @@ namespace RFIM_Web.Controllers
 
             HttpContext.Session.SetString("User", loggedUser.Username);
 
-            if (loggedUser.Role.RoleName == "Admin")
-            {   
-                return RedirectToAction("ListAllUser", "Admin");
-            } else if(loggedUser.Role.RoleName == "Accountant")
-            {
-                return RedirectToAction("Index", "Accountant");
-            } else
-            {
-                return RedirectToAction("Index", "Stockkeeper");
-            }
+            return RedirectToAction("Index", "Admin");
         }
 
         public async Task<IActionResult> Logout()

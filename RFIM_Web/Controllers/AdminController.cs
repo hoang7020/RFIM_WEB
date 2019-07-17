@@ -16,16 +16,14 @@ namespace RFIM_Web.Controllers
     [Authorize]
     public class AdminController : Controller
     {
-        private readonly IUser ctx;
-        public AdminController(IUser db)
+        private readonly IUserRepository ctx;
+        private readonly IHomeRepository _ctx;
+        public AdminController(IUserRepository db, IHomeRepository _db)
         {
             ctx = db;
+            _ctx = _db;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
         [HttpGet]
         public IActionResult ListAllUser()
         {
@@ -158,6 +156,39 @@ namespace RFIM_Web.Controllers
         public IActionResult BackToUserList()
         {
             return RedirectToAction(nameof(ListAllUser));
+        }
+        public IActionResult Index()
+        {
+            int totalUser = ctx.UserCount();
+            int totalActiveUser = ctx.ActiveUserCount();
+            int totalAccountant = ctx.AccountantCount();
+            int totalStockkeeper = ctx.StockkeeperCount();
+            ViewBag.UserCount = new AdminHomePage {
+                Users = totalUser,
+                ActiveUsers = totalActiveUser,
+                Accountants = totalAccountant,
+                Stockkeepers = totalStockkeeper
+            };
+            int totalCategory = _ctx.CategoryCount();
+            int totalVendor = _ctx.VendorCount();
+            int totalProduct = _ctx.ProductCount();
+            int totalShelf = _ctx.ShelfCount();
+            int receivePending = _ctx.ReceivesPendingCount();
+            int issuePending = _ctx.IssuesPendingCount();
+            List<Invoice> listReceives = _ctx.GetReceives();
+            List<Invoice> listIssues = _ctx.GetIssues();
+            ViewBag.AccountantInfo = new AccountantHomePage
+            {
+                Categories = totalCategory,
+                Vendors = totalVendor,
+                Products = totalProduct,
+                Shelfs = totalShelf,
+                ReceivePendingCount = receivePending,
+                IssuePendingCount = issuePending,
+                Receives = listReceives,
+                Issues = listIssues
+            };
+            return View();
         }
     }
 }

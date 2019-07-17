@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RFIM_Web.Repositories
 {
-    public class UserRepository : IUser
+    public class UserRepository : IUserRepository
     {
         protected readonly MyDbContext ctx;
         public UserRepository(MyDbContext db)
@@ -77,6 +77,22 @@ namespace RFIM_Web.Repositories
         public bool UserExists(int id)
         {
             return ctx.Users.Any(p => p.UserId == id);
+        }
+        public int UserCount()
+        {
+            return ctx.Users.Count();
+        }
+        public int ActiveUserCount()
+        {
+            return ctx.Users.Count(p => p.Status == true);
+        }
+        public int AccountantCount()
+        {
+            return ctx.Users.Count(p => p.Role.RoleName == "Accountant");
+        }
+        public int StockkeeperCount()
+        {
+            return ctx.Users.Count(p => p.Role.RoleName == "Stockkeeper");
         }
         private async Task Save()
         {

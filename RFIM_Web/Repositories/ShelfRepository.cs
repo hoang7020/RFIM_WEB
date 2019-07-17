@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RFIM_Web.Repositories
 {
-    public class ShelfRepository : IShelf
+    public class ShelfRepository : IShelfRepository
     {
         protected readonly MyDbContext ctx;
         public ShelfRepository(MyDbContext db)
