@@ -95,7 +95,7 @@ using Microsoft.AspNetCore.Http;
                                 ");
             EndContext();
             BeginContext(849, 89, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2f87a0a43104e5aaf9bd7e1d6b73cb2", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1d5787c671cd4d80ad2de50d8fc5e8dc", async() => {
                 BeginContext(923, 11, true);
                 WriteLiteral("Create User");
                 EndContext();
@@ -214,7 +214,7 @@ using Microsoft.AspNetCore.Http;
             WriteLiteral("                                                    ");
             EndContext();
             BeginContext(2730, 165, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "979b3d7cad4e4fca83de5f62a76b8535", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fb6a569be6f64f0ebcb62d9d6a2ee85a", async() => {
                 BeginContext(2885, 6, true);
                 WriteLiteral("Active");
                 EndContext();
@@ -264,7 +264,7 @@ using Microsoft.AspNetCore.Http;
             WriteLiteral("                                                    ");
             EndContext();
             BeginContext(3117, 166, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "11bce0b7d34a4758af50f791f321d576", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7d7a318ca5d143fdb4b13ee92735f8ea", async() => {
                 BeginContext(3271, 8, true);
                 WriteLiteral("Deactive");
                 EndContext();
@@ -312,7 +312,7 @@ using Microsoft.AspNetCore.Http;
             WriteLiteral("                                                </td>\r\n                                                <td>\r\n                                                    ");
             EndContext();
             BeginContext(3501, 148, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6c9a63624862468994c1744ace181bfa", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1c7606913fd34bc781d56f4821c756df", async() => {
                 BeginContext(3599, 46, true);
                 WriteLiteral("<i class=\"fas fa-edit\" aria-hidden=\"true\"></i>");
                 EndContext();

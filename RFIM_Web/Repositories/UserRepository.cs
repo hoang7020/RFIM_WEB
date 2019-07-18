@@ -35,27 +35,27 @@ namespace RFIM_Web.Repositories
            return await ctx.Users.FindAsync(id);
         }
 
-        public List<User> GetAll()
+        public async Task<List<User>> GetAll()
         {
-            return ctx.Users.Where(p => p.RoleId == 2 || p.RoleId == 3)
-                .Include(p => p.Role).ToList();
+            return await ctx.Users.Where(p => p.RoleId == 2 || p.RoleId == 3)
+                .Include(p => p.Role).ToListAsync();
         }
-        public List<User> GetAllAccountant()
+        public async Task<List<User>> GetAllAccountant()
         {
-            return ctx.Users.Where(p => p.RoleId == 2)
-                .Include(p => p.Role).ToList();
-        }
-
-        public List<User> GetAllStockkeeper()
-        {
-            return ctx.Users.Where(p => p.RoleId == 3)
-                .Include(p => p.Role).ToList();
+            return await ctx.Users.Where(p => p.RoleId == 2)
+                .Include(p => p.Role).ToListAsync();
         }
 
-        public User GetLoggedUser(LoginView model)
+        public async Task<List<User>> GetAllStockkeeper()
         {
-            return ctx.Users.Include(p => p.Role)
-                .SingleOrDefault(p => p.Username == model.Username && p.Password == model.Password);
+            return await ctx.Users.Where(p => p.RoleId == 3)
+                .Include(p => p.Role).ToListAsync();
+        }
+
+        public async Task<User> GetLoggedUser(LoginView model)
+        {
+            return await ctx.Users.Include(p => p.Role)
+                .SingleOrDefaultAsync(p => p.Username == model.Username && p.Password == model.Password);
         }
 
         public List<Role> GetRole()

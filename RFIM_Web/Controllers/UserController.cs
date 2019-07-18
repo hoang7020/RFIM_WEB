@@ -34,7 +34,7 @@ namespace RFIM_Web.Controllers
         [HttpPost, AllowAnonymous]
         public async Task<IActionResult> Login(LoginView model)
         {
-            var loggedUser = ctx.GetLoggedUser(model);
+            var loggedUser =await ctx.GetLoggedUser(model);
             if (loggedUser == null)
             {
                 ViewBag.LoiDangNhap = "The username or password that you've entered doesn't match any account.Please try again";

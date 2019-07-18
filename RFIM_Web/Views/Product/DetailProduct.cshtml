@@ -10,7 +10,10 @@
             <div class="col-md-3 col-md-3 col-sm-3 col-xs-12 mg-t-15">
                 <div class="hpanel responsive-mg-b-30">
                     <div class="panel-body">
-                        <input type="text" placeholder="Search..." class="form-control" id="myInput" onkeyup="myFunction()" />
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fas fa-search"></i></span>
+                            <input  type="text" placeholder="Search..." class="form-control" id="myInput" onkeyup="myFunction()" />
+                        </div>
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                 <a class="btn btn-success btn-block" asp-action="CreateProduct" asp-controller="Product">
