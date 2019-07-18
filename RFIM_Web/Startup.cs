@@ -63,9 +63,10 @@ namespace RFIM_Web
             services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
 
             //Add application services
-            services.AddScoped<IUser, UserRepository>();
-            services.AddScoped<IShelf, ShelfRepository>();
-            services.AddScoped<IProduct, ProductRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IShelfRepository, ShelfRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IHomeRepository, HomeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

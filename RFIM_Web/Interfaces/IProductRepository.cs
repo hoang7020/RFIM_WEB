@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RFIM_Web.Interfaces
 {
-    public interface IProduct
+    public interface IProductRepository
     {
         List<Product> GetAllProduct();
         List<Category> GetAllCategory();

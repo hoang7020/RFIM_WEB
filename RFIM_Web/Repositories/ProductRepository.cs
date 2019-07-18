@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RFIM_Web.Repositories
 {
-    public class ProductRepository : IProduct
+    public class ProductRepository : IProductRepository
     {
         protected readonly MyDbContext ctx;
         public ProductRepository(MyDbContext db)

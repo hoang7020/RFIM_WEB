@@ -15,8 +15,8 @@ namespace RFIM_Web.Controllers
     [Authorize]
     public class ShelfController : Controller
     {
-        private readonly IShelf ctx;
-        public ShelfController(IShelf db)
+        private readonly IShelfRepository ctx;
+        public ShelfController(IShelfRepository db)
         {
             ctx = db;
         }
@@ -139,7 +139,6 @@ namespace RFIM_Web.Controllers
                     //lấy tổng số row của table cell, floor của id
                     int currentCellNumber = ctx.CellCount(id);
                     int currentFloorNumber = ctx.FloorCount(id);
-                    //test
 
                     //thay đổi floor number tăng so với floor number hiện tại 
                     if (currentFloorNumber < shelf.FloorNumber)
@@ -245,6 +244,11 @@ namespace RFIM_Web.Controllers
                             StandardCell = standShelfSize.StandardCell
                         };
                         return View(shelf);
+                    }
+
+                    if(standShelfSize.StandardCell == shelf.CellNumber && standShelfSize.StandardFloor == shelf.FloorNumber)
+                    {
+                        await ctx.UpdateShelf(shelf);
                     }
                 }
                 catch (DbUpdateConcurrencyException)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RFIM_Web.Interfaces
 {
-    public interface IUser
+    public interface IUserRepository
     {
         List<User> GetAll();
         List<User> GetAllAccountant();
@@ -20,5 +20,9 @@ namespace RFIM_Web.Interfaces
         bool UserExists(int id);
         List<Role> GetRole();
         User GetLoggedUser(LoginView model);
+        int UserCount();
+        int ActiveUserCount();
+        int AccountantCount();
+        int StockkeeperCount();
     }
 }

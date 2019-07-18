@@ -19,8 +19,8 @@ namespace RFIM_Web.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly IProduct context;
-        public ProductController(IProduct _context)
+        private readonly IProductRepository context;
+        public ProductController(IProductRepository _context)
         {
             context = _context;
         }

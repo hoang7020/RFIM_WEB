@@ -2,77 +2,249 @@
 @{
     ViewData["Title"] = "Index";
 }
-<div class="all-content-wrapper">
-    <div class="section-admin container-fluid">
-        <div class="row admin text-center">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        <div class="admin-content analysis-progrebar-ctn res-mg-t-15">
-                            <h4 class="text-left text-uppercase"><b>Orders</b></h4>
-                            <div class="row vertical-center-box vertical-center-box-tablet">
-                                <div class="col-xs-3 mar-bot-15 text-left">
-                                    <!-- <label class="label bg-green">30% <i class="fa fa-level-up" aria-hidden="true"></i></label> -->
-                                </div>
-                                <div class="col-xs-9 cus-gh-hd-pro">
-                                    <h2 class="text-right no-margin"></h2>
+
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("Admin"))
+    {
+        <div class="all-content-wrapper">
+            <div class="widgets-programs-area mg-t-15">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="hpanel responsive-mg-b-30">
+                                <div class="panel-body">
+                                    <div class="stats-title pull-left">
+                                        <h4>Total Users</h4>
+                                    </div>
+                                    <div class="stats-icon pull-right">
+                                        <i class="fas fa-users" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="m-t-xl">
+                                        <h1 class="text-success">@ViewBag.UserCount.Users</h1>
+                                    </div>
                                 </div>
                             </div>
-                            <!-- <div class="progress progress-mini">
-                                <div style="width: 78%;" class="progress-bar bg-green"></div>
-                            </div> -->
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="margin-bottom:1px;">
-                        <div class="admin-content analysis-progrebar-ctn res-mg-t-30">
-                            <h4 class="text-left text-uppercase"><b>Staffs</b></h4>
-                            <div class="row vertical-center-box vertical-center-box-tablet">
-                                <div class="text-left col-xs-3 mar-bot-15">
-                                    <!-- <label class="label bg-red">15% <i class="fa fa-level-down" aria-hidden="true"></i></label> -->
-                                </div>
-                                <div class="col-xs-9 cus-gh-hd-pro">
-                                    <h2 class="text-right no-margin"></h2>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="hpanel responsive-mg-b-30">
+                                <div class="panel-body">
+                                    <div class="stats-title pull-left">
+                                        <h4>Active Users</h4>
+                                    </div>
+                                    <div class="stats-icon pull-right">
+                                        <i class="fa fa-street-view" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="m-t-xl">
+                                        <h1 class="text-info">@ViewBag.UserCount.ActiveUsers</h1>
+                                    </div>
                                 </div>
                             </div>
-                            <!-- <div class="progress progress-mini">
-                                <div style="width: 38%;" class="progress-bar progress-bar-danger bg-red"></div>
-                            </div> -->
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        <div class="admin-content analysis-progrebar-ctn res-mg-t-30">
-                            <h4 class="text-left text-uppercase"><b>Reports</b></h4>
-                            <div class="row vertical-center-box vertical-center-box-tablet">
-                                <div class="text-left col-xs-3 mar-bot-15">
-                                    <!-- <label class="label bg-blue">50% <i class="fa fa-level-up" aria-hidden="true"></i></label> -->
-                                </div>
-                                <div class="col-xs-9 cus-gh-hd-pro">
-                                    <h2 class="text-right no-margin"></h2>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="hpanel responsive-mg-b-30">
+                                <div class="panel-body">
+                                    <div class="stats-title pull-left">
+                                        <h4>Total Accountant</h4>
+                                    </div>
+                                    <div class="stats-icon pull-right">
+                                        <i class="fas fa-calculator" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="m-t-xl">
+                                        <h1 class="text-warning">@ViewBag.UserCount.Accountants</h1>
+                                    </div>
                                 </div>
                             </div>
-                            <!-- <div class="progress progress-mini">
-                                <div style="width: 60%;" class="progress-bar bg-blue"></div>
-                            </div> -->
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        <div class="admin-content analysis-progrebar-ctn res-mg-t-30">
-                            <h4 class="text-left text-uppercase"><b>Products</b></h4>
-                            <div class="row vertical-center-box vertical-center-box-tablet">
-                                <div class="text-left col-xs-3 mar-bot-15">
-                                    <!-- <label class="label bg-purple">80% <i class="fa fa-level-up" aria-hidden="true"></i></label> -->
-                                </div>
-                                <div class="col-xs-9 cus-gh-hd-pro">
-                                    <h2 class="text-right no-margin"></h2>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="hpanel">
+                                <div class="panel-body">
+                                    <div class="stats-title pull-left">
+                                        <h4>Total Stockkeeper</h4>
+                                    </div>
+                                    <div class="stats-icon pull-right">
+                                        <i class="fas fa-warehouse" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="m-t-xl">
+                                        <h1 class="text-danger">@ViewBag.UserCount.Stockkeepers</h1>
+                                    </div>
                                 </div>
                             </div>
-                            <!-- <div class="progress progress-mini">
-                                <div style="width: 60%;" class="progress-bar bg-purple"></div>
-                            </div> -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    }
+    else if (User.IsInRole("Accountant"))
+    {
+
+    }
+    else
+    {
+        <div class="all-content-wrapper">
+            <div class="widgets-programs-area mg-t-15">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="hpanel responsive-mg-b-30">
+                                <div class="panel-body">
+                                    <div class="stats-title pull-left">
+                                        <h4>Total Categories</h4>
+                                    </div>
+                                    <div class="stats-icon pull-right">
+                                        <i class="fas fa-cube" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="m-t-xl">
+                                        <h1 class="text-success">@ViewBag.AccountantInfo.Categories</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="hpanel responsive-mg-b-30">
+                                <div class="panel-body">
+                                    <div class="stats-title pull-left">
+                                        <h4>Total Products</h4>
+                                    </div>
+                                    <div class="stats-icon pull-right">
+                                        <i class="fas fa-boxes" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="m-t-xl">
+                                        <h1 class="text-info">@ViewBag.AccountantInfo.Products</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="hpanel responsive-mg-b-30">
+                                <div class="panel-body">
+                                    <div class="stats-title pull-left">
+                                        <h4>Total Shelfs</h4>
+                                    </div>
+                                    <div class="stats-icon pull-right">
+                                        <i class="fas fa-pallet" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="m-t-xl">
+                                        <h1 class="text-warning">@ViewBag.AccountantInfo.Shelfs</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="hpanel">
+                                <div class="panel-body">
+                                    <div class="stats-title pull-left">
+                                        <h4>Total Vendors</h4>
+                                    </div>
+                                    <div class="stats-icon pull-right">
+                                        <i class="fas fa-industry" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="m-t-xl">
+                                        <h1 class="text-danger">@ViewBag.AccountantInfo.Vendors</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="widget-program-bg mg-tb-30">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="hpanel hbggreen responsive-mg-b-30">
+                                <div class="panel-body">
+                                    <div class="text-center content-bg-pro">
+                                        <h3>Good Receives</h3>
+                                        <p class="text-big font-light">
+                                            @ViewBag.AccountantInfo.ReceivePendingCount
+                                        </p>
+                                        <small>
+                                            Good receipts still be pending, please check and stock in
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="hpanel hbgred">
+                                <div class="panel-body">
+                                    <div class="text-center content-bg-pro">
+                                        <h3>Good Issues</h3>
+                                        <p class="text-big font-light">
+                                            @ViewBag.AccountantInfo.IssuePendingCount
+                                        </p>
+                                        <small>
+                                            Good issues still be pending, please check and stock out
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="program-widget-bc mt-t-30 mg-b-15">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="hpanel responsive-mg-b-30">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Invoice Id</th>
+                                                    <th>Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var receive in ViewBag.AccountantInfo.Receives)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <span class="text-success font-bold">@receive.InvoiceId</span>
+                                                        </td>
+                                                        <td>@receive.Date</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="hpanel">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Invoice Id</th>
+                                                    <th>Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var issue in ViewBag.AccountantInfo.Issues)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <span class="text-success font-bold">@issue.InvoiceId</span>
+                                                        </td>
+                                                        <td>@issue.Date</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
