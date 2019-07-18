@@ -25,21 +25,21 @@ namespace RFIM_Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult ListAllUser()
+        public async Task<IActionResult> ListAllUser()
         {
-            var dsStaff = ctx.GetAll();
+            var dsStaff = await ctx.GetAll();
             return View(dsStaff);
         }
         [HttpGet]
-        public IActionResult ListAccountant()
+        public async Task<IActionResult> ListAccountant()
         {
-            var dsAccountant = ctx.GetAllAccountant();
+            var dsAccountant = await ctx.GetAllAccountant();
             return View(dsAccountant);
         }
         [HttpGet]
-        public IActionResult ListStockkeeper()
+        public async Task<IActionResult> ListStockkeeper()
         {
-            var dsStockkeeper = ctx.GetAllStockkeeper();
+            var dsStockkeeper = await ctx.GetAllStockkeeper();
             return View(dsStockkeeper);
         }
         [HttpGet]

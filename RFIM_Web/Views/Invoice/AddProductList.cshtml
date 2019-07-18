@@ -11,22 +11,24 @@
 <div class="modal-body form-horizontal">
     <div class="sparkline12-graph">
         <div class="static-table-list">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fas fa-search"></i></span>
+                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+            </div>
             @using (Html.BeginForm("AddProductListFinished", "Invoice", FormMethod.Post))
             {
-                @*<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">*@
-                <table class="table hover-table" id="myTable">
+                <table class="table hover-table">
                     <thead>
                         <tr>
                             <th>Select</th>
                             <th>Product Id</th>
                             <th>Product Name</th>
                             <th>QuantityPerBox</th>
-                            <th>Vendor</th>
                             <th>Category</th>
-                            <th>Description</th>
+                            <th>Vendor</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="myTable">
                         @{
                             if (Context.Session.Get<List<ProductInvoiceList>>("listProduct") == null)
                             {
@@ -37,9 +39,8 @@
                                         <td>@product.ProductId</td>
                                         <td>@product.ProductName</td>
                                         <td>@product.QuantityPerBox</td>
-                                        <td>@product.Vendor</td>
                                         <td>@product.Category</td>
-                                        <td>@product.Description</td>
+                                        <td>@product.Vendor</td>
                                     </tr>
                                 }
                             }
@@ -53,9 +54,8 @@
                                         <td>@product.ProductId</td>
                                         <td>@product.ProductName</td>
                                         <td>@product.QuantityPerBox</td>
-                                        <td>@product.Vendor</td>
                                         <td>@product.Category</td>
-                                        <td>@product.Description</td>
+                                        <td>@product.Vendor</td>
                                     </tr>
                                 }
                                 foreach (var product in Model)
@@ -65,9 +65,8 @@
                                         <td>@product.ProductId</td>
                                         <td>@product.ProductName</td>
                                         <td>@product.QuantityPerBox</td>
-                                        <td>@product.Vendor</td>
                                         <td>@product.Category</td>
-                                        <td>@product.Description</td>
+                                        <td>@product.Vendor</td>
                                     </tr>
                                 }
                             }
@@ -81,26 +80,14 @@
         </div>
     </div>
 </div>
-
-
-<script type="text/javascript">
-        //function myFunction() {
-        //    var input, filter, table, tr, td, i, txtValue;
-        //    input = document.getElementById("myInput");
-        //    filter = input.value.toUpperCase();
-        //    table = document.getElementById("myTable");
-        //    tr = table.getElementsByTagName("tr");
-
-        //    for (i = 0; i < tr.length; i++) {
-        //        td = tr[i].getElementsByTagName("td")[0];
-        //        if (td) {
-        //            txtValue = td.textContent || td.innerText;
-        //            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        //                tr[i].style.display = "";
-        //            } else {
-        //                tr[i].style.display = "none";
-        //            }
-        //        }
-        //    }
-        //}
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
 </script>
+
