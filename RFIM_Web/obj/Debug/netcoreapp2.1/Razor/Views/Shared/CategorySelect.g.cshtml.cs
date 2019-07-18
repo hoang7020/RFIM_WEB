@@ -63,7 +63,7 @@ using RFIM_Web.Models;
             WriteLiteral("<select name=\"CategoryId\" class=\"form-control\">\r\n    ");
             EndContext();
             BeginContext(178, 27, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6933be8850ee4fe0bbd194dde9d0f1a9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "59fae4d371a2445cbbcc45bb7018d4ad", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_OptionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.OptionTagHelper>();
@@ -101,7 +101,7 @@ using RFIM_Web.Models;
             WriteLiteral("        ");
             EndContext();
             BeginContext(318, 92, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "90b53138b145458e8aabf1d4577f93fa", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8c033adbb1db46d294a105b213f3560b", async() => {
                 BeginContext(355, 14, true);
                 WriteLiteral("\r\n            ");
                 EndContext();

@@ -33,19 +33,19 @@
                                     <tbody>
                                         @foreach (var invoice in Model)
                                         {
-                                        <tr>
+                                            <tr>
 
-                                            <td><a asp-action="DetailInvoice" asp-controller="Invoice" asp-route-id="@invoice.InvoiceId" data-toggle="modal" data-target="#modal-invoice-detail">@invoice.InvoiceId</a></td>
-                                            <td>@invoice.Date</td>
-                                            <td>@invoice.Description</td>
-                                            <td>@invoice.InvoiceType.InvoiceTypes</td>
-                                            <td>@invoice.InvoiceStatus.Status</td>
-                                            <td>
-                                                <a asp-action="DeleteInvoice" asp-controller="Invoice" asp-route-id="@invoice.InvoiceId" class="pd-setting-ed" data-toggle="modal" data-target="#modal-invoice-delete">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                                <td><a asp-action="DetailInvoice" asp-controller="Invoice" asp-route-id="@invoice.InvoiceId" data-toggle="modal" data-target="#modal-invoice-detail">@invoice.InvoiceId</a></td>
+                                                <td>@invoice.Date</td>
+                                                <td>@invoice.Description</td>
+                                                <td>@invoice.InvoiceType.InvoiceTypes</td>
+                                                <td>@invoice.InvoiceStatus.Status</td>
+                                                <td>
+                                                    <a asp-action="DeleteInvoice" asp-controller="Invoice" asp-route-id="@invoice.InvoiceId" class="pd-setting-ed" data-toggle="modal" data-target="#modal-invoice-delete">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
                                         }
                                     </tbody>
                                 </table>

@@ -87,7 +87,7 @@ using RFIM_Web.Models;
                                 ");
             EndContext();
             BeginContext(786, 91, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b11e6d8ec687441f82da3c27c8fe9602", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6137a7ef1f3c4309bc5fa2cc60a958dd", async() => {
                 BeginContext(861, 12, true);
                 WriteLiteral("Create Shelf");
                 EndContext();
@@ -112,7 +112,7 @@ using RFIM_Web.Models;
             WriteLiteral("\r\n                                ");
             EndContext();
             BeginContext(911, 144, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5280c4819b984de4a99fcda5af1fdd21", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5a23d52c0a9e4f35a112db20af6e07b8", async() => {
                 BeginContext(1005, 46, true);
                 WriteLiteral("Standard Shelf Size <i class=\"fas fa-eye\"></i>");
                 EndContext();
@@ -165,7 +165,7 @@ using RFIM_Web.Models;
             WriteLiteral("                                            <tr>\r\n                                                <td>");
             EndContext();
             BeginContext(2064, 142, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e5438ae484e244f683023a802b54248e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a24bb9f037a4d6ab4383182b1c15741", async() => {
                 BeginContext(2189, 13, false);
 #line 37 "C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\Views\Shelf\ListAllShelf.cshtml"
                                                                                                                                                                            Write(shelf.ShelfId);
@@ -238,7 +238,7 @@ using RFIM_Web.Models;
             WriteLiteral("</td>\r\n                                                <td>\r\n                                                    ");
             EndContext();
             BeginContext(2549, 151, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "532545d438d5405d8885590175fada7d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1267ee20cddc4bfea400281326d77899", async() => {
                 BeginContext(2650, 46, true);
                 WriteLiteral("<i class=\"fas fa-edit\" aria-hidden=\"true\"></i>");
                 EndContext();
@@ -276,7 +276,7 @@ using RFIM_Web.Models;
             WriteLiteral("\r\n                                                    ");
             EndContext();
             BeginContext(2754, 320, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7b851d9403d94ab0a3f8f5c9d04c4e81", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2e5df5818206495aba5caf960df59c0c", async() => {
                 BeginContext(2911, 159, true);
                 WriteLiteral("\r\n                                                        <i class=\"fas fa-trash\" aria-hidden=\"true\"></i>\r\n                                                    ");
                 EndContext();

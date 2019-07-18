@@ -5,6 +5,7 @@ E:\Source\RFIM_WEB\RFIM_Web\bin\Debug\netcoreapp2.1\RFIM_Web.dll
 E:\Source\RFIM_WEB\RFIM_Web\bin\Debug\netcoreapp2.1\RFIM_Web.pdb
 E:\Source\RFIM_WEB\RFIM_Web\bin\Debug\netcoreapp2.1\RFIM_Web.Views.dll
 E:\Source\RFIM_WEB\RFIM_Web\bin\Debug\netcoreapp2.1\RFIM_Web.Views.pdb
+E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.csprojAssemblyReference.cache
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.csproj.CoreCompileInputs.cache
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.RazorAssemblyInfo.cache
 E:\Source\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.RazorAssemblyInfo.cs
@@ -101,7 +102,6 @@ C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Category\EditCategory.g.cshtml.cs
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Category\ListAllCategory.g.cshtml.cs
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\AddProductList.g.cshtml.cs
-C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\CreateInvoice.g.cshtml.cs
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\CreateInvoiceStep1.g.cshtml.cs
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\CreateInvoiceStep2.g.cshtml.cs
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Invoice\DeleteFail.g.cshtml.cs
