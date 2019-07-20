@@ -5,21 +5,22 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RFIM_Web.Models;
+using RFIM_Web.Repositories;
+using RFIM_Web.Interfaces;
 
 namespace RFIM_Web.Controllers
 {
     public class StocktakeController : Controller
     {
-        private readonly MyDbContext ctx;
-        public StocktakeController(MyDbContext db)
+        private readonly IStocktakeHistoryRepository context;
+        public StocktakeController(IStocktakeHistoryRepository _context)
         {
-            ctx = db;
+            context = _context;
         }
 
         public IActionResult ListAllStocktake()
         {
-            var ListStocktake = ctx.StocktakeHistories.Include(p => p.Product).Include(u => u.User).ToList();
-            return View(ListStocktake);
+            return View(context.GetStocktakeHistories());
         }
     }
 }
