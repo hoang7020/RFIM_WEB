@@ -25,13 +25,10 @@
                                         <tr>
                                             <th>Product Id</th>
                                             <th>Product Name</th>
-                                            <th>Weight</th>
                                             <th>Image</th>
                                             <th>Category</th>
-                                            <th>Height</th>
-                                            <th>Width</th>
-                                            <th>Length</th>
-                                            <th>Quantity Per Box</th>
+                                            <th>Quantity(boxes)</th>
+                                            <th>Quantity Per Box(items)</th>
                                             <th>Status</th>
                                             <th>Setting</th>
                                         </tr>
@@ -39,27 +36,23 @@
                                     <tbody>
                                         @foreach (var product in Model)
                                         {
-                                            <tr>
-                                                <td><a asp-action="DetailProduct" asp-controller="Product" asp-route-id="@product.ProductId">@product.ProductId</a></td>
-                                                <td><a asp-action="DetailProduct" asp-controller="Product" asp-route-id="@product.ProductId">@product.ProductName</a></td>
-                                                <td>@product.Weight g</td>
-                                                <td><img src="~/Hinh/product/@product.Image" height="150" width="150" /></td>
+                                        <tr>
+                                            <td><a asp-action="DetailProduct" asp-controller="Product" asp-route-id="@product.ProductId">@product.ProductId</a></td>
+                                            <td><a asp-action="DetailProduct" asp-controller="Product" asp-route-id="@product.ProductId">@product.ProductName</a></td>
+                                            <td><img src="~/Hinh/product/@product.Image" height="150" width="150" /></td>
+                                            <td>@product.Category.CategoryName</td>
+                                            @await Component.InvokeAsync("QuantityBoxInProduct", new { productId = product.ProductId })
+                                            <td>@product.QuantityPerBox</td>
+                                            <td>
+                                                @if (product.Status)
+                                                {
+                                                    <a asp-action="DeleteProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="btn btn-danger" data-toggle="modal" data-target="#modal-product-delete">Active</a>
+                                                }
+                                                else
+                                                {
 
-                                                <td>@product.Category.CategoryName</td>
-                                                <td>@product.Height</td>
-                                                <td>@product.Width</td>
-                                                <td>@product.Length</td>
-                                                <td>@product.QuantityPerBox</td>
-                                                <td>
-                                                    @if (product.Status)
-                                                    {
-                                                        <a asp-action="DeleteProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="btn btn-success" data-toggle="modal" data-target="#modal-product-delete">Active</a>
-                                                    }
-                                                    else
-                                                    {
-
-                                                        <a asp-action="ActiveProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="btn btn-danger" data-toggle="modal" data-target="#modal-product-active">Deactive</a>
-                                                    }
+                                                    <a asp-action="ActiveProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="btn btn-success" data-toggle="modal" data-target="#modal-product-active">Deactive</a>
+                                                }
                                             </td>
                                             <td>
                                                 <a asp-action="EditProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="pd-setting-ed"><i class="fas fa-edit"></i></a>

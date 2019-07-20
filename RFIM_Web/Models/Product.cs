@@ -19,15 +19,11 @@ namespace RFIM_Web.Models
         [Display(Name = "Product Name")]
         [MaxLength(256, ErrorMessage = "Input must less than 256 characters")]
         public string ProductName { get; set; }
-        [Required(ErrorMessage = "This field is required")]
         public double? Weight { get; set; }
         public string Image { get; set; }
         public string Description { get; set; }
-        [Required(ErrorMessage = "This field is required")]
         public double? Height { get; set; }
-        [Required(ErrorMessage = "This field is required")]
         public double? Width { get; set; }
-        [Required(ErrorMessage = "This field is required")]
         public double? Length { get; set; }
         [Required(ErrorMessage = "This field is required")]
         public int? QuantityPerBox { get; set; }

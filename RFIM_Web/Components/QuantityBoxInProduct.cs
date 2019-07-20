@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RFIM_Web.Interfaces;
 using RFIM_Web.Models;
 using RFIM_Web.ModelView;
 using System;
@@ -10,8 +11,8 @@ namespace RFIM_Web.Components
 {
     public class QuantityBoxInProduct : ViewComponent
     {
-        private readonly MyDbContext ctx;
-        public QuantityBoxInProduct(MyDbContext db)
+        protected readonly IProductRepository ctx;
+        public QuantityBoxInProduct(IProductRepository db)
         {
             ctx = db;
         }
@@ -19,7 +20,7 @@ namespace RFIM_Web.Components
         {
             BoxInProduct countBoxInProduct = new BoxInProduct
             {
-                CountBoxInProduct = ctx.Boxes.Count(p => p.ProductId == productId)
+                CountBoxInProduct = ctx.GetQuantityBox(productId)
             };
             return View(countBoxInProduct);
         }

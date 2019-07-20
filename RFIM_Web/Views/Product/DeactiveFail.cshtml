@@ -1,0 +1,11 @@
+﻿@model RFIM_Web.Models.Product
+
+<div class="modal-header">
+    <a class="close" datadismiss="modal-user" asp-action="BackToProductList" asp-controller="Product">&times;</a>
+    <h4 class="modal-title">
+        Can't deactive product @Model.ProductId
+    </h4>
+</div>
+<div class="modal-body form-horizontal">
+    <strong style="color:red">Current product @Model.ProductId has packages inside warehouse</strong>
+</div>

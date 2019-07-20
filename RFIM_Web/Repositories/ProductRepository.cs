@@ -22,7 +22,7 @@ namespace RFIM_Web.Repositories
         }
         public List<Category> GetAllCategory()
         {
-            return ctx.Categories.ToList();
+            return ctx.Categories.Where(p => p.Status == true).ToList();
         }
         public List<Vendor> GetAllVendor()
         {
@@ -49,6 +49,10 @@ namespace RFIM_Web.Repositories
         {
             return ctx.Products.Where(p => p.ProductId != id).Any(p => p.ProductName == name);
         }
+        public bool ProductExistInPackage(string id)
+        {
+            return ctx.Packages.Any(p => p.ProductId == id);
+        }
         public async Task UpdateProduct(Product model)
         {
             ctx.Update(model);
@@ -70,6 +74,11 @@ namespace RFIM_Web.Repositories
         private async Task Save()
         {
             await ctx.SaveChangesAsync();
+        }
+
+        public int GetQuantityBox(string id)
+        {
+            return ctx.Boxes.Count(p => p.ProductId == id);
         }
     }
 }

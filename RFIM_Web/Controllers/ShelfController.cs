@@ -81,7 +81,8 @@ namespace RFIM_Web.Controllers
                         }
                     };
                     return RedirectToAction(nameof(ListAllShelf));
-                } else
+                }
+                else
                 {
                     ViewBag.ShelfExistError = "Shelf Id is already existed !!!";
                     ViewBag.StandardSize = new StandardSize
@@ -233,8 +234,8 @@ namespace RFIM_Web.Controllers
                     //        }
                     //    };
                     //}
-                   
-                    if ( standShelfSize.StandardCell < (currentCellNumber / currentFloorNumber) 
+
+                    if (standShelfSize.StandardCell < (currentCellNumber / currentFloorNumber)
                         || standShelfSize.StandardFloor < currentFloorNumber)
                     {
                         ViewBag.UpdateShelfSize = "Cant decrease shelf size, please remove all packages !!!";
@@ -246,7 +247,7 @@ namespace RFIM_Web.Controllers
                         return View(shelf);
                     }
 
-                    if(standShelfSize.StandardCell == shelf.CellNumber && standShelfSize.StandardFloor == shelf.FloorNumber)
+                    if (standShelfSize.StandardCell == shelf.CellNumber && standShelfSize.StandardFloor == shelf.FloorNumber)
                     {
                         await ctx.UpdateShelf(shelf);
                     }
@@ -271,7 +272,104 @@ namespace RFIM_Web.Controllers
             };
             return View(shelf);
         }
-
+        public async Task<IActionResult> ActiveShelf(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var shelf = await ctx.GetShelf(id);
+            if (shelf == null)
+            {
+                return NotFound();
+            }
+            return PartialView("ActiveShelf", shelf);
+        }
+        [HttpPost, ActionName("ActiveShelf")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ActiveConfirmed(string id)
+        {
+            var shelf = await ctx.FindShelf(id);
+            shelf.Status = true;
+            await ctx.UpdateShelf(shelf);
+            for (int i = 1; i <= shelf.FloorNumber; i++)
+            {
+                var floorId = $"{id}-{i}";
+                var floor = await ctx.FindFloor(floorId);
+                floor.Status = true;
+                await ctx.UpdateFloor(floor);
+            };
+            for (int i = 1; i <= shelf.FloorNumber; i++)
+            {
+                for (int j = 1; j <= shelf.CellNumber; j++)
+                {
+                    var cellId = $"{id}-{i}-{j}";
+                    var cell = await ctx.FindCell(cellId);
+                    cell.Status = true;
+                    await ctx.UpdateCell(cell);
+                }
+            };
+            return RedirectToAction(nameof(ListAllShelf));
+        }
+        public async Task<IActionResult> DeactiveShelf(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var shelf = await ctx.GetShelf(id);
+            if (shelf == null)
+            {
+                return NotFound();
+            }
+            var cells = ctx.GetAllCellById(shelf.ShelfId);
+            List<int> packCountList = new List<int>();
+            foreach (var cell in cells)
+            {
+                //int packageCount = ctx.Packages.Count(p => p.CellId == cell.CellId);
+                int packageCount = ctx.PackageCountById(cell.CellId);
+                packCountList.Add(packageCount);
+            }
+            int totalInList = 0;
+            packCountList.ForEach(item =>
+            {
+                totalInList += item;
+            });
+            if (totalInList == 0)
+            {
+                return PartialView("DeactiveShelf", shelf);
+            }
+            else
+            {
+                return PartialView("DeactiveFail", shelf);
+            }
+        }
+        [HttpPost, ActionName("DeactiveShelf")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeactiveConfirmed(string id)
+        {
+            var shelf = await ctx.FindShelf(id);
+            shelf.Status = false;
+            await ctx.UpdateShelf(shelf);
+            for (int i = 1; i <= shelf.FloorNumber; i++)
+            {
+                var floorId = $"{id}-{i}";
+                var floor = await ctx.FindFloor(floorId);
+                floor.Status = false;
+                await ctx.UpdateFloor(floor);
+            };
+            for (int i = 1; i <= shelf.FloorNumber; i++)
+            {
+                for (int j = 1; j <= shelf.CellNumber; j++)
+                {
+                    var cellId = $"{id}-{i}-{j}";
+                    var cell = await ctx.FindCell(cellId);
+                    cell.Status = false;
+                    await ctx.UpdateCell(cell);
+                }
+            };
+            return RedirectToAction(nameof(ListAllShelf));
+        }
         // GET: Shelf/Delete/5
         public async Task<IActionResult> DeleteShelf(string id)
         {
@@ -285,10 +383,9 @@ namespace RFIM_Web.Controllers
             {
                 return NotFound();
             }
-            //var cells = ctx.Cells.Where(p => p.CellId.Contains(shelf.ShelfId));
             var cells = ctx.GetAllCellById(shelf.ShelfId);
             List<int> packCountList = new List<int>();
-            foreach(var cell in cells)
+            foreach (var cell in cells)
             {
                 //int packageCount = ctx.Packages.Count(p => p.CellId == cell.CellId);
                 int packageCount = ctx.PackageCountById(cell.CellId);
@@ -299,11 +396,12 @@ namespace RFIM_Web.Controllers
             {
                 totalInList += item;
             });
-            
+
             if (totalInList == 0)
             {
                 return PartialView("DeleteShelf", shelf);
-            } else
+            }
+            else
             {
                 return PartialView("DeleteShelfFail", shelf);
             }
@@ -344,12 +442,12 @@ namespace RFIM_Web.Controllers
         [HttpGet]
         public async Task<IActionResult> EditShelfSize(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return NotFound();
             }
             var standardSize = await ctx.FindStandardShelfSize(id);
-            if(standardSize == null)
+            if (standardSize == null)
             {
                 return NotFound();
             }
@@ -358,7 +456,7 @@ namespace RFIM_Web.Controllers
         [HttpPost]
         public async Task<IActionResult> EditShelfSize(int? id, StandardShellSize standardSize)
         {
-            if(id != standardSize.StandardShellId)
+            if (id != standardSize.StandardShellId)
             {
                 return NotFound();
             }
@@ -373,7 +471,8 @@ namespace RFIM_Web.Controllers
                     if (!StandardSizeExists(standardSize.StandardShellId))
                     {
                         return NotFound();
-                    } else
+                    }
+                    else
                     {
                         throw;
                     }
@@ -390,12 +489,12 @@ namespace RFIM_Web.Controllers
 
         public async Task<IActionResult> ShowCell(string id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return NotFound();
             }
             var cells = await ctx.ShowCell(id);
             return PartialView("ShowCell", cells);
-        }   
+        }
     }
 }
