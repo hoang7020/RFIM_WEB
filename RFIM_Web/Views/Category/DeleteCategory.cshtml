@@ -2,14 +2,13 @@
 
 <form method="post" asp-action="DeleteCategory">
     <div class="modal-header">
-        <button type="button" class="close" datadismiss="modal-category-delete">&times;</button>
-        <h4 class="modal-title">Delete Category @Model.CategoryName</h4>
+        <a asp-action="BackToListCategory" class="close" datadismiss="modal-category-delete">&times;</a>
+        <h4 class="modal-title">Deactive category @Model.CategoryName</h4>
     </div>
     <div class="modal-body form-horizontal">
-        Are you sure to delete Category <b>@Model.CategoryName</b>?
+        Are you sure to deactive category <b>@Model.CategoryName</b>?
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary">Delete</button>
-        <button type="button" class="btn btn-default" datadismiss="modal-user">Cancel</button>
+        <button class="btn btn-primary">Deactive</button>
     </div>
 </form>

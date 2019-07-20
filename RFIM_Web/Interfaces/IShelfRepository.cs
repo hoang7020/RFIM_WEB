@@ -11,6 +11,7 @@ namespace RFIM_Web.Interfaces
         Task<List<Shelf>> GetAllShelf();
         Task<Shelf> GetShelf(string id);
         Task<Shelf> FindShelf(string id);
+        Task<Floor> FindFloor(string id);
         Task<Cell> FindCell(string id);
         Task<StandardShellSize> FindStandardShelfSize(int? id);
         List<Cell> GetAllCellById(string id);
@@ -22,6 +23,8 @@ namespace RFIM_Web.Interfaces
         Task AddFloor(Floor model);
         Task AddCell(Cell model);
         Task UpdateShelf(Shelf model);
+        Task UpdateFloor(Floor model);
+        Task UpdateCell(Cell model);
         Task UpdateStandardShelfSize(StandardShellSize model);
         Task DeleteShelf(string id);
         Task DeleteFloor(string id);

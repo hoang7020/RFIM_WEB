@@ -83,6 +83,31 @@ namespace RFIM_Web.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> ActiveCategory(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var category = await ctx.Categories.SingleOrDefaultAsync(p => p.CategoryId == id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            return PartialView("ActiveCategory", category);
+        }
+
+        [HttpPost, ActionName("ActiveCategory")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ActiveCategoryConfirmed(int id)
+        {
+            var category = await ctx.Categories.FindAsync(id);
+            category.Status = true;
+            ctx.Update(category);
+            await ctx.SaveChangesAsync();
+            return RedirectToAction(nameof(ListAllCategory));
+        }
+        [HttpGet]
         public async Task<IActionResult> DeleteCategory(int? id)
         {
             if(id == null)
@@ -94,7 +119,14 @@ namespace RFIM_Web.Controllers
             {
                 return NotFound();
             }
-            return PartialView("DeleteCategory", category);
+            var categoryExistInProduct = ctx.Products.Any(p => p.CategoryId == id);
+            if(categoryExistInProduct)
+            {
+                return PartialView("DeactiveFail", category);
+            } else
+            {
+                return PartialView("DeleteCategory", category);
+            }
         }
 
         [HttpPost, ActionName("DeleteCategory")]
@@ -102,7 +134,8 @@ namespace RFIM_Web.Controllers
         public async Task<IActionResult> DeleteCategoryConfirm(int id)
         {
             var category = await ctx.Categories.FindAsync(id);
-            ctx.Categories.Remove(category);
+            category.Status = false;
+            ctx.Update(category);
             await ctx.SaveChangesAsync();
             return RedirectToAction(nameof(ListAllCategory));
         }

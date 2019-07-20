@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
+using OfficeOpenXml.Style;
 using RFIM_Web.Interfaces;
 using RFIM_Web.Models;
 using RFIM_Web.ModelView;
@@ -155,14 +156,22 @@ namespace RFIM_Web.Controllers
             {
                 return NotFound();
             }
-            return PartialView("DeleteProduct", product);
+            var productExistInPackage = context.ProductExistInPackage(id);
+            if (productExistInPackage)
+            {
+                return PartialView("DeactiveFail", product);
+            }
+            else
+            {
+                return PartialView("DeleteProduct", product);
+            }
         }
         [HttpPost, ActionName("DeleteProduct")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirm(string id)
         {
             var product = await context.FindProductById(id);
-            product.Status = !product.Status;
+            product.Status = false;
             await context.UpdateProduct(product);
             return RedirectToAction(nameof(ListAllProduct));
         }
@@ -224,21 +233,49 @@ namespace RFIM_Web.Controllers
             using (var package = new ExcelPackage(stream))
             {
                 var sheet = package.Workbook.Worksheets.Add("Product");
-                //set chiều dài cho columm
-                sheet.DefaultColWidth = 15;
-                //set tự xuống dòng nếu text dài quá
+
+                //Add a List validation to A column. Values should be in a list
+                var valA = sheet.DataValidations.AddListValidation("A:A");
+                valA.AllowBlank = false;
+                //Shows error message when the input doesn't match the accepted values
+                valA.ShowErrorMessage = true;
+                valA.ErrorStyle = OfficeOpenXml.DataValidation.ExcelDataValidationWarningStyle.information;
+                //Title of the error mesage box
+                valA.ErrorTitle = "Warning !!!";
+                valA.Error = "This field is required, please check and input !!!";
+                valA.ShowInputMessage = true;
+                valA.PromptTitle = "Warning !!!";
+                valA.Prompt = "This field is required";
+                //Define the accepted values
+                valA.Formula.Values.Add("Id can't be duplicated");
+
+                ////Add a List validation to B column. Values should be in a list
+                //var valB = sheet.DataValidations.AddListValidation("B:B");
+                //valB.AllowBlank = true;
+                ////Shows error message when the input doesn't match the accepted values
+                //valB.ShowErrorMessage = true;
+                //valB.ErrorStyle = OfficeOpenXml.DataValidation.ExcelDataValidationWarningStyle.information;
+                ////Title of the error mesage box
+                //valB.ErrorTitle = "Warning !!!";
+                //valB.Error = "This field is required, please check and input !!!";
+                //valB.ShowInputMessage = true;
+                //valB.PromptTitle = "Warning !!!";
+                //valB.Prompt= "This field is required";
+                ////Define the accepted values
+                //valB.Formula.Values.Add("Name can't be duplicated");
+                var valBText = sheet.DataValidations.AddTextLengthValidation("B:B");
+                valBText.ShowErrorMessage = true;
+                valBText.Formula.Value = 1;
+                valBText.Formula2.Value = 256;
+                valBText.AllowBlank = true;
+
+                sheet.DefaultColWidth = 20;
                 sheet.Cells.Style.WrapText = true;
                 sheet.Cells[1, 1].Value = "Product Id";
                 sheet.Cells[1, 2].Value = "Product Name";
-                sheet.Cells[1, 3].Value = "Weight";
-                //sheet.Cells[1, 4].Value = "Image";
-                //sheet.Cells[1, 5].Value = "Description";
-                sheet.Cells[1, 4].Value = "Height";
-                sheet.Cells[1, 5].Value = "Width";
-                sheet.Cells[1, 6].Value = "Length";
-                sheet.Cells[1, 7].Value = "Quantity Per Box";
-                sheet.Cells[1, 8].Value = "Category";
-                sheet.Cells[1, 9].Value = "Vendor";
+                sheet.Cells[1, 3].Value = "Quantity Per Box";
+                sheet.Cells[1, 4].Value = "Category";
+                sheet.Cells[1, 5].Value = "Vendor";
                 package.Save();
             }
             stream.Position = 0;
@@ -279,15 +316,15 @@ namespace RFIM_Web.Controllers
                         {
                             ProductId = sheet.Cells[i, 1].Value.ToString(),
                             ProductName = sheet.Cells[i, 2].Value.ToString(),
-                            Weight = double.Parse(sheet.Cells[i, 3].Value.ToString()),
+                            Weight = 0.0,
                             Image = "",
                             Description = "",
-                            Height = double.Parse(sheet.Cells[i, 4].Value.ToString()),
-                            Width = double.Parse(sheet.Cells[i, 5].Value.ToString()),
-                            Length = double.Parse(sheet.Cells[i, 6].Value.ToString()),
-                            QuantityPerBox = int.Parse(sheet.Cells[i, 7].Value.ToString()),
-                            CategoryId = int.Parse(sheet.Cells[i, 8].Value.ToString()),
-                            VendorId = int.Parse(sheet.Cells[i, 9].Value.ToString()),
+                            Height = 0.0,
+                            Width = 0.0,
+                            Length = 0.0,
+                            QuantityPerBox = int.Parse(sheet.Cells[i, 3].Value.ToString()),
+                            CategoryId = int.Parse(sheet.Cells[i, 4].Value.ToString()),
+                            VendorId = int.Parse(sheet.Cells[i, 5].Value.ToString()),
                             Status = true
                         });
                     }

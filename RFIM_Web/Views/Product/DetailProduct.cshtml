@@ -51,39 +51,39 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <label>Weight</label>
+                                            <label>Weight(g):</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                            <label><b>@Model.Weight g</b></label>
+                                            <label><b>@Model.Weight</b></label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <label>Height</label>
+                                            <label>Height(cm):</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                            <label><b>@Model.Height cm</b></label>
+                                            <label><b>@Model.Height</b></label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <label>Width</label>
+                                            <label>Width(cm):</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                            <label><b>@Model.Width cm</b></label>
+                                            <label><b>@Model.Width</b></label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <label>Length</label>
+                                            <label>Length(cm):</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                            <label><b>@Model.Length cm</b></label>
+                                            <label><b>@Model.Length</b></label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <label>Status</label>
+                                            <label>Status:</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                             <label>@if (Model.Status)
@@ -98,7 +98,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <label>Category</label>
+                                            <label>Category:</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                             <label><b>@Model.Category.CategoryName</b></label>
@@ -106,18 +106,10 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <label>Vendor</label>
+                                            <label>Vendor:</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                             <label><b>@Model.Vendor.VendorName</b></label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <label>Total quantity of boxes</label>
-                                        </div>
-                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                            @await Component.InvokeAsync("QuantityBoxInProduct", new { productId = Model.ProductId })
                                         </div>
                                     </div>
                                 </div>
