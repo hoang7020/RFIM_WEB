@@ -29,5 +29,6 @@ namespace RFIM_Web.Models
         [Required(ErrorMessage = "This field is required")]
         [Range(1, 1000000000, ErrorMessage = "Number is more than 0")]
         public int? CoorY { get; set; }
+        public bool Status { get; set; }
     }
 }

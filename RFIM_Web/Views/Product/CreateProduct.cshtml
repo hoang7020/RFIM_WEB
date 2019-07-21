@@ -47,17 +47,6 @@
                                         <div class="form-group-inner">
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                    <label class="login2 pull-right pull-right-pro">Weight*</label>
-                                                </div>
-                                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                                                    <input asp-for="Weight" class="form-control" />
-                                                    <span asp-validation-for="Weight" class="text-danger"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group-inner">
-                                            <div class="row">
-                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                     <label class="login2 pull-right pull-right-pro">Image</label>
                                                 </div>
                                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
@@ -80,7 +69,18 @@
                                         <div class="form-group-inner">
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                    <label class="login2 pull-right pull-right-pro">Height*</label>
+                                                    <label class="login2 pull-right pull-right-pro">Weight(g)</label>
+                                                </div>
+                                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                                                    <input asp-for="Weight" class="form-control" />
+                                                    <span asp-validation-for="Weight" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                    <label class="login2 pull-right pull-right-pro">Height(cm)</label>
                                                 </div>
                                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                                     <input asp-for="Height" class="form-control" />
@@ -91,7 +91,7 @@
                                         <div class="form-group-inner">
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                    <label class="login2 pull-right pull-right-pro">Width*</label>
+                                                    <label class="login2 pull-right pull-right-pro">Width(cm)</label>
                                                 </div>
                                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                                     <input asp-for="Width" class="form-control" />
@@ -102,7 +102,7 @@
                                         <div class="form-group-inner">
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                    <label class="login2 pull-right pull-right-pro">Length*</label>
+                                                    <label class="login2 pull-right pull-right-pro">Length(cm)</label>
                                                 </div>
                                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                                     <input asp-for="Length" class="form-control" />
@@ -149,8 +149,8 @@
                                                     <div class="col-lg-3"></div>
                                                     <div class="col-lg-9">
                                                         <div class="login-horizental cancel-wp pull-left">
-                                                            <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Confirm</button>
                                                             <a class="btn btn-sm btn-primary login-submit-cs" asp-action="ListAllProduct" asp-controller="Product">Cancel</a>
+                                                            <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Confirm</button>
                                                         </div>
                                                     </div>
                                                 </div>

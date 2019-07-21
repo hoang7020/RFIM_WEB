@@ -16,9 +16,11 @@ namespace RFIM_Web.Interfaces
         Task AddProduct(Product model);
         Task<Product> FindProductById(string id);
         bool ProductNameExistExceptId(string id, string name);
+        bool ProductExistInPackage(string id);
         Task UpdateProduct(Product model);
         Task<Product> GetProduct(string id);
         Task<List<Package>> GetAllPackageById(string id);
         Product GetProductById(string id);
+        int GetQuantityBox(string id);
     }
 }

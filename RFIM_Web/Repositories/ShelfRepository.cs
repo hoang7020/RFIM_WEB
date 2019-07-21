@@ -32,6 +32,11 @@ namespace RFIM_Web.Repositories
         {
             return await ctx.Cells.FindAsync(id);
         }
+        public async Task<Floor> FindFloor(string id)
+        {
+            return await ctx.Floors.FindAsync(id);
+        }
+        
         public async Task<StandardShellSize> FindStandardShelfSize(int? id)
         {
             return await ctx.StandardShellSizes.FindAsync(id);
@@ -78,6 +83,16 @@ namespace RFIM_Web.Repositories
         }
 
         public async Task UpdateShelf(Shelf model)
+        {
+            ctx.Update(model);
+            await Save();
+        }
+        public async Task UpdateFloor(Floor model)
+        {
+            ctx.Update(model);
+            await Save();
+        }
+        public async Task UpdateCell(Cell model)
         {
             ctx.Update(model);
             await Save();
