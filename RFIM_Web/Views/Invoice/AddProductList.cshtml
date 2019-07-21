@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RFIM_Web.ModelView.ProductInvoiceList>
+﻿@model IEnumerable<RFIM_Web.ModelView.ProductExtendAttr>
 @using Microsoft.AspNetCore.Http
 @using RFIM_Web.Utils
 @using RFIM_Web.ModelView
@@ -26,11 +26,12 @@
                             <th>QuantityPerBox</th>
                             <th>Category</th>
                             <th>Vendor</th>
+                            <th>In Stock Quantity</th>
                         </tr>
                     </thead>
                     <tbody id="myTable">
                         @{
-                            if (Context.Session.Get<List<ProductInvoiceList>>("listProduct") == null)
+                            if (Context.Session.Get<List<ProductExtendAttr>>("listProduct") == null)
                             {
                                 foreach (var product in Model)
                                 {
@@ -41,12 +42,13 @@
                                         <td>@product.QuantityPerBox</td>
                                         <td>@product.Category</td>
                                         <td>@product.Vendor</td>
+                                        <td>@product.InstockQuantity</td>
                                     </tr>
                                 }
                             }
                             else
                             {
-                                List<ProductInvoiceList> ssListProduct = Context.Session.Get<List<ProductInvoiceList>>("listProduct");
+                                List<ProductExtendAttr> ssListProduct = Context.Session.Get<List<ProductExtendAttr>>("listProduct");
                                 foreach (var product in ssListProduct)
                                 {
                                     <tr>
@@ -56,6 +58,7 @@
                                         <td>@product.QuantityPerBox</td>
                                         <td>@product.Category</td>
                                         <td>@product.Vendor</td>
+                                        <td>@product.InstockQuantity</td>
                                     </tr>
                                 }
                                 foreach (var product in Model)
@@ -67,6 +70,7 @@
                                         <td>@product.QuantityPerBox</td>
                                         <td>@product.Category</td>
                                         <td>@product.Vendor</td>
+                                        <td>@product.InstockQuantity</td>
                                     </tr>
                                 }
                             }

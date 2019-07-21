@@ -23,7 +23,7 @@
                                         <div class="form-group-inner">
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                    <label class="login2 pull-right pull-right-pro">Invoice Id</label>
+                                                    <label class="login2 pull-right pull-right-pro">Invoice Id *</label>
                                                 </div>
                                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                                     <input asp-for="InvoiceId" class="form-control" />
@@ -46,7 +46,7 @@
                                         <div class="form-group-inner">
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                    <label class="login2 pull-right pull-right-pro">Type</label>
+                                                    <label class="login2 pull-right pull-right-pro">Invoice Type</label>
                                                 </div>
                                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                                     <select asp-for="InvoiceTypeId" class="form-control" asp-items="ViewBag.InvoiceTypeId"></select>
@@ -60,8 +60,8 @@
                                                     <div class="col-lg-3"></div>
                                                     <div class="col-lg-9">
                                                         <div class="login-horizental cancel-wp pull-left">
-                                                            <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Next</button>
                                                             <a class="btn btn-sm btn-primary login-submit-cs" asp-action="ListAllInvoice" asp-controller="Invoice">Cancel</a>
+                                                            <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Next</button>
                                                         </div>
                                                     </div>
                                                 </div>

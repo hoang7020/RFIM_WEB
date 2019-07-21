@@ -66,7 +66,9 @@ namespace RFIM_Web
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IShelfRepository, ShelfRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IInvoiceRepository, InvoiceRepository>();
             services.AddScoped<IHomeRepository, HomeRepository>();
+            services.AddScoped<IStocktakeHistoryRepository, StocktakeHistoryRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -12,51 +12,41 @@ using OfficeOpenXml;
 using RFIM_Web.Models;
 using RFIM_Web.ModelView;
 using RFIM_Web.Utils;
+using RFIM_Web.Repositories;
+using RFIM_Web.Interfaces;
 
 namespace RFIM_Web.Controllers
 {
     public class InvoiceController : Controller
     {
-        private readonly MyDbContext ctx;
-        public InvoiceController(MyDbContext db)
+        private readonly IInvoiceRepository context;
+        public InvoiceController(IInvoiceRepository _context)
         {
-            ctx = db;
+            context = _context;
         }
 
         public IActionResult ListAllInvoice()
         {
-            var listInvoice = ctx.Invoices.Include(i => i.InvoiceType).Include(i => i.InvoiceStatus).ToList();
+            var listInvoice = context.GetAllInvoice();
             return View(listInvoice);
         }
 
         public IActionResult DetailInvoice(string id)
         {
-            var productList = (from ip in ctx.Invoice_Products  
-                           join p in ctx.Products on ip.ProductId equals p.ProductId
-                           join c in ctx.Categories on p.CategoryId equals c.CategoryId
-                           join v in ctx.Vendors on p.VendorId equals v.VendorId
-                           where ip.InvoiceId.Equals(id)
-             select new ProductList
-             {
-                 ProductId = p.ProductId,
-                 ProductName = p.ProductName,
-                 Quantity = ip.Quantity,
-                 Category = c.CategoryName,
-                 Vendor = v.VendorName
-             }).ToList();
-            var detail = ctx.Invoices.Include(it => it.InvoiceType).Include(it => it.InvoiceStatus).SingleOrDefault(i => i.InvoiceId.Equals(id));
-            var model = new InvoiceDetail { Invoices = detail, productList = productList};
+            var productList = context.GetProductInvoiceDetail(id);
+            var detail = context.GetSingleInvoiceDetail(id);
+            var model = new InvoiceDetail { Invoices = detail, productList = productList };
             return PartialView("InvoiceDetail", model);
         }
 
         [HttpGet]
-        public async Task<IActionResult> DeleteInvoice(string id)
+        public IActionResult DeleteInvoice(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var invoice = await ctx.Invoices.Include(i => i.InvoiceType).Include(i => i.InvoiceStatus).SingleOrDefaultAsync(i => i.InvoiceId == id);
+            var invoice = context.GetSingleInvoiceDetail(id);
             if (invoice == null)
             {
                 return NotFound();
@@ -72,35 +62,32 @@ namespace RFIM_Web.Controllers
         }
         [HttpPost, ActionName("DeleteInvoice")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirm(string id)
+        public IActionResult DeleteConfirm(string id)
         {
-            ctx.Invoice_Products.RemoveRange(ctx.Invoice_Products.Where(x => x.InvoiceId.Equals(id)));
-            var invoice = await ctx.Invoices.FindAsync(id);
-            ctx.Invoices.Remove(invoice);
-            await ctx.SaveChangesAsync();
+            context.DeleteInvoiceOnAction(id);
             return RedirectToAction(nameof(ListAllInvoice));
         }
 
         public IActionResult BackToInvoiceList()
         {
             return RedirectToAction(nameof(ListAllInvoice));
-            
+
         }
 
         public IActionResult CreateInvoiceStep1()
         {
-            ViewData["InvoiceTypeId"] = new SelectList(ctx.InvoiceTypes, "InvoiceTypeId", "InvoiceTypes");
+            ViewData["InvoiceTypeId"] = context.GetSelectList();
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddInvoiceStep2(Invoice invoice)
+        public IActionResult AddInvoiceStep2(Invoice invoice)
         {
-            ViewData["InvoiceTypeId"] = new SelectList(ctx.InvoiceTypes, "InvoiceTypeId", "InvoiceTypes");
+            ViewData["InvoiceTypeId"] = context.GetSelectList();
             if (ModelState.IsValid)
             {
-                if (ctx.Invoices.Any(i => i.InvoiceId == invoice.InvoiceId))
+                if (context.CheckInvoiceDupp(invoice))
                 {
                     ViewBag.invoceExist = "InvoiceId was already existed!";
                     return View("CreateInvoiceStep1", invoice);
@@ -109,10 +96,11 @@ namespace RFIM_Web.Controllers
                 {
                     invoice.StatusId = 1;
                     invoice.Date = DateTime.Now;
-                    ctx.Add(invoice);
-                    await ctx.SaveChangesAsync();
+                    context.AddInvoice(invoice);
+                    int invoiceType = invoice.InvoiceTypeId;
                     HttpContext.Session.SetString("invoiceId", invoice.InvoiceId);
-                    HttpContext.Session.Set<List<ProductInvoiceList>>("listProduct", null);
+                    HttpContext.Session.SetInt32("invoiceType", invoiceType);
+                    HttpContext.Session.Set<List<ProductExtendAttr>>("listProduct", null);
                     return RedirectToAction(nameof(RenderProductList));
 
                 }
@@ -122,40 +110,16 @@ namespace RFIM_Web.Controllers
 
         public IActionResult AddProductList()
         {
-            if (HttpContext.Session.Get<List<ProductInvoiceList>>("listProduct") == null)
+            if (HttpContext.Session.Get<List<ProductExtendAttr>>("listProduct") == null)
             {
-                var listProduct = (from p in ctx.Products
-                                   join c in ctx.Categories on p.CategoryId equals c.CategoryId
-                                   join v in ctx.Vendors on p.VendorId equals v.VendorId
-                                   where p.Status == true
-                                   select new ProductInvoiceList
-                                   {
-                                       ProductId = p.ProductId,
-                                       ProductName = p.ProductName,
-                                       QuantityPerBox = p.QuantityPerBox,
-                                       Description = p.Description,
-                                       Category = c.CategoryName,
-                                       Vendor = v.VendorName
-                                   }).ToList();
+                var listProduct = context.GetProductInvoiceList();
                 return PartialView("AddProductList", listProduct);
-            }
+                } 
             else
             {
-                var listProduct = (from p in ctx.Products
-                                   join c in ctx.Categories on p.CategoryId equals c.CategoryId
-                                   join v in ctx.Vendors on p.VendorId equals v.VendorId
-                                   where p.Status == true
-                                   select new ProductInvoiceList
-                                   {
-                                       ProductId = p.ProductId,
-                                       ProductName = p.ProductName,
-                                       QuantityPerBox = p.QuantityPerBox,
-                                       Description = p.Description,
-                                       Category = c.CategoryName,
-                                       Vendor = v.VendorName
-                                   }).ToList();
-                List<ProductInvoiceList> ssListProduct = HttpContext.Session.Get<List<ProductInvoiceList>>("listProduct");
-                var listExcept = listProduct.Where(x => !ssListProduct.Any(z => z.ProductId == x.ProductId)).ToList<ProductInvoiceList>();
+                var listProduct = context.GetProductInvoiceList();
+                List<ProductExtendAttr> ssListProduct = HttpContext.Session.Get<List<ProductExtendAttr>>("listProduct");
+                var listExcept = listProduct.Where(x => !ssListProduct.Any(z => z.ProductId == x.ProductId)).ToList<ProductExtendAttr>();
                 return PartialView("AddProductList", listExcept);
             }
         }
@@ -163,43 +127,19 @@ namespace RFIM_Web.Controllers
         public IActionResult AddProductListFinished(IFormCollection fm)
         {
             string[] listProductId = fm["checkList"].ToString().Split(",");
-            if(string.IsNullOrEmpty(listProductId[0]))
+            if (string.IsNullOrEmpty(listProductId[0]))
             {
-                var listProductRedirect = (from p in ctx.Products
-                                   join c in ctx.Categories on p.CategoryId equals c.CategoryId
-                                   join v in ctx.Vendors on p.VendorId equals v.VendorId
-                                   where p.Status == true
-                                   select new ProductInvoiceList
-                                   {
-                                       ProductId = p.ProductId,
-                                       ProductName = p.ProductName,
-                                       QuantityPerBox = p.QuantityPerBox,
-                                       Description = p.Description,
-                                       Category = c.CategoryName,
-                                       Vendor = v.VendorName
-                                   }).ToList();
-                HttpContext.Session.Set<List<ProductInvoiceList>>("listProduct", null);
+                var listProductRedirect = context.GetProductInvoiceList();
+                HttpContext.Session.Set<List<ProductExtendAttr>>("listProduct", null);
                 return RedirectToAction(nameof(RenderProductList));
             }
-            List <ProductInvoiceList> listProduct = new List<ProductInvoiceList>();
+            List<ProductExtendAttr> listProduct = new List<ProductExtendAttr>();
             foreach (string id in listProductId)
             {
-                 var product = (from p in ctx.Products
-                                   join c in ctx.Categories on p.CategoryId equals c.CategoryId
-                                   join v in ctx.Vendors on p.VendorId equals v.VendorId
-                                   where p.Status == true && p.ProductId.Equals(id)
-                                   select new ProductInvoiceList
-                                   {
-                                       ProductId = p.ProductId,
-                                       ProductName = p.ProductName,
-                                       QuantityPerBox = p.QuantityPerBox,
-                                       Description = p.Description,
-                                       Category = c.CategoryName,
-                                       Vendor = v.VendorName
-                                   }).SingleOrDefault();
+                var product = context.FindSingleProductInvoice(id);
                 listProduct.Add(product);
             }
-            HttpContext.Session.Set<List<ProductInvoiceList>>("listProduct", listProduct);
+            HttpContext.Session.Set<List<ProductExtendAttr>>("listProduct", listProduct);
             return RedirectToAction(nameof(RenderProductList));
         }
 
@@ -209,7 +149,7 @@ namespace RFIM_Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddProductInvoice(IFormCollection form)
+        public IActionResult AddProductInvoice(IFormCollection form)
         {
             string[] listProduct = form["listProduct"].ToString().Split(",");
             string[] listQuantity = form["listQuantity"].ToString().Split(",");
@@ -221,21 +161,18 @@ namespace RFIM_Web.Controllers
                 ip.Quantity = listQuantityParsed[i];
                 ip.InvoiceId = HttpContext.Session.GetString("invoiceId");
                 ip.ProcessQuantity = 0;
-                ctx.Add(ip);
-                await ctx.SaveChangesAsync();
+                context.AddInvoice_Product(ip);
             }
-            HttpContext.Session.Set<List<ProductInvoiceList>>("listProduct", null);
+            HttpContext.Session.Set<List<ProductExtendAttr>>("listProduct", null);
             return RedirectToAction(nameof(BackToInvoiceList));
 
         }
 
-        public async Task<IActionResult> InvoiceCancel()
+        public IActionResult InvoiceCancel()
         {
             string invoiceId = HttpContext.Session.GetString("invoiceId");
-            var invoice = ctx.Invoices.Find(invoiceId);
-            ctx.Invoices.Remove(invoice);
-            await ctx.SaveChangesAsync();
-            HttpContext.Session.Set<List<ProductInvoiceList>>("listProduct", null);
+            context.DeleteInvoiceOnCancel(invoiceId);
+            HttpContext.Session.Set<List<ProductExtendAttr>>("listProduct", null);
             return RedirectToAction(nameof(ListAllInvoice));
         }
 
