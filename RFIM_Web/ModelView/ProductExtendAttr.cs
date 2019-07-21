@@ -12,6 +12,6 @@ namespace RFIM_Web.ModelView
         public int? QuantityPerBox { get; set; }
         public string Category { get; set; }
         public string Vendor { get; set; }
-        public int InstockQuantity { get; set;}
+        public int? InstockQuantity { get; set;}
     }
 }

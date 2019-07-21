@@ -10,8 +10,10 @@ namespace RFIM_Web.Interfaces
 {
     public interface IInvoiceRepository
     {
-        List<ProductExtendAttr> GetProductInvoiceList();
-        ProductExtendAttr FindSingleProductInvoice(string id);
+        List<ProductExtendAttr> GetProductInvoiceListStockOut();
+        List<ProductExtendAttr> GetProductInvoiceListStockIn();
+        ProductExtendAttr FindSingleProductInvoiceStockIn(string id);
+        ProductExtendAttr FindSingleProductInvoiceStockOut(string id);
         List<Invoice> GetAllInvoice();
         List<ProductList> GetProductInvoiceDetail(string id);
         Invoice GetSingleInvoiceDetail(string id);

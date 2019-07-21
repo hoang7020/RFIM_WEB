@@ -110,37 +110,75 @@ namespace RFIM_Web.Controllers
 
         public IActionResult AddProductList()
         {
-            if (HttpContext.Session.Get<List<ProductExtendAttr>>("listProduct") == null)
+            if (HttpContext.Session.GetInt32("invoiceType") == 1)
             {
-                var listProduct = context.GetProductInvoiceList();
-                return PartialView("AddProductList", listProduct);
-                } 
+                if (HttpContext.Session.Get<List<ProductExtendAttr>>("listProduct") == null)
+                {
+                    var listProduct = context.GetProductInvoiceListStockIn();
+                    return PartialView("AddProductList", listProduct);
+                }
+                else
+                {
+                    var listProduct = context.GetProductInvoiceListStockIn();
+                    List<ProductExtendAttr> ssListProduct = HttpContext.Session.Get<List<ProductExtendAttr>>("listProduct");
+                    var listExcept = listProduct.Where(x => !ssListProduct.Any(z => z.ProductId == x.ProductId)).ToList<ProductExtendAttr>();
+                    return PartialView("AddProductList", listExcept);
+                }
+            }
             else
             {
-                var listProduct = context.GetProductInvoiceList();
-                List<ProductExtendAttr> ssListProduct = HttpContext.Session.Get<List<ProductExtendAttr>>("listProduct");
-                var listExcept = listProduct.Where(x => !ssListProduct.Any(z => z.ProductId == x.ProductId)).ToList<ProductExtendAttr>();
-                return PartialView("AddProductList", listExcept);
+                if (HttpContext.Session.Get<List<ProductExtendAttr>>("listProduct") == null)
+                {
+                    var listProduct = context.GetProductInvoiceListStockOut();
+                    return PartialView("AddProductList", listProduct);
+                }
+                else
+                {
+                    var listProduct = context.GetProductInvoiceListStockOut();
+                    List<ProductExtendAttr> ssListProduct = HttpContext.Session.Get<List<ProductExtendAttr>>("listProduct");
+                    var listExcept = listProduct.Where(x => !ssListProduct.Any(z => z.ProductId == x.ProductId)).ToList<ProductExtendAttr>();
+                    return PartialView("AddProductList", listExcept);
+                }
             }
         }
 
         public IActionResult AddProductListFinished(IFormCollection fm)
         {
             string[] listProductId = fm["checkList"].ToString().Split(",");
-            if (string.IsNullOrEmpty(listProductId[0]))
+            if (HttpContext.Session.GetInt32("invoiceType") == 1)
             {
-                var listProductRedirect = context.GetProductInvoiceList();
-                HttpContext.Session.Set<List<ProductExtendAttr>>("listProduct", null);
+                if (string.IsNullOrEmpty(listProductId[0]))
+                {
+                    var listProductRedirect = context.GetProductInvoiceListStockOut();
+                    HttpContext.Session.Set<List<ProductExtendAttr>>("listProduct", null);
+                    return RedirectToAction(nameof(RenderProductList));
+                }
+                List<ProductExtendAttr> listProduct = new List<ProductExtendAttr>();
+                foreach (string id in listProductId)
+                {
+                    var product = context.FindSingleProductInvoiceStockOut(id);
+                    listProduct.Add(product);
+                }
+                HttpContext.Session.Set<List<ProductExtendAttr>>("listProduct", listProduct);
                 return RedirectToAction(nameof(RenderProductList));
             }
-            List<ProductExtendAttr> listProduct = new List<ProductExtendAttr>();
-            foreach (string id in listProductId)
+            else
             {
-                var product = context.FindSingleProductInvoice(id);
-                listProduct.Add(product);
+                if (string.IsNullOrEmpty(listProductId[0]))
+                {
+                    var listProductRedirect = context.GetProductInvoiceListStockIn();
+                    HttpContext.Session.Set<List<ProductExtendAttr>>("listProduct", null);
+                    return RedirectToAction(nameof(RenderProductList));
+                }
+                List<ProductExtendAttr> listProduct = new List<ProductExtendAttr>();
+                foreach (string id in listProductId)
+                {
+                    var product = context.FindSingleProductInvoiceStockIn(id);
+                    listProduct.Add(product);
+                }
+                HttpContext.Session.Set<List<ProductExtendAttr>>("listProduct", listProduct);
+                return RedirectToAction(nameof(RenderProductList));
             }
-            HttpContext.Session.Set<List<ProductExtendAttr>>("listProduct", listProduct);
-            return RedirectToAction(nameof(RenderProductList));
         }
 
         public IActionResult RenderProductList()

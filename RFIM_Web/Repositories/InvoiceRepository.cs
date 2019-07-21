@@ -16,10 +16,11 @@ namespace RFIM_Web.Repositories
         {
             ctx = db;
         }
-        public List<ProductExtendAttr> GetProductInvoiceList()
+        public List<ProductExtendAttr> GetProductInvoiceListStockOut()
         {
             List<ProductExtendAttr> productInvoiceLists =
                 (from b in ctx.Boxes
+                 where b.Product.Status == true
                  group new { b.Product, b.Product.Vendor, b.Product.Category, b } by new
                  {
                      b.Product.ProductId,
@@ -40,6 +41,22 @@ namespace RFIM_Web.Repositories
             return productInvoiceLists;
         }
 
+        public List<ProductExtendAttr> GetProductInvoiceListStockIn()
+        {
+            List<ProductExtendAttr> productInvoiceLists = (from p in ctx.Products
+                                                           join c in ctx.Categories on p.CategoryId equals c.CategoryId
+                                                           join v in ctx.Vendors on p.VendorId equals v.VendorId
+                                                           where p.Status == true
+                                                           select new ProductExtendAttr
+                                                           {
+                                                               ProductId = p.ProductId,
+                                                               ProductName = p.ProductName,
+                                                               QuantityPerBox = p.QuantityPerBox,
+                                                               Category = c.CategoryName,
+                                                               Vendor = v.VendorName
+                                                           }).ToList();
+            return productInvoiceLists;
+        }
         public List<Invoice> GetAllInvoice()
         {
             return ctx.Invoices.Include(i => i.InvoiceType).Include(i => i.InvoiceStatus).OrderBy(i => i.StatusId).ToList();
@@ -92,7 +109,7 @@ namespace RFIM_Web.Repositories
             Save();
         }
 
-        public ProductExtendAttr FindSingleProductInvoice(string id)
+        public ProductExtendAttr FindSingleProductInvoiceStockIn(string id)
         {
             ProductExtendAttr pil = (from b in ctx.Boxes
                                      where b.Product.ProductId.Equals(id)
@@ -112,6 +129,23 @@ namespace RFIM_Web.Repositories
                                          ProductName = p.Key.ProductName,
                                          QuantityPerBox = p.Key.QuantityPerBox,
                                          InstockQuantity = p.Count(c => c.b.ProductId != null)
+                                     }).SingleOrDefault();
+            return pil;
+        }
+
+        public ProductExtendAttr FindSingleProductInvoiceStockOut(string id)
+        {
+            ProductExtendAttr pil = (from p in ctx.Products
+                                     join c in ctx.Categories on p.CategoryId equals c.CategoryId
+                                     join v in ctx.Vendors on p.VendorId equals v.VendorId
+                                     where p.Status == true && p.ProductId.Equals(id)
+                                     select new ProductExtendAttr
+                                     {
+                                         ProductId = p.ProductId,
+                                         ProductName = p.ProductName,
+                                         QuantityPerBox = p.QuantityPerBox,
+                                         Category = c.CategoryName,
+                                         Vendor = v.VendorName
                                      }).SingleOrDefault();
             return pil;
         }
