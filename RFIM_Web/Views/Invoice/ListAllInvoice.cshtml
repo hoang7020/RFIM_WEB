@@ -44,6 +44,10 @@
                                                     <a asp-action="DeleteInvoice" asp-controller="Invoice" asp-route-id="@invoice.InvoiceId" class="pd-setting-ed" data-toggle="modal" data-target="#modal-invoice-delete">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
+                                                    @if (invoice.StatusId == 1)
+                                                    {
+                                                        <a asp-action="UpdateInvoice" asp-controller="Invoice" asp-route-id="@invoice.InvoiceId" class="pd-setting-ed"><i class="fas fa-edit"></i></a>
+                                                    }
                                                 </td>
                                             </tr>
                                         }

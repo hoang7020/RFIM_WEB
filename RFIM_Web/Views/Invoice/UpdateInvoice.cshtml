@@ -4,7 +4,7 @@
 @using RFIM_Web.ModelView
 @using System.Collections.Generic
 @{
-    ViewData["Title"] = "CreateInvoiceStep2";
+    ViewData["Title"] = "UpdateInvoice";
 }
 
 <div class="all-content-wrapper">
@@ -15,11 +15,11 @@
                     <div class="main-sparkline12-hd">
                         @if (Context.Session.GetInt32("invoiceType") == 1)
                         {
-                            <h1>Add Product to Goods Receipt</h1>
+                            <h1>Edit Products in Goods Receipt</h1>
                         }
                         else
                         {
-                            <h1>Add Product to Goods Issue</h1>
+                            <h1>Edit Products to Goods Issue</h1>
                         }
                     </div>
                 </div>
@@ -28,10 +28,10 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="all-form-element-inner">
-                                    <a asp-action="AddProductList" asp-controller="Invoice" class="btn btn-success" data-toggle="modal" data-target="#modal-product-list">Choose Product</a>
+                                    <a asp-action="UpdateProductList" asp-controller="Invoice" class="btn btn-success" data-toggle="modal" data-target="#modal-product-list">Choose Product</a>
                                 </div>
                                 <div>
-                                    <form asp-action="AddProductInvoice" enctype="multipart/form-data" id="frmCreateInvoice">
+                                    <form asp-action="UpdateProductInvoice" enctype="multipart/form-data" id="frmCreateInvoice">
                                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                         <div class="form-group-inner">
                                             <div class="row">
@@ -82,18 +82,37 @@
                                                                         </td>
                                                                         @if (Context.Session.GetInt32("invoiceType") == 1)
                                                                         {
-                                                                            <td width="100">
-                                                                                <input asp-for="Quantity" name="listQuantity" class="form-control" value="1" min="1" max="9999" />
-                                                                            </td>
+                                                                            if (product.Quantity != null)
+                                                                            {
+                                                                                <td width="100">
+                                                                                    <input asp-for="Quantity" name="listQuantity" class="form-control" value="@product.Quantity" min="1" max="9999" />
+                                                                                </td>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <td width="100">
+                                                                                    <input asp-for="Quantity" name="listQuantity" class="form-control" value="0" min="1" max="9999" />
+                                                                                </td>
+                                                                            }
+
                                                                         }
                                                                         else
                                                                         {
                                                                             <td width="100">
                                                                                 <input asp-for="ProductId" value="@product.InstockQuantity" class="form-control" readonly />
                                                                             </td>
-                                                                            <td width="100">
-                                                                                <input asp-for="Quantity" name="listQuantity" class="form-control" value="1" min="1" max="@product.InstockQuantity" />
-                                                                            </td>
+                                                                            if (product.Quantity != null)
+                                                                            {
+                                                                                <td width="100">
+                                                                                    <input asp-for="Quantity" name="listQuantity" class="form-control" value="@product.Quantity" min="1" max="@product.InstockQuantity" />
+                                                                                </td>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <td width="100">
+                                                                                    <input asp-for="Quantity" name="listQuantity" class="form-control" value="0" min="1" max="@product.InstockQuantity" />
+                                                                                </td>
+                                                                            }
                                                                         }
                                                                     </tr>
                                                                             }
@@ -111,7 +130,7 @@
                                                                     }
                                                                 </tbody>
                                                             </table>
-                                                            <a class="btn btn-sm btn-primary login-submit-cs" asp-action="InvoiceCancel" asp-controller="Invoice">Cancel</a>
+                                                            <a class="btn btn-sm btn-primary login-submit-cs" asp-action="ListAllInvoice" asp-controller="Invoice">Cancel</a>
                                                             @if (Context.Session.Get<List<ProductExtendAttr>>("listProduct") == null)
                                                             {
                                                                 <button class="btn btn-sm btn-primary login-submit-cs" type="submit" disabled>Finish</button>

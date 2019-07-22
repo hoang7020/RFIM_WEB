@@ -172,9 +172,76 @@ namespace RFIM_Web.Repositories
             ctx.Invoices.Remove(invoice);
         }
 
-        private Invoice FindInvoice(string id)
+        public Invoice FindInvoice(string id)
         {
             return ctx.Invoices.Find(id);
+        }
+
+        public List<ProductExtendAttr> FindProductInvoiceListStockIn(string id)
+        {
+            List<ProductExtendAttr> productInvoiceLists = (from b in ctx.Boxes
+                                                           from ipr in ctx.Invoice_Products
+                                                           where
+                                                             ipr.InvoiceId.Equals(id) && b.Product.Status == true
+                                                           group new { b.Product, b.Product.Vendor, b.Product.Category, ipr, b } by new
+                                                           {
+                                                               ipr.Product.ProductName,
+                                                               b.Product.Vendor.VendorName,
+                                                               b.Product.Category.CategoryName,
+                                                               b.Product.QuantityPerBox,
+                                                               ipr.Quantity,
+                                                               ipr.Product.ProductId
+                                                           } into p
+                                                           select new ProductExtendAttr
+                                                           {
+                                                               Quantity = p.Key.Quantity,
+                                                               ProductId = p.Key.ProductId,
+                                                               ProductName = p.Key.ProductName,
+                                                               Vendor = p.Key.VendorName,
+                                                               Category = p.Key.CategoryName,
+                                                               QuantityPerBox = p.Key.QuantityPerBox,
+                                                           }).ToList();
+                return productInvoiceLists;
+        }
+
+        public List<ProductExtendAttr> FindProductInvoiceListStockOut(string id)
+        {
+            List<ProductExtendAttr> productInvoiceLists = (from b in ctx.Boxes
+                                                           from ipr in ctx.Invoice_Products
+                                                           where
+                                                             ipr.InvoiceId.Equals(id) && b.Product.Status == true
+                                                           group new { b.Product, b.Product.Vendor, b.Product.Category, ipr, b } by new
+                                                           {
+                                                               ipr.Product.ProductName,
+                                                               b.Product.Vendor.VendorName,
+                                                               b.Product.Category.CategoryName,
+                                                               b.Product.QuantityPerBox,
+                                                               ipr.Quantity,
+                                                               ipr.Product.ProductId
+                                                           } into p
+                                                           select new ProductExtendAttr
+                                                           {
+                                                               Quantity = p.Key.Quantity,
+                                                               ProductId = p.Key.ProductId,
+                                                               ProductName = p.Key.ProductName,
+                                                               Vendor = p.Key.VendorName,
+                                                               Category = p.Key.CategoryName,
+                                                               QuantityPerBox = p.Key.QuantityPerBox,
+                                                               InstockQuantity = p.Count(c => c.b.ProductId != null)
+                                                           }).ToList();
+            return productInvoiceLists;
+        }
+
+        public void UpdateInvoice(Invoice invoice)
+        {
+                ctx.Update(invoice);
+                Save();
+        }
+
+        public void WipeInvoiceProduct(string id)
+        {
+            var invoice = FindInvoice(id);
+            ctx.Invoice_Products.RemoveRange(ctx.Invoice_Products.Where(x => x.InvoiceId.Equals(invoice.InvoiceId)));
         }
     }
 }

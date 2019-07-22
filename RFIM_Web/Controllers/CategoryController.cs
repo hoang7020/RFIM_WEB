@@ -32,6 +32,11 @@ namespace RFIM_Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                if(ctx.Categories.Any(c => c.CategoryName.Equals(category.CategoryName)))
+                {
+                    ViewBag.cateExist = "Category was already existed!";
+                    return View("CreateCategory",category);
+                }
                 ctx.Add(category);
                 await ctx.SaveChangesAsync();
                 return RedirectToAction(nameof(ListAllCategory));
