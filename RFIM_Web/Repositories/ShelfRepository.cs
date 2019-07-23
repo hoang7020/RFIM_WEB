@@ -15,31 +15,31 @@ namespace RFIM_Web.Repositories
         {
             ctx = db;
         }
-        public async Task<List<Shelf>> GetAllShelf()
+        public List<Shelf> GetAllShelf()
         {
-            return await ctx.Shelfs.ToListAsync();
+            return ctx.Shelfs.ToList();
         }
 
-        public async Task<Shelf> GetShelf(string id)
+        public Shelf GetShelf(string id)
         {
-            return await ctx.Shelfs.FirstOrDefaultAsync(p => p.ShelfId == id);
+            return  ctx.Shelfs.FirstOrDefault(p => p.ShelfId == id);
         }
-        public async Task<Shelf> FindShelf(string id)
+        public Shelf FindShelf(string id)
         {
-            return await ctx.Shelfs.FindAsync(id);
+            return ctx.Shelfs.Find(id);
         }
-        public async Task<Cell> FindCell(string id)
+        public Cell FindCell(string id)
         {
-            return await ctx.Cells.FindAsync(id);
+            return ctx.Cells.Find(id);
         }
-        public async Task<Floor> FindFloor(string id)
+        public Floor FindFloor(string id)
         {
-            return await ctx.Floors.FindAsync(id);
+            return ctx.Floors.Find(id);
         }
         
-        public async Task<StandardShellSize> FindStandardShelfSize(int? id)
+        public StandardShellSize FindStandardShelfSize(int? id)
         {
-            return await ctx.StandardShellSizes.FindAsync(id);
+            return ctx.StandardShellSizes.Find(id);
         }
         public List<Cell> GetAllCellById(string id)
         {
@@ -64,67 +64,67 @@ namespace RFIM_Web.Repositories
         {
             return ctx.Floors.Where(p => p.FloorId.Contains(id)).Count();
         }
-        public async Task AddShelf(Shelf model)
+        public void AddShelf(Shelf model)
         {
             ctx.Add(model);
-            await Save();
+            Save();
         }
 
-        public async Task AddFloor(Floor model)
+        public void AddFloor(Floor model)
         {
             ctx.Add(model);
-            await Save();
+            Save();
         }
 
-        public async Task AddCell(Cell model)
+        public void AddCell(Cell model)
         {
             ctx.Add(model);
-            await Save();
+            Save();
         }
 
-        public async Task UpdateShelf(Shelf model)
+        public void UpdateShelf(Shelf model)
         {
             ctx.Update(model);
-            await Save();
+            Save();
         }
-        public async Task UpdateFloor(Floor model)
+        public void UpdateFloor(Floor model)
         {
             ctx.Update(model);
-            await Save();
+            Save();
         }
-        public async Task UpdateCell(Cell model)
+        public void UpdateCell(Cell model)
         {
             ctx.Update(model);
-            await Save();
-        }
-
-        public async Task UpdateStandardShelfSize(StandardShellSize model)
-        {
-            ctx.Update(model);
-            await Save();
+            Save();
         }
 
-        public async Task DeleteShelf(string id)
+        public void UpdateStandardShelfSize(StandardShellSize model)
         {
-            var shelf = await ctx.Shelfs.SingleOrDefaultAsync(p => p.ShelfId == id);
+            ctx.Update(model);
+            Save();
+        }
+
+        public void DeleteShelf(string id)
+        {
+            var shelf = ctx.Shelfs.SingleOrDefault(p => p.ShelfId == id);
             ctx.Shelfs.Remove(shelf);
-            await Save();
+            Save();
         }
-        public async Task DeleteFloor(string id)
+        public void DeleteFloor(string id)
         {
-            var floor = await ctx.Floors.SingleOrDefaultAsync(p => p.FloorId == id);
+            var floor = ctx.Floors.SingleOrDefault(p => p.FloorId == id);
             ctx.Floors.Remove(floor);
-            await Save();
+            Save();
         }
-        public async Task DeleteCell(string id)
+        public void DeleteCell(string id)
         {
-            var cell = await ctx.Cells.SingleOrDefaultAsync(p => p.CellId == id);
+            var cell = ctx.Cells.SingleOrDefault(p => p.CellId == id);
             ctx.Cells.Remove(cell);
-            await Save();
+            Save(); 
         }
-        private async Task Save()
+        private void Save()
         {
-            await ctx.SaveChangesAsync();
+            ctx.SaveChanges();
         }
 
         public bool ShelfExists(string id)
@@ -144,9 +144,9 @@ namespace RFIM_Web.Repositories
         {
             return ctx.StandardShellSizes.Any(p => p.StandardShellId == id);
         }
-        public async Task<List<Cell>> ShowCell(string id)
+        public List<Cell> ShowCell(string id)
         {
-            return await ctx.Cells.Include(p => p.Floor).Where(p => p.CellId.Contains(id)).ToListAsync();
+            return ctx.Cells.Include(p => p.Floor).Where(p => p.CellId.Contains(id)).ToList();
         }
     }
 }

@@ -13,13 +13,13 @@ namespace RFIM_Web.Interfaces
         List<Vendor> GetAllVendor();
         bool ProductIdExists(string id);
         bool ProductNameExists(string name);
-        Task AddProduct(Product model);
-        Task<Product> FindProductById(string id);
+        void AddProduct(Product model);
+        Product FindProductById(string id);
         bool ProductNameExistExceptId(string id, string name);
         bool ProductExistInPackage(string id);
-        Task UpdateProduct(Product model);
-        Task<Product> GetProduct(string id);
-        Task<List<Package>> GetAllPackageById(string id);
+        void UpdateProduct(Product model);
+        Product GetProduct(string id);
+        List<Package> GetAllPackageById(string id);
         Product GetProductById(string id);
         int GetQuantityBox(string id);
     }

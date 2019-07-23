@@ -70,7 +70,7 @@ using RFIM_Web.Models;
             WriteLiteral("    <li>");
             EndContext();
             BeginContext(134, 132, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4f4f32f32dd940089536f230dbe1d80c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0db6988e6a2b4007959918bba9da3bba", async() => {
                 BeginContext(224, 17, false);
 #line 8 "C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\Views\Shared\Components\ProductDetailList\Default.cshtml"
                                                                                             Write(product.ProductId);

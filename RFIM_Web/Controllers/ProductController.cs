@@ -40,7 +40,7 @@ namespace RFIM_Web.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateProduct(Product product, IFormFile fHinh)
+        public IActionResult CreateProduct(Product product, IFormFile fHinh)
         {
             //check model validation 
             if (ModelState.IsValid)
@@ -58,7 +58,7 @@ namespace RFIM_Web.Controllers
                             product.Image = UploadImageTool.UploadImage(fHinh, "product");
                         }
                         product.Status = true;
-                        await context.AddProduct(product);
+                        context.AddProduct(product);
                         return RedirectToAction(nameof(ListAllProduct));
                     }
                     else
@@ -81,13 +81,13 @@ namespace RFIM_Web.Controllers
             return View(product);
         }
         [HttpGet]
-        public async Task<IActionResult> EditProduct(string id)
+        public IActionResult EditProduct(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var product = await context.FindProductById(id);
+            var product = context.FindProductById(id);
             if (product == null)
             {
                 return NotFound();
@@ -98,7 +98,7 @@ namespace RFIM_Web.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditProduct(string id, Product product, IFormFile fHinh)
+        public IActionResult EditProduct(string id, Product product, IFormFile fHinh)
         {
             if (id != product.ProductId)
             {
@@ -117,7 +117,7 @@ namespace RFIM_Web.Controllers
                             product.Image = UploadImageTool.UploadImage(fHinh, "product");
                         }
                         product.Status = true;
-                        await context.UpdateProduct(product);
+                        context.UpdateProduct(product);
                     }
                     else
                     {
@@ -145,13 +145,13 @@ namespace RFIM_Web.Controllers
             return View(product);
         }
         [HttpGet]
-        public async Task<IActionResult> DeleteProduct(string id)
+        public IActionResult DeleteProduct(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var product = await context.GetProduct(id);
+            var product = context.GetProduct(id);
             if (product == null)
             {
                 return NotFound();
@@ -168,21 +168,21 @@ namespace RFIM_Web.Controllers
         }
         [HttpPost, ActionName("DeleteProduct")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirm(string id)
+        public IActionResult DeleteConfirm(string id)
         {
-            var product = await context.FindProductById(id);
+            var product = context.FindProductById(id);
             product.Status = false;
-            await context.UpdateProduct(product);
+            context.UpdateProduct(product);
             return RedirectToAction(nameof(ListAllProduct));
         }
         [HttpGet]
-        public async Task<IActionResult> ActiveProduct(string id)
+        public IActionResult ActiveProduct(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var product = await context.GetProduct(id);
+            var product = context.GetProduct(id);
             if (product == null)
             {
                 return NotFound();
@@ -191,11 +191,11 @@ namespace RFIM_Web.Controllers
         }
         [HttpPost, ActionName("ActiveProduct")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ActiveConfirm(string id)
+        public IActionResult ActiveConfirm(string id)
         {
-            var product = await context.FindProductById(id);
+            var product = context.FindProductById(id);
             product.Status = true;
-            await context.UpdateProduct(product);
+            context.UpdateProduct(product);
             return RedirectToAction(nameof(ListAllProduct));
         }
 
@@ -209,19 +209,18 @@ namespace RFIM_Web.Controllers
             return RedirectToAction(nameof(ListAllProduct));
         }
 
-        public async Task<IActionResult> DetailProduct(string id)
+        public IActionResult DetailProduct(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var product = await context.GetProduct(id);
+            var product = context.GetProduct(id);
             if (product == null)
             {
                 return NotFound();
             }
-            //var packages = await ctx.Packages.Where(p => p.ProductId == id).ToListAsync();
-            var packages = await context.GetAllPackageById(id);
+            var packages = context.GetAllPackageById(id);
             ViewBag.PackageSelectFromProduct = packages;
 
             return View(product);
@@ -290,7 +289,7 @@ namespace RFIM_Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ImportProduct(IFormFile fImport)
+        public IActionResult ImportProduct(IFormFile fImport)
         {
             if (fImport == null || fImport.Length <= 0)
             {
@@ -346,7 +345,7 @@ namespace RFIM_Web.Controllers
                     {
                         if (!itemNameExist)
                         {
-                           await context.AddProduct(product);
+                           context.AddProduct(product);
                         }
                         else
                         {

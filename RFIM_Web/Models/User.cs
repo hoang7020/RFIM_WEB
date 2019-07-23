@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -17,6 +18,7 @@ namespace RFIM_Web.Models
         public string Fullname { get; set; }
         [Required(ErrorMessage = "This field is required")]
         [MaxLength(32, ErrorMessage = "Username must be less than 32 characters")]
+        [DataType(DataType.Text, ErrorMessage = "Input is not valid")]
         public string Username { get; set; }
         [Required(ErrorMessage = "This field is required")]
         [MaxLength(32, ErrorMessage = "Password must be less than 32 characters")]

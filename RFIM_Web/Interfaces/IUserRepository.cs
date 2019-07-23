@@ -9,17 +9,19 @@ namespace RFIM_Web.Interfaces
 {
     public interface IUserRepository
     {
-        Task<List<User>> GetAll();
-        Task<List<User>> GetAllAccountant();
-        Task<List<User>> GetAllStockkeeper();
-        Task<User> FindUser(int? id);
-        Task<User> GetUser(int? id);
-        Task AddUser(User model);
-        Task UpdateUser(User model);
-        Task DeleteUser(int id);
+        List<User> GetAll();
+        List<User> GetAllAccountant();
+        List<User> GetAllStockkeeper();
+        User FindUser(int? id);
+        User FindUserByName(string username);
+        User GetUser(int? id);
+        void AddUser(User model);
+        void UpdateUser(User model);
+        void DeleteUser(int id);
         bool UserExists(int id);
+        bool UsernameExists(string name);
         List<Role> GetRole();
-        Task<User> GetLoggedUser(LoginView model);
+        User GetLoggedUser(LoginView model);
         int UserCount();
         int ActiveUserCount();
         int AccountantCount();

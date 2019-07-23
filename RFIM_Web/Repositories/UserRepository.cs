@@ -17,45 +17,50 @@ namespace RFIM_Web.Repositories
             ctx = db;
         }
 
-        public async Task AddUser(User model)
+        public void AddUser(User model)
         {
             ctx.Add(model);
-            await Save();
+            Save();
         }
 
-        public async Task DeleteUser(int id)
+        public void DeleteUser(int id)
         {
-            var user = await ctx.Users.SingleOrDefaultAsync(p => p.RoleId == id);
+            var user = ctx.Users.SingleOrDefault(p => p.RoleId == id);
             ctx.Users.Remove(user);
-            await Save();
+            Save();
         }
 
-        public async Task<User> FindUser(int? id)
+        public User FindUser(int? id)
         {
-           return await ctx.Users.FindAsync(id);
+            return ctx.Users.Find(id);
         }
 
-        public async Task<List<User>> GetAll()
+        public User FindUserByName(string username)
         {
-            return await ctx.Users.Where(p => p.RoleId == 2 || p.RoleId == 3)
-                .Include(p => p.Role).ToListAsync();
-        }
-        public async Task<List<User>> GetAllAccountant()
-        {
-            return await ctx.Users.Where(p => p.RoleId == 2)
-                .Include(p => p.Role).ToListAsync();
+            return ctx.Users.Where(p => p.Username == username).FirstOrDefault();
         }
 
-        public async Task<List<User>> GetAllStockkeeper()
+        public List<User> GetAll()
         {
-            return await ctx.Users.Where(p => p.RoleId == 3)
-                .Include(p => p.Role).ToListAsync();
+            return ctx.Users.Where(p => p.RoleId == 2 || p.RoleId == 3)
+                .Include(p => p.Role).ToList();
+        }
+        public List<User> GetAllAccountant()
+        {
+            return ctx.Users.Where(p => p.RoleId == 2)
+                .Include(p => p.Role).ToList();
         }
 
-        public async Task<User> GetLoggedUser(LoginView model)
+        public List<User> GetAllStockkeeper()
         {
-            return await ctx.Users.Include(p => p.Role)
-                .SingleOrDefaultAsync(p => p.Username == model.Username && p.Password == model.Password);
+            return ctx.Users.Where(p => p.RoleId == 3)
+                .Include(p => p.Role).ToList();
+        }
+
+        public User GetLoggedUser(LoginView model)
+        {
+            return ctx.Users.Include(p => p.Role)
+                .SingleOrDefault(p => p.Username == model.Username && p.Password == model.Password);
         }
 
         public List<Role> GetRole()
@@ -63,21 +68,26 @@ namespace RFIM_Web.Repositories
             return ctx.Roles.ToList();
         }
 
-        public async Task<User> GetUser(int? id)
+        public User GetUser(int? id)
         {
-            return await ctx.Users.Include(p => p.Role).FirstOrDefaultAsync(p => p.UserId == id);
+            return ctx.Users.Include(p => p.Role).FirstOrDefault(p => p.UserId == id);
         }
 
-        public async Task UpdateUser(User model)
+        public void UpdateUser(User model)
         {
             ctx.Users.Update(model);
-            await Save();
+            Save();
         }
 
         public bool UserExists(int id)
         {
             return ctx.Users.Any(p => p.UserId == id);
         }
+        public bool UsernameExists(string name)
+        {
+            return ctx.Users.Any(p => p.Username.Equals(name));
+        }
+       
         public int UserCount()
         {
             return ctx.Users.Count();
@@ -94,9 +104,9 @@ namespace RFIM_Web.Repositories
         {
             return ctx.Users.Count(p => p.Role.RoleName == "Stockkeeper");
         }
-        private async Task Save()
+        private void Save()
         {
-            await ctx.SaveChangesAsync();
+            ctx.SaveChanges();
         }
     }
 }
