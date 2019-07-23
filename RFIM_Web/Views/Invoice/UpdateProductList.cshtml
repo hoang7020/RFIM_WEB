@@ -5,7 +5,7 @@
 @using System.Collections.Generic
 
 <div class="modal-header">
-    <a class="close" datadismiss="modal-user" asp-action="RenderProductList" asp-controller="Invoice">&times;</a>
+    <a class="close" datadismiss="modal-user" asp-action="RenderEditProductList" asp-controller="Invoice">&times;</a>
     <h4 class="modal-title">Product List</h4>
 </div>
 <div class="modal-body form-horizontal">
@@ -15,7 +15,7 @@
                 <span class="input-group-addon"><i class="fas fa-search"></i></span>
                 <input class="form-control" id="myInput" type="text" placeholder="Search..">
             </div>
-            @using (Html.BeginForm("AddProductListFinished", "Invoice", FormMethod.Post))
+            @using (Html.BeginForm("UpdateProductListFinished", "Invoice", FormMethod.Post))
             {
                 <table class="table hover-table">
                     <thead>
@@ -28,7 +28,7 @@
                             <th>Vendor</th>
                             @if (Context.Session.GetInt32("invoiceType") == 2)
                             {
-                            <th>Available Quantity (Boxes)</th>
+                                <th>Available Quantity (Boxes)</th>
                             }
                         </tr>
                     </thead>
