@@ -54,17 +54,17 @@
                                                 }
                                             </td>
                                             <td>
-                                                <a asp-action="EditProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="btn btn-success">Edit <i class="fas fa-edit" aria-hidden="true"></i></a>
+                                                <a asp-action="EditProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="btn btn-success"><i class="fas fa-edit" aria-hidden="true"></i></a>
                                                 @if (product.Status)
                                                 {
                                                     <a asp-action="DeleteProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="btn btn-danger" data-toggle="modal" data-target="#modal-product-delete">
-                                                        Deactive <i class="fas fa-ban" aria-hidden="true"></i>
+                                                        <i class="fas fa-ban" aria-hidden="true"></i>
                                                     </a>
                                                 }
                                                 else
                                                 {
                                                     <a asp-action="ActiveProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="btn btn-success" data-toggle="modal" data-target="#modal-product-active">
-                                                        Activate <i class="fas fa-check" aria-hidden="true"></i>
+                                                        <i class="fas fa-check" aria-hidden="true"></i>
                                                     </a>
                                                 }
                                             </td>

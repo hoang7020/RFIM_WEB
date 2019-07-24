@@ -2,7 +2,6 @@
 @{
     ViewData["Title"] = "ListAllShelf";
 }
-
 <div class="all-content-wrapper">
     <div class="data-table-area mg-tb-15">
         <div class="container-fluid">
@@ -27,7 +26,11 @@
                                             <th>Description</th>
                                             <th>Floor Number</th>
                                             <th>Cell Number</th>
+                                            <th>Height(cm)</th>
+                                            <th>Width(cm)</th>
+                                            <th>Length(cm)</th>
                                             <th>Status</th>
+                                            <th>State</th>
                                             <th>Setting</th>
                                         </tr>
                                     </thead>
@@ -39,6 +42,9 @@
                                             <td>@shelf.Description</td>
                                             <td>@shelf.FloorNumber</td>
                                             <td>@shelf.CellNumber</td>
+                                            <td>@shelf.Height</td>
+                                            <td>@shelf.Width</td>
+                                            <td>@shelf.Length</td>
                                             <td>
                                                 @if (shelf.Status)
                                                 {
@@ -49,18 +55,19 @@
                                                     <p>Deactive</p>
                                                 }
                                             </td>
+                                            @await Component.InvokeAsync("PackageInShelf", new { shelfId = shelf.ShelfId })
                                             <td>
-                                                <a asp-action="EditShelf" asp-controller="Shelf" asp-route-id="@shelf.ShelfId" class="btn btn-success">Edit <i class="fas fa-edit" aria-hidden="true"></i></a>
+                                                <a asp-action="EditShelf" asp-controller="Shelf" asp-route-id="@shelf.ShelfId" class="btn btn-success"><i class="fas fa-edit" aria-hidden="true"></i></a>
                                                 @if (shelf.Status)
                                                 {
                                                     <a asp-action="DeactiveShelf" asp-controller="Shelf" asp-route-id="@shelf.ShelfId" class="btn btn-danger" data-toggle="modal" data-target="#modal-shelf-deactive">
-                                                        Deactive <i class="fas fa-ban" aria-hidden="true"></i>
+                                                        <i class="fas fa-ban" aria-hidden="true"></i>
                                                     </a>
                                                 }
                                                 else
                                                 {
                                                     <a asp-action="ActiveShelf" asp-controller="Shelf" asp-route-id="@shelf.ShelfId" class="btn btn-success" data-toggle="modal" data-target="#modal-shelf-active">
-                                                        Activate <i class="fas fa-check" aria-hidden="true"></i>
+                                                        <i class="fas fa-check" aria-hidden="true"></i>
                                                     </a>
                                                 }
                                             </td>

@@ -42,6 +42,32 @@ namespace RFIM_Web.Controllers
             var dsStockkeeper = ctx.GetAllStockkeeper();
             return View(dsStockkeeper);
         }
+
+        [HttpGet]
+        public IActionResult CreateUser()
+        {
+            ViewData["RoleId"] = new SelectList(ctx.GetRole(), "RoleId", "RoleName");
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CreateUser(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                if (ctx.UsernameExists(user.Username))
+                {
+                    ViewBag.UsernameExisted = "Username is already existed !!!!";
+                    ViewData["RoleId"] = new SelectList(ctx.GetRole(), "RoleId", "RoleName", user.RoleId);
+                    return View(user);
+                }
+                user.Status = true;
+                ctx.AddUser(user);
+                return RedirectToAction(nameof(ListAllUser));
+            }
+            ViewData["RoleId"] = new SelectList(ctx.GetRole(), "RoleId", "RoleName", user.RoleId);
+            return View(user);
+        }
+
         [HttpGet]
         public IActionResult EditUser(int? id)
         {
@@ -87,24 +113,7 @@ namespace RFIM_Web.Controllers
             ViewData["RoleId"] = new SelectList(ctx.GetRole(), "RoleId", "RoleName", user.RoleId);
             return View(user);
         }
-        [HttpGet]
-        public IActionResult CreateUser()
-        {
-            ViewData["RoleId"] = new SelectList(ctx.GetRole(), "RoleId", "RoleName");
-            return View();
-        }
-        [HttpPost]
-        public IActionResult CreateUser(User user)
-        {
-            if (ModelState.IsValid)
-            {
-                user.Status = true;
-                ctx.AddUser(user);
-                return RedirectToAction(nameof(ListAllUser));
-            }
-            ViewData["RoleId"] = new SelectList(ctx.GetRole(), "RoleId", "RoleName", user.RoleId);
-            return View(user);
-        }
+       
         public IActionResult DeleteUser(int? id)
         {
             if (id == null)

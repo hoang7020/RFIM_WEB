@@ -66,6 +66,7 @@ namespace RFIM_Web
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IShelfRepository, ShelfRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IInvoiceRepository, InvoiceRepository>();
             services.AddScoped<IHomeRepository, HomeRepository>();
             services.AddScoped<IStocktakeHistoryRepository, StocktakeHistoryRepository>();

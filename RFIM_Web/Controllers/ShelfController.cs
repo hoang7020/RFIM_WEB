@@ -252,6 +252,7 @@ namespace RFIM_Web.Controllers
 
                     if (standShelfSize.StandardCell == shelf.CellNumber && standShelfSize.StandardFloor == shelf.FloorNumber)
                     {
+                        shelf.Status = true;
                         ctx.UpdateShelf(shelf);
                     }
                 }
