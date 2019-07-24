@@ -8,31 +8,33 @@ namespace RFIM_Web.Interfaces
 {
     public interface IShelfRepository
     {
-        Task<List<Shelf>> GetAllShelf();
-        Task<Shelf> GetShelf(string id);
-        Task<Shelf> FindShelf(string id);
-        Task<Floor> FindFloor(string id);
-        Task<Cell> FindCell(string id);
-        Task<StandardShellSize> FindStandardShelfSize(int? id);
+        List<Shelf> GetAllShelf();
+        Shelf GetShelf(string id);
+        Shelf FindShelf(string id);
+        Floor FindFloor(string id);
+        Cell FindCell(string id);
+        StandardShellSize FindStandardShelfSize(int? id);
         List<Cell> GetAllCellById(string id);
         StandardShellSize GetStandardShellSize(int? id);
         int PackageCountById(string id);
         int CellCount(string id);
         int FloorCount(string id);
-        Task AddShelf(Shelf model);
-        Task AddFloor(Floor model);
-        Task AddCell(Cell model);
-        Task UpdateShelf(Shelf model);
-        Task UpdateFloor(Floor model);
-        Task UpdateCell(Cell model);
-        Task UpdateStandardShelfSize(StandardShellSize model);
-        Task DeleteShelf(string id);
-        Task DeleteFloor(string id);
-        Task DeleteCell(string id);
+        void AddShelf(Shelf model);
+        void AddFloor(Floor model);
+        void AddCell(Cell model);
+        void UpdateShelf(Shelf model);
+        void UpdateFloor(Floor model);
+        void UpdateCell(Cell model);
+        void UpdateStandardShelfSize(StandardShellSize model);
+        void DeleteShelf(string id);
+        void DeleteFloor(string id);
+        void DeleteCell(string id);
         bool ShelfExists(string id);
         bool FloorExists(string id);
         bool CellExists(string id);
         bool StandardSizeExists(int id);
-        Task<List<Cell>> ShowCell(string id);
+        List<Cell> ShowCell(string id);
+        bool PackageInCell(string id);
+        Package PackageRFIDInCell(string id);
     }
 }

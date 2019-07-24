@@ -34,29 +34,37 @@
                                     <tbody>
                                         @foreach (var shelf in Model)
                                         {
-                                            <tr>
-                                                <td><a asp-action="ShowCell" asp-controller="Shelf" asp-route-id="@shelf.ShelfId" data-toggle="modal" data-target="#modal-cell">@shelf.ShelfId</a></td>
-                                                <td>@shelf.Description</td>
-                                                <td>@shelf.FloorNumber</td>
-                                                <td>@shelf.CellNumber</td>
-                                                <td>
-                                                    @if (shelf.Status)
-                                                    {
-                                                        <a asp-action="DeactiveShelf" asp-controller="Shelf" asp-route-id="@shelf.ShelfId" class="btn btn-danger" data-toggle="modal" data-target="#modal-shelf-deactive">Active</a>
-                                                    }
-                                                    else
-                                                    {
-
-                                                        <a asp-action="ActiveShelf" asp-controller="Shelf" asp-route-id="@shelf.ShelfId" class="btn btn-success" data-toggle="modal" data-target="#modal-shelf-active">Deactive</a>
-                                                    }
-                                                </td>
-                                                <td>
-                                                    <a asp-action="EditShelf" asp-controller="Shelf" asp-route-id="@shelf.ShelfId" class="pd-setting-ed"><i class="fas fa-edit" aria-hidden="true"></i></a>
-                                                    @*<a asp-action="DeleteShelf" asp-controller="Shelf" asp-route-id="@shelf.ShelfId" class="pd-setting-ed" data-toggle="modal" data-target="#modal-shelf-delete">
-                                                        <i class="fas fa-trash" aria-hidden="true"></i>
-                                                    </a>*@
-                                                </td>
-                                            </tr>
+                                        <tr>
+                                            <td><a asp-action="ShowCell" asp-controller="Shelf" asp-route-id="@shelf.ShelfId" data-toggle="modal" data-target="#modal-cell">@shelf.ShelfId</a></td>
+                                            <td>@shelf.Description</td>
+                                            <td>@shelf.FloorNumber</td>
+                                            <td>@shelf.CellNumber</td>
+                                            <td>
+                                                @if (shelf.Status)
+                                                {
+                                                    <p>Active</p>
+                                                }
+                                                else
+                                                {
+                                                    <p>Deactive</p>
+                                                }
+                                            </td>
+                                            <td>
+                                                <a asp-action="EditShelf" asp-controller="Shelf" asp-route-id="@shelf.ShelfId" class="btn btn-success">Edit <i class="fas fa-edit" aria-hidden="true"></i></a>
+                                                @if (shelf.Status)
+                                                {
+                                                    <a asp-action="DeactiveShelf" asp-controller="Shelf" asp-route-id="@shelf.ShelfId" class="btn btn-danger" data-toggle="modal" data-target="#modal-shelf-deactive">
+                                                        Deactive <i class="fas fa-ban" aria-hidden="true"></i>
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <a asp-action="ActiveShelf" asp-controller="Shelf" asp-route-id="@shelf.ShelfId" class="btn btn-success" data-toggle="modal" data-target="#modal-shelf-active">
+                                                        Activate <i class="fas fa-check" aria-hidden="true"></i>
+                                                    </a>
+                                                }
+                                            </td>
+                                        </tr>
                                         }
                                     </tbody>
                                 </table>

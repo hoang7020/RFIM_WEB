@@ -25,31 +25,31 @@ namespace RFIM_Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ListAllUser()
+        public IActionResult ListAllUser()
         {
-            var dsStaff = await ctx.GetAll();
+            var dsStaff = ctx.GetAll();
             return View(dsStaff);
         }
         [HttpGet]
-        public async Task<IActionResult> ListAccountant()
+        public IActionResult ListAccountant()
         {
-            var dsAccountant = await ctx.GetAllAccountant();
+            var dsAccountant = ctx.GetAllAccountant();
             return View(dsAccountant);
         }
         [HttpGet]
-        public async Task<IActionResult> ListStockkeeper()
+        public IActionResult ListStockkeeper()
         {
-            var dsStockkeeper = await ctx.GetAllStockkeeper();
+            var dsStockkeeper = ctx.GetAllStockkeeper();
             return View(dsStockkeeper);
         }
         [HttpGet]
-        public async Task<IActionResult> EditUser(int? id)
+        public IActionResult EditUser(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var user = await ctx.FindUser(id);
+            var user = ctx.FindUser(id);
             if (user == null)
             {
                 return NotFound();
@@ -59,7 +59,7 @@ namespace RFIM_Web.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditUser(int id, User user)
+        public IActionResult EditUser(int id, User user)
         {
             if (id != user.UserId)
             {
@@ -69,7 +69,7 @@ namespace RFIM_Web.Controllers
             {
                 try
                 {
-                    await ctx.UpdateUser(user);
+                    ctx.UpdateUser(user);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -94,23 +94,24 @@ namespace RFIM_Web.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> CreateUser(User user)
+        public IActionResult CreateUser(User user)
         {
             if (ModelState.IsValid)
             {
-                await ctx.AddUser(user);
+                user.Status = true;
+                ctx.AddUser(user);
                 return RedirectToAction(nameof(ListAllUser));
             }
             ViewData["RoleId"] = new SelectList(ctx.GetRole(), "RoleId", "RoleName", user.RoleId);
             return View(user);
         }
-        public async Task<IActionResult> DeleteUser(int? id)
+        public IActionResult DeleteUser(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var user = await ctx.GetUser(id);
+            var user = ctx.GetUser(id);
             if (user == null)
             {
                 return NotFound();
@@ -119,20 +120,20 @@ namespace RFIM_Web.Controllers
         }
         [HttpPost, ActionName("DeleteUser")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ConfirmDelete(int id)
+        public IActionResult ConfirmDelete(int id)
         {
-            var user = await ctx.FindUser(id);
+            var user = ctx.FindUser(id);
             user.Status = false;
-            await ctx.UpdateUser(user);
+            ctx.UpdateUser(user);
             return RedirectToAction(nameof(ListAllUser));
         }
-        public async Task<IActionResult> ActiveUser(int? id)
+        public IActionResult ActiveUser(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var user = await ctx.GetUser(id);
+            var user = ctx.GetUser(id);
             if (user == null)
             {
                 return NotFound();
@@ -141,11 +142,11 @@ namespace RFIM_Web.Controllers
         }
         [HttpPost, ActionName("ActiveUser")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ConfirmActive(int id)
+        public IActionResult ConfirmActive(int id)
         {
-            var user = await ctx.FindUser(id);
+            var user = ctx.FindUser(id);
             user.Status = true;
-            await ctx.UpdateUser(user);
+            ctx.UpdateUser(user);
             return RedirectToAction(nameof(ListAllUser));
         }
         public bool UserExists(int id)
@@ -163,7 +164,8 @@ namespace RFIM_Web.Controllers
             int totalActiveUser = ctx.ActiveUserCount();
             int totalAccountant = ctx.AccountantCount();
             int totalStockkeeper = ctx.StockkeeperCount();
-            ViewBag.UserCount = new AdminHomePage {
+            ViewBag.UserCount = new AdminHomePage
+            {
                 Users = totalUser,
                 ActiveUsers = totalActiveUser,
                 Accountants = totalAccountant,

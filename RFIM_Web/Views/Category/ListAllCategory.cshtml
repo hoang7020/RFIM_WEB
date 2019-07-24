@@ -31,6 +31,7 @@
                                     <tbody>
                                         @foreach (var category in Model)
                                         {
+<<<<<<< HEAD
                                             <tr>
                                                 <td>@category.CategoryName</td>
                                                 <td>@category.Description</td>
@@ -52,6 +53,37 @@
                                                     </a>*@
                                                 </td>
                                             </tr>
+=======
+                                        <tr>
+                                            <td>@category.CategoryName</td>
+                                            <td>@category.Description</td>
+                                            <td>
+                                                @if (category.Status)
+                                                {
+                                                    <p>Active</p>
+                                                }
+                                                else
+                                                {
+                                                    <p>Deactive</p>
+                                                }
+                                            </td>
+                                            <td>
+                                                <a asp-action="EditCategory" asp-controller="Category" asp-route-id="@category.CategoryId" class="btn btn-success">Edit <i class="fas fa-edit" aria-hidden="true"></i></a>
+                                                @if (category.Status)
+                                                {
+                                                    <a asp-action="DeleteCategory" asp-controller="Category" asp-route-id="@category.CategoryId" class="btn btn-danger" data-toggle="modal" data-target="#modal-category-delete">
+                                                        Deactive <i class="fas fa-ban" aria-hidden="true"></i>
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <a asp-action="ActiveCategory" asp-controller="Category" asp-route-id="@category.CategoryId" class="btn btn-success" data-toggle="modal" data-target="#modal-category-active">
+                                                        Activate <i class="fas fa-check" aria-hidden="true"></i>
+                                                    </a>
+                                                }
+                                            </td>
+                                        </tr>
+>>>>>>> dev_test_4
                                         }
                                     </tbody>
                                 </table>

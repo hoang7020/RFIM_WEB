@@ -37,14 +37,14 @@ namespace RFIM_Web.Repositories
         {
             return ctx.Products.Any(p => p.ProductName == name);
         }
-        public async Task AddProduct(Product model)
+        public void AddProduct(Product model)
         {
             ctx.Add(model);
-            await Save();
+            Save();
         }
-        public async Task<Product> FindProductById(string id)
+        public Product FindProductById(string id)
         {
-            return await ctx.Products.FindAsync(id);
+            return ctx.Products.Find(id);
         }
         public bool ProductNameExistExceptId(string id, string name)
         {
@@ -54,27 +54,27 @@ namespace RFIM_Web.Repositories
         {
             return ctx.Packages.Any(p => p.ProductId == id);
         }
-        public async Task UpdateProduct(Product model)
+        public void UpdateProduct(Product model)
         {
             ctx.Update(model);
-            await Save();
+            Save();
         }
-        public async Task<Product> GetProduct(string id)
+        public Product GetProduct(string id)
         {
-            return await ctx.Products.Include(p => p.Category).Include(p => p.Vendor)
-                .FirstOrDefaultAsync(p => p.ProductId == id);
+            return ctx.Products.Include(p => p.Category).Include(p => p.Vendor)
+                .FirstOrDefault(p => p.ProductId == id);
         }
-        public async Task<List<Package>> GetAllPackageById(string id)
+        public List<Package> GetAllPackageById(string id)
         {
-            return await ctx.Packages.Where(p => p.ProductId == id).ToListAsync();
+            return ctx.Packages.Where(p => p.ProductId == id).ToList();
         }
         public Product GetProductById(string id)
         {
             return ctx.Products.SingleOrDefault(p => p.ProductId == id);
         }
-        private async Task Save()
+        private void Save()
         {
-            await ctx.SaveChangesAsync();
+            ctx.SaveChanges();
         }
 
         public int GetQuantityBox(string id)

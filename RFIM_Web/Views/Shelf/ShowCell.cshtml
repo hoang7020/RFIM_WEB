@@ -13,16 +13,18 @@
                         <th>FloorId</th>
                         <th>CellId</th>
                         <th>CellRFID</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var cell in Model)
                     {
-                        <tr>
-                            <td>@cell.Floor.FloorId</td>
-                            <td>@cell.CellId</td>
-                            <td>@cell.CellRFID</td>
-                        </tr>
+                    <tr>
+                        <td>@cell.Floor.FloorId</td>
+                        <td>@cell.CellId</td>
+                        <td>@cell.CellRFID</td>
+                        @await Component.InvokeAsync("StatusCell", new { cellId = cell.CellId })
+                    </tr>
                     }
                 </tbody>
             </table>

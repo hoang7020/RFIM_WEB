@@ -32,9 +32,9 @@ namespace RFIM_Web.Controllers
             return View();
         }
         [HttpPost, AllowAnonymous]
-        public async Task<IActionResult> Login(LoginView model)
+        public IActionResult Login(LoginView model)
         {
-            var loggedUser =await ctx.GetLoggedUser(model);
+            var loggedUser = ctx.GetLoggedUser(model);
             if (loggedUser == null)
             {
                 ViewBag.LoiDangNhap = "The username or password that you've entered doesn't match any account.Please try again";
@@ -54,19 +54,18 @@ namespace RFIM_Web.Controllers
 
             ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(userIdentity);
 
-            await HttpContext.SignInAsync(claimsPrincipal);
+            HttpContext.SignInAsync(claimsPrincipal);
 
             HttpContext.Session.SetString("User", loggedUser.Username);
 
             return RedirectToAction("Index", "Admin");
         }
 
-        public async Task<IActionResult> Logout()
+        public IActionResult Logout()
         {
-            await HttpContext.SignOutAsync();
+            HttpContext.SignOutAsync();
             HttpContext.Session.Remove("User");
             return RedirectToAction("Login", "User");
         }
-
     }
 }
