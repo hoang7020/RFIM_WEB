@@ -98,15 +98,9 @@ namespace RFIM_Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (ctx.UsernameExists(user.Username))
-                {
-                    ViewBag.UsernameExisted = "Username is already existed !!!";
-                    return View("CreateUser", user);
-                }
-
+                user.Status = true;
                 ctx.AddUser(user);
                 return RedirectToAction(nameof(ListAllUser));
-
             }
             ViewData["RoleId"] = new SelectList(ctx.GetRole(), "RoleId", "RoleName", user.RoleId);
             return View(user);

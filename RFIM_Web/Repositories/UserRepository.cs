@@ -60,7 +60,7 @@ namespace RFIM_Web.Repositories
         public User GetLoggedUser(LoginView model)
         {
             return ctx.Users.Include(p => p.Role)
-                .SingleOrDefault(p => p.Username == model.Username && p.Password == model.Password);
+                .FirstOrDefault(p => p.Username == model.Username && p.Password == model.Password);
         }
 
         public List<Role> GetRole()

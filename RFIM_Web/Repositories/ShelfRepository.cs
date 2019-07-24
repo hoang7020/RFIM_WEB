@@ -148,5 +148,13 @@ namespace RFIM_Web.Repositories
         {
             return ctx.Cells.Include(p => p.Floor).Where(p => p.CellId.Contains(id)).ToList();
         }
+        public bool PackageInCell(string id)
+        {
+            return ctx.Packages.Any(p => p.CellId == id);
+        }
+        public Package PackageRFIDInCell(string id)
+        {
+            return ctx.Packages.FirstOrDefault(p => p.CellId == id);
+        }
     }
 }

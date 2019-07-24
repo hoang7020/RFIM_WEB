@@ -34,5 +34,7 @@ namespace RFIM_Web.Interfaces
         bool CellExists(string id);
         bool StandardSizeExists(int id);
         List<Cell> ShowCell(string id);
+        bool PackageInCell(string id);
+        Package PackageRFIDInCell(string id);
     }
 }
