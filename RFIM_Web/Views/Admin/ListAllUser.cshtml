@@ -46,11 +46,7 @@
                                                 <td>
                                                     @if (user.Status)
                                                     {
-<<<<<<< HEAD
-                                                    <a asp-action="DeleteUser" asp-controller="Admin" asp-route-id="@user.UserId" class="btn btn-danger" data-toggle="modal" data-target="#modal-user-delete">Activate</a>
-=======
                                                         <p>Active</p>
->>>>>>> dev_test_4
                                                     }
                                                     else
                                                     {
@@ -58,17 +54,17 @@
                                                     }
                                                 </td>
                                                 <td>
-                                                    <a asp-action="EditUser" asp-controller="Admin" asp-route-id="@user.UserId" class="btn btn-success">Edit <i class="fas fa-edit" aria-hidden="true"></i></a>
+                                                    <a asp-action="EditUser" asp-controller="Admin" asp-route-id="@user.UserId" class="btn btn-success"><i class="fas fa-edit" aria-hidden="true"></i></a>
                                                     @if (user.Status)
                                                     {
                                                         <a asp-action="DeleteUser" asp-controller="Admin" asp-route-id="@user.UserId" class="btn btn-danger" data-toggle="modal" data-target="#modal-user-delete">
-                                                            Deactive <i class="fas fa-ban" aria-hidden="true"></i>
+                                                            <i class="fas fa-ban" aria-hidden="true"></i>
                                                         </a>
                                                     }
                                                     else
                                                     {
                                                         <a asp-action="ActiveUser" asp-controller="Admin" asp-route-id="@user.UserId" class="btn btn-success" data-toggle="modal" data-target="#modal-user-active">
-                                                            Activate <i class="fas fa-check" aria-hidden="true"></i>
+                                                            <i class="fas fa-check" aria-hidden="true"></i>
                                                         </a>
                                                     }
                                                 </td>

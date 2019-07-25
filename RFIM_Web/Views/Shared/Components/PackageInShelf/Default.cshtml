@@ -1,0 +1,16 @@
+﻿@model RFIM_Web.ModelView.ShelfStatus
+@{
+    ViewData["Title"] = "Default";
+}
+
+    @if(Model.PackageCountInShelf >= 1 && Model.PackageCountInShelf < 4)
+    {
+        <td>Still have empty cell</td>
+    } else if (Model.PackageCountInShelf < 1)
+    {
+        <td>Cells are all empty</td>
+    } else 
+    {
+        <td>No more cells are empty</td>
+    }
+
