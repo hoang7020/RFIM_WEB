@@ -8,5 +8,6 @@ namespace RFIM_Web.ModelView
     public class ShelfStatus
     {
         public int PackageCountInShelf { get; set; }
+        public int CellNumber { get; set; }
     }
 }

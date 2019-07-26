@@ -297,35 +297,45 @@ namespace RFIM_Web.Controllers
                 return View();
             }
             List<Product> productImports = new List<Product>();
-            //tạo stream giữ file upload lên
-            using (var stream = new MemoryStream())
+            var supportedTypes = new[] {"xls", "xlsx" };
+            var fileExt = System.IO.Path.GetExtension(fImport.FileName.ToString()).Substring(1);
+            if (!supportedTypes.Contains(fileExt))
             {
-                fImport.CopyTo(stream);
-
-                //Map stream với Excel file
-                using (var package = new ExcelPackage(stream))
+                ViewBag.WrongType = "Please just file xls or xlsx only !!!";
+                return View();
+            }
+            else
+            {
+                //tạo stream giữ file upload lên
+                using (var stream = new MemoryStream())
                 {
-                    var sheet = package.Workbook.Worksheets[0];
-                    int rowCount = sheet.Dimension.Rows;
+                    fImport.CopyTo(stream);
 
-                    //duyệt qua từng dòng của sheet Excel bóc tách dữ liệu ra
-                    for (int i = 2; i <= rowCount; i++)
+                    //Map stream với Excel file
+                    using (var package = new ExcelPackage(stream))
                     {
-                        productImports.Add(new Product
+                        var sheet = package.Workbook.Worksheets[0];
+                        int rowCount = sheet.Dimension.Rows;
+
+                        //duyệt qua từng dòng của sheet Excel bóc tách dữ liệu ra
+                        for (int i = 2; i <= rowCount; i++)
                         {
-                            ProductId = sheet.Cells[i, 1].Value.ToString(),
-                            ProductName = sheet.Cells[i, 2].Value.ToString(),
-                            Weight = 0.0,
-                            Image = "",
-                            Description = "",
-                            Height = 0.0,
-                            Width = 0.0,
-                            Length = 0.0,
-                            QuantityPerBox = int.Parse(sheet.Cells[i, 3].Value.ToString()),
-                            CategoryId = int.Parse(sheet.Cells[i, 4].Value.ToString()),
-                            VendorId = int.Parse(sheet.Cells[i, 5].Value.ToString()),
-                            Status = true
-                        });
+                            productImports.Add(new Product
+                            {
+                                ProductId = sheet.Cells[i, 1].Value.ToString(),
+                                ProductName = sheet.Cells[i, 2].Value.ToString(),
+                                Weight = 0.0,
+                                Image = "",
+                                Description = "",
+                                Height = 0.0,
+                                Width = 0.0,
+                                Length = 0.0,
+                                QuantityPerBox = int.Parse(sheet.Cells[i, 3].Value.ToString()),
+                                CategoryId = int.Parse(sheet.Cells[i, 4].Value.ToString()),
+                                VendorId = int.Parse(sheet.Cells[i, 5].Value.ToString()),
+                                Status = true
+                            });
+                        }
                     }
                 }
             }
