@@ -106,19 +106,6 @@
                             }
                             @if (User.IsInRole("Accountant"))
                             {
-                                <li class="active">
-                                    <a class="has-arrow" href="index.html">
-                                        <i class="fas fa-file-invoice"></i>
-                                        <span class="mini-click-non">Invoices</span>
-                                    </a>
-                                    <ul class="submenu-angle" aria-expanded="true">
-                                        <li><a asp-action="" asp-controller=""><i class="fas fa-money-check" aria-hidden="true"></i> <span class="mini-sub-pro">Purchase Invoice</span></a></li>
-                                        <li><a asp-action="" asp-controller=""><i class="fas fa-pager" aria-hidden="true"></i> <span class="mini-sub-pro">Receipt Invoice</span></a></li>
-                                    </ul>
-                                </li>
-                            }
-                            @if (User.IsInRole("Stockkeeper"))
-                            {
                                 <li>
                                     <a asp-action="ListAllInvoice" asp-controller="Invoice" class="has-arrow">
                                         <i class="fas fa-receipt"></i>
@@ -230,16 +217,6 @@
                                                 </li>
                                             }
                                             @if (User.IsInRole("Accountant"))
-                                            {
-                                                <li>
-                                                    <a data-toggle="collapse" data-target="#Charts">Invoice <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
-                                                    <ul class="collapse dropdown-header-top">
-                                                        <li><a>Purchase Invoice</a></li>
-                                                        <li><a>Receipt Invoice</a></li>
-                                                    </ul>
-                                                </li>
-                                            }
-                                            @if (User.IsInRole("Stockkeeper"))
                                             {
                                                 <li>
                                                     <a data-toggle="collapse" data-target="#Charts">Sheets <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>

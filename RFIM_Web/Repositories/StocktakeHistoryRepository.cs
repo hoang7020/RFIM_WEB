@@ -17,9 +17,35 @@ namespace RFIM_Web.Repositories
             ctx = db;
         }
 
-        public List<StocktakeHistory> GetStocktakeHistories()
+        public List<FullStockTakeHistory> GetStocktakeHistories()
         {
-            return ctx.StocktakeHistories.Include(p => p.Product).Include(u => u.User).OrderByDescending(s => s.Date).ToList();
+            List <FullStockTakeHistory> fullStockTakeHistories = (from b in ctx.Boxes
+                                             from sh in ctx.StocktakeHistories
+                                             group new { sh, sh.StocktakeStatus, sh.User, b.Product, b } by new
+                                             {
+                                                 sh.StocktakeHistoryId,
+                                                 sh.ProductId,
+                                                 sh.StocktakeStatus.StocktakeStatusName,
+                                                 sh.User.Username,
+                                                 sh.Quantity,
+                                                 sh.Date,
+                                                 Product = sh.Product.ProductId,
+                                                 sh.Product.ProductName,
+                                                 sh.Description
+                                             } into sh
+                                             select new FullStockTakeHistory
+                                             {
+                                                 StocktakeHistoryId = sh.Key.StocktakeHistoryId,
+                                                 ProductId = sh.Key.ProductId,
+                                                 Date = sh.Key.Date,
+                                                 StocktakeQuantity = sh.Key.Quantity,
+                                                 StocktakeStatusName = sh.Key.StocktakeStatusName,
+                                                 UserName = sh.Key.Username,
+                                                 ProductName = sh.Key.ProductName,
+                                                 Description = sh.Key.Description,
+                                                 AvailableQuantity = sh.Count(p => p.b.ProductId != null)
+                                             }).ToList();
+            return fullStockTakeHistories;
         }
     }
 }
