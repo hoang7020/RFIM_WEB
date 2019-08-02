@@ -28,7 +28,6 @@
                                 }
                                 <h4>Description: @Model.Invoices.Description</h4>
                                 @using Microsoft.AspNetCore.Http
-                                <h4>User create: @Context.Session.GetString("User")</h4>
                             </div>
                         </div>
                         <br />
@@ -43,19 +42,21 @@
                                                 <th>Product Name</th>
                                                 <th>Category</th>
                                                 <th>Vendor</th>
+                                                <th>Quantity Per Box</th>
                                                 <th>Quantity(Boxes)</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach (var productList in Model.productList)
                                             {
-                                                <tr>
-                                                    <td>@productList.ProductId</td>
-                                                    <td>@productList.ProductName</td>
-                                                    <td>@productList.Category</td>
-                                                    <td>@productList.Vendor</td>
-                                                    <td>@productList.Quantity</td>
-                                                </tr>
+                                            <tr>
+                                                <td>@productList.ProductId</td>
+                                                <td>@productList.ProductName</td>
+                                                <td>@productList.Category</td>
+                                                <td>@productList.Vendor</td>
+                                                <td>@productList.QuantityperBox</td>
+                                                <td>@productList.Quantity</td>
+                                            </tr>
                                             }
                                         </tbody>
                                     </table>

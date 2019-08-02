@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RFIM_Web.Models.StocktakeHistory>
+﻿@model IEnumerable<RFIM_Web.ModelView.FullStockTakeHistory>
 @{
     ViewData["Title"] = "ListAllStocktake";
 }
@@ -22,11 +22,22 @@
                                     <thead>
                                         <tr>
                                             <th>Stocktake ID</th>
+<<<<<<< HEAD
                                             <th>User</th>
                                             <th>Product Name</th>
                                             <th>Quantity</th>
                                             <th>Lost Box</th>
                                             <th>Date</th>
+=======
+                                            <th>Date</th>
+                                            <th>Product ID</th>
+                                            <th>Product Name</th>
+                                            <th>Taken by</th>
+                                            <th>Status</th>
+                                            <th>AvailableQuantity</th>
+                                            <th>StocktakeQuantity</th>
+                                            <th>Option</th>
+>>>>>>> dev_thinh3
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -35,11 +46,22 @@
                                         <tr>
 
                                             <td>@stocktakeHistory.StocktakeHistoryId</td>
+<<<<<<< HEAD
                                             <td>@stocktakeHistory.User.Username</td>
                                             <td>@stocktakeHistory.Product.ProductName</td>
                                             <td>@stocktakeHistory.Quantity</td>
                                             <td>@stocktakeHistory.LostBox</td>
                                             <td>@stocktakeHistory.Date</td>
+=======
+                                            <td>@stocktakeHistory.Date</td>
+                                            <td>@stocktakeHistory.ProductId</td>
+                                            <td>@stocktakeHistory.ProductName</td>
+                                            <td>@stocktakeHistory.UserName</td>
+                                            <td>@stocktakeHistory.StocktakeStatusName</td>
+                                            <td>@stocktakeHistory.AvailableQuantity</td>
+                                            <td>@stocktakeHistory.StocktakeQuantity</td>
+                                            <td></td>
+>>>>>>> dev_thinh3
                                         </tr>
                                         }
                                     </tbody>

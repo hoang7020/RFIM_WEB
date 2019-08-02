@@ -23,5 +23,8 @@ namespace RFIM_Web.Models
         public int UserId { get; set; }
         [ForeignKey("UserId")]
         public User User { get; set; }
+        public int StocktakeStatusId { get; set; }
+        [ForeignKey("StocktakeStatusId")]
+        public StocktakeStatus StocktakeStatus { get; set; }
     }
 }

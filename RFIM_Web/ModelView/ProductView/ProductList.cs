@@ -13,5 +13,6 @@ namespace RFIM_Web.ModelView
         public int Quantity { get; set; }
         public string Category { get; set; }
         public string Vendor { get; set; }
+        public int? QuantityperBox { get; set; }
     }
 }
