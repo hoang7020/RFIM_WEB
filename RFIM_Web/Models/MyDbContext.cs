@@ -45,7 +45,7 @@ namespace RFIM_Web.Models
         public DbSet<InvoiceType> InvoiceTypes { get; set; }
         public DbSet<Invoice_Product> Invoice_Products { get; set; }
         public DbSet<StocktakeHistory> StocktakeHistories { get; set; }
-        public DbSet<StandardShellSize> StandardShellSizes { get; set; }
+        public DbSet<StandardShelfSize> StandardShellSizes { get; set; }
         public DbSet<InvoiceStatus> InvoiceStatuses { get; set; }
     }
 }

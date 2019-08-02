@@ -12,7 +12,6 @@ using RFIM_Web.ModelView;
 
 namespace RFIM_Web.Controllers
 {
-    [Authorize]
     public class ShelfController : Controller
     {
         private readonly IShelfRepository ctx;
@@ -24,13 +23,13 @@ namespace RFIM_Web.Controllers
         // GET: Shelf
         public IActionResult ListAllShelf()
         {
-            return View(ctx.GetAllShelf());
+            var shelfs = ctx.GetAllShelf();
+            return View(shelfs);
         }
 
 
         public IActionResult CreateShelf()
         {
-            //var standShellSize = ctx.StandardShellSizes.SingleOrDefault(p => p.StandardShellId == 1);
             var standShelfSize = ctx.GetStandardShellSize(1);
             ViewBag.StandardSize = new StandardSize
             {
@@ -458,9 +457,9 @@ namespace RFIM_Web.Controllers
             return View(standardSize);
         }
         [HttpPost]
-        public IActionResult EditShelfSize(int? id, StandardShellSize standardSize)
+        public IActionResult EditShelfSize(int? id, StandardShelfSize standardSize)
         {
-            if (id != standardSize.StandardShellId)
+            if (id != standardSize.StandardShelfId)
             {
                 return NotFound();
             }
@@ -472,7 +471,7 @@ namespace RFIM_Web.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!StandardSizeExists(standardSize.StandardShellId))
+                    if (!StandardSizeExists(standardSize.StandardShelfId))
                     {
                         return NotFound();
                     }

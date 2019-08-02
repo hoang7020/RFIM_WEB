@@ -248,20 +248,6 @@ namespace RFIM_Web.Controllers
                 //Define the accepted values
                 valA.Formula.Values.Add("Id can't be duplicated");
 
-                ////Add a List validation to B column. Values should be in a list
-                //var valB = sheet.DataValidations.AddListValidation("B:B");
-                //valB.AllowBlank = true;
-                ////Shows error message when the input doesn't match the accepted values
-                //valB.ShowErrorMessage = true;
-                //valB.ErrorStyle = OfficeOpenXml.DataValidation.ExcelDataValidationWarningStyle.information;
-                ////Title of the error mesage box
-                //valB.ErrorTitle = "Warning !!!";
-                //valB.Error = "This field is required, please check and input !!!";
-                //valB.ShowInputMessage = true;
-                //valB.PromptTitle = "Warning !!!";
-                //valB.Prompt= "This field is required";
-                ////Define the accepted values
-                //valB.Formula.Values.Add("Name can't be duplicated");
                 var valBText = sheet.DataValidations.AddTextLengthValidation("B:B");
                 valBText.ShowErrorMessage = true;
                 valBText.Formula.Value = 1;
@@ -291,71 +277,88 @@ namespace RFIM_Web.Controllers
         [HttpPost]
         public IActionResult ImportProduct(IFormFile fImport)
         {
-            if (fImport == null || fImport.Length <= 0)
+            try
             {
-                ViewBag.EmptyFileMessage = "File is not existed or fail to upload";
-                return View();
-            }
-            List<Product> productImports = new List<Product>();
-            //tạo stream giữ file upload lên
-            using (var stream = new MemoryStream())
-            {
-                fImport.CopyTo(stream);
-
-                //Map stream với Excel file
-                using (var package = new ExcelPackage(stream))
+                if (fImport == null || fImport.Length <= 0)
                 {
-                    var sheet = package.Workbook.Worksheets[0];
-                    int rowCount = sheet.Dimension.Rows;
-
-                    //duyệt qua từng dòng của sheet Excel bóc tách dữ liệu ra
-                    for (int i = 2; i <= rowCount; i++)
+                    ViewBag.EmptyFileMessage = "File is not existed or fail to upload";
+                    return View();
+                }
+                List<Product> productImports = new List<Product>();
+                var supportedTypes = new[] { "xls", "xlsx" };
+                var fileExt = System.IO.Path.GetExtension(fImport.FileName.ToString()).Substring(1);
+                if (!supportedTypes.Contains(fileExt))
+                {
+                    ViewBag.WrongType = "Please choose any file with .xls or .xlsx extension!!!";
+                    return View();
+                }
+                else
+                {
+                    //tạo stream giữ file upload lên
+                    using (var stream = new MemoryStream())
                     {
-                        productImports.Add(new Product
+                        fImport.CopyTo(stream);
+
+                        //Map stream với Excel file
+                        using (var package = new ExcelPackage(stream))
                         {
-                            ProductId = sheet.Cells[i, 1].Value.ToString(),
-                            ProductName = sheet.Cells[i, 2].Value.ToString(),
-                            Weight = 0.0,
-                            Image = "",
-                            Description = "",
-                            Height = 0.0,
-                            Width = 0.0,
-                            Length = 0.0,
-                            QuantityPerBox = int.Parse(sheet.Cells[i, 3].Value.ToString()),
-                            CategoryId = int.Parse(sheet.Cells[i, 4].Value.ToString()),
-                            VendorId = int.Parse(sheet.Cells[i, 5].Value.ToString()),
-                            Status = true
-                        });
+                            var sheet = package.Workbook.Worksheets[0];
+                            int rowCount = sheet.Dimension.Rows;
+
+                            //duyệt qua từng dòng của sheet Excel bóc tách dữ liệu ra
+                            for (int i = 2; i <= rowCount; i++)
+                            {
+                                productImports.Add(new Product
+                                {
+                                    ProductId = sheet.Cells[i, 1].Value.ToString(),
+                                    ProductName = sheet.Cells[i, 2].Value.ToString(),
+                                    Weight = 0.0,
+                                    Image = "",
+                                    Description = "",
+                                    Height = 0.0,
+                                    Width = 0.0,
+                                    Length = 0.0,
+                                    QuantityPerBox = int.Parse(sheet.Cells[i, 3].Value.ToString()),
+                                    CategoryId = int.Parse(sheet.Cells[i, 4].Value.ToString()),
+                                    VendorId = int.Parse(sheet.Cells[i, 5].Value.ToString()),
+                                    Status = true
+                                });
+                            }
+                        }
                     }
                 }
-            }
-            if (productImports.Count > 0)
-            {
-                //tiến hành update hoặc insert
-                foreach (Product product in productImports)
+                if (productImports.Count > 0)
                 {
-                    var item = context.GetProductById(product.ProductId);
-                    var itemNameExist = context.ProductNameExists(product.ProductName);
-                    if (item != null)//đã có --> update
+                    //tiến hành update hoặc insert
+                    foreach (Product product in productImports)
                     {
-                        ViewBag.ProductIdExist = "Product Id is already existed !!!";
-                        return View();
-                    }
-                    else
-                    {
-                        if (!itemNameExist)
+                        var item = context.GetProductById(product.ProductId);
+                        var itemNameExist = context.ProductNameExists(product.ProductName);
+                        if (item != null)//đã có --> update
                         {
-                           context.AddProduct(product);
+                            ViewBag.ProductIdExist = "Product Id is already existed !!!";
+                            return View();
                         }
                         else
                         {
-                            ViewBag.ProductNameExist = "Product name is already existed !!!!";
-                            return View();
+                            if (!itemNameExist)
+                            {
+                                context.AddProduct(product);
+                            }
+                            else
+                            {
+                                ViewBag.ProductNameExist = "Product name is already existed !!!!";
+                                return View();
+                            }
                         }
                     }
                 }
+                ViewBag.SuccessMessage = "List of products was imported successfully!";
             }
-            ViewBag.SuccessMessage = "List of products was imported successfully!";
+            catch (Exception ex)
+            {
+
+            }
             return View();
         }
     }

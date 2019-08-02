@@ -27,9 +27,11 @@ namespace RFIM_Web.Components
                     countPackageInShelf++;
                 }
             });
+            int cellNumber = ctx.CellCount(shelfId);
             ShelfStatus ss = new ShelfStatus
             {
-                PackageCountInShelf = countPackageInShelf
+                PackageCountInShelf = countPackageInShelf,
+                CellNumber = cellNumber
             };
             return View(ss);
         }

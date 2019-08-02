@@ -13,9 +13,9 @@ namespace RFIM_Web.Interfaces
         Shelf FindShelf(string id);
         Floor FindFloor(string id);
         Cell FindCell(string id);
-        StandardShellSize FindStandardShelfSize(int? id);
+        StandardShelfSize FindStandardShelfSize(int? id);
         List<Cell> GetAllCellById(string id);
-        StandardShellSize GetStandardShellSize(int? id);
+        StandardShelfSize GetStandardShellSize(int? id);
         int PackageCountById(string id);
         int CellCount(string id);
         int FloorCount(string id);
@@ -25,7 +25,7 @@ namespace RFIM_Web.Interfaces
         void UpdateShelf(Shelf model);
         void UpdateFloor(Floor model);
         void UpdateCell(Cell model);
-        void UpdateStandardShelfSize(StandardShellSize model);
+        void UpdateStandardShelfSize(StandardShelfSize model);
         void DeleteShelf(string id);
         void DeleteFloor(string id);
         void DeleteCell(string id);

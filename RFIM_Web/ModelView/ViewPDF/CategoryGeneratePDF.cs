@@ -18,26 +18,33 @@ namespace RFIM_Web.ModelView
             sb.Append(@"
                         <html>
                             <head>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css'>
                             </head>
                             <body>
                                 <div class='header'><h1>CATEGORY LIST</h1></div>
-                                <table border='1'>
+                                <table class='table table-bordered'>
+<thead>
                                     <tr>
                                         <th>Category ID</th>
                                         <th>Category Name</th>
                                         <th>Description</th>
-                                    </tr>");
+                                    </tr>
+</thead>");
             foreach (var cat in categories)
             {
-                sb.AppendFormat(@"<tr>
+                sb.AppendFormat(@"<tbody><tr>
                                     <td>{0}</td>
                                     <td>{1}</td>
                                     <td>{2}</td>
+ </tr>
+                                   </tbody>
                                   ", cat.CategoryId, cat.CategoryName, cat.Description);
             }
             sb.Append(@"
                                 </table>
                             </body>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script
+                            <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js'></script>
                         </html>");
             return sb.ToString();
         }

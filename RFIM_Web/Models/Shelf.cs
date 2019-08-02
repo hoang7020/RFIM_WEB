@@ -30,8 +30,8 @@ namespace RFIM_Web.Models
         [Range(1, 1000000000, ErrorMessage = "Number is more than 0")]
         public int? CoorY { get; set; }
         public bool Status { get; set; }
-        public int? Height { get; set; }
-        public int? Width { get; set; }
-        public int? Length { get; set; }
+        public double? Height { get; set; }
+        public double? Width { get; set; }
+        public double? Length { get; set; }
     }
 }

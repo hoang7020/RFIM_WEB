@@ -93,19 +93,28 @@ namespace RFIM_Web.Controllers
             }
             if (ModelState.IsValid)
             {
-                try
+                if (ctx.UsernameExists(user.Username))
                 {
-                    ctx.UpdateUser(user);
-                }
-                catch (DbUpdateConcurrencyException)
+                    ViewBag.UsernameExisted = "Username is already existed !!!!";
+                    ViewData["RoleId"] = new SelectList(ctx.GetRole(), "RoleId", "RoleName", user.RoleId);
+                    return View(user);
+                } else 
                 {
-                    if (!UserExists(user.UserId))
+                    try
                     {
-                        return NotFound();
+                        user.Status = true;
+                        ctx.UpdateUser(user);
                     }
-                    else
+                    catch (DbUpdateConcurrencyException)
                     {
-                        throw;
+                        if (!UserExists(user.UserId))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
                 }
                 return RedirectToAction("ListAllUser");

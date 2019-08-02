@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace RFIM_Web.Models
 {
-    [Table("StandardShellSize")]
-    public class StandardShellSize
+    [Table("StandardShelfSize")]
+    public class StandardShelfSize
     {
         [Key]
-        public int StandardShellId { get; set; }
+        public int StandardShelfId { get; set; }
         [Required(ErrorMessage = "This field is required")]
         [Range(1,1000000000, ErrorMessage = "Number must be more than zero")]
         public int? StandardFloor { get; set; }

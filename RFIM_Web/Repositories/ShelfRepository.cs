@@ -37,7 +37,7 @@ namespace RFIM_Web.Repositories
             return ctx.Floors.Find(id);
         }
         
-        public StandardShellSize FindStandardShelfSize(int? id)
+        public StandardShelfSize FindStandardShelfSize(int? id)
         {
             return ctx.StandardShellSizes.Find(id);
         }
@@ -45,9 +45,9 @@ namespace RFIM_Web.Repositories
         {
             return ctx.Cells.Where(p => p.CellId.Contains(id)).ToList();
         }
-        public StandardShellSize GetStandardShellSize(int? id)
+        public StandardShelfSize GetStandardShellSize(int? id)
         {
-            return ctx.StandardShellSizes.SingleOrDefault(p => p.StandardShellId == id);
+            return ctx.StandardShellSizes.SingleOrDefault(p => p.StandardShelfId == id);
         }
 
         public int PackageCountById(string id)
@@ -98,7 +98,7 @@ namespace RFIM_Web.Repositories
             Save();
         }
 
-        public void UpdateStandardShelfSize(StandardShellSize model)
+        public void UpdateStandardShelfSize(StandardShelfSize model)
         {
             ctx.Update(model);
             Save();
@@ -142,7 +142,7 @@ namespace RFIM_Web.Repositories
         }
         public bool StandardSizeExists(int id)
         {
-            return ctx.StandardShellSizes.Any(p => p.StandardShellId == id);
+            return ctx.StandardShellSizes.Any(p => p.StandardShelfId == id);
         }
         public List<Cell> ShowCell(string id)
         {
