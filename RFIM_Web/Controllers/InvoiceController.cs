@@ -76,6 +76,7 @@ namespace RFIM_Web.Controllers
 
         public IActionResult CreateInvoiceStep1()
         {
+            HttpContext.Session.Set<Invoice>("invoice", null);
             ViewData["InvoiceTypeId"] = context.GetSelectList();
             return View();
         }
@@ -84,7 +85,6 @@ namespace RFIM_Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult AddInvoiceStep2(Invoice invoice)
         {
-            HttpContext.Session.Set<Invoice>("invoice", null);
             ViewData["InvoiceTypeId"] = context.GetSelectList();
             if (ModelState.IsValid)
             {
@@ -170,9 +170,7 @@ namespace RFIM_Web.Controllers
                     var listProductRedirect = context.GetProductInvoiceListStockIn();
                     HttpContext.Session.Set<List<ProductExtendAttr>>("listProduct", null);
                     return RedirectToAction(nameof(RenderProductList));
-                }
-                Invoice invoice = HttpContext.Session.Get<Invoice>("invoice");
-                context.AddInvoice(invoice);
+                }           
                 List<ProductExtendAttr> listProduct = new List<ProductExtendAttr>();
                 foreach (string id in listProductId)
                 {
@@ -195,6 +193,8 @@ namespace RFIM_Web.Controllers
             string[] listProduct = form["listProduct"].ToString().Split(",");
             string[] listQuantity = form["listQuantity"].ToString().Split(",");
             int[] listQuantityParsed = listQuantity.Select(int.Parse).ToArray();
+            Invoice invoice = HttpContext.Session.Get<Invoice>("invoice");
+            context.AddInvoice(invoice);
             Invoice_Product ip = new Invoice_Product();
             for (int i = 0; i < listProduct.Count(); i++)
             {
