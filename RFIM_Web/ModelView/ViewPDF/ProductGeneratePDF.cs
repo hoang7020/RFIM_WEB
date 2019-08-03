@@ -48,7 +48,7 @@ namespace RFIM_Web.ModelView
                                     <td>{5}</td>
                                     <td>{6}</td> 
                                     <td>{7}</td>
-                                    <td width='200'>{8}</td>
+                                    <td width='70'>{8}</td>
 </tr>
                                    </tbody>
                                   ", pro.ProductId, pro.ProductName, BoxCount(pro.ProductId), pro.QuantityPerBox ,pro.Weight, pro.Height, pro.Width

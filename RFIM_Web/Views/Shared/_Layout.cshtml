@@ -104,7 +104,7 @@
                                     </ul>
                                 </li>
                             }
-                            @if (User.IsInRole("Accountant"))
+                            @if (User.IsInRole("Stockkeeper"))
                             {
                                 <li class="active">
                                     <a class="has-arrow" href="index.html">
@@ -117,7 +117,7 @@
                                     </ul>
                                 </li>
                             }
-                            @if (User.IsInRole("Stockkeeper"))
+                            @if (User.IsInRole("Accountant"))
                             {
                                 <li>
                                     <a asp-action="ListAllInvoice" asp-controller="Invoice" class="has-arrow">

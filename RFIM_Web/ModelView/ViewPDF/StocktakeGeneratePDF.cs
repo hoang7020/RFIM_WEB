@@ -31,7 +31,7 @@ namespace RFIM_Web.ModelView
                                         <th>Actual Quantity</th>
                                         <th>Current Stock</th>
                                         <th>Date</th>
-                                        <th>Description</th>
+                                        <th>Lost Box</th>
                                     </tr></thead>");
             foreach (var st in stocktakes)
             {
@@ -46,7 +46,7 @@ namespace RFIM_Web.ModelView
 </tr>
                                    </tbody>
                                   ", st.StocktakeHistoryId, st.ProductId, st.Product.ProductName,
-                                  st.Quantity, QuantityOfProduct(st.ProductId),st.Date, st.Description);
+                                  st.Quantity, QuantityOfProduct(st.ProductId),st.Date, st.LostBox);
             }
             sb.Append(@"
                                 </table>

@@ -35,7 +35,7 @@ namespace RFIM_Web.Controllers
             {
                 if(_ctx.CategoryNameExists(category.CategoryName))
                 {
-                    ViewBag.cateExist = "Category was already existed!";
+                    ViewBag.cateExist = "Category name is already existed!";
                     return View("CreateCategory",category);
                 }
                 category.Status = true;
@@ -68,19 +68,28 @@ namespace RFIM_Web.Controllers
             }
             if (ModelState.IsValid)
             {
-                try
+                if (_ctx.CategoryNameExists(category.CategoryName))
                 {
-                    category.Status = true;
-                    _ctx.UpdateCategory(category);
+                    ViewBag.cateExist = "Category name is already existed!";
+                    return View("CreateCategory", category);
                 }
-                catch (DbUpdateConcurrencyException)
+                else
                 {
-                    if (!CategoryExist(category.CategoryId))
+                    try
                     {
-                        return NotFound();
-                    } else
+                        category.Status = true;
+                        _ctx.UpdateCategory(category);
+                    }
+                    catch (DbUpdateConcurrencyException)
                     {
-                        throw;
+                        if (!CategoryExist(category.CategoryId))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
                 }
                 return RedirectToAction(nameof(ListAllCategory));
