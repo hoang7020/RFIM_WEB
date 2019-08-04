@@ -1,0 +1,16 @@
+﻿@model RFIM_Web.Models.StocktakeHistory
+
+<form method="post" asp-action="EditStocktake">
+    <div class="modal-header">
+        <a class="close" datadismiss="modal-user" asp-action="BackToStocktakeList" asp-controller="Stocktake">&times;</a>
+        <h4 class="modal-title">Edit Stocktake @Model.StocktakeHistoryId</h4>
+    </div>
+    <div class="modal-body form-horizontal">
+        Are you sure yo want to update info of <b>@Model.StocktakeHistoryId</b>?. This will cause boxes not found during this
+        stocktak become unacessible unless they was found by next stocktake.
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary">Update</button>
+    </div>
+</form>
+

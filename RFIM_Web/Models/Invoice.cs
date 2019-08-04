@@ -23,6 +23,10 @@ namespace RFIM_Web.Models
         [ForeignKey("StatusId")]
         public InvoiceStatus InvoiceStatus { get; set; }
 
+        public int UserId { get; set; }
+        [ForeignKey("UserId")]
+        public User User { get; set; }
+
         public int InvoiceTypeId { get; set; }
         [ForeignKey("InvoiceTypeId")]
         public InvoiceType InvoiceType { get; set; }
