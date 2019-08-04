@@ -62,19 +62,27 @@ using RFIM_Web.Models;
             EndContext();
             BeginContext(34, 515, false);
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "948b48f715e346b8b4a6b7c2ab45b661", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8cadcbd48ee142a090a3ffffcbdf3a91", async() => {
 >>>>>>> dev_thinh3
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1a0cf07a9f1c41cdad88bc30b4c69c70", async() => {
+>>>>>>> dev_test_4
                 BeginContext(81, 42, true);
                 WriteLiteral("\r\n    <div class=\"modal-header\">\r\n        ");
                 EndContext();
                 BeginContext(123, 109, false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fa0500ebeebc43679810239e13eb2273", async() => {
 =======
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa7d313db36c4422b2b0a1afe6c2a738", async() => {
 >>>>>>> dev_thinh3
+=======
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eac2fe809cc5454484f9c5cce66d662a", async() => {
+>>>>>>> dev_test_4
                     BeginContext(221, 7, true);
                     WriteLiteral("&times;");
                     EndContext();

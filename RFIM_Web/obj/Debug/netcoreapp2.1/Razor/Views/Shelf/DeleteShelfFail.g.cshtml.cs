@@ -58,10 +58,14 @@ using RFIM_Web.Models;
             EndContext();
             BeginContext(64, 105, false);
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "391351ac2d2442cb85d414f63599b32b", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c05abec83e8f43acb50944beb193b3c2", async() => {
 >>>>>>> dev_thinh3
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5cb0ea95b80d417288238c685fff3f65", async() => {
+>>>>>>> dev_test_4
                 BeginContext(158, 7, true);
                 WriteLiteral("&times;");
                 EndContext();

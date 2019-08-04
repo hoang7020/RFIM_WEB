@@ -63,10 +63,14 @@ using Microsoft.AspNetCore.Http;
             EndContext();
             BeginContext(75, 109, false);
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ab1e47d2a5234b6d958bf6818fbb1131", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e0a9ef35739746e182e96261ef03afa6", async() => {
 >>>>>>> dev_thinh3
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eeb9230d5dc54fbfbd6cabb628541353", async() => {
+>>>>>>> dev_test_4
                 BeginContext(173, 7, true);
                 WriteLiteral("&times;");
                 EndContext();

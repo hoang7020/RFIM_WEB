@@ -71,10 +71,14 @@ using RFIM_Web.Models;
             EndContext();
             BeginContext(134, 132, false);
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "93b2e514fe35444890aabd86fe610710", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9056b3cfb8b34cf9b1f407ddeb6ba6d9", async() => {
 >>>>>>> dev_thinh3
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "10f7a0814bb54963a6d8bca3edeba543", async() => {
+>>>>>>> dev_test_4
                 BeginContext(224, 17, false);
 #line 8 "C:\Users\KIROV\Documents\RFIM_WEB\RFIM_Web\Views\Shared\Components\ProductDetailList\Default.cshtml"
                                                                                             Write(product.ProductId);
