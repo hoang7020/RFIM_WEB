@@ -14,6 +14,7 @@
                             <div class="main-sparkline13-hd">
                                 <h4>Date: @Model.Invoices.Date</h4>
                                 <h4>Type: @Model.Invoices.InvoiceType.InvoiceTypes</h4>
+                                <h4>Type: @Model.Invoices.User.Username</h4>
                                 @if (Model.Invoices.InvoiceStatus.Status == "Pending")
                                 {
                                     <h4 style="color:red">Status: @Model.Invoices.InvoiceStatus.Status</h4>

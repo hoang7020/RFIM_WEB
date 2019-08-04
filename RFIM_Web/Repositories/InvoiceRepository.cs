@@ -20,7 +20,7 @@ namespace RFIM_Web.Repositories
         {
             List<ProductExtendAttr> productInvoiceLists =
                 (from b in ctx.Boxes
-                 where b.Product.Status == true
+                 where b.Product.Status == true && b.Status == true
                  group new { b.Product, b.Product.Vendor, b.Product.Category, b } by new
                  {
                      b.Product.ProductId,
@@ -83,7 +83,7 @@ namespace RFIM_Web.Repositories
 
         public Invoice GetSingleInvoiceDetail(string id)
         {
-            return ctx.Invoices.Include(it => it.InvoiceType).Include(it => it.InvoiceStatus).SingleOrDefault(i => i.InvoiceId.Equals(id));
+            return ctx.Invoices.Include(it => it.InvoiceType).Include(u => u.User).Include(it => it.InvoiceStatus).SingleOrDefault(i => i.InvoiceId.Equals(id));
         }
 
         public void DeleteInvoiceOnAction(string id)
@@ -239,6 +239,11 @@ namespace RFIM_Web.Repositories
         {
             var invoice = FindInvoice(id);
             ctx.Invoice_Products.RemoveRange(ctx.Invoice_Products.Where(x => x.InvoiceId.Equals(invoice.InvoiceId)));
+        }
+
+        public int findUserByName(string user)
+        {
+            return ctx.Users.Find(user).UserId;
         }
     }
 }

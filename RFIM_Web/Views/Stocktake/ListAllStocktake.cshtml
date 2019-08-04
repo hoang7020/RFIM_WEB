@@ -27,29 +27,58 @@
                                             <th>Product Name</th>
                                             <th>Taken by</th>
                                             <th>Status</th>
-                                            <th>AvailableQuantity</th>
                                             <th>StocktakeQuantity</th>
+                                            <th>AvailableQuantity</th>
                                             <th>Option</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (var stocktakeHistory in Model)
                                         {
-                                        <tr>
+                                            <tr>
 
-                                            <td>@stocktakeHistory.StocktakeHistoryId</td>
-                                            <td>@stocktakeHistory.Date</td>
-                                            <td>@stocktakeHistory.ProductId</td>
-                                            <td>@stocktakeHistory.ProductName</td>
-                                            <td>@stocktakeHistory.UserName</td>
-                                            <td>@stocktakeHistory.StocktakeStatusName</td>
-                                            <td>@stocktakeHistory.AvailableQuantity</td>
-                                            <td>@stocktakeHistory.StocktakeQuantity</td>
-                                            <td></td>
-                                        </tr>
+                                                <td>@stocktakeHistory.StocktakeHistoryId</td>
+                                                <td>@stocktakeHistory.Date</td>
+                                                <td>@stocktakeHistory.ProductId</td>
+                                                <td>@stocktakeHistory.ProductName</td>
+                                                <td>@stocktakeHistory.UserName</td>
+                                                @if (stocktakeHistory.Status == true)
+                                                {
+                                                    <td>Pending</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>Done</td>
+                                                }
+                                                @if (stocktakeHistory.AvailableQuantity == stocktakeHistory.StocktakeQuantity)
+                                                {
+                                                    <td style="color:green">@stocktakeHistory.StocktakeQuantity</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="color:red">@stocktakeHistory.StocktakeQuantity</td>
+                                                }
+                                                <td>@stocktakeHistory.AvailableQuantity</td>
+                                                <td>
+                                                    @if (stocktakeHistory.Status == true && stocktakeHistory.AvailableQuantity != stocktakeHistory.StocktakeQuantity)
+                                                    {
+                                                    <a asp-action="EditStocktake" asp-controller="Stocktake" asp-route-id="@stocktakeHistory.StocktakeHistoryId" class="pd-setting-ed" data-toggle="modal" data-target="#modal-stocktake-edit">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                    }
+                                                </td>
+                                            </tr>
                                         }
                                     </tbody>
-                                </table>                              
+                                </table>
+                                <div id="modal-stocktake-edit" aria-hidden="true" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -58,4 +87,13 @@
         </div>
     </div>
 </div>
+@section Scripts{
+    <script>
+ $(function () {
+     $("modal-stocktake-edit").on('hidden.bs.modal', function () {
+       $(this).removeData('bs.modal');
+     });
+ });
+    </script>
+}
 

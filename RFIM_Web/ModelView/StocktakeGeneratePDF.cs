@@ -42,7 +42,7 @@ namespace RFIM_Web.ModelView
                                     <td>{5}</td>
                                     <td>{6}</td>
                                   ", st.StocktakeHistoryId, st.ProductId, st.Product.ProductName,
-                                  st.Quantity, QuantityOfProduct(st.ProductId),st.Date, st.Description);
+                                  st.Quantity, QuantityOfProduct(st.ProductId),st.Date);
             }
             sb.Append(@"
                                 </table>

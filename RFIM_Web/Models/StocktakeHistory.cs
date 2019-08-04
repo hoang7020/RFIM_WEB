@@ -16,15 +16,14 @@ namespace RFIM_Web.Models
         public int Quantity { get; set; }
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
-        public string Description { get; set; }
+        public bool Status { get; set; }
+        public string LostBox { get; set; }
+        public string FoundBox { get; set; }
         public string ProductId { get; set; }
         [ForeignKey("ProductId")]
         public Product Product { get; set; }
         public int UserId { get; set; }
         [ForeignKey("UserId")]
         public User User { get; set; }
-        public int StocktakeStatusId { get; set; }
-        [ForeignKey("StocktakeStatusId")]
-        public StocktakeStatus StocktakeStatus { get; set; }
     }
 }
