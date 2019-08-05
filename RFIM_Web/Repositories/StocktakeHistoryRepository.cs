@@ -17,35 +17,59 @@ namespace RFIM_Web.Repositories
             ctx = db;
         }
 
+        public StocktakeHistory FindStocktake(int id)
+        {
+            return ctx.StocktakeHistories.Find(id);
+        }
+
         public List<FullStockTakeHistory> GetStocktakeHistories()
         {
-            List <FullStockTakeHistory> fullStockTakeHistories = (from b in ctx.Boxes
-                                             from sh in ctx.StocktakeHistories
-                                             group new { sh, sh.StocktakeStatus, sh.User, b.Product, b } by new
-                                             {
-                                                 sh.StocktakeHistoryId,
-                                                 sh.ProductId,
-                                                 sh.StocktakeStatus.StocktakeStatusName,
-                                                 sh.User.Username,
-                                                 sh.Quantity,
-                                                 sh.Date,
-                                                 Product = sh.Product.ProductId,
-                                                 sh.Product.ProductName,
-                                                 sh.Description
-                                             } into sh
-                                             select new FullStockTakeHistory
-                                             {
-                                                 StocktakeHistoryId = sh.Key.StocktakeHistoryId,
-                                                 ProductId = sh.Key.ProductId,
-                                                 Date = sh.Key.Date,
-                                                 StocktakeQuantity = sh.Key.Quantity,
-                                                 StocktakeStatusName = sh.Key.StocktakeStatusName,
-                                                 UserName = sh.Key.Username,
-                                                 ProductName = sh.Key.ProductName,
-                                                 Description = sh.Key.Description,
-                                                 AvailableQuantity = sh.Count(p => p.b.ProductId != null)
-                                             }).ToList();
+            List<FullStockTakeHistory> fullStockTakeHistories = (from sh in ctx.StocktakeHistories
+                                                                 group new { sh, sh.Product, sh.User } by new
+                                                                 {
+                                                                     sh.StocktakeHistoryId,
+                                                                     sh.Product.ProductId,
+                                                                     sh.Product.ProductName,
+                                                                     sh.Status,
+                                                                     sh.Date,
+                                                                     sh.Quantity,
+                                                                     sh.User.Username,
+                                                                     sh.LostBox,
+                                                                     sh.FoundBox
+                                                                 } into sh
+                                                                 select new FullStockTakeHistory
+                                                                 {
+                                                                     StocktakeHistoryId = sh.Key.StocktakeHistoryId,
+                                                                     ProductId = sh.Key.ProductId,
+                                                                     ProductName = sh.Key.ProductName,
+                                                                     Status = sh.Key.Status,
+                                                                     Date = sh.Key.Date,
+                                                                     StocktakeQuantity = sh.Key.Quantity,
+                                                                     AvailableQuantity = ctx.Boxes.Count(x => x.ProductId == sh.Key.ProductId),
+                                                                     UserName = sh.Key.Username,
+                                                                 }).ToList();
             return fullStockTakeHistories;
+        }
+
+        public void UpdateStockTakeStatus(StocktakeHistory stocktakeHistory)
+        {
+            ctx.Update(stocktakeHistory);
+            Save();
+        }
+
+        public Box FindBox(string boxRFID)
+        {
+            return ctx.Boxes.Find(boxRFID);
+        }
+
+        public void UpdateStatusBox(Box box)
+        {
+            ctx.Update(box);
+            Save();
+        }
+        private void Save()
+        {
+            ctx.SaveChanges();
         }
     }
 }

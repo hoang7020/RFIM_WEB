@@ -14,7 +14,6 @@ namespace RFIM_Web.ModelView
         public string ProductId { get; set; }
         public string ProductName { get; set; }
         public string UserName { get; set; }
-        public string Description { get; set; }
-        public string StocktakeStatusName { get; set; }
+        public bool Status { get; set; }
     }
 }
