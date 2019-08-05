@@ -15,6 +15,7 @@ namespace RFIM_Web.Models
         public string PackageRFID { get; set; }
         [ForeignKey("PackageRFID")]
         public Package Package { get; set; }
+        public bool Status { get; set; }
         public string ProductId { get; set; }
         [ForeignKey("ProductId")]
         public Product Product { get; set; }
