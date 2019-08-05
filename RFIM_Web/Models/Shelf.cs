@@ -24,8 +24,17 @@ namespace RFIM_Web.Models
         [Required(ErrorMessage = "This field is required")]
         public int? CellNumber { get; set; }
         [Required(ErrorMessage = "This field is required")]
+        [Range(1, 1000000000, ErrorMessage = "Number is more than 0")]
         public int? CoorX { get; set; }
         [Required(ErrorMessage = "This field is required")]
+        [Range(1, 1000000000, ErrorMessage = "Number is more than 0")]
         public int? CoorY { get; set; }
+        public bool Status { get; set; }
+        [Range(1, 1000000000000, ErrorMessage = "Valud must be greater than 1")]
+        public double? Height { get; set; }
+        [Range(1, 1000000000000, ErrorMessage = "Valud must be greater than 1")]
+        public double? Width { get; set; }
+        [Range(1, 1000000000000, ErrorMessage = "Valud must be greater than 1")]
+        public double? Length { get; set; }
     }
 }

@@ -1,0 +1,13 @@
+﻿@model RFIM_Web.ModelView.CellStatus
+@{
+    ViewData["Title"] = "Default";
+}
+
+@if (Model.StatusCell)
+{
+   <td>Has package @Model.PackageRFID</td>
+} else
+{
+    <td>Empty</td>
+}
+

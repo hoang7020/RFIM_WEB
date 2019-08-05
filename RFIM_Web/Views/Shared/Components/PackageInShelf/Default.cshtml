@@ -1,0 +1,20 @@
+﻿@model RFIM_Web.ModelView.ShelfStatus
+@{
+    ViewData["Title"] = "Default";
+    int countEmptyCell = Model.CellNumber - Model.PackageCountInShelf;
+}
+
+@if (Model.CellNumber - Model.PackageCountInShelf == 0)
+{
+    <td>No empty</td>
+}
+else if (Model.CellNumber - Model.PackageCountInShelf == Model.CellNumber)
+{
+    <td>@Model.CellNumber</td>
+}
+else
+{
+    <td>@countEmptyCell</td>
+}
+
+

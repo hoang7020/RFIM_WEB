@@ -34,32 +34,51 @@
                                     <tbody>
                                         @foreach (var user in Model)
                                         {
-                                            <tr>
-                                                <td>@user.Fullname</td>
-                                                <td>@user.Username</td>
-                                                <td>@user.Password</td>
-                                                <td>@user.Email</td>
-                                                <td>@user.Phone</td>
-                                                <td>@user.Role.RoleName</td>
-                                                <td>
-                                                    @if (user.Status)
-                                                    {
-                                                    <a class="btn btn-success">Active</a>
-                                                    }
-                                                    else
-                                                    {
-                                                        <a class="btn btn-danger">Deactive</a>
-                                                    }
-                                                </td>
-                                                <td>
-                                                    <a asp-action="EditUser" asp-controller="Admin" asp-route-id="@user.UserId" class="pd-setting-ed"><i class="fas fa-edit" aria-hidden="true"></i></a>
-                                                    <a asp-action="DeleteUser" asp-controller="Admin" asp-route-id="@user.UserId" class="fas fa-ban" data-toggle="modal" data-target="#modal-user-delete"></a>
-                                                </td>
-                                            </tr>
+                                        <tr>
+                                            <td>@user.Fullname</td>
+                                            <td>@user.Username</td>
+                                            <td>@user.Password</td>
+                                            <td>@user.Email</td>
+                                            <td>@user.Phone</td>
+                                            <td>@user.Role.RoleName</td>
+                                            <td>
+                                                @if (user.Status)
+                                                {
+                                                    <p>Active</p>
+                                                }
+                                                else
+                                                {
+                                                    <p>Deactive</p>
+                                                }
+                                            </td>
+                                            <td>
+                                                <a asp-action="EditUser" asp-controller="Admin" asp-route-id="@user.UserId" class="btn btn-success"><i class="fas fa-edit" aria-hidden="true"></i></a>
+                                                @if (user.Status)
+                                                {
+                                                    <a asp-action="DeleteUser" asp-controller="Admin" asp-route-id="@user.UserId" class="btn btn-danger" data-toggle="modal" data-target="#modal-user-delete">
+                                                        <i class="fas fa-ban" aria-hidden="true"></i>
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <a asp-action="ActiveUser" asp-controller="Admin" asp-route-id="@user.UserId" class="btn btn-success" data-toggle="modal" data-target="#modal-user-active">
+                                                        <i class="fas fa-check" aria-hidden="true"></i>
+                                                    </a>
+                                                }
+                                            </td>
+                                        </tr>
                                         }
                                     </tbody>
                                 </table>
                                 <div id="modal-user-delete" aria-hidden="true" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="modal-user-active" aria-hidden="true" class="modal fade" role="dialog">
                                     <div class="modal-dialog">
                                         <!-- Modal content-->
                                         <div class="modal-content">
@@ -80,7 +99,10 @@
  $(function () {
     $("#modal-user-delete").on('hidden.bs.modal', function () {
        $(this).removeData('bs.modal');
-    });
+     });
+     $("#modal-user-active").on('hidden.bs.modal', function () {
+         $(this).removeData('bs.modal');
+     });
  });
     </script>
 }

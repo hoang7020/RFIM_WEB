@@ -25,13 +25,10 @@
                                         <tr>
                                             <th>Product Id</th>
                                             <th>Product Name</th>
-                                            <th>Weight</th>
                                             <th>Image</th>
                                             <th>Category</th>
-                                            <th>Height</th>
-                                            <th>Width</th>
-                                            <th>Length</th>
-                                            <th>Quantity Per Box</th>
+                                            <th>Quantity(boxes)</th>
+                                            <th>Quantity Per Box(items)</th>
                                             <th>Status</th>
                                             <th>Setting</th>
                                         </tr>
@@ -39,36 +36,52 @@
                                     <tbody>
                                         @foreach (var product in Model)
                                         {
-                                            <tr>
-                                                <td><a asp-action="DetailProduct" asp-controller="Product" asp-route-id="@product.ProductId">@product.ProductId</a></td>
-                                                <td><a asp-action="DetailProduct" asp-controller="Product" asp-route-id="@product.ProductId">@product.ProductName</a></td>
-                                                <td>@product.Weight g</td>
-                                                <td><img src="~/Hinh/product/@product.Image" height="150" width="150" /></td>
-
-                                                <td>@product.Category.CategoryName</td>
-                                                <td>@product.Height</td>
-                                                <td>@product.Width</td>
-                                                <td>@product.Length</td>
-                                                <td>@product.QuantityPerBox</td>
-                                                <td>@if (product.Status)
+                                        <tr>
+                                            <td><a asp-action="DetailProduct" asp-controller="Product" asp-route-id="@product.ProductId">@product.ProductId</a></td>
+                                            <td><a asp-action="DetailProduct" asp-controller="Product" asp-route-id="@product.ProductId">@product.ProductName</a></td>
+                                            <td><img src="~/Hinh/product/@product.Image" height="150" width="150" /></td>
+                                            <td>@product.Category.CategoryName</td>
+                                            @await Component.InvokeAsync("QuantityBoxInProduct", new { productId = product.ProductId })
+                                            <td>@product.QuantityPerBox</td>
+                                            <td>
+                                                @if (product.Status)
                                                 {
-                                                    <a class="btn btn-success">Active</a>
+                                                    <p>Active</p>
                                                 }
-                                                else {
-                                                    <a class="btn btn-danger">Deactive</a>
-                                                }</td>
-                                                <td>
-                                                    <a asp-action="EditProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="pd-setting-ed"><i class="fas fa-edit"></i></a>
-                                                    <a asp-action="DeleteProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="pd-setting-ed" data-toggle="modal" data-target="#modal-product-delete">
-                                                        <i class="fas fa-ban"></i>
+                                                else
+                                                {
+                                                    <p>Deactive</p>
+                                                }
+                                            </td>
+                                            <td>
+                                                <a asp-action="EditProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="btn btn-success"><i class="fas fa-edit" aria-hidden="true"></i></a>
+                                                @if (product.Status)
+                                                {
+                                                    <a asp-action="DeleteProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="btn btn-danger" data-toggle="modal" data-target="#modal-product-delete">
+                                                        <i class="fas fa-ban" aria-hidden="true"></i>
                                                     </a>
-                                                </td>
-                                            </tr>
-                                        }
+                                                }
+                                                else
+                                                {
+                                                    <a asp-action="ActiveProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="btn btn-success" data-toggle="modal" data-target="#modal-product-active">
+                                                        <i class="fas fa-check" aria-hidden="true"></i>
+                                                    </a>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
                                     </tbody>
                                 </table>
 
                                 <div id="modal-product-delete" aria-hidden="true" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="modal-product-active" aria-hidden="true" class="modal fade" role="dialog">
                                     <div class="modal-dialog">
                                         <!-- Modal content-->
                                         <div class="modal-content">
@@ -99,7 +112,10 @@
  $(function () {
     $("#modal-product-delete").on('hidden.bs.modal', function () {
        $(this).removeData('bs.modal');
-    });
+     });
+     $("#modal-product-active").on('hidden.bs.modal', function () {
+         $(this).removeData('bs.modal');
+     });
  });
     </script>
 }

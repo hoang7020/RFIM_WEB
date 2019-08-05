@@ -1,0 +1,14 @@
+﻿@model RFIM_Web.Models.User
+
+<form method="post" asp-action="ActiveUser">
+    <div class="modal-header">
+        <a class="close" datadismiss="modal-user" asp-action="BackToUserList" asp-controller="Admin">&times;</a>
+        <h4 class="modal-title">Active user @Model.Username</h4>
+    </div>
+    <div class="modal-body form-horizontal">
+        Are you sure you want to activate <b>@Model.Username</b>?
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary">Active</button>
+    </div>
+</form>

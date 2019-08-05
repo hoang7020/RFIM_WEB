@@ -1,4 +1,4 @@
-﻿@model RFIM_Web.Models.StandardShellSize
+﻿@model RFIM_Web.Models.StandardShelfSize
 
 @{
     ViewData["Title"] = "EditShelfSize";
@@ -20,13 +20,13 @@
                                 <div class="all-form-element-inner">
                                     <form asp-action="EditShelfSize" asp-controller="Shelf">
                                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                        <input type="hidden" asp-for="StandardShellId" />
+                                        <input type="hidden" asp-for="StandardShelfId" />
                                         <div class="form-group-inner">
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                     <label class="login2 pull-right pull-right-pro">Standard Floor Number*</label>
                                                 </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                                     <input asp-for="StandardFloor" class="form-control" />
                                                     <span asp-validation-for="StandardFloor" class="text-danger"></span>
                                                 </div>
@@ -37,7 +37,7 @@
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                     <label class="login2 pull-right pull-right-pro">Standard Cell Number*</label>
                                                 </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                                     <input asp-for="StandardCell" class="form-control" />
                                                     <span asp-validation-for="StandardCell" class="text-danger"></span>
                                                 </div>
@@ -49,8 +49,8 @@
                                                     <div class="col-lg-3"></div>
                                                     <div class="col-lg-9">
                                                         <div class="login-horizental cancel-wp pull-left">
-                                                            <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Confirm</button>
                                                             <button class="btn btn-white" asp-action="BackToShelfList" asp-controller="Shelf">Cancel</button>
+                                                            <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Confirm</button>
                                                         </div>
                                                     </div>
                                                 </div>

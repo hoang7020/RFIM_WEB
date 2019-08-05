@@ -12,9 +12,11 @@ namespace RFIM_Web.Models
     {
         [Key]
         public string BoxRFID { get; set; }
+        public DateTime date { get; set; }
         public string PackageRFID { get; set; }
         [ForeignKey("PackageRFID")]
         public Package Package { get; set; }
+        public bool Status { get; set; }
         public string ProductId { get; set; }
         [ForeignKey("ProductId")]
         public Product Product { get; set; }

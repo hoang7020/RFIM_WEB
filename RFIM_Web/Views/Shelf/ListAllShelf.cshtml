@@ -2,7 +2,6 @@
 @{
     ViewData["Title"] = "ListAllShelf";
 }
-
 <div class="all-content-wrapper">
     <div class="data-table-area mg-tb-15">
         <div class="container-fluid">
@@ -27,26 +26,52 @@
                                             <th>Description</th>
                                             <th>Floor Number</th>
                                             <th>Cell Number</th>
+                                            <th>Height(cm)</th>
+                                            <th>Width(cm)</th>
+                                            <th>Length(cm)</th>
+                                            <th>Status</th>
+                                            <th>Number of empty cell</th>
                                             <th>Setting</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (var shelf in Model)
                                         {
-                                            <tr>
-                                                <td><a asp-action="ShowCell" asp-controller="Shelf" asp-route-id="@shelf.ShelfId" data-toggle="modal" data-target="#modal-cell">@shelf.ShelfId</a></td>
-                                                <td>@shelf.Description</td>
-                                                <td>@shelf.FloorNumber</td>
-                                                <td>@shelf.CellNumber</td>
-                                                <td>
-                                                    <a asp-action="EditShelf" asp-controller="Shelf" asp-route-id="@shelf.ShelfId" class="pd-setting-ed"><i class="fas fa-edit" aria-hidden="true"></i></a>
-                                                    <a asp-action="DeleteShelf" asp-controller="Shelf" asp-route-id="@shelf.ShelfId" class="pd-setting-ed" data-toggle="modal" data-target="#modal-shelf-delete">
-                                                        <i class="fas fa-trash" aria-hidden="true"></i>
+                                        <tr>
+                                            <td><a asp-action="ShowCell" asp-controller="Shelf" asp-route-id="@shelf.ShelfId" data-toggle="modal" data-target="#modal-cell">@shelf.ShelfId</a></td>
+                                            <td>@shelf.Description</td>
+                                            <td>@shelf.FloorNumber</td>
+                                            <td>@shelf.CellNumber</td>
+                                            <td>@shelf.Height</td>
+                                            <td>@shelf.Width</td>
+                                            <td>@shelf.Length</td>
+                                            <td>
+                                                @if (shelf.Status)
+                                                {
+                                                    <p>Active</p>
+                                                }
+                                                else
+                                                {
+                                                    <p>Deactive</p>
+                                                }
+                                            </td>
+                                            @await Component.InvokeAsync("PackageInShelf", new { shelfId = shelf.ShelfId })
+                                            <td>
+                                                <a asp-action="EditShelf" asp-controller="Shelf" asp-route-id="@shelf.ShelfId" class="btn btn-success"><i class="fas fa-edit" aria-hidden="true"></i></a>
+                                                @if (shelf.Status)
+                                                {
+                                                    <a asp-action="DeactiveShelf" asp-controller="Shelf" asp-route-id="@shelf.ShelfId" class="btn btn-danger" data-toggle="modal" data-target="#modal-shelf-deactive">
+                                                        <i class="fas fa-ban" aria-hidden="true"></i>
                                                     </a>
-
-
-                                                </td>
-                                            </tr>
+                                                }
+                                                else
+                                                {
+                                                    <a asp-action="ActiveShelf" asp-controller="Shelf" asp-route-id="@shelf.ShelfId" class="btn btn-success" data-toggle="modal" data-target="#modal-shelf-active">
+                                                        <i class="fas fa-check" aria-hidden="true"></i>
+                                                    </a>
+                                                }
+                                            </td>
+                                        </tr>
                                         }
                                     </tbody>
                                 </table>
@@ -58,7 +83,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="modal-shelf" aria-hidden="true" class="modal fade" role="dialog">
+                                <div id="modal-shelf-deactive" aria-hidden="true" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="modal-shelf-active" aria-hidden="true" class="modal fade" role="dialog">
                                     <div class="modal-dialog">
                                         <!-- Modal content-->
                                         <div class="modal-content">
@@ -84,14 +117,20 @@
 </div>
 @section Scripts{
     <script>
- $(function () {
-    $("#modal-shelf-delete").on('hidden.bs.modal', function () {
-       $(this).removeData('bs.modal');
-     });
-     $("#modal-cell").on('hidden.bs.modal', function () {
-         $(this).removeData('bs.modal');
-     });
- });
+        $(function () {
+            $("#modal-shelf-delete").on('hidden.bs.modal', function () {
+                $(this).removeData('bs.modal');
+            });
+            $("#modal-cell").on('hidden.bs.modal', function () {
+                $(this).removeData('bs.modal');
+            });
+            $("#modal-shelf-deactive").on('hidden.bs.modal', function () {
+                $(this).removeData('bs.modal');
+            });
+            $("#modal-shelf-active").on('hidden.bs.modal', function () {
+                $(this).removeData('bs.modal');
+            });
+        });
     </script>
 }
 

@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
+using OfficeOpenXml.Style;
 using RFIM_Web.Interfaces;
 using RFIM_Web.Models;
 using RFIM_Web.ModelView;
@@ -19,8 +20,8 @@ namespace RFIM_Web.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly IProduct context;
-        public ProductController(IProduct _context)
+        private readonly IProductRepository context;
+        public ProductController(IProductRepository _context)
         {
             context = _context;
         }
@@ -39,7 +40,7 @@ namespace RFIM_Web.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateProduct(Product product, IFormFile fHinh)
+        public IActionResult CreateProduct(Product product, IFormFile fHinh)
         {
             //check model validation 
             if (ModelState.IsValid)
@@ -57,7 +58,7 @@ namespace RFIM_Web.Controllers
                             product.Image = UploadImageTool.UploadImage(fHinh, "product");
                         }
                         product.Status = true;
-                        await context.AddProduct(product);
+                        context.AddProduct(product);
                         return RedirectToAction(nameof(ListAllProduct));
                     }
                     else
@@ -80,13 +81,13 @@ namespace RFIM_Web.Controllers
             return View(product);
         }
         [HttpGet]
-        public async Task<IActionResult> EditProduct(string id)
+        public IActionResult EditProduct(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var product = await context.FindProductById(id);
+            var product = context.FindProductById(id);
             if (product == null)
             {
                 return NotFound();
@@ -97,7 +98,7 @@ namespace RFIM_Web.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditProduct(string id, Product product, IFormFile fHinh)
+        public IActionResult EditProduct(string id, Product product, IFormFile fHinh)
         {
             if (id != product.ProductId)
             {
@@ -116,7 +117,7 @@ namespace RFIM_Web.Controllers
                             product.Image = UploadImageTool.UploadImage(fHinh, "product");
                         }
                         product.Status = true;
-                        await context.UpdateProduct(product);
+                        context.UpdateProduct(product);
                     }
                     else
                     {
@@ -144,26 +145,57 @@ namespace RFIM_Web.Controllers
             return View(product);
         }
         [HttpGet]
-        public async Task<IActionResult> DeleteProduct(string id)
+        public IActionResult DeleteProduct(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var product = await context.GetProduct(id);
+            var product = context.GetProduct(id);
             if (product == null)
             {
                 return NotFound();
             }
-            return PartialView("DeleteProduct", product);
+            var productExistInPackage = context.ProductExistInPackage(id);
+            if (productExistInPackage)
+            {
+                return PartialView("DeactiveFail", product);
+            }
+            else
+            {
+                return PartialView("DeleteProduct", product);
+            }
         }
         [HttpPost, ActionName("DeleteProduct")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirm(string id)
+        public IActionResult DeleteConfirm(string id)
         {
-            var product = await context.FindProductById(id);
+            var product = context.FindProductById(id);
             product.Status = false;
-            await context.UpdateProduct(product);
+            context.UpdateProduct(product);
+            return RedirectToAction(nameof(ListAllProduct));
+        }
+        [HttpGet]
+        public IActionResult ActiveProduct(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var product = context.GetProduct(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return PartialView("ActiveProduct", product);
+        }
+        [HttpPost, ActionName("ActiveProduct")]
+        [ValidateAntiForgeryToken]
+        public IActionResult ActiveConfirm(string id)
+        {
+            var product = context.FindProductById(id);
+            product.Status = true;
+            context.UpdateProduct(product);
             return RedirectToAction(nameof(ListAllProduct));
         }
 
@@ -177,19 +209,18 @@ namespace RFIM_Web.Controllers
             return RedirectToAction(nameof(ListAllProduct));
         }
 
-        public async Task<IActionResult> DetailProduct(string id)
+        public IActionResult DetailProduct(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var product = await context.GetProduct(id);
+            var product = context.GetProduct(id);
             if (product == null)
             {
                 return NotFound();
             }
-            //var packages = await ctx.Packages.Where(p => p.ProductId == id).ToListAsync();
-            var packages = await context.GetAllPackageById(id);
+            var packages = context.GetAllPackageById(id);
             ViewBag.PackageSelectFromProduct = packages;
 
             return View(product);
@@ -201,21 +232,35 @@ namespace RFIM_Web.Controllers
             using (var package = new ExcelPackage(stream))
             {
                 var sheet = package.Workbook.Worksheets.Add("Product");
-                //set chiều dài cho columm
-                sheet.DefaultColWidth = 15;
-                //set tự xuống dòng nếu text dài quá
+
+                //Add a List validation to A column. Values should be in a list
+                var valA = sheet.DataValidations.AddListValidation("A:A");
+                valA.AllowBlank = false;
+                //Shows error message when the input doesn't match the accepted values
+                valA.ShowErrorMessage = true;
+                valA.ErrorStyle = OfficeOpenXml.DataValidation.ExcelDataValidationWarningStyle.information;
+                //Title of the error mesage box
+                valA.ErrorTitle = "Warning !!!";
+                valA.Error = "This field is required, please check and input !!!";
+                valA.ShowInputMessage = true;
+                valA.PromptTitle = "Warning !!!";
+                valA.Prompt = "This field is required";
+                //Define the accepted values
+                valA.Formula.Values.Add("Id can't be duplicated");
+
+                var valBText = sheet.DataValidations.AddTextLengthValidation("B:B");
+                valBText.ShowErrorMessage = true;
+                valBText.Formula.Value = 1;
+                valBText.Formula2.Value = 256;
+                valBText.AllowBlank = true;
+
+                sheet.DefaultColWidth = 20;
                 sheet.Cells.Style.WrapText = true;
                 sheet.Cells[1, 1].Value = "Product Id";
                 sheet.Cells[1, 2].Value = "Product Name";
-                sheet.Cells[1, 3].Value = "Weight";
-                //sheet.Cells[1, 4].Value = "Image";
-                //sheet.Cells[1, 5].Value = "Description";
-                sheet.Cells[1, 4].Value = "Height";
-                sheet.Cells[1, 5].Value = "Width";
-                sheet.Cells[1, 6].Value = "Length";
-                sheet.Cells[1, 7].Value = "Quantity Per Box";
-                sheet.Cells[1, 8].Value = "Category";
-                sheet.Cells[1, 9].Value = "Vendor";
+                sheet.Cells[1, 3].Value = "Quantity Per Box";
+                sheet.Cells[1, 4].Value = "Category";
+                sheet.Cells[1, 5].Value = "Vendor";
                 package.Save();
             }
             stream.Position = 0;
@@ -230,73 +275,90 @@ namespace RFIM_Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ImportProduct(IFormFile fImport)
+        public IActionResult ImportProduct(IFormFile fImport)
         {
-            if (fImport == null || fImport.Length <= 0)
+            try
             {
-                ViewBag.EmptyFileMessage = "File is not existed or fail to upload";
-                return View();
-            }
-            List<Product> productImports = new List<Product>();
-            //tạo stream giữ file upload lên
-            using (var stream = new MemoryStream())
-            {
-                fImport.CopyTo(stream);
-
-                //Map stream với Excel file
-                using (var package = new ExcelPackage(stream))
+                if (fImport == null || fImport.Length <= 0)
                 {
-                    var sheet = package.Workbook.Worksheets[0];
-                    int rowCount = sheet.Dimension.Rows;
-
-                    //duyệt qua từng dòng của sheet Excel bóc tách dữ liệu ra
-                    for (int i = 2; i <= rowCount; i++)
+                    ViewBag.EmptyFileMessage = "File is not existed or fail to upload";
+                    return View();
+                }
+                List<Product> productImports = new List<Product>();
+                var supportedTypes = new[] { "xls", "xlsx" };
+                var fileExt = System.IO.Path.GetExtension(fImport.FileName.ToString()).Substring(1);
+                if (!supportedTypes.Contains(fileExt))
+                {
+                    ViewBag.WrongType = "Please choose any file with .xls or .xlsx extension!!!";
+                    return View();
+                }
+                else
+                {
+                    //tạo stream giữ file upload lên
+                    using (var stream = new MemoryStream())
                     {
-                        productImports.Add(new Product
+                        fImport.CopyTo(stream);
+
+                        //Map stream với Excel file
+                        using (var package = new ExcelPackage(stream))
                         {
-                            ProductId = sheet.Cells[i, 1].Value.ToString(),
-                            ProductName = sheet.Cells[i, 2].Value.ToString(),
-                            Weight = double.Parse(sheet.Cells[i, 3].Value.ToString()),
-                            Image = "",
-                            Description = "",
-                            Height = double.Parse(sheet.Cells[i, 4].Value.ToString()),
-                            Width = double.Parse(sheet.Cells[i, 5].Value.ToString()),
-                            Length = double.Parse(sheet.Cells[i, 6].Value.ToString()),
-                            QuantityPerBox = int.Parse(sheet.Cells[i, 7].Value.ToString()),
-                            CategoryId = int.Parse(sheet.Cells[i, 8].Value.ToString()),
-                            VendorId = int.Parse(sheet.Cells[i, 9].Value.ToString()),
-                            Status = true
-                        });
+                            var sheet = package.Workbook.Worksheets[0];
+                            int rowCount = sheet.Dimension.Rows;
+
+                            //duyệt qua từng dòng của sheet Excel bóc tách dữ liệu ra
+                            for (int i = 2; i <= rowCount; i++)
+                            {
+                                productImports.Add(new Product
+                                {
+                                    ProductId = sheet.Cells[i, 1].Value.ToString(),
+                                    ProductName = sheet.Cells[i, 2].Value.ToString(),
+                                    Weight = 0.0,
+                                    Image = "",
+                                    Description = "",
+                                    Height = 0.0,
+                                    Width = 0.0,
+                                    Length = 0.0,
+                                    QuantityPerBox = int.Parse(sheet.Cells[i, 3].Value.ToString()),
+                                    CategoryId = int.Parse(sheet.Cells[i, 4].Value.ToString()),
+                                    VendorId = int.Parse(sheet.Cells[i, 5].Value.ToString()),
+                                    Status = true
+                                });
+                            }
+                        }
                     }
                 }
-            }
-            if (productImports.Count > 0)
-            {
-                //tiến hành update hoặc insert
-                foreach (Product product in productImports)
+                if (productImports.Count > 0)
                 {
-                    var item = context.GetProductById(product.ProductId);
-                    var itemNameExist = context.ProductNameExists(product.ProductName);
-                    if (item != null)//đã có --> update
+                    //tiến hành update hoặc insert
+                    foreach (Product product in productImports)
                     {
-                        ViewBag.ProductIdExist = "Product Id is already existed !!!";
-                        return View();
-                    }
-                    else
-                    {
-                        if (!itemNameExist)
+                        var item = context.GetProductById(product.ProductId);
+                        var itemNameExist = context.ProductNameExists(product.ProductName);
+                        if (item != null)//đã có --> update
                         {
-                           await context.AddProduct(product);
+                            ViewBag.ProductIdExist = "Product Id is already existed !!!";
+                            return View();
                         }
                         else
                         {
-                            ViewBag.ProductNameExist = "Product name is already existed !!!!";
-                            return View();
+                            if (!itemNameExist)
+                            {
+                                context.AddProduct(product);
+                            }
+                            else
+                            {
+                                ViewBag.ProductNameExist = "Product name is already existed !!!!";
+                                return View();
+                            }
                         }
                     }
                 }
+                ViewBag.SuccessMessage = "List of products was imported successfully!";
             }
-            ViewBag.SuccessMessage = "List of products was imported successfully!";
+            catch (Exception ex)
+            {
+
+            }
             return View();
         }
     }

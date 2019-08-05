@@ -19,7 +19,7 @@ namespace RFIM_Web.Components
         {
             QuantityBox boxCount = new QuantityBox
             {
-                BoxCount = ctx.Boxes.Count(p => p.PackageRFID == packageRFID)
+                BoxCount = ctx.Boxes.Count(p => p.PackageRFID == packageRFID && p.Status == true)
             }; 
             return View(boxCount);
         }

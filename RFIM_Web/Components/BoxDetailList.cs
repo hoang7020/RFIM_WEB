@@ -17,7 +17,7 @@ namespace RFIM_Web.Components
 
         public IViewComponentResult Invoke(string packageRFID = "")
         {
-            return View(ctx.Boxes.Where(p => p.PackageRFID == packageRFID).ToList());
+            return View(ctx.Boxes.Where(p => p.Status == true).Where(p => p.PackageRFID == packageRFID).ToList());
         }
     }
 }

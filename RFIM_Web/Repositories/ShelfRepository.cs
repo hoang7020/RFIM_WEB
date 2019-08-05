@@ -8,41 +8,46 @@ using System.Threading.Tasks;
 
 namespace RFIM_Web.Repositories
 {
-    public class ShelfRepository : IShelf
+    public class ShelfRepository : IShelfRepository
     {
         protected readonly MyDbContext ctx;
         public ShelfRepository(MyDbContext db)
         {
             ctx = db;
         }
-        public async Task<List<Shelf>> GetAllShelf()
+        public List<Shelf> GetAllShelf()
         {
-            return await ctx.Shelfs.ToListAsync();
+            return ctx.Shelfs.ToList();
         }
 
-        public async Task<Shelf> GetShelf(string id)
+        public Shelf GetShelf(string id)
         {
-            return await ctx.Shelfs.FirstOrDefaultAsync(p => p.ShelfId == id);
+            return  ctx.Shelfs.FirstOrDefault(p => p.ShelfId == id);
         }
-        public async Task<Shelf> FindShelf(string id)
+        public Shelf FindShelf(string id)
         {
-            return await ctx.Shelfs.FindAsync(id);
+            return ctx.Shelfs.Find(id);
         }
-        public async Task<Cell> FindCell(string id)
+        public Cell FindCell(string id)
         {
-            return await ctx.Cells.FindAsync(id);
+            return ctx.Cells.Find(id);
         }
-        public async Task<StandardShellSize> FindStandardShelfSize(int? id)
+        public Floor FindFloor(string id)
         {
-            return await ctx.StandardShellSizes.FindAsync(id);
+            return ctx.Floors.Find(id);
+        }
+        
+        public StandardShelfSize FindStandardShelfSize(int? id)
+        {
+            return ctx.StandardShellSizes.Find(id);
         }
         public List<Cell> GetAllCellById(string id)
         {
             return ctx.Cells.Where(p => p.CellId.Contains(id)).ToList();
         }
-        public StandardShellSize GetStandardShellSize(int? id)
+        public StandardShelfSize GetStandardShellSize(int? id)
         {
-            return ctx.StandardShellSizes.SingleOrDefault(p => p.StandardShellId == id);
+            return ctx.StandardShellSizes.SingleOrDefault(p => p.StandardShelfId == id);
         }
 
         public int PackageCountById(string id)
@@ -59,57 +64,67 @@ namespace RFIM_Web.Repositories
         {
             return ctx.Floors.Where(p => p.FloorId.Contains(id)).Count();
         }
-        public async Task AddShelf(Shelf model)
+        public void AddShelf(Shelf model)
         {
             ctx.Add(model);
-            await Save();
+            Save();
         }
 
-        public async Task AddFloor(Floor model)
+        public void AddFloor(Floor model)
         {
             ctx.Add(model);
-            await Save();
+            Save();
         }
 
-        public async Task AddCell(Cell model)
+        public void AddCell(Cell model)
         {
             ctx.Add(model);
-            await Save();
+            Save();
         }
 
-        public async Task UpdateShelf(Shelf model)
+        public void UpdateShelf(Shelf model)
         {
             ctx.Update(model);
-            await Save();
+            Save();
         }
-
-        public async Task UpdateStandardShelfSize(StandardShellSize model)
+        public void UpdateFloor(Floor model)
         {
             ctx.Update(model);
-            await Save();
+            Save();
+        }
+        public void UpdateCell(Cell model)
+        {
+            ctx.Update(model);
+            Save();
         }
 
-        public async Task DeleteShelf(string id)
+        public void UpdateStandardShelfSize(StandardShelfSize model)
         {
-            var shelf = await ctx.Shelfs.SingleOrDefaultAsync(p => p.ShelfId == id);
+            ctx.Update(model);
+            Save();
+        }
+
+        public void DeleteShelf(string id)
+        {
+            var shelf = ctx.Shelfs.SingleOrDefault(p => p.ShelfId == id);
             ctx.Shelfs.Remove(shelf);
-            await Save();
+            Save();
         }
-        public async Task DeleteFloor(string id)
+        public void DeleteFloor(string id)
         {
-            var floor = await ctx.Floors.SingleOrDefaultAsync(p => p.FloorId == id);
+            var floor = ctx.Floors.SingleOrDefault(p => p.FloorId == id);
             ctx.Floors.Remove(floor);
-            await Save();
+            Save();
         }
-        public async Task DeleteCell(string id)
+        public void DeleteCell(string id)
         {
-            var cell = await ctx.Cells.SingleOrDefaultAsync(p => p.CellId == id);
+            var cell = ctx.Cells.SingleOrDefault(p => p.CellId == id);
             ctx.Cells.Remove(cell);
-            await Save();
+            Save(); 
         }
-        private async Task Save()
+        private void Save()
         {
-            await ctx.SaveChangesAsync();
+            ctx.SaveChanges();
         }
 
         public bool ShelfExists(string id)
@@ -127,11 +142,19 @@ namespace RFIM_Web.Repositories
         }
         public bool StandardSizeExists(int id)
         {
-            return ctx.StandardShellSizes.Any(p => p.StandardShellId == id);
+            return ctx.StandardShellSizes.Any(p => p.StandardShelfId == id);
         }
-        public async Task<List<Cell>> ShowCell(string id)
+        public List<Cell> ShowCell(string id)
         {
-            return await ctx.Cells.Include(p => p.Floor).Where(p => p.CellId.Contains(id)).ToListAsync();
+            return ctx.Cells.Include(p => p.Floor).Where(p => p.CellId.Contains(id)).ToList();
+        }
+        public bool PackageInCell(string id)
+        {
+            return ctx.Packages.Any(p => p.CellId == id);
+        }
+        public Package PackageRFIDInCell(string id)
+        {
+            return ctx.Packages.FirstOrDefault(p => p.CellId == id);
         }
     }
 }

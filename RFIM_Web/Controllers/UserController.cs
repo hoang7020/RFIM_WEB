@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RFIM_Web.Interfaces;
@@ -16,8 +17,8 @@ namespace RFIM_Web.Controllers
     [Authorize]
     public class UserController : Controller
     {
-        private readonly IUser ctx;
-        public UserController( IUser db)
+        private readonly IUserRepository ctx;
+        public UserController( IUserRepository db)
         {
             ctx = db;
         }
@@ -31,7 +32,7 @@ namespace RFIM_Web.Controllers
             return View();
         }
         [HttpPost, AllowAnonymous]
-        public async Task<IActionResult> Login(LoginView model)
+        public IActionResult Login(LoginView model)
         {
             var loggedUser = ctx.GetLoggedUser(model);
             if (loggedUser == null)
@@ -53,26 +54,18 @@ namespace RFIM_Web.Controllers
 
             ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(userIdentity);
 
-            await HttpContext.SignInAsync(claimsPrincipal);
-            
+            HttpContext.SignInAsync(claimsPrincipal);
 
-            if (loggedUser.Role.RoleName == "Admin")
-            {
-                return RedirectToAction("Index", "Admin");
-            } else if(loggedUser.Role.RoleName == "Accountant")
-            {
-                return RedirectToAction("Index", "Accountant");
-            } else
-            {
-                return RedirectToAction("Index", "Stockkeeper");
-            }
+            HttpContext.Session.SetString("User", loggedUser.Username);
+
+            return RedirectToAction("Index", "Admin");
         }
 
-        public async Task<IActionResult> Logout()
+        public IActionResult Logout()
         {
-            await HttpContext.SignOutAsync();
+            HttpContext.SignOutAsync();
+            HttpContext.Session.Remove("User");
             return RedirectToAction("Login", "User");
         }
-
     }
 }

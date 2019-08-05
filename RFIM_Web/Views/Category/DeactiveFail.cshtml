@@ -1,0 +1,11 @@
+﻿@model RFIM_Web.Models.Category
+
+<div class="modal-header">
+    <a class="close" datadismiss="modal-user" asp-action="BackToListCategory" asp-controller="Category">&times;</a>
+    <h4 class="modal-title">
+        Can't deactive category @Model.CategoryName
+    </h4>
+</div>
+<div class="modal-body form-horizontal">
+    <strong style="color:red">Current category @Model.CategoryName have active products</strong>
+</div>

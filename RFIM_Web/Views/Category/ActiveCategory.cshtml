@@ -1,0 +1,14 @@
+﻿@model RFIM_Web.Models.Category
+
+<form method="post" asp-action="ActiveCategory">
+    <div class="modal-header">
+        <a asp-action="BackToListCategory" class="close" datadismiss="modal-category-delete">&times;</a>
+        <h4 class="modal-title">Active category @Model.CategoryName</h4>
+    </div>
+    <div class="modal-body form-horizontal">
+        Are you sure you want to activate <b>@Model.CategoryName</b>?
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary">Active</button>
+    </div>
+</form>

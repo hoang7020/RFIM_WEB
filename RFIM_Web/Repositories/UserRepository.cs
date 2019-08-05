@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RFIM_Web.Repositories
 {
-    public class UserRepository : IUser
+    public class UserRepository : IUserRepository
     {
         protected readonly MyDbContext ctx;
         public UserRepository(MyDbContext db)
@@ -17,22 +17,27 @@ namespace RFIM_Web.Repositories
             ctx = db;
         }
 
-        public async Task AddUser(User model)
+        public void AddUser(User model)
         {
             ctx.Add(model);
-            await Save();
+            Save();
         }
 
-        public async Task DeleteUser(int id)
+        public void DeleteUser(int id)
         {
-            var user = await ctx.Users.SingleOrDefaultAsync(p => p.RoleId == id);
+            var user = ctx.Users.SingleOrDefault(p => p.RoleId == id);
             ctx.Users.Remove(user);
-            await Save();
+            Save();
         }
 
-        public async Task<User> FindUser(int? id)
+        public User FindUser(int? id)
         {
-           return await ctx.Users.FindAsync(id);
+            return ctx.Users.Find(id);
+        }
+
+        public User FindUserByName(string username)
+        {
+            return ctx.Users.Where(p => p.Username == username).FirstOrDefault();
         }
 
         public List<User> GetAll()
@@ -55,7 +60,7 @@ namespace RFIM_Web.Repositories
         public User GetLoggedUser(LoginView model)
         {
             return ctx.Users.Include(p => p.Role)
-                .SingleOrDefault(p => p.Username == model.Username && p.Password == model.Password);
+                .FirstOrDefault(p => p.Username == model.Username && p.Password == model.Password);
         }
 
         public List<Role> GetRole()
@@ -63,24 +68,48 @@ namespace RFIM_Web.Repositories
             return ctx.Roles.ToList();
         }
 
-        public async Task<User> GetUser(int? id)
+        public User GetUser(int? id)
         {
-            return await ctx.Users.Include(p => p.Role).FirstOrDefaultAsync(p => p.UserId == id);
+            return ctx.Users.Include(p => p.Role).FirstOrDefault(p => p.UserId == id);
         }
 
-        public async Task UpdateUser(User model)
+        public void UpdateUser(User model)
         {
             ctx.Users.Update(model);
-            await Save();
+            Save();
         }
 
         public bool UserExists(int id)
         {
             return ctx.Users.Any(p => p.UserId == id);
         }
-        private async Task Save()
+        public bool UsernameExists(string name)
         {
-            await ctx.SaveChangesAsync();
+            return ctx.Users.Any(p => p.Username.Equals(name));
+        }
+        public bool UsernameExistsExceptId(int id, string name)
+        {
+            return ctx.Users.Where(p => p.UserId != id).Any(p => p.Username.Equals(name));
+        }
+        public int UserCount()
+        {
+            return ctx.Users.Count();
+        }
+        public int ActiveUserCount()
+        {
+            return ctx.Users.Count(p => p.Status == true);
+        }
+        public int AccountantCount()
+        {
+            return ctx.Users.Count(p => p.Role.RoleName == "Accountant");
+        }
+        public int StockkeeperCount()
+        {
+            return ctx.Users.Count(p => p.Role.RoleName == "Stockkeeper");
+        }
+        private void Save()
+        {
+            ctx.SaveChanges();
         }
     }
 }
