@@ -129,7 +129,7 @@ namespace RFIM_Web.Repositories
                                          Category = p.Key.CategoryName,
                                          ProductName = p.Key.ProductName,
                                          QuantityPerBox = p.Key.QuantityPerBox,
-                                         InstockQuantity = p.Count(c => c.b.ProductId != null)
+                                         InstockQuantity = ctx.Boxes.Count(x => x.ProductId == id)
                                      }).SingleOrDefault();
             return pil;
         }
@@ -224,7 +224,7 @@ namespace RFIM_Web.Repositories
                                                                Vendor = p.Key.VendorName,
                                                                Category = p.Key.CategoryName,
                                                                QuantityPerBox = p.Key.QuantityPerBox,
-                                                               InstockQuantity = ctx.Boxes.Count(x => x.ProductId == id)
+                                                               InstockQuantity = ctx.Boxes.Count(x => x.ProductId.Equals(p.Key.ProductId))
                                                            }).ToList();
             return productInvoiceLists;
         }
@@ -241,7 +241,7 @@ namespace RFIM_Web.Repositories
             ctx.Invoice_Products.RemoveRange(ctx.Invoice_Products.Where(x => x.InvoiceId.Equals(invoice.InvoiceId)));
         }
 
-        public int findUserByName(string user)
+        public int findUserByName(int? user)
         {
             return ctx.Users.Find(user).UserId;
         }

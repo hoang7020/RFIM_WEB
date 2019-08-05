@@ -56,7 +56,7 @@ namespace RFIM_Web.Controllers
 
             HttpContext.SignInAsync(claimsPrincipal);
 
-            HttpContext.Session.SetString("User", loggedUser.Username);
+            HttpContext.Session.SetInt32("User", loggedUser.UserId);
 
             return RedirectToAction("Index", "Admin");
         }
