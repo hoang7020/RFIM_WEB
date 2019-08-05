@@ -20,7 +20,6 @@ namespace RFIM_Web.Interfaces
         void DeleteUser(int id);
         bool UserExists(int id);
         bool UsernameExists(string name);
-        bool UsernameExistsExceptId(int id, string name);
         List<Role> GetRole();
         User GetLoggedUser(LoginView model);
         int UserCount();

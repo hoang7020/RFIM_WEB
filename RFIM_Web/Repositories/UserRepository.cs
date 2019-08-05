@@ -91,6 +91,7 @@ namespace RFIM_Web.Repositories
         {
             return ctx.Users.Where(p => p.UserId != id).Any(p => p.Username.Equals(name));
         }
+       
         public int UserCount()
         {
             return ctx.Users.Count();
