@@ -60,7 +60,7 @@
                                                 }
                                                 <td>@stocktakeHistory.AvailableQuantity</td>
                                                 <td>
-                                                    @if (stocktakeHistory.Status == true && stocktakeHistory.AvailableQuantity != stocktakeHistory.StocktakeQuantity)
+                                                    @if (stocktakeHistory.Status == true)
                                                     {
                                                     <a asp-action="EditStocktake" asp-controller="Stocktake" asp-route-id="@stocktakeHistory.StocktakeHistoryId" class="pd-setting-ed" data-toggle="modal" data-target="#modal-stocktake-edit">
                                                         <i class="fas fa-edit"></i>
