@@ -95,7 +95,7 @@ namespace RFIM_Web.Controllers
                 }
                 else
                 {
-                    string user = HttpContext.Session.GetString("User");
+                    int? user = HttpContext.Session.GetInt32("User");
                     invoice.UserId = context.findUserByName(user);
                     invoice.StatusId = 1;
                     invoice.Date = DateTime.Now;
