@@ -36,7 +36,7 @@ namespace RFIM_Web.Repositories
                      Category = p.Key.CategoryName,
                      ProductName = p.Key.ProductName,
                      QuantityPerBox = p.Key.QuantityPerBox,
-                     InstockQuantity = p.Count(c => c.b.ProductId != null)
+                     InstockQuantity = p.Count(c => c.b.ProductId != null && c.b.Status == true)
                  }).ToList();
             return productInvoiceLists;
         }
@@ -110,10 +110,10 @@ namespace RFIM_Web.Repositories
             Save();
         }
 
-        public ProductExtendAttr FindSingleProductInvoiceStockIn(string id)
+        public ProductExtendAttr FindSingleProductInvoiceStockOut(string id)
         {
             ProductExtendAttr pil = (from b in ctx.Boxes
-                                     where b.Product.ProductId.Equals(id)
+                                     where b.Product.ProductId.Equals(id) && b.Status == true
                                      group new { b.Product, b.Product.Vendor, b.Product.Category, b } by new
                                      {
                                          b.Product.ProductId,
@@ -129,12 +129,12 @@ namespace RFIM_Web.Repositories
                                          Category = p.Key.CategoryName,
                                          ProductName = p.Key.ProductName,
                                          QuantityPerBox = p.Key.QuantityPerBox,
-                                         InstockQuantity = ctx.Boxes.Count(x => x.ProductId == id)
+                                         InstockQuantity = ctx.Boxes.Count(x => x.ProductId.Equals(p.Key.ProductId) && x.Status == true)
                                      }).SingleOrDefault();
             return pil;
         }
 
-        public ProductExtendAttr FindSingleProductInvoiceStockOut(string id)
+        public ProductExtendAttr FindSingleProductInvoiceStockIn(string id)
         {
             ProductExtendAttr pil = (from p in ctx.Products
                                      join c in ctx.Categories on p.CategoryId equals c.CategoryId
@@ -224,7 +224,7 @@ namespace RFIM_Web.Repositories
                                                                Vendor = p.Key.VendorName,
                                                                Category = p.Key.CategoryName,
                                                                QuantityPerBox = p.Key.QuantityPerBox,
-                                                               InstockQuantity = ctx.Boxes.Count(x => x.ProductId.Equals(p.Key.ProductId))
+                                                               InstockQuantity = ctx.Boxes.Count(x => x.ProductId.Equals(p.Key.ProductId) && x.Status == true)
                                                            }).ToList();
             return productInvoiceLists;
         }
