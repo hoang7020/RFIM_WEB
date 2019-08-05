@@ -48,8 +48,11 @@ namespace RFIM_Web.Controllers
                 foreach (string foundBoxRFID in ListFoundRFID)
                 {
                     Box box = context.FindBox(foundBoxRFID);
-                    box.Status = true;
-                    context.UpdateStatusBox(box);
+                    if(box != null)
+                    {
+                        box.Status = true;
+                        context.UpdateStatusBox(box);
+                    }    
                 }
             }
             if ((!string.IsNullOrEmpty(ListLostRFID[0])))
@@ -57,8 +60,11 @@ namespace RFIM_Web.Controllers
                 foreach (string lostBoxRFID in ListLostRFID)
                 {
                     Box box = context.FindBox(lostBoxRFID);
-                    box.Status = false;
-                    context.UpdateStatusBox(box);
+                    if(box != null)
+                    {
+                        box.Status = false;
+                        context.UpdateStatusBox(box);
+                    }
                 }
             }
             stocktake.Status = false;
