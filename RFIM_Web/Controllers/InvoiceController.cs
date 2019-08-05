@@ -148,7 +148,7 @@ namespace RFIM_Web.Controllers
         public IActionResult AddProductListFinished(IFormCollection fm)
         {
             string[] listProductId = fm["checkList"].ToString().Split(",");
-            if (HttpContext.Session.GetInt32("invoiceType") == 1)
+            if (HttpContext.Session.GetInt32("invoiceType") == 2)
             {
                 if (string.IsNullOrEmpty(listProductId[0]))
                 {
@@ -213,7 +213,6 @@ namespace RFIM_Web.Controllers
         public IActionResult InvoiceCancel()
         {
             string invoiceId = HttpContext.Session.GetString("invoiceId");
-            context.DeleteInvoiceOnCancel(invoiceId);
             HttpContext.Session.Set<List<ProductExtendAttr>>("listProduct", null);
             return RedirectToAction(nameof(ListAllInvoice));
         }
