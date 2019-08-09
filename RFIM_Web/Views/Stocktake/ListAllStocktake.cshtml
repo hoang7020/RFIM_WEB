@@ -22,52 +22,52 @@
                                     <thead>
                                         <tr>
                                             <th>Stocktake ID</th>
-                                            <th>Date</th>
                                             <th>Product ID</th>
                                             <th>Product Name</th>
-                                            <th>Taken by</th>
-                                            <th>Status</th>
                                             <th>StocktakeQuantity</th>
                                             <th>AvailableQuantity</th>
+                                            <th>Taken by</th>
+                                            <th>Status</th>
+                                            <th>Date</th>
                                             <th>Option</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (var stocktakeHistory in Model)
                                         {
-                                            <tr>
+                                        <tr>
 
-                                                <td>@stocktakeHistory.StocktakeHistoryId</td>
-                                                <td>@stocktakeHistory.Date</td>
-                                                <td>@stocktakeHistory.ProductId</td>
-                                                <td>@stocktakeHistory.ProductName</td>
-                                                <td>@stocktakeHistory.UserName</td>
+                                            <td>@stocktakeHistory.StocktakeHistoryId</td>
+                                            <td>@stocktakeHistory.ProductId</td>
+                                            <td>@stocktakeHistory.ProductName</td>
+                                            @if (stocktakeHistory.AvailableQuantity == stocktakeHistory.StocktakeQuantity)
+                                            {
+                                                <td style="color:green">@stocktakeHistory.StocktakeQuantity</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="color:red">@stocktakeHistory.StocktakeQuantity</td>
+                                            }
+                                            <td>@stocktakeHistory.AvailableQuantity</td>
+                                            <td>@stocktakeHistory.UserName</td>
+                                            @if (stocktakeHistory.Status == true)
+                                            {
+                                                <td>Pending</td>
+                                            }
+                                            else
+                                            {
+                                                <td>Done</td>
+                                            }
+                                            <td>@stocktakeHistory.Date</td>
+                                            <td>
                                                 @if (stocktakeHistory.Status == true)
                                                 {
-                                                    <td>Pending</td>
+                                                    <a asp-action="EditStocktake" asp-controller="Stocktake" asp-route-id="@stocktakeHistory.StocktakeHistoryId" class="btn btn-success" data-toggle="modal" data-target="#modal-stocktake-edit">
+                                                        <i class="fas fa-check" aria-hidden="true"></i>
+                                                    </a>
                                                 }
-                                                else
-                                                {
-                                                    <td>Done</td>
-                                                }
-                                                @if (stocktakeHistory.AvailableQuantity == stocktakeHistory.StocktakeQuantity)
-                                                {
-                                                    <td style="color:green">@stocktakeHistory.StocktakeQuantity</td>
-                                                }
-                                                else
-                                                {
-                                                    <td style="color:red">@stocktakeHistory.StocktakeQuantity</td>
-                                                }
-                                                <td>@stocktakeHistory.AvailableQuantity</td>
-                                                <td>
-                                                    @if (stocktakeHistory.Status == true)
-                                                    {
-                                                        <a asp-action="EditStocktake" asp-controller="Stocktake" asp-route-id="@stocktakeHistory.StocktakeHistoryId" class="btn btn-success" data-toggle="modal" data-target="#modal-stocktake-edit">
-                                                            <i class="fas fa-check" aria-hidden="true"></i>
-                                                        </a>
-                                                    }
-                                                </td>
-                                            </tr>
+                                            </td>
+                                        </tr>
                                         }
                                     </tbody>
                                 </table>
