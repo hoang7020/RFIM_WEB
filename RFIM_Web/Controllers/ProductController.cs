@@ -171,8 +171,7 @@ namespace RFIM_Web.Controllers
         public IActionResult DeleteConfirm(string id)
         {
             var product = context.FindProductById(id);
-            product.Status = false;
-            context.UpdateProduct(product);
+            context.DeactiveProduct(product);
             return RedirectToAction(nameof(ListAllProduct));
         }
         [HttpGet]
@@ -194,8 +193,7 @@ namespace RFIM_Web.Controllers
         public IActionResult ActiveConfirm(string id)
         {
             var product = context.FindProductById(id);
-            product.Status = true;
-            context.UpdateProduct(product);
+            context.ActiveProduct(product);
             return RedirectToAction(nameof(ListAllProduct));
         }
 

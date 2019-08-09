@@ -94,7 +94,6 @@ namespace RFIM_Web.Controllers
             if (ModelState.IsValid)
             {
                 if (ctx.UsernameExists(user.Username))
-                if (ctx.UsernameExists(user.Username))
                 {
                     ViewBag.UsernameExisted = "Username is already existed !!!!";
                     ViewData["RoleId"] = new SelectList(ctx.GetRole(), "RoleId", "RoleName", user.RoleId);
@@ -142,8 +141,7 @@ namespace RFIM_Web.Controllers
         public IActionResult ConfirmDelete(int id)
         {
             var user = ctx.FindUser(id);
-            user.Status = false;
-            ctx.UpdateUser(user);
+            ctx.DeactiveUser(user);
             return RedirectToAction(nameof(ListAllUser));
         }
         public IActionResult ActiveUser(int? id)
@@ -164,8 +162,7 @@ namespace RFIM_Web.Controllers
         public IActionResult ConfirmActive(int id)
         {
             var user = ctx.FindUser(id);
-            user.Status = true;
-            ctx.UpdateUser(user);
+            ctx.ActiveUser(user);
             return RedirectToAction(nameof(ListAllUser));
         }
         public bool UserExists(int id)

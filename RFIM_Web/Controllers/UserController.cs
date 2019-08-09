@@ -18,7 +18,7 @@ namespace RFIM_Web.Controllers
     public class UserController : Controller
     {
         private readonly IUserRepository ctx;
-        public UserController( IUserRepository db)
+        public UserController(IUserRepository db)
         {
             ctx = db;
         }

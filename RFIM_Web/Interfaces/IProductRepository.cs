@@ -18,6 +18,8 @@ namespace RFIM_Web.Interfaces
         bool ProductNameExistExceptId(string id, string name);
         bool ProductExistInPackage(string id);
         void UpdateProduct(Product model);
+        void DeactiveProduct(Product model);
+        void ActiveProduct(Product model);
         Product GetProduct(string id);
         List<Package> GetAllPackageById(string id);
         Product GetProductById(string id);

@@ -57,6 +57,18 @@ namespace RFIM_Web.Repositories
             Save();
         }
 
+        public void DeactiveCategory(Category model)
+        {
+            model.Status = false;
+            ctx.Update(model);
+            Save();
+        }
+        public void ActiveCategory(Category model)
+        {
+            model.Status = true;
+            ctx.Update(model);
+            Save();
+        }
         private void Save()
         {
             ctx.SaveChanges();

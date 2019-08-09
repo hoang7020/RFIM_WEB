@@ -18,6 +18,8 @@ namespace RFIM_Web.Interfaces
         void AddUser(User model);
         void UpdateUser(User model);
         void DeleteUser(int id);
+        void DeactiveUser(User model);
+        void ActiveUser(User model);
         bool UserExists(int id);
         bool UsernameExists(string name);
         List<Role> GetRole();

@@ -59,6 +59,18 @@ namespace RFIM_Web.Repositories
             ctx.Update(model);
             Save();
         }
+        public void DeactiveProduct(Product model)
+        {
+            model.Status = false;
+            ctx.Update(model);
+            Save();
+        }
+        public void ActiveProduct(Product model)
+        {
+            model.Status = true;
+            ctx.Update(model);
+            Save();
+        }
         public Product GetProduct(string id)
         {
             return ctx.Products.Include(p => p.Category).Include(p => p.Vendor)

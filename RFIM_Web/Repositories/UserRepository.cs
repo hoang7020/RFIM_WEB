@@ -30,6 +30,19 @@ namespace RFIM_Web.Repositories
             Save();
         }
 
+        public void DeactiveUser(User model)
+        {
+            model.Status = false;
+            ctx.Users.Update(model);
+            Save();
+        }
+
+        public void ActiveUser(User model)
+        {
+            model.Status = true;
+            ctx.Users.Update(model);
+            Save();
+        }
         public User FindUser(int? id)
         {
             return ctx.Users.Find(id);

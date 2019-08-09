@@ -1,25 +1,42 @@
 ﻿@model IEnumerable<Package>
+@{
+    var ctx = new MyDbContext();
+    int quantityBox(string id)
+    {
+        return ctx.Boxes.Count(p => p.PackageRFID == id);
+    }
+    int quantityMissingBox(string id)
+    {
+        return ctx.Boxes.Count(p => p.PackageRFID == id && p.Status == false);
+    }
+}
 
 @foreach (var item in Model)
 {
-<tr>
-    <th width="350">
-        <div class="admin-pro-accordion-wrap responsive-mg-b-30">
-            <div class="panel-group adminpro-custon-design" id="accordion">
-                <a data-toggle="collapse" data-parent="#accordion" href="#@item.PackageRFID">
-                    @item.PackageRFID
-                </a>
-            </div>
-            <div id="@item.PackageRFID" class="panel-collapse panel-ic collapse in">
-                <div>
-                    @await Component.InvokeAsync("BoxDetailList", new { packageRFID = item.PackageRFID })
+    if ((quantityBox(item.PackageRFID) - quantityMissingBox(item.PackageRFID)) > 0)
+    {
+        <tr>
+            <th width="350">
+                <div class="admin-pro-accordion-wrap responsive-mg-b-30">
+                    <div class="panel-group adminpro-custon-design" id="accordion">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#@item.PackageRFID">
+                            @item.PackageRFID
+                        </a>
+                    </div>
+                    <div id="@item.PackageRFID" class="panel-collapse panel-ic collapse in">
+                        <div>
+                            @await Component.InvokeAsync("BoxDetailList", new { packageRFID = item.PackageRFID })
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </th>
-    <th>@item.CellId</th>
-    <th>@item.Date</th>
-    @await Component.InvokeAsync("QuantityBoxInPackage", new { packageRFID = item.PackageRFID })
-</tr>
+            </th>
+            <th>@item.CellId</th>
+            <th>@item.Date</th>
+            @await Component.InvokeAsync("QuantityBoxInPackage", new { packageRFID = item.PackageRFID })
+        </tr>
+    } else
+    {
+
+    }
 }
 
