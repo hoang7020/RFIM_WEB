@@ -29,6 +29,12 @@ namespace RFIM_Web.Interfaces
         void DeleteShelf(string id);
         void DeleteFloor(string id);
         void DeleteCell(string id);
+        void DeactiveShelf(Shelf model);
+        void DeactiveFloor(Floor model);
+        void DeactiveCell(Cell model);
+        void ActiveShelf(Shelf model);
+        void ActiveFloor(Floor model);
+        void ActiveCell(Cell model);
         bool ShelfExists(string id);
         bool FloorExists(string id);
         bool CellExists(string id);

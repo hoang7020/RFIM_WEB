@@ -117,8 +117,7 @@ namespace RFIM_Web.Controllers
         public IActionResult ActiveCategoryConfirmed(int id)
         {
             var category = _ctx.FindCategoryById(id);
-            category.Status = true;
-            _ctx.UpdateCategory(category);
+            _ctx.ActiveCategory(category);
             return RedirectToAction(nameof(ListAllCategory));
         }
         [HttpGet]
@@ -148,8 +147,7 @@ namespace RFIM_Web.Controllers
         public IActionResult DeleteCategoryConfirm(int id)
         {
             var category = _ctx.FindCategoryById(id);
-            category.Status = false;
-            _ctx.UpdateCategory(category);
+            _ctx.DeactiveCategory(category);
             return RedirectToAction(nameof(ListAllCategory));
         }
 

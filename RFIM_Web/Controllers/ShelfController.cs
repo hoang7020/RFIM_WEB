@@ -293,14 +293,12 @@ namespace RFIM_Web.Controllers
         public IActionResult ActiveConfirmed(string id)
         {
             var shelf = ctx.FindShelf(id);
-            shelf.Status = true;
-            ctx.UpdateShelf(shelf);
+            ctx.ActiveShelf(shelf);
             for (int i = 1; i <= shelf.FloorNumber; i++)
             {
                 var floorId = $"{id}-{i}";
                 var floor = ctx.FindFloor(floorId);
-                floor.Status = true;
-                ctx.UpdateFloor(floor);
+                ctx.ActiveFloor(floor);
             };
             for (int i = 1; i <= shelf.FloorNumber; i++)
             {
@@ -308,8 +306,7 @@ namespace RFIM_Web.Controllers
                 {
                     var cellId = $"{id}-{i}-{j}";
                     var cell = ctx.FindCell(cellId);
-                    cell.Status = true;
-                    ctx.UpdateCell(cell);
+                    ctx.ActiveCell(cell);
                 }
             };
             return RedirectToAction(nameof(ListAllShelf));
@@ -352,14 +349,12 @@ namespace RFIM_Web.Controllers
         public IActionResult DeactiveConfirmed(string id)
         {
             var shelf = ctx.FindShelf(id);
-            shelf.Status = false;
-            ctx.UpdateShelf(shelf);
+            ctx.DeactiveShelf(shelf);
             for (int i = 1; i <= shelf.FloorNumber; i++)
             {
                 var floorId = $"{id}-{i}";
                 var floor = ctx.FindFloor(floorId);
-                floor.Status = false;
-                ctx.UpdateFloor(floor);
+                ctx.DeactiveFloor(floor);
             };
             for (int i = 1; i <= shelf.FloorNumber; i++)
             {
@@ -367,8 +362,7 @@ namespace RFIM_Web.Controllers
                 {
                     var cellId = $"{id}-{i}-{j}";
                     var cell = ctx.FindCell(cellId);
-                    cell.Status = false;
-                    ctx.UpdateCell(cell);
+                    ctx.DeactiveCell(cell);
                 }
             };
             return RedirectToAction(nameof(ListAllShelf));

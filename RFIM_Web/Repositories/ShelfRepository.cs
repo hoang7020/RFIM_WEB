@@ -156,5 +156,47 @@ namespace RFIM_Web.Repositories
         {
             return ctx.Packages.FirstOrDefault(p => p.CellId == id);
         }
+
+        public void DeactiveShelf(Shelf model)
+        {
+            model.Status = false;
+            ctx.Update(model);
+            Save();
+        }
+
+        public void DeactiveFloor(Floor model)
+        {
+            model.Status = false;
+            ctx.Update(model);
+            Save();
+        }
+
+        public void DeactiveCell(Cell model)
+        {
+            model.Status = false;
+            ctx.Update(model);
+            Save();
+        }
+
+        public void ActiveShelf(Shelf model)
+        {
+            model.Status = true;
+            ctx.Update(model);
+            Save();
+        }
+
+        public void ActiveFloor(Floor model)
+        {
+            model.Status = true;
+            ctx.Update(model);
+            Save();
+        }
+
+        public void ActiveCell(Cell model)
+        {
+            model.Status = true;
+            ctx.Update(model);
+            Save();
+        }
     }
 }

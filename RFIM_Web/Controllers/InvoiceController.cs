@@ -105,7 +105,6 @@ namespace RFIM_Web.Controllers
                     HttpContext.Session.SetInt32("invoiceType", invoiceType);
                     HttpContext.Session.Set<List<ProductExtendAttr>>("listProduct", null);
                     return RedirectToAction(nameof(RenderProductList));
-
                 }
             }
             return View("CreateInvoiceStep1");

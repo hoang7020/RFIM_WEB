@@ -11,6 +11,8 @@ namespace RFIM_Web.Interfaces
         List<Category> GetAllCategory();
         void CreateCategory(Category model);
         void UpdateCategory(Category model);
+        void DeactiveCategory(Category model);
+        void ActiveCategory(Category model);
         bool CategoryExists(int id);
         bool CategoryNameExists(string name);
         Category FindCategoryById(int? id);
