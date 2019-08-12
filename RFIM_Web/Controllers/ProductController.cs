@@ -254,6 +254,7 @@ namespace RFIM_Web.Controllers
 
                 sheet.DefaultColWidth = 20;
                 sheet.Cells.Style.WrapText = true;
+
                 sheet.Cells[1, 1].Value = "Product Id";
                 sheet.Cells[1, 2].Value = "Product Name";
                 sheet.Cells[1, 3].Value = "Quantity Per Box";

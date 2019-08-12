@@ -15,6 +15,7 @@ namespace RFIM_Web.Interfaces
         void ActiveCategory(Category model);
         bool CategoryExists(int id);
         bool CategoryNameExists(string name);
+        bool CategoryNameExistsExceptId(int id, string name);
         Category FindCategoryById(int? id);
         Category GetCategory(int? id);
         bool CategoryExistsInProduct(int? id);

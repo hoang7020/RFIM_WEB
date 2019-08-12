@@ -68,7 +68,7 @@ namespace RFIM_Web.Controllers
             }
             if (ModelState.IsValid)
             {
-                if (_ctx.CategoryNameExists(category.CategoryName))
+                if (_ctx.CategoryNameExistsExceptId(category.CategoryId, category.CategoryName))
                 {
                     ViewBag.cateExist = "Category name is already existed!";
                     return View("CreateCategory", category);
