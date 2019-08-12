@@ -62,7 +62,11 @@ using Microsoft.AspNetCore.Http;
             WriteLiteral("\r\n<div class=\"modal-header\">\r\n    ");
             EndContext();
             BeginContext(75, 109, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a48657c65314099b631476b9db903db", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f6563773f8a1443b9e9ff263e038ab14", async() => {
+>>>>>>> dev_test5
                 BeginContext(173, 7, true);
                 WriteLiteral("&times;");
                 EndContext();

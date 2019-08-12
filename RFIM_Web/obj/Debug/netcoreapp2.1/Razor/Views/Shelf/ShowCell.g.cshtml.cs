@@ -57,7 +57,11 @@ using RFIM_Web.Models;
             WriteLiteral("\r\n<div class=\"modal-header\">\r\n    ");
             EndContext();
             BeginContext(76, 105, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fbfd7c71d0b140b5a059b85d288748cd", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fdb6f675e26d44508ba61cb23ee8b531", async() => {
+>>>>>>> dev_test5
                 BeginContext(170, 7, true);
                 WriteLiteral("&times;");
                 EndContext();

@@ -73,5 +73,10 @@ namespace RFIM_Web.Repositories
         {
             ctx.SaveChanges();
         }
+
+        public bool CategoryNameExistsExceptId(int id, string name)
+        {
+            return ctx.Categories.Where(p => p.CategoryId != id).Any(p => p.CategoryName == name);
+        }
     }
 }
