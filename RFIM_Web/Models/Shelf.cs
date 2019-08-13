@@ -12,20 +12,29 @@ namespace RFIM_Web.Models
     {
         [Key]
         [Display(Name = "Shelf Id*")]
-        [Required(ErrorMessage = "Shelf Code is required")]
+        [Required(ErrorMessage = "This field is required")]
         [MaxLength(16, ErrorMessage = "Shelf Code has less than 16 characters")]
         public string ShelfId { get; set; }
         [Display(Name = "Description")]
         public string Description { get; set; }
-        [Required(ErrorMessage = "Floor Number is required")]
+        [Required(ErrorMessage = "This field is required")]
         [Display(Name = "Floor Number*")]
         public int? FloorNumber { get; set; }
         [Display(Name = "Cell Number*")]
-        [Required(ErrorMessage = "Cell Number is required")]
+        [Required(ErrorMessage = "This field is required")]
         public int? CellNumber { get; set; }
-        [Required(ErrorMessage = "Cell Number is required")]
+        [Required(ErrorMessage = "This field is required")]
+        [Range(1, 1000000000, ErrorMessage = "Number is more than 0")]
         public int? CoorX { get; set; }
-        [Required(ErrorMessage = "Cell Number is required")]
+        [Required(ErrorMessage = "This field is required")]
+        [Range(1, 1000000000, ErrorMessage = "Number is more than 0")]
         public int? CoorY { get; set; }
+        public bool Status { get; set; }
+        [Range(1, 1000000000000, ErrorMessage = "Valud must be greater than 1")]
+        public double? Height { get; set; }
+        [Range(1, 1000000000000, ErrorMessage = "Valud must be greater than 1")]
+        public double? Width { get; set; }
+        [Range(1, 1000000000000, ErrorMessage = "Valud must be greater than 1")]
+        public double? Length { get; set; }
     }
 }

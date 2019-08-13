@@ -40,6 +40,10 @@
         ============================================ -->
     <link rel="stylesheet" href="~/lib_gui/css/metisMenu/metisMenu-vertical.css">
     <link rel="stylesheet" href="~/lib_gui/css/metisMenu/metisMenu.min.css">
+    <!-- calendar CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/lib_gui/css/calendar/fullcalendar.min.css">
+    <link rel="stylesheet" href="~/lib_gui/css/calendar/fullcalendar.print.min.css">
     <!-- forms CSS
       ============================================ -->
     <link rel="stylesheet" href="~/lib_gui/css/form/all-type-forms.css">
@@ -67,8 +71,9 @@
     <!-- Jquerry and Jquerry Form Validator
         ============================================ -->
     @*<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>*@
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>*@
     <script src="~/lib_gui/js/vendor/modernizr-2.8.3.min.js"></script>
+
 </head>
 <body>
 
@@ -77,7 +82,7 @@
         <div class="left-sidebar-pro">
             <nav id="sidebar" class="">
                 <div class="sidebar-header">
-                    <a href="index.html"><img class="main-logo" src="~/lib_gui/img/log.PNG" alt="" /></a>
+                    <a asp-action="Index" asp-controller="Admin"><img class="main-logo" src="~/lib_gui/img/sign.png" height="210" width="210" alt="" /></a>
                     <strong><img src="img/logo/logosn.png" alt="" /></strong>
                 </div>
                 <div class="left-custom-menu-adp-wrap comment-scrollbar">
@@ -99,7 +104,7 @@
                                     </ul>
                                 </li>
                             }
-                            @if (User.IsInRole("Accountant"))
+                            @if (User.IsInRole("Stockkeeper"))
                             {
                                 <li class="active">
                                     <a class="has-arrow" href="index.html">
@@ -112,11 +117,11 @@
                                     </ul>
                                 </li>
                             }
-                            @if (User.IsInRole("Stockkeeper"))
+                            @if (User.IsInRole("Accountant"))
                             {
                                 <li>
                                     <a asp-action="ListAllInvoice" asp-controller="Invoice" class="has-arrow">
-                                        <i class="fas fa-cube"></i>
+                                        <i class="fas fa-receipt"></i>
                                         <span class="mini-click-non">Receipt/Issue</span>
                                     </a>
                                 </li>
@@ -139,7 +144,13 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a asp-action="" asp-controller="" class="has-arrow">
+                                    <a asp-action="ListAllStocktake" asp-controller="Stocktake" class="has-arrow">
+                                        <i class="fas fa-calendar-check"></i>
+                                        <span class="mini-click-non">Stocktake History</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-action="ReportListView" asp-controller="Report" class="has-arrow">
                                         <i class="fas fa-chart-bar"></i>
                                         <span class="mini-click-non">Reports</span>
                                     </a>
@@ -221,16 +232,6 @@
                                             @if (User.IsInRole("Accountant"))
                                             {
                                                 <li>
-                                                    <a data-toggle="collapse" data-target="#Charts">Invoice <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
-                                                    <ul class="collapse dropdown-header-top">
-                                                        <li><a>Purchase Invoice</a></li>
-                                                        <li><a>Receipt Invoice</a></li>
-                                                    </ul>
-                                                </li>
-                                            }
-                                            @if (User.IsInRole("Stockkeeper"))
-                                            {
-                                                <li>
                                                     <a data-toggle="collapse" data-target="#Charts">Sheets <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
                                                     <ul class="collapse dropdown-header-top">
                                                         <li><a>Good Receipts</a></li>
@@ -309,6 +310,19 @@
           ============================================ -->
     <script src="~/lib_gui/js/metisMenu/metisMenu.min.js"></script>
     <script src="~/lib_gui/js/metisMenu/metisMenu-active.js"></script>
+    <!-- morrisjs JS
+        ============================================ -->
+    <script src="~/lib_gui/js/sparkline/jquery.sparkline.min.js"></script>
+    <script src="~/lib_gui/js/sparkline/jquery.charts-sparkline.js"></script>
+    <!-- calendar JS
+        ============================================ -->
+    <script src="~/lib_gui/js/calendar/moment.min.js"></script>
+    <script src="~/lib_gui/js/calendar/fullcalendar.min.js"></script>
+    <script src="~/lib_gui/js/calendar/fullcalendar-active.js"></script>
+    <!-- wizard JS
+        ============================================ -->
+    <script src="~/lib_gui/js/wizard/jquery.steps.js"></script>
+    <script src="~/lib_gui/js/wizard/steps-active.js"></script>
     <!-- tab JS
           ============================================ -->
     <script src="~/lib_gui/js/tab.js"></script>
@@ -333,6 +347,9 @@
     <script src="~/lib_gui/js/data-table/bootstrap-table-resizable.js"></script>
     <script src="~/lib_gui/js/data-table/colResizable-1.5.source.js"></script>
     <script src="~/lib_gui/js/data-table/bootstrap-table-export.js"></script>
+    <!-- tab JS
+       ============================================ -->
+    <script src="~/lib_gui/js/tab.js"></script>
     <!-- main JS
           ============================================ -->
     <script src="~/lib_gui/js/main.js"></script>

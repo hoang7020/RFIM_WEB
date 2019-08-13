@@ -15,5 +15,6 @@ namespace RFIM_Web.Models
         public string ShelfId { get; set; }
         [ForeignKey("ShelfId")]
         public Shelf Shelf { get; set; }
+        public bool Status { get; set; }
     }
 }

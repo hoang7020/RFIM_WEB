@@ -1,0 +1,33 @@
+﻿@model IEnumerable<RFIM_Web.Models.Cell>
+
+<div class="modal-header">
+    <a class="close" datadismiss="modal-user" asp-action="BackToShelfList" asp-controller="Shelf">&times;</a>
+    <h4 class="modal-title">List Cell</h4>
+</div>
+<div class="modal-body form-horizontal">
+    <div class="sparkline12-graph">
+        <div class="static-table-list">
+            <table class="table hover-table">
+                <thead>
+                    <tr>
+                        <th>FloorId</th>
+                        <th>CellId</th>
+                        <th>CellRFID</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var cell in Model)
+                    {
+                    <tr>
+                        <td>@cell.Floor.FloorId</td>
+                        <td>@cell.CellId</td>
+                        <td>@cell.CellRFID</td>
+                        @await Component.InvokeAsync("StatusCell", new { cellId = cell.CellId })
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

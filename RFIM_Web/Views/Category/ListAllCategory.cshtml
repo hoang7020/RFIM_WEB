@@ -19,29 +19,47 @@
                             <div class="datatable-dashv1-list custom-datatable-overright">
                                 <a asp-action="CreateCategory" asp-controller="Category" class="btn btn-success">Create Category</a>
                                 <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true"
-                                       data-show-toggle="true" data-show-export="true">
+                                       data-show-toggle="true">
                                     <thead>
                                         <tr>
                                             <th>Category Name</th>
                                             <th>Description</th>
+                                            <th>Status</th>
                                             <th>Setting</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (var category in Model)
                                         {
-                                            <tr>
-                                                <td>@category.CategoryName</td>
-                                                <td>@category.Description</td>
-                                                <td>
-                                                    <a asp-action="EditCategory" asp-controller="Category" asp-route-id="@category.CategoryId" class="pd-setting-ed"><i class="fas fa-edit" aria-hidden="true"></i></a>
-                                                    <a asp-action="DeleteCategory" asp-controller="Category" asp-route-id="@category.CategoryId" class="pd-setting-ed" data-toggle="modal" data-target="#modal-category-delete">
-                                                        <i class="fas fa-trash" aria-hidden="true"></i>
+                                        <tr>
+                                            <td>@category.CategoryName</td>
+                                            <td>@category.Description</td>
+                                            <td>
+                                                @if (category.Status)
+                                                {
+                                                    <p>Active</p>
+                                                }
+                                                else
+                                                {
+                                                    <p>Deactive</p>
+                                                }
+                                            </td>
+                                            <td>
+                                                <a asp-action="EditCategory" asp-controller="Category" asp-route-id="@category.CategoryId" class="btn btn-success"><i class="fas fa-edit" aria-hidden="true"></i></a>
+                                                @if (category.Status)
+                                                {
+                                                    <a asp-action="DeleteCategory" asp-controller="Category" asp-route-id="@category.CategoryId" class="btn btn-danger" data-toggle="modal" data-target="#modal-category-delete">
+                                                        <i class="fas fa-ban" aria-hidden="true"></i>
                                                     </a>
-
-
-                                                </td>
-                                            </tr>
+                                                }
+                                                else
+                                                {
+                                                    <a asp-action="ActiveCategory" asp-controller="Category" asp-route-id="@category.CategoryId" class="btn btn-success" data-toggle="modal" data-target="#modal-category-active">
+                                                        <i class="fas fa-check" aria-hidden="true"></i>
+                                                    </a>
+                                                }
+                                            </td>
+                                        </tr>
                                         }
                                     </tbody>
                                 </table>
@@ -53,7 +71,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="modal-category" aria-hidden="true" class="modal fade" role="dialog">
+                                <div id="modal-category-active" aria-hidden="true" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="modal-category-deactive" aria-hidden="true" class="modal fade" role="dialog">
                                     <div class="modal-dialog">
                                         <!-- Modal content-->
                                         <div class="modal-content">
@@ -74,7 +100,13 @@
  $(function () {
     $("#modal-category-delete").on('hidden.bs.modal', function () {
        $(this).removeData('bs.modal');
-    });
+     });
+     $("#modal-category-active").on('hidden.bs.modal', function () {
+         $(this).removeData('bs.modal');
+     });
+     $("#modal-category-deactive").on('hidden.bs.modal', function () {
+         $(this).removeData('bs.modal');
+     });
  });
     </script>
 }

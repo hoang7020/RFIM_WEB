@@ -14,8 +14,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RFIM_Web.Interfaces;
 using RFIM_Web.Models;
 using RFIM_Web.ModelView;
+using RFIM_Web.Repositories;
 
 namespace RFIM_Web
 {
@@ -37,7 +39,7 @@ namespace RFIM_Web
             //    options.CheckConsentNeeded = context => true;
             //    options.MinimumSameSitePolicy = SameSiteMode.None;
             //});
-
+            services.AddSession();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<MyDbContext>(options =>
@@ -52,16 +54,31 @@ namespace RFIM_Web
                 opt.AccessDeniedPath = "/User/Access";
             });
 
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(300);
+            });
+
             var context = new CustomAssemblyLoadContext();
             context.LoadUnmanagedLibrary(Path.Combine(Directory.GetCurrentDirectory(), "libwkhtmltox.dll"));
 
 
             services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
+
+            //Add application services
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IShelfRepository, ShelfRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IInvoiceRepository, InvoiceRepository>();
+            services.AddScoped<IHomeRepository, HomeRepository>();
+            services.AddScoped<IStocktakeHistoryRepository, StocktakeHistoryRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseSession();
             app.UseAuthentication();
             if (env.IsDevelopment())
             {

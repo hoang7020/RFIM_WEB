@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using RFIM_Web.Interfaces;
 using RFIM_Web.Models;
 using RFIM_Web.ModelView;
 using RFIM_Web.Utils;
@@ -15,90 +16,76 @@ namespace RFIM_Web.Controllers
     [Authorize]
     public class AdminController : Controller
     {
-        private readonly MyDbContext context;
-        public AdminController(MyDbContext _ctx)
+        private readonly IUserRepository ctx;
+        private readonly IHomeRepository _ctx;
+        public AdminController(IUserRepository db, IHomeRepository _db)
         {
-            context = _ctx;
+            ctx = db;
+            _ctx = _db;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
         [HttpGet]
         public IActionResult ListAllUser()
         {
-            var dsStaff = context.Users.Where(p => p.RoleId == 2 || p.RoleId == 3)
-                .Include(p => p.Role).Select(p => new ListUserView
-                {
-                    UserId = p.UserId,
-                    Fullname = p.Fullname,
-                    Username = p.Username,
-                    Password = p.Password,
-                    Email = p.Email,
-                    Phone = p.Phone,
-                    Role = p.Role.RoleName,
-                    Status = p.Status
-                });
+            var dsStaff = ctx.GetAll();
             return View(dsStaff);
         }
         [HttpGet]
         public IActionResult ListAccountant()
         {
-            var dsAccountant = context.Users.Where(p => p.RoleId == 2).Include(p => p.Role)
-                .Select(p => new ListUserView
-                {
-                    UserId = p.UserId,
-                    Fullname = p.Fullname,
-                    Username = p.Username,
-                    Password = p.Password,
-                    Email = p.Email,
-                    Phone = p.Phone,
-                    Role = p.Role.RoleName,
-                    Status = p.Status
-                });
+            var dsAccountant = ctx.GetAllAccountant();
             return View(dsAccountant);
         }
         [HttpGet]
         public IActionResult ListStockkeeper()
         {
-            var dsStockkeeper = context.Users.Where(p => p.RoleId == 3).Include(p => p.Role)
-                .Select(p => new ListUserView
-                {
-                    UserId = p.UserId,
-                    Fullname = p.Fullname,
-                    Username = p.Username,
-                    Password = p.Password,
-                    Email = p.Email,
-                    Phone = p.Phone,
-                    Role = p.Role.RoleName,
-                    Status = p.Status
-                });
+            var dsStockkeeper = ctx.GetAllStockkeeper();
             return View(dsStockkeeper);
         }
+
         [HttpGet]
-        public async Task<IActionResult> EditUser(int? id)
+        public IActionResult CreateUser()
+        {
+            ViewData["RoleId"] = new SelectList(ctx.GetRole(), "RoleId", "RoleName");
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CreateUser(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                if (ctx.UsernameExists(user.Username))
+                {
+                    ViewBag.UsernameExisted = "Username is already existed !!!!";
+                    ViewData["RoleId"] = new SelectList(ctx.GetRole(), "RoleId", "RoleName", user.RoleId);
+                    return View(user);
+                }
+                user.Status = true;
+                ctx.AddUser(user);
+                return RedirectToAction(nameof(ListAllUser));
+            }
+            ViewData["RoleId"] = new SelectList(ctx.GetRole(), "RoleId", "RoleName", user.RoleId);
+            return View(user);
+        }
+
+        [HttpGet]
+        public IActionResult EditUser(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var user = await context.Users.FindAsync(id);
+            var user = ctx.FindUser(id);
             if (user == null)
             {
                 return NotFound();
             }
-            //ViewBag.RoleSelect = new RoleSelectModel
-            //{
-            //    Data = context.Roles.ToList(),
-            //    Select = user.RoleId
-            //};
-            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleName", user.RoleId);
+            ViewData["RoleId"] = new SelectList(ctx.GetRole(), "RoleId", "RoleName", user.RoleId);
             return View(user);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditUser(int id, User user)
+        public IActionResult EditUser(int id, User user)
         {
             if (id != user.UserId)
             {
@@ -106,52 +93,43 @@ namespace RFIM_Web.Controllers
             }
             if (ModelState.IsValid)
             {
-                try
+                if (ctx.UsernameExistsExceptId(user.UserId, user.Username))
                 {
-                    context.Update(user);
-                    await context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
+                    ViewBag.UsernameExisted = "Username is already existed !!!!";
+                    ViewData["RoleId"] = new SelectList(ctx.GetRole(), "RoleId", "RoleName", user.RoleId);
+                    return View(user);
+                } else 
                 {
-                    if (!UserExists(user.UserId))
+                    try
                     {
-                        return NotFound();
+                        user.Status = true;
+                        ctx.UpdateUser(user);
                     }
-                    else
+                    catch (DbUpdateConcurrencyException)
                     {
-                        throw;
+                        if (!UserExists(user.UserId))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
                 }
                 return RedirectToAction("ListAllUser");
             }
-            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleName", user.RoleId);
+            ViewData["RoleId"] = new SelectList(ctx.GetRole(), "RoleId", "RoleName", user.RoleId);
             return View(user);
         }
-        [HttpGet]
-        public IActionResult CreateUser()
-        {
-            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleName");
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> CreateUser(User user)
-        {
-            if (ModelState.IsValid)
-            {
-                context.Add(user);
-                await context.SaveChangesAsync();
-                return RedirectToAction(nameof(ListAllUser));
-            }
-            ViewData["RoleId"] = new SelectList(context.Roles, "RoleId", "RoleName", user.RoleId);
-            return View(user);
-        }
-        public async Task<IActionResult> DeleteUser(int? id)
+       
+        public IActionResult DeleteUser(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var user = await context.Users.Include(u => u.Role).FirstOrDefaultAsync(p => p.UserId == id);
+            var user = ctx.GetUser(id);
             if (user == null)
             {
                 return NotFound();
@@ -160,24 +138,75 @@ namespace RFIM_Web.Controllers
         }
         [HttpPost, ActionName("DeleteUser")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ConfirmDelete(int id)
+        public IActionResult ConfirmDelete(int id)
         {
-            var user = await context.Users.FindAsync(id);
-            user.Status = !user.Status;
-            //context.Users.Remove(user);
-            context.Update(user);
-            await context.SaveChangesAsync();
+            var user = ctx.FindUser(id);
+            ctx.DeactiveUser(user);
             return RedirectToAction(nameof(ListAllUser));
         }
-
+        public IActionResult ActiveUser(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var user = ctx.GetUser(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return PartialView("ActiveUser", user);
+        }
+        [HttpPost, ActionName("ActiveUser")]
+        [ValidateAntiForgeryToken]
+        public IActionResult ConfirmActive(int id)
+        {
+            var user = ctx.FindUser(id);
+            ctx.ActiveUser(user);
+            return RedirectToAction(nameof(ListAllUser));
+        }
         public bool UserExists(int id)
         {
-            return context.Users.Any(p => p.UserId == id);
+            return ctx.UserExists(id);
         }
 
         public IActionResult BackToUserList()
         {
             return RedirectToAction(nameof(ListAllUser));
+        }
+        public IActionResult Index()
+        {
+            int totalUser = ctx.UserCount();
+            int totalActiveUser = ctx.ActiveUserCount();
+            int totalAccountant = ctx.AccountantCount();
+            int totalStockkeeper = ctx.StockkeeperCount();
+            ViewBag.UserCount = new AdminHomePage
+            {
+                Users = totalUser,
+                ActiveUsers = totalActiveUser,
+                Accountants = totalAccountant,
+                Stockkeepers = totalStockkeeper
+            };
+            int totalCategory = _ctx.CategoryCount();
+            int totalVendor = _ctx.VendorCount();
+            int totalProduct = _ctx.ProductCount();
+            int totalShelf = _ctx.ShelfCount();
+            int receivePending = _ctx.ReceivesPendingCount();
+            int issuePending = _ctx.IssuesPendingCount();
+            List<Invoice> listReceives = _ctx.GetReceives();
+            List<Invoice> listIssues = _ctx.GetIssues();
+            ViewBag.AccountantInfo = new AccountantHomePage
+            {
+                Categories = totalCategory,
+                Vendors = totalVendor,
+                Products = totalProduct,
+                Shelfs = totalShelf,
+                ReceivePendingCount = receivePending,
+                IssuePendingCount = issuePending,
+                Receives = listReceives,
+                Issues = listIssues
+            };
+            return View();
         }
     }
 }

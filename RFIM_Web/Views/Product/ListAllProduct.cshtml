@@ -20,18 +20,16 @@
                                 <a asp-action="CreateProduct" asp-controller="Product" class="btn btn-success">Create Product</a>
                                 <a asp-action="ImportProduct" asp-controller="Product" class="btn btn-primary">Import Product</a>
                                 <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true"
-                                       data-show-toggle="true" data-show-export="true">
+                                       data-show-toggle="true">
                                     <thead>
                                         <tr>
                                             <th>Product Id</th>
                                             <th>Product Name</th>
-                                            <th>Weight</th>
                                             <th>Image</th>
                                             <th>Category</th>
-                                            <th>Height</th>
-                                            <th>Width</th>
-                                            <th>Length</th>
-                                            <th>Quantity Per Box</th>
+                                            <th>Available Quantity(boxes)</th>
+                                            <th>Quantity Per Box(items)</th>
+                                            <th>Status</th>
                                             <th>Setting</th>
                                         </tr>
                                     </thead>
@@ -41,26 +39,49 @@
                                         <tr>
                                             <td><a asp-action="DetailProduct" asp-controller="Product" asp-route-id="@product.ProductId">@product.ProductId</a></td>
                                             <td><a asp-action="DetailProduct" asp-controller="Product" asp-route-id="@product.ProductId">@product.ProductName</a></td>
-                                            <td>@product.Weight g</td>
-                                            <td><img src="~/Hinh/product/@product.Image" height="5" /></td>
-
+                                            <td><img src="~/Hinh/product/@product.Image" height="150" width="150" /></td>
                                             <td>@product.Category.CategoryName</td>
-                                            <td>@product.Height</td>
-                                            <td>@product.Width</td>
-                                            <td>@product.Lenght</td>
+                                            @await Component.InvokeAsync("QuantityBoxInProduct", new { productId = product.ProductId })
                                             <td>@product.QuantityPerBox</td>
                                             <td>
-                                                <a asp-action="EditProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="pd-setting-ed"><i class="fas fa-edit"></i></a>
-                                                <a asp-action="DeleteProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="pd-setting-ed" data-toggle="modal" data-target="#modal-product-delete">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
+                                                @if (product.Status)
+                                                {
+                                                    <p>Active</p>
+                                                }
+                                                else
+                                                {
+                                                    <p>Deactive</p>
+                                                }
+                                            </td>
+                                            <td>
+                                                <a asp-action="EditProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="btn btn-success"><i class="fas fa-edit" aria-hidden="true"></i></a>
+                                                @if (product.Status)
+                                                {
+                                                    <a asp-action="DeleteProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="btn btn-danger" data-toggle="modal" data-target="#modal-product-delete">
+                                                        <i class="fas fa-ban" aria-hidden="true"></i>
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <a asp-action="ActiveProduct" asp-controller="Product" asp-route-id="@product.ProductId" class="btn btn-success" data-toggle="modal" data-target="#modal-product-active">
+                                                        <i class="fas fa-check" aria-hidden="true"></i>
+                                                    </a>
+                                                }
                                             </td>
                                         </tr>
-                                        }
+                                    }
                                     </tbody>
                                 </table>
 
                                 <div id="modal-product-delete" aria-hidden="true" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="modal-product-active" aria-hidden="true" class="modal fade" role="dialog">
                                     <div class="modal-dialog">
                                         <!-- Modal content-->
                                         <div class="modal-content">
@@ -85,12 +106,16 @@
     </div>
 </div>
 
+
 @section Scripts{
     <script>
  $(function () {
     $("#modal-product-delete").on('hidden.bs.modal', function () {
        $(this).removeData('bs.modal');
-    });
+     });
+     $("#modal-product-active").on('hidden.bs.modal', function () {
+         $(this).removeData('bs.modal');
+     });
  });
     </script>
 }

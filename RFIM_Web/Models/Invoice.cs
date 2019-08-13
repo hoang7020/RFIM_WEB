@@ -11,20 +11,26 @@ namespace RFIM_Web.Models
     public class Invoice
     {
         [Key]
+        [Required(ErrorMessage = "This field is required")]
+        [DataType(DataType.Text, ErrorMessage = "Input is not valid !!")]
         public string InvoiceId { get; set; }
         [Required(ErrorMessage = "This field is required")]
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
         public string Description { get; set; }
-        public bool Status { get; set; }
+
+        public int StatusId { get; set; }
+        [ForeignKey("StatusId")]
+        public InvoiceStatus InvoiceStatus { get; set; }
+
+        public int UserId { get; set; }
+        [ForeignKey("UserId")]
+        public User User { get; set; }
 
         public int InvoiceTypeId { get; set; }
         [ForeignKey("InvoiceTypeId")]
         public InvoiceType InvoiceType { get; set; }
 
-        //public int UserId { get; set; }
-        //[ForeignKey("UserId")]
-        //public User User { get; set; }
 
     }
 }

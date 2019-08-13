@@ -7,14 +7,16 @@
 <div class="all-content-wrapper">
     <div class="container-fluid">
         <div class=row>
-<<<<<<< HEAD
             <div class="col-md-3 col-md-3 col-sm-3 col-xs-12 mg-t-15">
                 <div class="hpanel responsive-mg-b-30">
                     <div class="panel-body">
-                        <input type="text" placeholder="Search..." class="form-control" id="myInput" onkeyup="myFunction()" />
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fas fa-search"></i></span>
+                            <input  type="text" placeholder="Search..." class="form-control" id="myInput" onkeyup="myFunction()" />
+                        </div>
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                <a class="btn btn-danger btn-block" asp-action="CreateProduct" asp-controller="Product">
+                                <a class="btn btn-success btn-block" asp-action="CreateProduct" asp-controller="Product">
                                     <i class="fa fa-plus"></i>
                                     Create
                                 </a>
@@ -26,9 +28,6 @@
                     </div>
                 </div>
             </div>
-
-=======
->>>>>>> dev_thinh3
             <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                 <div class="single-product-tab-area mg-t-15 mg-b-30">
                     <div class="container-fluid">
@@ -36,7 +35,7 @@
                             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                 <div id="myTabContent1" class="tab-content">
                                     <div class="product-tab-list tab-pane fade active in" id="single-tab1">
-                                        <img src="~/Hinh/product/@Model.Image" alt="" />
+                                        <img src="~/Hinh/product/@Model.Image" height="280" width="280" />
                                     </div>
                                 </div>
 
@@ -52,39 +51,54 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <label>Weight</label>
+                                            <label>Weight(g):</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                            <label><b>@Model.Weight g</b></label>
+                                            <label><b>@Model.Weight</b></label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <label>Height</label>
+                                            <label>Height(cm):</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                            <label><b>@Model.Height cm</b></label>
+                                            <label><b>@Model.Height</b></label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <label>Width</label>
+                                            <label>Width(cm):</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                            <label><b>@Model.Width cm</b></label>
+                                            <label><b>@Model.Width</b></label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <label>Length</label>
+                                            <label>Length(cm):</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                            <label><b>@Model.Lenght cm</b></label>
+                                            <label><b>@Model.Length</b></label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <label>Category</label>
+                                            <label>Status:</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                            <label>@if (Model.Status)
+                                            {
+                                                <b>Active</b>
+                                            }
+                                            else
+                                            {
+                                                <b>Deactive</b>
+                                            }</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                            <label>Category:</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                             <label><b>@Model.Category.CategoryName</b></label>
@@ -92,18 +106,10 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <label>Vendor</label>
+                                            <label>Vendor:</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                             <label><b>@Model.Vendor.VendorName</b></label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <label>Total quantity of boxes</label>
-                                        </div>
-                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                           @await Component.InvokeAsync("QuantityBoxInProduct", new {productId = Model.ProductId})
                                         </div>
                                     </div>
                                 </div>
@@ -143,7 +149,7 @@
                                         </div>
                                     </div>
                                     <div id="menu3" class="tab-pane fade review-content-section">
-                                        <h3>Description</h3>
+                                        <h6>   @Model.Description</h6>
                                     </div>
                                 </div>
                             </div>

@@ -1,0 +1,14 @@
+﻿@model RFIM_Web.Models.Shelf
+
+<form method="post" asp-action="DeactiveShelf">
+    <div class="modal-header">
+        <a class="close" datadismiss="modal-user" asp-action="BackToShelfList" asp-controller="Shelf">&times;</a>
+        <h4 class="modal-title">Deactive shelf @Model.ShelfId</h4>
+    </div>
+    <div class="modal-body form-horizontal">
+        Are you sure to deactive shelf <b>@Model.ShelfId</b>?
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary">Deactive</button>
+    </div>
+</form>

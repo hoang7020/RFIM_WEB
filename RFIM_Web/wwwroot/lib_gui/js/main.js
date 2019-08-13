@@ -105,7 +105,7 @@
 <script>
     var loading;
         function ShowProgress() {
-        modal = document.createElement("DIV");
+        modal = document.createElement("DIV")};
     
     loading = document.getElementsByClassName("loading")[0];
     loading.style.display = "block";

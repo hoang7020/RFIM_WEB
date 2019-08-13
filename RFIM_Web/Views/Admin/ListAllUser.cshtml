@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RFIM_Web.ModelView.ListUserView>
+﻿@model IEnumerable<RFIM_Web.Models.User>
 
 @{
     ViewData["Title"] = "ListAllUser";
@@ -11,6 +11,7 @@
                     <div class="sparkline13-list">
                         <div class="sparkline13-hd">
                             <div class="main-sparkline13-hd">
+                                @using Microsoft.AspNetCore.Http
                                 <h1>User List</h1>
                             </div>
                         </div>
@@ -41,19 +42,31 @@
                                                 <td>@user.Password</td>
                                                 <td>@user.Email</td>
                                                 <td>@user.Phone</td>
-                                                <td>@user.Role</td>
+                                                <td>@user.Role.RoleName</td>
                                                 <td>
                                                     @if (user.Status)
                                                     {
-                                                        <a asp-action="DeleteUser" asp-controller="Admin" asp-route-id="@user.UserId" class="btn btn-success" data-toggle="modal" data-target="#modal-user-delete">Active</a>
+                                                        <p>Active</p>
                                                     }
                                                     else
                                                     {
-                                                        <a class="btn btn-warning">Disabled</a>
+                                                        <p>Deactive</p>
                                                     }
                                                 </td>
                                                 <td>
-                                                    <a asp-action="EditUser" asp-controller="Admin" asp-route-id="@user.UserId" class="pd-setting-ed"><i class="fas fa-edit" aria-hidden="true"></i></a>
+                                                    <a asp-action="EditUser" asp-controller="Admin" asp-route-id="@user.UserId" class="btn btn-success"><i class="fas fa-edit" aria-hidden="true"></i></a>
+                                                    @if (user.Status)
+                                                    {
+                                                        <a asp-action="DeleteUser" asp-controller="Admin" asp-route-id="@user.UserId" class="btn btn-danger" data-toggle="modal" data-target="#modal-user-delete">
+                                                            <i class="fas fa-ban" aria-hidden="true"></i>
+                                                        </a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a asp-action="ActiveUser" asp-controller="Admin" asp-route-id="@user.UserId" class="btn btn-success" data-toggle="modal" data-target="#modal-user-active">
+                                                            <i class="fas fa-check" aria-hidden="true"></i>
+                                                        </a>
+                                                    }
                                                 </td>
                                             </tr>
                                         }
@@ -67,7 +80,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="modal-user" aria-hidden="true" class="modal fade" role="dialog">
+                                <div id="modal-user-active" aria-hidden="true" class="modal fade" role="dialog">
                                     <div class="modal-dialog">
                                         <!-- Modal content-->
                                         <div class="modal-content">
@@ -88,6 +101,9 @@
     <script>
         $(function () {
             $("#modal-user-delete").on('hidden.bs.modal', function () {
+                $(this).removeData('bs.modal');
+            });
+            $("#modal-user-active").on('hidden.bs.modal', function () {
                 $(this).removeData('bs.modal');
             });
         });

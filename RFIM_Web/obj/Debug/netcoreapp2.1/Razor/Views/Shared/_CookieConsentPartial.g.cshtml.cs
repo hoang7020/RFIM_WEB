@@ -97,7 +97,11 @@ using Microsoft.AspNetCore.Http.Features;
                     ");
             EndContext();
             BeginContext(1234, 92, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a243d9a7556f4a92900cfda8018b86e9", async() => {
+<<<<<<< HEAD
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "811659bae4814e04b2bfb5f764c3521b", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bca285046d6440e7852403f937faa3d0", async() => {
+>>>>>>> dev_test5
                 BeginContext(1312, 10, true);
                 WriteLiteral("Learn More");
                 EndContext();

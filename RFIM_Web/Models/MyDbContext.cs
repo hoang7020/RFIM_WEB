@@ -25,6 +25,10 @@ namespace RFIM_Web.Models
                 optionsBuilder.UseSqlServer("Server=rfim.clvgsqcm7dqf.ap-southeast-1.rds.amazonaws.com;Database=RFIM_DB;User Id=sa;Password=hoangdien");
             }
         }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Invoice_Product>().HasKey(table => new { table.InvoiceId, table.ProductId });
+        }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
@@ -36,8 +40,12 @@ namespace RFIM_Web.Models
         public DbSet<Cell> Cells { get; set; }
         public DbSet<Package> Packages { get; set; }
         public DbSet<Box> Boxes { get; set; }
+
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<InvoiceType> InvoiceTypes { get; set; }
         public DbSet<Invoice_Product> Invoice_Products { get; set; }
+        public DbSet<StocktakeHistory> StocktakeHistories { get; set; }
+        public DbSet<StandardShelfSize> StandardShellSizes { get; set; }
+        public DbSet<InvoiceStatus> InvoiceStatuses { get; set; }
     }
 }

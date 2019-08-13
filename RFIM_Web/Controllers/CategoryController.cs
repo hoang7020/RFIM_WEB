@@ -4,22 +4,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using RFIM_Web.Interfaces;
 using RFIM_Web.Models;
 
 namespace RFIM_Web.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly MyDbContext ctx;
+        private readonly ICategoryRepository _ctx;
         
-        public CategoryController(MyDbContext db)
+        public CategoryController(ICategoryRepository _db)
         {
-            ctx = db;
+            _ctx = _db;
         }
 
         public IActionResult ListAllCategory()
         {
-            return View(ctx.Categories.ToList());
+            return View(_ctx.GetAllCategory());
         }
 
         public IActionResult CreateCategory()
@@ -28,24 +29,29 @@ namespace RFIM_Web.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateCategory(Category category)
+        public IActionResult CreateCategory(Category category)
         {
             if (ModelState.IsValid)
             {
-                ctx.Add(category);
-                await ctx.SaveChangesAsync();
+                if(_ctx.CategoryNameExists(category.CategoryName))
+                {
+                    ViewBag.cateExist = "Category name is already existed!";
+                    return View("CreateCategory",category);
+                }
+                category.Status = true;
+                _ctx.CreateCategory(category);
                 return RedirectToAction(nameof(ListAllCategory));
             }
             return View(category);
         }
         [HttpGet]
-        public async Task<IActionResult> EditCategory(int? id)
+        public IActionResult EditCategory(int? id)
         {
             if(id == null)
             {
                 return NotFound();
             }
-            var category = await ctx.Categories.FindAsync(id);
+            var category = _ctx.FindCategoryById(id);
             if(category == null)
             {
                 return NotFound();
@@ -54,7 +60,7 @@ namespace RFIM_Web.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditCategory(int id, Category category)
+        public IActionResult EditCategory(int id, Category category)
         {
             if(id != category.CategoryId)
             {
@@ -62,19 +68,28 @@ namespace RFIM_Web.Controllers
             }
             if (ModelState.IsValid)
             {
-                try
+                if (_ctx.CategoryNameExistsExceptId(category.CategoryId, category.CategoryName))
                 {
-                    ctx.Update(category);
-                    await ctx.SaveChangesAsync();
+                    ViewBag.cateExist = "Category name is already existed!";
+                    return View("CreateCategory", category);
                 }
-                catch (DbUpdateConcurrencyException)
+                else
                 {
-                    if (!CategoryExist(category.CategoryId))
+                    try
                     {
-                        return NotFound();
-                    } else
+                        category.Status = true;
+                        _ctx.UpdateCategory(category);
+                    }
+                    catch (DbUpdateConcurrencyException)
                     {
-                        throw;
+                        if (!CategoryExist(category.CategoryId))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
                 }
                 return RedirectToAction(nameof(ListAllCategory));
@@ -83,33 +98,62 @@ namespace RFIM_Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> DeleteCategory(int? id)
+        public IActionResult ActiveCategory(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var category = _ctx.GetCategory(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            return PartialView("ActiveCategory", category);
+        }
+
+        [HttpPost, ActionName("ActiveCategory")]
+        [ValidateAntiForgeryToken]
+        public IActionResult ActiveCategoryConfirmed(int id)
+        {
+            var category = _ctx.FindCategoryById(id);
+            _ctx.ActiveCategory(category);
+            return RedirectToAction(nameof(ListAllCategory));
+        }
+        [HttpGet]
+        public IActionResult DeleteCategory(int? id)
         {
             if(id == null)
             {
                 return NotFound();
             }
-            var category = await ctx.Categories.SingleOrDefaultAsync(p => p.CategoryId == id);
+            var category = _ctx.GetCategory(id);
             if(category == null)
             {
                 return NotFound();
             }
-            return PartialView("DeleteCategory", category);
+            var categoryExistInProduct = _ctx.CategoryExistsInProduct(id);
+            if(categoryExistInProduct)
+            {
+                return PartialView("DeactiveFail", category);
+            } else
+            {
+                return PartialView("DeleteCategory", category);
+            }
         }
 
         [HttpPost, ActionName("DeleteCategory")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteCategoryConfirm(int id)
+        public IActionResult DeleteCategoryConfirm(int id)
         {
-            var category = await ctx.Categories.FindAsync(id);
-            ctx.Categories.Remove(category);
-            await ctx.SaveChangesAsync();
+            var category = _ctx.FindCategoryById(id);
+            _ctx.DeactiveCategory(category);
             return RedirectToAction(nameof(ListAllCategory));
         }
 
         private bool CategoryExist(int id)
         {
-            return ctx.Categories.Any(p => p.CategoryId == id);
+            return _ctx.CategoryExists(id);
         }
 
         public IActionResult BackToListCategory()

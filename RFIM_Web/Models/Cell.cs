@@ -16,5 +16,6 @@ namespace RFIM_Web.Models
         public string FloorId { get; set; }
         [ForeignKey("FloorId")]
         public Floor Floor { get; set; }
+        public bool Status { get; set; }
     }
 }
