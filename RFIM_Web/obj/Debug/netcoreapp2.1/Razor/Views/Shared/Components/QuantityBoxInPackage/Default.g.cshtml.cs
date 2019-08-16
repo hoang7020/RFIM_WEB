@@ -24,7 +24,7 @@ using RFIM_Web.Models;
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f419d91b3c81993d8a33c07b2c5e3916152f2b49", @"/Views/Shared/Components/QuantityBoxInPackage/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c06c4ae16641bb2ecd4d4ada5240b635e967153e", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"48a69760db975471d19d631bed21f74b4dabb7b6", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Components_QuantityBoxInPackage_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<RFIM_Web.ModelView.QuantityBox>
     {
         #pragma warning disable 1998

@@ -78,3 +78,9 @@ C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.pdb
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.csproj.CopyComplete
 C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\RFIM_Web.csprojAssemblyReference.cache
+C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Vendor\ListAllVendor.g.cshtml.cs
+C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Vendor\CreateVendor.g.cshtml.cs
+C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Vendor\EditVendor.g.cshtml.cs
+C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Vendor\ActiveVendor.g.cshtml.cs
+C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Vendor\DeleteVendor.g.cshtml.cs
+C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\obj\Debug\netcoreapp2.1\Razor\Views\Vendor\DeactiveFail.g.cshtml.cs

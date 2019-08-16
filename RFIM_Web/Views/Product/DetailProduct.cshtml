@@ -12,7 +12,7 @@
                     <div class="panel-body">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fas fa-search"></i></span>
-                            <input  type="text" placeholder="Search..." class="form-control" id="myInput" onkeyup="myFunction()" />
+                            <input type="text" placeholder="Search..." class="form-control" id="myInput" onkeyup="myFunction()" />
                         </div>
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -22,9 +22,9 @@
                                 </a>
                             </div>
                         </div>
-                        <ul class="h-list m-t" id="list_detail">
-                            @await Component.InvokeAsync("ProductDetailList")
-                        </ul>
+                        
+                        @await Component.InvokeAsync("ProductDetailList")
+
                     </div>
                 </div>
             </div>
@@ -86,14 +86,16 @@
                                             <label>Status:</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                            <label>@if (Model.Status)
-                                            {
-                                                <b>Active</b>
-                                            }
-                                            else
-                                            {
-                                                <b>Deactive</b>
-                                            }</label>
+                                            <label>
+                                                @if (Model.Status)
+                                                {
+                                                    <b>Active</b>
+                                                }
+                                                else
+                                                {
+                                                    <b>Deactive</b>
+                                                }
+                                            </label>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -179,6 +181,5 @@
         }
     }
 </script>
-<script>
 
-</script>
+
