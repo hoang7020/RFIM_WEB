@@ -77,7 +77,6 @@ namespace RFIM_Web.Controllers
             }
             ViewData["CategoryId"] = new SelectList(context.GetAllCategory(), "CategoryId", "CategoryName", product.CategoryId);
             ViewData["VendorId"] = new SelectList(context.GetAllVendor(), "VendorId", "VendorName", product.VendorId);
-            //if validation is error return view with error messages
             return View(product);
         }
         [HttpGet]

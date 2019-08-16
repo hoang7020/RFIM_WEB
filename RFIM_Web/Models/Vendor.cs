@@ -14,5 +14,6 @@ namespace RFIM_Web.Models
         public int VendorId { get; set; }
         public string VendorName { get; set; }
         public string Description { get; set; }
+        public bool Status { get; set; }
     }
 }

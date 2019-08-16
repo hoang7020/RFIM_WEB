@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "b2d7f0bf89dd4bcb804d1556ddafde8df1570b5d"
+    "signature": "f665e8f1a4a47d5d902a19eb7266896b50ba14ea"
   },
   "compilationOptions": {
     "defines": [
@@ -28,7 +28,8 @@
           "EPPlus": "4.5.2",
           "Microsoft.AspNetCore.App": "2.1.1",
           "Microsoft.NETCore.App": "2.1.0",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.9"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.9",
+          "PagedList.Core.Mvc": "1.2.0"
         },
         "runtime": {
           "RFIM_Web.dll": {}
@@ -438,6 +439,33 @@
         },
         "compile": {
           "lib/netstandard1.6/NuGet.Frameworks.dll": {}
+        }
+      },
+      "PagedList.Core/1.17.4": {
+        "runtime": {
+          "lib/netcoreapp1.0/PagedList.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp1.0/PagedList.Core.dll": {}
+        }
+      },
+      "PagedList.Core.Mvc/1.2.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.1.1",
+          "Microsoft.AspNetCore.Razor.Runtime": "2.1.1",
+          "PagedList.Core": "1.17.4"
+        },
+        "runtime": {
+          "lib/netstandard2.0/PagedList.Core.Mvc.dll": {
+            "assemblyVersion": "1.2.0.0",
+            "fileVersion": "1.2.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/PagedList.Core.Mvc.dll": {}
         }
       },
       "System.ComponentModel/4.3.0": {
@@ -3775,6 +3803,20 @@
       "sha512": "sha512-qbXaB76XYUVLocLBs8Z9TS/ERGK2wm797feO+0JEPFvT7o7MRadOR77mqaSD4J1k8G+DlZQyq+MlkCuxrkr3ag==",
       "path": "nuget.frameworks/4.7.0",
       "hashPath": "nuget.frameworks.4.7.0.nupkg.sha512"
+    },
+    "PagedList.Core/1.17.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VvtRPtzytU+r9QVmbqZkWMf3oRPGMdGXHBD2eZDuY5Mfkkdl5cJOCEe/Wnmgrwu73UbRTQe4vu40K4rfg/FkUw==",
+      "path": "pagedlist.core/1.17.4",
+      "hashPath": "pagedlist.core.1.17.4.nupkg.sha512"
+    },
+    "PagedList.Core.Mvc/1.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MiXdEgIiK0HJ2p+SiwjdSLguwsntTn09hTILnnIcOwKT1GrTzpJHVzyWw36KHb9kzCm9Loz16OfHhJnJlugdqg==",
+      "path": "pagedlist.core.mvc/1.2.0",
+      "hashPath": "pagedlist.core.mvc.1.2.0.nupkg.sha512"
     },
     "System.ComponentModel/4.3.0": {
       "type": "package",
