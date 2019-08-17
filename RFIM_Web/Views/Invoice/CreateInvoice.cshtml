@@ -4,7 +4,7 @@
 @using RFIM_Web.ModelView
 @using System.Collections.Generic
 @{
-    ViewData["Title"] = "CreateInvoiceStep2";
+    ViewData["Title"] = "CreateInvoice";
 }
 
 <div class="all-content-wrapper">
@@ -56,7 +56,7 @@
                                                                         }
                                                                         else
                                                                         {
-                                                                            <th>Available Quantity (Boxes)</th>
+                                                                            <th>On-hand Quantity (Boxes)</th>
                                                                             <th>Stock Out Quantity (Boxes)</th>
                                                                         }
                                                                     </tr>
@@ -100,13 +100,7 @@
                                                                         }
                                                                         else
                                                                         {
-                                                                            <tr>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                            </tr>
+                                                                            <h3>Your warehouse don't have any item. Please stock in</h3>
                                                                         }
                                                                     }
                                                                 </tbody>

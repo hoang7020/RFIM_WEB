@@ -21,8 +21,8 @@ namespace RFIM_Web.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=rfim.clvgsqcm7dqf.ap-southeast-1.rds.amazonaws.com;Database=RFIM_DB;User Id=sa;Password=hoangdien");
+/*To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.*/
+                optionsBuilder.UseSqlServer("Server=rfimv2.cvorgj7da36w.ap-southeast-1.rds.amazonaws.com;Database=RFIM_DB;User Id=sa;Password=hoangdien");
             }
         }
         protected override void OnModelCreating(ModelBuilder builder)

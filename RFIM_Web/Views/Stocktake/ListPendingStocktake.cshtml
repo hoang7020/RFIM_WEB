@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<RFIM_Web.ModelView.FullStockTakeHistory>
 @{
-    ViewData["Title"] = "ListAllStocktake";
+    ViewData["Title"] = "ListPendingStocktake";
 }
 
 <div class="all-content-wrapper">
@@ -21,11 +21,10 @@
                                        data-show-toggle="true">
                                     <thead>
                                         <tr>
-                                            <th>Stocktake ID</th>
                                             <th>Product ID</th>
                                             <th>Product Name</th>
-                                            <th>StocktakeQuantity</th>
-                                            <th>AvailableQuantity</th>
+                                            <th>Stocktaked Quantity</th>
+                                            <th>Available Quantity</th>
                                             <th>Taken by</th>
                                             <th>Status</th>
                                             <th>Date</th>
@@ -37,7 +36,6 @@
                                         {
                                         <tr>
 
-                                            <td>@stocktakeHistory.StocktakeHistoryId</td>
                                             <td>@stocktakeHistory.ProductId</td>
                                             <td>@stocktakeHistory.ProductName</td>
                                             @if (stocktakeHistory.AvailableQuantity == stocktakeHistory.StocktakeQuantity)
@@ -60,12 +58,9 @@
                                             }
                                             <td>@stocktakeHistory.Date</td>
                                             <td>
-                                                @if (stocktakeHistory.Status == true)
-                                                {
                                                     <a asp-action="EditStocktake" asp-controller="Stocktake" asp-route-id="@stocktakeHistory.StocktakeHistoryId" class="btn btn-success" data-toggle="modal" data-target="#modal-stocktake-edit">
                                                         <i class="fas fa-check" aria-hidden="true"></i>
                                                     </a>
-                                                }
                                             </td>
                                         </tr>
                                         }
