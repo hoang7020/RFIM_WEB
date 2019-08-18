@@ -12,6 +12,8 @@ namespace RFIM_Web.Models
     {
         [Key]
         public int VendorId { get; set; }
+        [Required(ErrorMessage = "This field is required")]
+        [DataType(DataType.Text, ErrorMessage = "Input is not valid !!")]
         public string VendorName { get; set; }
         public string Description { get; set; }
         public bool Status { get; set; }

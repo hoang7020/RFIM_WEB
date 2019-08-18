@@ -28,6 +28,8 @@ namespace RFIM_Web.Controllers
         public IActionResult ListAllInvoice()
         {
             var listInvoice = context.GetAllInvoice();
+            string username = User.Identity.Name;
+            HttpContext.Session.SetInt32("User", context.findUserIdByName(username));
             return View(listInvoice);
         }
 
