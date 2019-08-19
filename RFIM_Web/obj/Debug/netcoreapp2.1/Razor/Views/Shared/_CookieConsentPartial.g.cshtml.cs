@@ -99,6 +99,7 @@ using Microsoft.AspNetCore.Http.Features;
             BeginContext(1234, 92, false);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b5011a76572644be9b9383b929f031bc", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8bbbe78a648e409b90e6f2694625a3a8", async() => {
@@ -106,6 +107,9 @@ using Microsoft.AspNetCore.Http.Features;
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "935cbe6fca254ce58c41c1c4c2642b83", async() => {
 >>>>>>> dev_test5
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8bbbe78a648e409b90e6f2694625a3a8", async() => {
+>>>>>>> parent of aef0517... fix session, validate vendor
                 BeginContext(1312, 10, true);
                 WriteLiteral("Learn More");
                 EndContext();

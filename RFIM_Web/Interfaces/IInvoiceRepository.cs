@@ -34,7 +34,10 @@ namespace RFIM_Web.Interfaces
         User findUserById(int? user);
 =======
         int findUserByName(int? user);
+<<<<<<< HEAD
         int findUserIdByName(string username);
 >>>>>>> dev_test5
+=======
+>>>>>>> parent of aef0517... fix session, validate vendor
     }
 }

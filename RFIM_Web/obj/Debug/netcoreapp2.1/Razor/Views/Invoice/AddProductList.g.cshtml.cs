@@ -86,6 +86,7 @@ using RFIM_Web.ModelView;
             BeginContext(211, 109, false);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9fcb5ceda79c475ca90f5d58afdc234d", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f0c4ebdcf03844f6ad7ceb8f6d98d4bb", async() => {
@@ -93,6 +94,9 @@ using RFIM_Web.ModelView;
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "382a164c7e2e4a928c2bea5a682f6918", async() => {
 >>>>>>> dev_test5
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f0c4ebdcf03844f6ad7ceb8f6d98d4bb", async() => {
+>>>>>>> parent of aef0517... fix session, validate vendor
                 BeginContext(309, 7, true);
                 WriteLiteral("&times;");
                 EndContext();

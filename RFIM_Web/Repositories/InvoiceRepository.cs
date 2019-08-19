@@ -264,9 +264,5 @@ namespace RFIM_Web.Repositories
             ctx.Update(invoiceType);
             Save();
         }
-        public int findUserIdByName(string username)
-        {
-            return ctx.Users.FirstOrDefault(p => p.Username == username).UserId;
-        }
     }
 }
