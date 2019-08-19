@@ -37,7 +37,7 @@ html {
 /*
  * A better looking default horizontal rule
  */
-.my-custom-scrollbar {
+/*.my-custom-scrollbar {
     position: relative;
     height: 200px;
     overflow: auto;
@@ -45,7 +45,7 @@ html {
 
 .table-wrapper-scroll-y {
     display: block;
-}
+}*/
 hr {
     display: block;
     height: 1px;

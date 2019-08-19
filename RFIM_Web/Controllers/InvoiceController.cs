@@ -27,6 +27,7 @@ namespace RFIM_Web.Controllers
 
         public IActionResult ListAllReceipt()
         {
+<<<<<<< HEAD
             HttpContext.Session.SetInt32("invoiceType", 1);
             return View(context.GetPendingInvoice(1));
         }
@@ -40,6 +41,12 @@ namespace RFIM_Web.Controllers
         public IActionResult ListAllHistory()
         {
             return View(context.GetAllHistory());
+=======
+            var listInvoice = context.GetAllInvoice();
+            string username = User.Identity.Name;
+            HttpContext.Session.SetInt32("User", context.findUserIdByName(username));
+            return View(listInvoice);
+>>>>>>> dev_test5
         }
 
         public IActionResult DetailInvoice(string id)

@@ -30,6 +30,11 @@ namespace RFIM_Web.Interfaces
         void DeleteInvoiceOnCancel(string id);
         void DeleteInvoiceOnAction(string id);
         SelectList GetSelectList();
+<<<<<<< HEAD
         User findUserById(int? user);
+=======
+        int findUserByName(int? user);
+        int findUserIdByName(string username);
+>>>>>>> dev_test5
     }
 }
