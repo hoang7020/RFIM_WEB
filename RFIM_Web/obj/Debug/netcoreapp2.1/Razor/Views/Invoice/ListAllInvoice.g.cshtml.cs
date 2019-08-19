@@ -24,7 +24,7 @@ using RFIM_Web.Models;
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a0605381ee1350d872551e772a1ad7593d87ed5d", @"/Views/Invoice/ListAllInvoice.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c06c4ae16641bb2ecd4d4ada5240b635e967153e", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"48a69760db975471d19d631bed21f74b4dabb7b6", @"/Views/_ViewImports.cshtml")]
     public class Views_Invoice_ListAllInvoice : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<RFIM_Web.Models.Invoice>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "CreateInvoiceStep1", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -85,10 +85,14 @@ using RFIM_Web.Models;
             EndContext();
             BeginContext(788, 102, false);
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "742362f64aab4e888b62424740774a49", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a43a63664b224a71990c07fe845ae98f", async() => {
 >>>>>>> dev_test5
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bb5108d926094c4caeec69384c73353d", async() => {
+>>>>>>> dev_hoang1
                 BeginContext(872, 14, true);
                 WriteLiteral("Create Invoice");
                 EndContext();
@@ -137,10 +141,14 @@ using RFIM_Web.Models;
             EndContext();
             BeginContext(1959, 167, false);
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "efc5b76d89aa41c9beed57ff6b2d67b9", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9f312c4ec13142ac95e9655d050b2c51", async() => {
 >>>>>>> dev_test5
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "387aaf5ac8ed4c8eaf6b3da4503ffa4e", async() => {
+>>>>>>> dev_hoang1
                 BeginContext(2105, 17, false);
 #line 38 "E:\Source\RFIM_WEB\RFIM_Web\Views\Invoice\ListAllInvoice.cshtml"
                                                                                                                                                                                                 Write(invoice.InvoiceId);
@@ -224,10 +232,14 @@ using RFIM_Web.Models;
             EndContext();
             BeginContext(2570, 331, false);
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ca6bf6a8a2ed4e898acfea692642a9d8", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "13bd81646dc8447a863873445d4b13e5", async() => {
 >>>>>>> dev_test5
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9cf5de1427604d3b809851bc2b2c6eed", async() => {
+>>>>>>> dev_hoang1
                 BeginContext(2738, 159, true);
                 WriteLiteral("\r\n                                                        <i class=\"fas fa-trash\" aria-hidden=\"true\"></i>\r\n                                                    ");
                 EndContext();
@@ -277,10 +289,14 @@ using RFIM_Web.Models;
             EndContext();
             BeginContext(3095, 163, false);
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3f5d5ef90ccc4358b43691c03243f8fd", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "07549d9009044e0fa98f2f61ddc01a9e", async() => {
 >>>>>>> dev_test5
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "429ccae6b7884d4db3f50ea3c78472fc", async() => {
+>>>>>>> dev_hoang1
                 BeginContext(3208, 46, true);
                 WriteLiteral("<i class=\"fas fa-edit\" aria-hidden=\"true\"></i>");
                 EndContext();

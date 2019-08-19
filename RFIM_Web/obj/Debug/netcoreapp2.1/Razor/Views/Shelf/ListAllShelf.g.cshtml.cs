@@ -24,7 +24,7 @@ using RFIM_Web.Models;
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"3d4d27fe5b98bd518b6c6c59b88d1222891e62fd", @"/Views/Shelf/ListAllShelf.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c06c4ae16641bb2ecd4d4ada5240b635e967153e", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"48a69760db975471d19d631bed21f74b4dabb7b6", @"/Views/_ViewImports.cshtml")]
     public class Views_Shelf_ListAllShelf : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<RFIM_Web.Models.Shelf>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "CreateShelf", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -89,10 +89,14 @@ using RFIM_Web.Models;
             EndContext();
             BeginContext(784, 91, false);
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "107de7963a0148e5b3db61a19277495c", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84c3905f8c6a47d1a4cf1eb2667caf3b", async() => {
 >>>>>>> dev_test5
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8291958f6cae418bad505c92ee064c38", async() => {
+>>>>>>> dev_hoang1
                 BeginContext(859, 12, true);
                 WriteLiteral("Create Shelf");
                 EndContext();
@@ -118,10 +122,14 @@ using RFIM_Web.Models;
             EndContext();
             BeginContext(909, 144, false);
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e12cb933f0f54d0ea2f0b71997089a96", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9a6db4dc853647289471a5808fb0e1f2", async() => {
 >>>>>>> dev_test5
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "52672cc924ab49a88eec5473d8c41bc2", async() => {
+>>>>>>> dev_hoang1
                 BeginContext(1003, 46, true);
                 WriteLiteral("Standard Shelf Size <i class=\"fas fa-eye\"></i>");
                 EndContext();
@@ -178,10 +186,14 @@ using RFIM_Web.Models;
             EndContext();
             BeginContext(2384, 142, false);
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e186be4137564b83bbbcefd6c3f10725", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4071f9da90db4e198beef3c46b6249a3", async() => {
 >>>>>>> dev_test5
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "15df7bae01be424994f371db23fa0354", async() => {
+>>>>>>> dev_hoang1
                 BeginContext(2509, 13, false);
 #line 41 "E:\Source\RFIM_WEB\RFIM_Web\Views\Shelf\ListAllShelf.cshtml"
                                                                                                                                                                        Write(shelf.ShelfId);
@@ -322,10 +334,14 @@ using RFIM_Web.Models;
             EndContext();
             BeginContext(3740, 153, false);
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b1a29cad481d41bc8f7402bd7826f1c3", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bdbbfdde86b84e0d8e43b94f404f538d", async() => {
 >>>>>>> dev_test5
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d405c96c77c34f908aaf3742b8314b70", async() => {
+>>>>>>> dev_hoang1
                 BeginContext(3843, 46, true);
                 WriteLiteral("<i class=\"fas fa-edit\" aria-hidden=\"true\"></i>");
                 EndContext();
@@ -373,10 +389,14 @@ using RFIM_Web.Models;
             EndContext();
             BeginContext(4066, 323, false);
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "efd249caf6994bb1a88ac4bf45dd1c8d", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "373cf8909658493eb6339e0c743262df", async() => {
 >>>>>>> dev_test5
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "53b66ddd9bf24ec087437a7e558172b5", async() => {
+>>>>>>> dev_hoang1
                 BeginContext(4228, 157, true);
                 WriteLiteral("\r\n                                                        <i class=\"fas fa-ban\" aria-hidden=\"true\"></i>\r\n                                                    ");
                 EndContext();
@@ -427,10 +447,14 @@ using RFIM_Web.Models;
             EndContext();
             BeginContext(4599, 322, false);
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "12d08aa44f67426d852f87f4ab736e69", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d3d666a57a45460786304d68c9a27fca", async() => {
 >>>>>>> dev_test5
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e15f91bfaa9b4699b29535f3513ffbf1", async() => {
+>>>>>>> dev_hoang1
                 BeginContext(4758, 159, true);
                 WriteLiteral("\r\n                                                        <i class=\"fas fa-check\" aria-hidden=\"true\"></i>\r\n                                                    ");
                 EndContext();

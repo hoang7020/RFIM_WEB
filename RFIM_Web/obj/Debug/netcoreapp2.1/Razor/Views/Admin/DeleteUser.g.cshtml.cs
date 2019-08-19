@@ -24,7 +24,7 @@ using RFIM_Web.Models;
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e8d7b57026fe0d31d2ce0da6205fb79ece5603c6", @"/Views/Admin/DeleteUser.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c06c4ae16641bb2ecd4d4ada5240b635e967153e", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"48a69760db975471d19d631bed21f74b4dabb7b6", @"/Views/_ViewImports.cshtml")]
     public class Views_Admin_DeleteUser : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<RFIM_Web.Models.User>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("close"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -62,19 +62,27 @@ using RFIM_Web.Models;
             EndContext();
             BeginContext(31, 551, false);
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b94b89b30c6c40b4a0231807b9295db6", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0280c48fc5bd402289f0081944e64e26", async() => {
 >>>>>>> dev_test5
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "45cafe0e65be414fac01f8fb3f2f5954", async() => {
+>>>>>>> dev_hoang1
                 BeginContext(75, 42, true);
                 WriteLiteral("\r\n    <div class=\"modal-header\">\r\n        ");
                 EndContext();
                 BeginContext(117, 104, false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "126fb19f04dc4461ada67c294ac67b55", async() => {
 =======
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0bfdd25b668f48e58fb8725a30b65ee0", async() => {
 >>>>>>> dev_test5
+=======
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1d2a1b41640a43d69d30ff66d63f036a", async() => {
+>>>>>>> dev_hoang1
                     BeginContext(210, 7, true);
                     WriteLiteral("&times;");
                     EndContext();

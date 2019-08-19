@@ -9,6 +9,7 @@
     <PackageReference Include="EPPlus" Version="4.5.2" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+    <PackageReference Include="PagedList.Core.Mvc" Version="1.2.0" />
   </ItemGroup>
 
 </Project>

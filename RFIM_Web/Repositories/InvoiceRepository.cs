@@ -245,5 +245,9 @@ namespace RFIM_Web.Repositories
         {
             return ctx.Users.Find(user).UserId;
         }
+        public int findUserIdByName(string username)
+        {
+            return ctx.Users.FirstOrDefault(p => p.Username == username).UserId;
+        }
     }
 }

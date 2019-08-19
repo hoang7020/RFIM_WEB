@@ -7,12 +7,12 @@
 <div class="all-content-wrapper">
     <div class="container-fluid">
         <div class=row>
-            <div class="col-md-3 col-md-3 col-sm-3 col-xs-12 mg-t-15">
+            @*<div class="col-md-3 col-md-3 col-sm-3 col-xs-12 mg-t-15">
                 <div class="hpanel responsive-mg-b-30">
                     <div class="panel-body">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fas fa-search"></i></span>
-                            <input  type="text" placeholder="Search..." class="form-control" id="myInput" onkeyup="myFunction()" />
+                            <input type="text" placeholder="Search..." class="form-control" id="myInput" onkeyup="myFunction()" />
                         </div>
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -22,17 +22,17 @@
                                 </a>
                             </div>
                         </div>
-                        <ul class="h-list m-t" id="list_detail">
-                            @await Component.InvokeAsync("ProductDetailList")
-                        </ul>
+                        
+                        @await Component.InvokeAsync("ProductDetailList")
+
                     </div>
                 </div>
-            </div>
-            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+            </div>*@
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="single-product-tab-area mg-t-15 mg-b-30">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                 <div id="myTabContent1" class="tab-content">
                                     <div class="product-tab-list tab-pane fade active in" id="single-tab1">
                                         <img src="~/Hinh/product/@Model.Image" height="280" width="280" />
@@ -40,7 +40,7 @@
                                 </div>
 
                             </div>
-                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                 <div class="single-product-details res-pro-tb">
                                     <h1>@Model.ProductName <a asp-action="EditProduct" asp-controller="Product" asp-route-id="@Model.ProductId"><i class="fas fa-edit"></i></a></h1>
                                     <div class="single-pro-cn">
@@ -86,14 +86,16 @@
                                             <label>Status:</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                            <label>@if (Model.Status)
-                                            {
-                                                <b>Active</b>
-                                            }
-                                            else
-                                            {
-                                                <b>Deactive</b>
-                                            }</label>
+                                            <label>
+                                                @if (Model.Status)
+                                                {
+                                                    <b>Active</b>
+                                                }
+                                                else
+                                                {
+                                                    <b>Deactive</b>
+                                                }
+                                            </label>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -179,6 +181,5 @@
         }
     }
 </script>
-<script>
 
-</script>
+
