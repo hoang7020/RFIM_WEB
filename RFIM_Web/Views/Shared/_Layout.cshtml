@@ -122,16 +122,10 @@
                             @if (User.IsInRole("Accountant"))
                             {
                                 <li>
-                                    <a class="has-arrow">
+                                    <a asp-action="ListAllInvoice" asp-controller="Invoice" class="has-arrow">
                                         <i class="fas fa-receipt"></i>
-                                        <span class="mini-click-non">Receipts/Issues</span>
+                                        <span class="mini-click-non">Receipt/Issue</span>
                                     </a>
-                                    <ul class="submenu-angle" aria-expanded="true">
-
-                                        <li><a asp-action="ListAllReceipt" asp-controller="Invoice"><i class="fas fa-arrow-circle-right" aria-hidden="true"></i> <span class="mini-sub-pro">Goods Receipt</span></a></li>
-                                        <li><a asp-action="ListAllIssue" asp-controller="Invoice"><i class="fas fa-arrow-circle-left" aria-hidden="true"></i> <span class="mini-sub-pro">Goods Issue</span></a></li>
-                                        <li><a asp-action="ListAllHistory" asp-controller="Invoice"><i class="fas fa-history" aria-hidden="true"></i> <span class="mini-sub-pro">History</span></a></li>
-                                    </ul>
                                 </li>
                                 <li>
                                     <a asp-action="ListAllCategory" asp-controller="Category" class="has-arrow">
@@ -152,14 +146,10 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="has-arrow">
+                                    <a asp-action="ListAllStocktake" asp-controller="Stocktake" class="has-arrow">
                                         <i class="fas fa-calendar-check"></i>
                                         <span class="mini-click-non">Stocktake History</span>
                                     </a>
-                                    <ul class="submenu-angle" aria-expanded="true">
-                                        <li><a asp-action="ListPendingStocktake" asp-controller="Stocktake"><i class="fas fa-tasks" aria-hidden="true"></i> <span class="mini-sub-pro">Awaiting Confirm</span></a></li>
-                                        <li><a asp-action="ListConfirmedStocktake" asp-controller="Stocktake"><i class="fas fa-history" aria-hidden="true"></i> <span class="mini-sub-pro">History</span></a></li>
-                                    </ul>
                                 </li>
                                 <li>
                                     <a asp-action="ReportListView" asp-controller="Report" class="has-arrow">

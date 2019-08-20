@@ -9,7 +9,7 @@ namespace RFIM_Web.Interfaces
 {
     public interface IStocktakeHistoryRepository
     {
-        List<FullStockTakeHistory> GetStocktakeHistories(bool status);
+        List<FullStockTakeHistory> GetStocktakeHistories();
         StocktakeHistory FindStocktake(int id);
         void UpdateStockTakeStatus(StocktakeHistory stocktakeHistory);
         void UpdateStatusBox(Box box);

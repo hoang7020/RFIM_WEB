@@ -15,9 +15,6 @@ namespace RFIM_Web.Models
         [Required(ErrorMessage = "This field is required")]
         [DataType(DataType.Text, ErrorMessage = "Input is not valid !!")]
         public string InvoiceTypes { get; set; }
-        [Required(ErrorMessage = "This field is required")]
-        [DataType(DataType.Text, ErrorMessage = "Input is not valid !!")]
-        public string InvoicePrefix { get; set; }
 
     }
 }

@@ -56,7 +56,7 @@
                                                                         }
                                                                         else
                                                                         {
-                                                                            <th>On-hand Quantity (Boxes)</th>
+                                                                            <th>Available Quantity (Boxes)</th>
                                                                             <th>Stock Out Quantity (Boxes)</th>
                                                                         }
                                                                     </tr>
@@ -130,7 +130,7 @@
                                                                     }
                                                                 </tbody>
                                                             </table>
-                                                            <a class="btn btn-sm btn-primary login-submit-cs" asp-action="BackToInvoiceList" asp-controller="Invoice">Cancel</a>
+                                                            <a class="btn btn-sm btn-primary login-submit-cs" asp-action="ListAllInvoice" asp-controller="Invoice">Cancel</a>
                                                             @if (Context.Session.Get<List<ProductExtendAttr>>("listProduct") == null)
                                                             {
                                                                 <button class="btn btn-sm btn-primary login-submit-cs" type="submit" disabled>Finish</button>

@@ -18,14 +18,9 @@ namespace RFIM_Web.Controllers
             context = _context;
         }
 
-        public IActionResult ListPendingStocktake()
+        public IActionResult ListAllStocktake()
         {
-            return View(context.GetStocktakeHistories(true));
-        }
-
-        public IActionResult ListConfirmedStocktake()
-        {
-            return View(context.GetStocktakeHistories(false));
+            return View(context.GetStocktakeHistories());
         }
 
         public IActionResult EditStocktake(int id)
@@ -74,12 +69,12 @@ namespace RFIM_Web.Controllers
             }
             stocktake.Status = false;
             context.UpdateStockTakeStatus(stocktake);
-            return RedirectToAction(nameof(ListPendingStocktake));
+            return RedirectToAction(nameof(ListAllStocktake));
         }
 
         public IActionResult BackToStocktakeList()
         {
-            return RedirectToAction(nameof(ListPendingStocktake));
+            return RedirectToAction(nameof(ListAllStocktake));
 
         }
     }

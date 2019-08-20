@@ -3,13 +3,11 @@
 <form method="post" asp-action="EditStocktake">
     <div class="modal-header">
         <a class="close" datadismiss="modal-user" asp-action="BackToStocktakeList" asp-controller="Stocktake">&times;</a>
-        <h4 class="modal-title">Update Stocktake Status</h4>
+        <h4 class="modal-title">Edit Stocktake @Model.StocktakeHistoryId</h4>
     </div>
     <div class="modal-body form-horizontal">
-        Are you sure you want to confirm status of this stocktake? This will cause boxes which not found during this
+        Are you sure you want to confirm status of stocktake <b>@Model.StocktakeHistoryId</b>?. This will cause boxes which not found during this
         stocktake become unacessible unless they was found again by next stocktake.
-        <br />+Found Boxes: @Model.FoundBox.ToString().Split(",").Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().Count()
-        <br />+Lost Boxes: @Model.LostBox.ToString().Split(",").Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().Count()
     </div>
     <div class="modal-footer">
         <button class="btn btn-primary">Update</button>

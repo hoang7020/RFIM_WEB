@@ -36,7 +36,7 @@ namespace RFIM_Web.Repositories
                      Category = p.Key.CategoryName,
                      ProductName = p.Key.ProductName,
                      QuantityPerBox = p.Key.QuantityPerBox,
-                     InstockQuantity = p.Count(c => c.b.ProductId != null && c.b.Status == true)
+                     InstockQuantity = p.Count(c => c.b.ProductId != null)
                  }).ToList();
             return productInvoiceLists;
         }
@@ -57,14 +57,9 @@ namespace RFIM_Web.Repositories
                                                            }).ToList();
             return productInvoiceLists;
         }
-        public List<Invoice> GetPendingInvoice(int typeId)
+        public List<Invoice> GetAllInvoice()
         {
-            return ctx.Invoices.Include(i => i.InvoiceType).
-                Include(i => i.InvoiceStatus).
-                Include(u => u.User).
-                Where(i => i.InvoiceTypeId.Equals(typeId)).
-                Where(i => i.InvoiceStatus.StatusId != 3).
-                OrderByDescending(i => i.Date).ToList();
+            return ctx.Invoices.Include(i => i.InvoiceType).Include(i => i.InvoiceStatus).OrderBy(i => i.StatusId).ToList();
         }
 
         public List<ProductList> GetProductInvoiceDetail(string id)
@@ -94,7 +89,7 @@ namespace RFIM_Web.Repositories
         public void DeleteInvoiceOnAction(string id)
         {
             ctx.Invoice_Products.RemoveRange(ctx.Invoice_Products.Where(x => x.InvoiceId.Equals(id)));
-            var invoice = GetSingleInvoiceDetail(id);
+            var invoice = FindInvoice(id);
             Delete(invoice);
             Save();
         }
@@ -115,10 +110,10 @@ namespace RFIM_Web.Repositories
             Save();
         }
 
-        public ProductExtendAttr FindSingleProductInvoiceStockOut(string id)
+        public ProductExtendAttr FindSingleProductInvoiceStockIn(string id)
         {
             ProductExtendAttr pil = (from b in ctx.Boxes
-                                     where b.Product.ProductId.Equals(id) && b.Status == true
+                                     where b.Product.ProductId.Equals(id)
                                      group new { b.Product, b.Product.Vendor, b.Product.Category, b } by new
                                      {
                                          b.Product.ProductId,
@@ -134,12 +129,12 @@ namespace RFIM_Web.Repositories
                                          Category = p.Key.CategoryName,
                                          ProductName = p.Key.ProductName,
                                          QuantityPerBox = p.Key.QuantityPerBox,
-                                         InstockQuantity = ctx.Boxes.Count(x => x.ProductId.Equals(p.Key.ProductId) && x.Status == true)
+                                         InstockQuantity = ctx.Boxes.Count(x => x.ProductId == id)
                                      }).SingleOrDefault();
             return pil;
         }
 
-        public ProductExtendAttr FindSingleProductInvoiceStockIn(string id)
+        public ProductExtendAttr FindSingleProductInvoiceStockOut(string id)
         {
             ProductExtendAttr pil = (from p in ctx.Products
                                      join c in ctx.Categories on p.CategoryId equals c.CategoryId
@@ -164,7 +159,7 @@ namespace RFIM_Web.Repositories
 
         public void DeleteInvoiceOnCancel(string id)
         {
-            var invoice = GetSingleInvoiceDetail(id);
+            var invoice = FindInvoice(id);
             Delete(invoice);
             Save();
         }
@@ -176,6 +171,11 @@ namespace RFIM_Web.Repositories
         private void Delete(Invoice invoice)
         {
             ctx.Invoices.Remove(invoice);
+        }
+
+        public Invoice FindInvoice(string id)
+        {
+            return ctx.Invoices.Find(id);
         }
 
         public List<ProductExtendAttr> FindProductInvoiceListStockIn(string id)
@@ -224,7 +224,7 @@ namespace RFIM_Web.Repositories
                                                                Vendor = p.Key.VendorName,
                                                                Category = p.Key.CategoryName,
                                                                QuantityPerBox = p.Key.QuantityPerBox,
-                                                               InstockQuantity = ctx.Boxes.Count(x => x.ProductId.Equals(p.Key.ProductId) && x.Status == true)
+                                                               InstockQuantity = ctx.Boxes.Count(x => x.ProductId.Equals(p.Key.ProductId))
                                                            }).ToList();
             return productInvoiceLists;
         }
@@ -237,32 +237,13 @@ namespace RFIM_Web.Repositories
 
         public void WipeInvoiceProduct(string id)
         {
-            var invoice = GetSingleInvoiceDetail(id);
+            var invoice = FindInvoice(id);
             ctx.Invoice_Products.RemoveRange(ctx.Invoice_Products.Where(x => x.InvoiceId.Equals(invoice.InvoiceId)));
         }
 
-        public User findUserById(int? user)
+        public int findUserByName(int? user)
         {
-            return ctx.Users.Find(user);
-        }
-
-        public List<Invoice> GetAllHistory()
-        {
-            return ctx.Invoices.Include(i => i.InvoiceType).
-                Include(i => i.InvoiceStatus).
-                Include(u => u.User).
-                Where(i => i.InvoiceStatus.StatusId == 3).OrderByDescending(i => i.Date).ToList();
-        }
-
-        public InvoiceType getPrefix(int typeId)
-        {
-            return ctx.InvoiceTypes.Find(typeId);
-        }
-
-        public void UpdatePrefix(InvoiceType invoiceType)
-        {
-            ctx.Update(invoiceType);
-            Save();
+            return ctx.Users.Find(user).UserId;
         }
         public int findUserIdByName(string username)
         {

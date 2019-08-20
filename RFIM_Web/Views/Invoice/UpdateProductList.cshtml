@@ -15,30 +15,6 @@
                 <span class="input-group-addon"><i class="fas fa-search"></i></span>
                 <input class="form-control" id="myInput" type="text" placeholder="Search..">
             </div>
-<<<<<<< HEAD
-            @using (Html.BeginForm("UpdateProductListFinished", "Invoice", FormMethod.Post))
-            {
-                <table class="table hover-table">
-                    <thead>
-                        <tr>
-                            <th>Select</th>
-                            <th>Product Id</th>
-                            <th>Product Name</th>
-                            <th>Quantity Per Box</th>
-                            <th>Category</th>
-                            <th>Vendor</th>
-                            @if (Context.Session.GetInt32("invoiceType") == 2)
-                            {
-                                <th>On-hand Quantity (Boxes)</th>
-                            }
-                        </tr>
-                    </thead>
-                    <tbody id="myTable">
-                        @{
-                            if (Context.Session.Get<List<ProductExtendAttr>>("listProduct") == null)
-                            {
-                                foreach (var product in Model)
-=======
             <div class="table-wrapper-scroll-y my-custom-scrollbar">
                 @using (Html.BeginForm("UpdateProductListFinished", "Invoice", FormMethod.Post))
                 {
@@ -52,7 +28,6 @@
                                 <th>Category</th>
                                 <th>Vendor</th>
                                 @if (Context.Session.GetInt32("invoiceType") == 2)
->>>>>>> dev_test5
                                 {
                                     <th>Available Quantity (Boxes)</th>
                                 }

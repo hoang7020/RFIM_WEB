@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<RFIM_Web.Models.Invoice>
 @{
-    ViewData["Title"] = "ListAllReceipt";
+    ViewData["Title"] = "ListAllInvoice";
 }
 
 <div class="all-content-wrapper">
@@ -11,22 +11,22 @@
                     <div class="sparkline13-list">
                         <div class="sparkline13-hd">
                             <div class="main-sparkline13-hd">
-                                <h1>Pending Goods Receipts</h1>
+                                <h1>Invoices</h1>
                             </div>
                         </div>
 
                         <div class="sparkline13-graph">
                             <div class="datatable-dashv1-list custom-datatable-overright">
-                                <a asp-action="CreateInvoice" asp-controller="Invoice" class="btn btn-success">Create</a>
-                                <a asp-action="EditPrefix" asp-controller="Invoice" class="btn btn-info">Edit Receipt Prefix</a>
+                                <a asp-action="CreateInvoiceStep1" asp-controller="Invoice" class="btn btn-success">Create Invoice</a>
                                 <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true"
                                        data-show-toggle="true">
                                     <thead>
                                         <tr>
-                                            <th>Receipt ID</th>
+                                            <th>Invoice ID</th>
                                             <th>Date</th>
+                                            <th>Description</th>
+                                            <th>Invoice Type</th>
                                             <th>Status</th>
-                                            <th>Created by</th>
                                             <th>Setting</th>
                                         </tr>
                                     </thead>
@@ -37,13 +37,17 @@
 
                                                 <td><a asp-action="DetailInvoice" asp-controller="Invoice" asp-route-id="@invoice.InvoiceId" data-toggle="modal" data-target="#modal-invoice-detail">@invoice.InvoiceId</a></td>
                                                 <td>@invoice.Date</td>
+                                                <td>@invoice.Description</td>
+                                                <td>@invoice.InvoiceType.InvoiceTypes</td>
                                                 <td>@invoice.InvoiceStatus.Status</td>
-                                                <td>@invoice.User.Username</td>
                                                 <td>
                                                     <a asp-action="DeleteInvoice" asp-controller="Invoice" asp-route-id="@invoice.InvoiceId" class="btn btn-danger" data-toggle="modal" data-target="#modal-invoice-delete">
                                                         <i class="fas fa-trash" aria-hidden="true"></i>
                                                     </a>
-                                                    <a asp-action="UpdateInvoice" asp-controller="Invoice" asp-route-id="@invoice.InvoiceId" class="btn btn-success"><i class="fas fa-edit" aria-hidden="true"></i></a>
+                                                    @if (invoice.StatusId == 1)
+                                                    {
+                                                        <a asp-action="UpdateInvoice" asp-controller="Invoice" asp-route-id="@invoice.InvoiceId" class="btn btn-success"><i class="fas fa-edit" aria-hidden="true"></i></a>
+                                                    }
                                                 </td>
                                             </tr>
                                         }

@@ -16,12 +16,10 @@ namespace RFIM_Web.Interfaces
         List<ProductExtendAttr> FindProductInvoiceListStockOut(string id);
         ProductExtendAttr FindSingleProductInvoiceStockIn(string id);
         ProductExtendAttr FindSingleProductInvoiceStockOut(string id);
+        Invoice FindInvoice(string id);
         Invoice GetSingleInvoiceDetail(string id);
         void WipeInvoiceProduct(string id);
-        InvoiceType getPrefix(int typeId);
-        void UpdatePrefix(InvoiceType invoiceType);
-        List<Invoice> GetPendingInvoice(int typeId);
-        List<Invoice> GetAllHistory();
+        List<Invoice> GetAllInvoice();
         List<ProductList> GetProductInvoiceDetail(string id);
         bool CheckInvoiceDupp(Invoice invoice);
         void AddInvoice(Invoice invoice);
@@ -30,11 +28,7 @@ namespace RFIM_Web.Interfaces
         void DeleteInvoiceOnCancel(string id);
         void DeleteInvoiceOnAction(string id);
         SelectList GetSelectList();
-<<<<<<< HEAD
-        User findUserById(int? user);
-=======
         int findUserByName(int? user);
         int findUserIdByName(string username);
->>>>>>> dev_test5
     }
 }
