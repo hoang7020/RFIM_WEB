@@ -1,0 +1,11 @@
+﻿@model RFIM_Web.Models.Vendor
+
+<div class="modal-header">
+    <a class="close" datadismiss="modal-user" asp-action="BackToListVendor" asp-controller="Vendor">&times;</a>
+    <h4 class="modal-title">
+        Can't deactive vendor @Model.VendorName
+    </h4>
+</div>
+<div class="modal-body form-horizontal">
+    <strong style="color:red">Current vendor @Model.VendorName have active products</strong>
+</div>

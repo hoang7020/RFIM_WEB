@@ -1,0 +1,15 @@
+﻿
+@model RFIM_Web.Models.Vendor
+
+<form method="post" asp-action="DeleteVendor">
+    <div class="modal-header">
+        <a asp-action="BackToListVendor" class="close" datadismiss="modal-vendor-delete">&times;</a>
+        <h4 class="modal-title">Deactive vendor @Model.VendorName</h4>
+    </div>
+    <div class="modal-body form-horizontal">
+        Are you sure you want to deactivate <b>@Model.VendorName</b>?
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary">Deactive</button>
+    </div>
+</form>

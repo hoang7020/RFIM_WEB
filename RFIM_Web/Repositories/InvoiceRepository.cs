@@ -117,22 +117,22 @@ namespace RFIM_Web.Repositories
 
         public ProductExtendAttr FindSingleProductInvoiceStockOut(string id)
         {
-            ProductExtendAttr pil = (from b in ctx.Boxes
-                                     where b.Product.ProductId.Equals(id) && b.Status == true
-                                     group new { b.Product, b.Product.Vendor, b.Product.Category, b } by new
+            ProductExtendAttr pil = (from p in ctx.Products
+                                     where p.ProductId.Equals(id)
+                                     group new { p, p.Vendor, p.Category } by new
                                      {
-                                         b.Product.ProductId,
-                                         b.Product.Vendor.VendorName,
-                                         b.Product.Category.CategoryName,
-                                         b.Product.ProductName,
-                                         b.Product.QuantityPerBox
+                                         p.ProductId,
+                                         p.ProductName,
+                                         p.Vendor.VendorName,
+                                         p.Category.CategoryName,
+                                         p.QuantityPerBox
                                      } into p
                                      select new ProductExtendAttr
                                      {
                                          ProductId = p.Key.ProductId,
+                                         ProductName = p.Key.ProductName,
                                          Vendor = p.Key.VendorName,
                                          Category = p.Key.CategoryName,
-                                         ProductName = p.Key.ProductName,
                                          QuantityPerBox = p.Key.QuantityPerBox,
                                          InstockQuantity = ctx.Boxes.Count(x => x.ProductId.Equals(p.Key.ProductId) && x.Status == true)
                                      }).SingleOrDefault();
@@ -263,6 +263,11 @@ namespace RFIM_Web.Repositories
         {
             ctx.Update(invoiceType);
             Save();
+        }
+
+        public int findUserIdByName(string username)
+        {
+            return ctx.Users.FirstOrDefault(p => p.Username == username).UserId;
         }
     }
 }

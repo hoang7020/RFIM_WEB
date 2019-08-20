@@ -1,0 +1,14 @@
+﻿@model RFIM_Web.Models.Vendor
+
+<form method="post" asp-action="ActiveVendor">
+    <div class="modal-header">
+        <a asp-action="BackToListVendor" class="close" datadismiss="modal-vendor-delete">&times;</a>
+        <h4 class="modal-title">Active vendor @Model.VendorName</h4>
+    </div>
+    <div class="modal-body form-horizontal">
+        Are you sure you want to activate <b>@Model.VendorName</b>?
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary">Active</button>
+    </div>
+</form>
