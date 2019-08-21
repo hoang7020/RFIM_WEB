@@ -99,15 +99,15 @@ namespace RFIM_Web.Controllers
         public IActionResult DeleteConfirm(string id)
         {
             Invoice invoice = context.GetSingleInvoiceDetail(id);
-            if (invoice.InvoiceTypeId == 1)
+            if (invoice.InvoiceStatus.StatusId != 1)
             {
 
-                return RedirectToAction(nameof(ListAllReceipt));
+                return RedirectToAction(nameof(BackToInvoiceList));
             }
             else
             {
                 context.DeleteInvoiceOnAction(id);
-                return RedirectToAction(nameof(ListAllIssue));
+                return RedirectToAction(nameof(BackToInvoiceList));
             }
 
         }
@@ -311,14 +311,14 @@ namespace RFIM_Web.Controllers
             {
                 if (string.IsNullOrEmpty(listProductId[0]))
                 {
-                    var listProductRedirect = context.GetProductInvoiceListStockOut();
+                    var listProductRedirect = context.GetProductInvoiceListStockIn();
                     HttpContext.Session.Set<List<ProductExtendAttr>>("listProduct", null);
                     return RedirectToAction(nameof(RenderEditProductList));
                 }
                 List<ProductExtendAttr> listProduct = new List<ProductExtendAttr>();
                 foreach (string id in listProductId)
                 {
-                    var product = context.FindSingleProductInvoiceStockOut(id);
+                    var product = context.FindSingleProductInvoiceStockIn(id);
                     listProduct.Add(product);
                 }
                 HttpContext.Session.Set<List<ProductExtendAttr>>("listProduct", listProduct);
@@ -328,14 +328,14 @@ namespace RFIM_Web.Controllers
             {
                 if (string.IsNullOrEmpty(listProductId[0]))
                 {
-                    var listProductRedirect = context.GetProductInvoiceListStockIn();
+                    var listProductRedirect = context.GetProductInvoiceListStockOut();
                     HttpContext.Session.Set<List<ProductExtendAttr>>("listProduct", null);
                     return RedirectToAction(nameof(RenderEditProductList));
                 }
                 List<ProductExtendAttr> listProduct = new List<ProductExtendAttr>();
                 foreach (string id in listProductId)
                 {
-                    var product = context.FindSingleProductInvoiceStockIn(id);
+                    var product = context.FindSingleProductInvoiceStockOut(id);
                     listProduct.Add(product);
                 }
                 HttpContext.Session.Set<List<ProductExtendAttr>>("listProduct", listProduct);

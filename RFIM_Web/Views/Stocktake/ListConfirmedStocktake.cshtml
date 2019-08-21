@@ -39,11 +39,11 @@
                                                 <td>@stocktakeHistory.ProductName</td>
                                                 @if (stocktakeHistory.AvailableQuantity == stocktakeHistory.StocktakeQuantity)
                                                 {
-                                                    <td style="color:green">@stocktakeHistory.StocktakeQuantity</td>
+                                                    <td><p style="color:green">@stocktakeHistory.StocktakeQuantity</p></td>
                                                 }
                                                 else
                                                 {
-                                                    <td style="color:red">@stocktakeHistory.StocktakeQuantity</td>
+                                                    <td style="background-color:red">@stocktakeHistory.StocktakeQuantity</td>
                                                 }
                                                 <td>@stocktakeHistory.AvailableQuantity</td>
                                                 <td>@stocktakeHistory.UserName</td>
