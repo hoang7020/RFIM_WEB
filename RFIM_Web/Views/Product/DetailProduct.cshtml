@@ -22,9 +22,11 @@
                                 </a>
                             </div>
                         </div>
-                        <ul class="h-list m-t" id="list_detail">
-                            @await Component.InvokeAsync("ProductDetailList")
-                        </ul>
+                        <div class="scroll">
+                            <ul class="h-list m-t" id="list_detail">
+                                @await Component.InvokeAsync("ProductDetailList")
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

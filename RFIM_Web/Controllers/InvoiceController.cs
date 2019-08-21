@@ -28,12 +28,14 @@ namespace RFIM_Web.Controllers
         public IActionResult ListAllReceipt()
         {
             HttpContext.Session.SetInt32("invoiceType", 1);
+            HttpContext.Session.SetInt32("User", context.findUserIdByName(User.Identity.Name));
             return View(context.GetPendingInvoice(1));
         }
 
         public IActionResult ListAllIssue()
         {
             HttpContext.Session.SetInt32("invoiceType", 2);
+            HttpContext.Session.SetInt32("User", context.findUserIdByName(User.Identity.Name));
             return View(context.GetPendingInvoice(2));
         }
 

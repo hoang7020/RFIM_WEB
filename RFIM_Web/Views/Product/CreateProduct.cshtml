@@ -26,7 +26,13 @@
                                                     <label class="login2 pull-right pull-right-pro">Product Id*</label>
                                                 </div>
                                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                                                    <input asp-for="ProductId" class="form-control" />
+                                                    @{
+                                                        var ctx = new MyDbContext();
+                                                        var pCount = ctx.Products.Count();
+                                                        var prefixId = (pCount + 1);
+                                                        string productId = "RFIM-" + prefixId.ToString("000000");
+                                                    }
+                                                    <input asp-for="ProductId" class="form-control" value="@productId" readonly/>
                                                     <span asp-validation-for="ProductId" class="text-danger"></span>
                                                     <h6 style="color:#e74c3c">@ViewBag.ProductIdExistMessage</h6>
                                                 </div>
