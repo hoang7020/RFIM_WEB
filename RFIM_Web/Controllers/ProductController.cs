@@ -243,7 +243,7 @@ namespace RFIM_Web.Controllers
                 valA.PromptTitle = "Warning !!!";
                 valA.Prompt = "This field is required";
                 //Define the accepted values
-                valA.Formula.Values.Add("Id can't be duplicated");
+                valA.Formula.Values.Add("Product name can't be duplicated");
 
                 //var valBText = sheet.DataValidations.AddTextLengthValidation("B:B");
                 //valBText.ShowErrorMessage = true;

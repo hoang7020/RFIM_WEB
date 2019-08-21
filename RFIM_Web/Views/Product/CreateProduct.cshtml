@@ -26,11 +26,19 @@
                                                     <label class="login2 pull-right pull-right-pro">Product Id*</label>
                                                 </div>
                                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+<<<<<<< HEAD
                                                     @{ 
                                                         var ctx = new MyDbContext();
                                                         var pCount = ctx.Products.Count();
                                                         var prefixId = (pCount + 1);
                                                         string productId = "RFIM-" + prefixId.ToString("000000"); 
+=======
+                                                    @{
+                                                        var ctx = new MyDbContext();
+                                                        var pCount = ctx.Products.Count();
+                                                        var prefixId = (pCount + 1);
+                                                        string productId = "RFIM-" + prefixId.ToString("000000");
+>>>>>>> eafa15db222d1c038050f3dd5691b65750ce9c9b
                                                     }
                                                     <input asp-for="ProductId" class="form-control" value="@productId" readonly/>
                                                     <span asp-validation-for="ProductId" class="text-danger"></span>
