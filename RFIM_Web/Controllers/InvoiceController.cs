@@ -25,7 +25,7 @@ namespace RFIM_Web.Controllers
             context = _context;
         }
 
-        public IActionResult ListAllInvoice()
+        public IActionResult ListAllReceipt()
         {
             HttpContext.Session.SetInt32("invoiceType", 1);
             HttpContext.Session.SetInt32("User", context.findUserIdByName(User.Identity.Name));
@@ -53,6 +53,33 @@ namespace RFIM_Web.Controllers
         }
 
         [HttpGet]
+        public IActionResult EditPrefix()
+        {
+            int invoiceTypeId = HttpContext.Session.GetInt32("invoiceType").GetValueOrDefault();
+            if (invoiceTypeId == 1)
+            {
+                return View(context.getPrefix(invoiceTypeId));
+            }
+            else
+            {
+                return View(context.getPrefix(invoiceTypeId));
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditPrefix(int id, InvoiceType invoiceType)
+        {
+            if (ModelState.IsValid)
+            {
+                context.UpdatePrefix(invoiceType);
+                return RedirectToAction(nameof(BackToInvoiceList));
+            }
+
+            return View(invoiceType);
+        }
+
+        [HttpGet]
         public IActionResult DeleteInvoice(string id)
         {
             if (id == null)
@@ -64,10 +91,6 @@ namespace RFIM_Web.Controllers
             {
                 return NotFound();
             }
-            if (invoice.StatusId != 1)
-            {
-                return PartialView("DeleteFail", invoice);
-            }
             else
             {
                 return PartialView("DeleteInvoice", invoice);
@@ -77,50 +100,46 @@ namespace RFIM_Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirm(string id)
         {
-            context.DeleteInvoiceOnAction(id);
-            return RedirectToAction(nameof(ListAllInvoice));
+            Invoice invoice = context.GetSingleInvoiceDetail(id);
+            if (invoice.InvoiceStatus.StatusId != 1)
+            {
+                return RedirectToAction(nameof(BackToInvoiceList));
+            }
+            else
+            {
+                context.DeleteInvoiceOnAction(id);
+                return RedirectToAction(nameof(BackToInvoiceList));
+            }
+
         }
 
         public IActionResult BackToInvoiceList()
         {
-            return RedirectToAction(nameof(ListAllInvoice));
-
-        }
-
-        public IActionResult CreateInvoiceStep1()
-        {
-            HttpContext.Session.Set<Invoice>("invoice", null);
-            ViewData["InvoiceTypeId"] = context.GetSelectList();
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult AddInvoiceStep2(Invoice invoice)
-        {
-            ViewData["InvoiceTypeId"] = context.GetSelectList();
-            if (ModelState.IsValid)
+            if (HttpContext.Session.GetInt32("invoiceType") == 1)
             {
-                if (context.CheckInvoiceDupp(invoice))
-                {
-                    ViewBag.invoceExist = "InvoiceId was already existed!";
-                    return View("CreateInvoiceStep1", invoice);
-                }
-                else
-                {
-                    int? user = HttpContext.Session.GetInt32("User");
-                    invoice.UserId = context.findUserByName(user);
-                    invoice.StatusId = 1;
-                    invoice.Date = DateTime.Now;
-                    HttpContext.Session.Set<Invoice>("invoice",invoice);
-                    int invoiceType = invoice.InvoiceTypeId;
-                    HttpContext.Session.SetString("invoiceId", invoice.InvoiceId);
-                    HttpContext.Session.SetInt32("invoiceType", invoiceType);
-                    HttpContext.Session.Set<List<ProductExtendAttr>>("listProduct", null);
-                    return RedirectToAction(nameof(RenderProductList));
-                }
+                return RedirectToAction(nameof(ListAllReceipt));
             }
-            return View("CreateInvoiceStep1");
+            else
+            {
+                return RedirectToAction(nameof(ListAllIssue));
+            }
+
+
+        }
+
+        public IActionResult CreateInvoice()
+        {
+            Invoice invoice = new Invoice();
+            int invoiceType = HttpContext.Session.GetInt32("invoiceType").GetValueOrDefault();
+            invoice.InvoiceId = context.getPrefix(invoiceType).InvoicePrefix.ToString() + DateTime.Now.ToString("ddMMyy") + "-" + RandomCode(4);
+            invoice.UserId = context.findUserById(HttpContext.Session.GetInt32("User")).UserId;
+            invoice.StatusId = 1;
+            invoice.Date = DateTime.Now;
+            invoice.InvoiceTypeId = invoiceType;
+            HttpContext.Session.SetString("invoiceId", invoice.InvoiceId);
+            HttpContext.Session.Set<Invoice>("invoice", invoice);
+            HttpContext.Session.Set<List<ProductExtendAttr>>("listProduct", null);
+            return View();
         }
 
         public IActionResult AddProductList()
@@ -160,7 +179,7 @@ namespace RFIM_Web.Controllers
         public IActionResult AddProductListFinished(IFormCollection fm)
         {
             string[] listProductId = fm["checkList"].ToString().Split(",");
-            if (HttpContext.Session.GetInt32("invoiceType") == 1)
+            if (HttpContext.Session.GetInt32("invoiceType") == 2)
             {
                 if (string.IsNullOrEmpty(listProductId[0]))
                 {
@@ -184,7 +203,7 @@ namespace RFIM_Web.Controllers
                     var listProductRedirect = context.GetProductInvoiceListStockIn();
                     HttpContext.Session.Set<List<ProductExtendAttr>>("listProduct", null);
                     return RedirectToAction(nameof(RenderProductList));
-                }           
+                }
                 List<ProductExtendAttr> listProduct = new List<ProductExtendAttr>();
                 foreach (string id in listProductId)
                 {
@@ -198,7 +217,7 @@ namespace RFIM_Web.Controllers
 
         public IActionResult RenderProductList()
         {
-            return View("CreateInvoiceStep2");
+            return View("CreateInvoice");
         }
 
         [HttpPost]
@@ -224,14 +243,13 @@ namespace RFIM_Web.Controllers
 
         public IActionResult InvoiceCancel()
         {
-            string invoiceId = HttpContext.Session.GetString("invoiceId");
             HttpContext.Session.Set<List<ProductExtendAttr>>("listProduct", null);
-            return RedirectToAction(nameof(ListAllInvoice));
+            return RedirectToAction(nameof(BackToInvoiceList));
         }
 
         public IActionResult UpdateInvoice(string id)
         {
-            Invoice invoice = context.FindInvoice(id);
+            Invoice invoice = context.GetSingleInvoiceDetail(id);
             int invoiceType = invoice.InvoiceTypeId;
             HttpContext.Session.SetString("invoiceId", invoice.InvoiceId);
             HttpContext.Session.SetInt32("invoiceType", invoiceType);
@@ -344,6 +362,19 @@ namespace RFIM_Web.Controllers
             }
             HttpContext.Session.Set<List<ProductExtendAttr>>("listProduct", null);
             return RedirectToAction(nameof(BackToInvoiceList));
+        }
+
+        private string RandomCode(int lenght)
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[lenght];
+            var random = new Random();
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+            var finalString = new String(stringChars);
+            return finalString;
         }
     }
 }

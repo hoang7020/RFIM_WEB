@@ -36,33 +36,35 @@
                             <div class="sparkline8-graph">
                                 <div class="static-table-list">
                                     <h4>Product List</h4>
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>ProductID</th>
-                                                <th>Product Name</th>
-                                                <th>Category</th>
-                                                <th>Vendor</th>
-                                                <th>Quantity Per Box</th>
-                                                <th>Quantity(Boxes)</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (var productList in Model.productList)
-                                            {
-                                            <tr>
-                                                <td>@productList.ProductId</td>
-                                                <td>@productList.ProductName</td>
-                                                <td>@productList.Category</td>
-                                                <td>@productList.Vendor</td>
-                                                <td>@productList.QuantityperBox</td>
-                                                <td>@productList.Quantity</td>
-                                            </tr>
-                                            }
-                                        </tbody>
-                                    </table>
+                                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>ProductID</th>
+                                                    <th>Product Name</th>
+                                                    <th>Category</th>
+                                                    <th>Vendor</th>
+                                                    <th>Quantity Per Box</th>
+                                                    <th>Quantity(Boxes)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var productList in Model.productList)
+                                                {
+                                                    <tr>
+                                                        <td>@productList.ProductId</td>
+                                                        <td>@productList.ProductName</td>
+                                                        <td>@productList.Category</td>
+                                                        <td>@productList.Vendor</td>
+                                                        <td>@productList.QuantityperBox</td>
+                                                        <td>@productList.Quantity</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
