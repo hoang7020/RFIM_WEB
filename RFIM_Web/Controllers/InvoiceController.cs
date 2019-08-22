@@ -103,7 +103,6 @@ namespace RFIM_Web.Controllers
             Invoice invoice = context.GetSingleInvoiceDetail(id);
             if (invoice.InvoiceStatus.StatusId != 1)
             {
-
                 return RedirectToAction(nameof(BackToInvoiceList));
             }
             else
