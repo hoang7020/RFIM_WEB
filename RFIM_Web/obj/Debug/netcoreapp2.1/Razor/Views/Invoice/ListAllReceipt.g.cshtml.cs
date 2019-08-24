@@ -86,7 +86,7 @@ using RFIM_Web.Models;
                                 ");
             EndContext();
             BeginContext(802, 89, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2cdaea6f0223454091414d6349955656", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a79cb9743c604506aa9b95c1810a6df9", async() => {
                 BeginContext(881, 6, true);
                 WriteLiteral("Create");
                 EndContext();
@@ -111,7 +111,7 @@ using RFIM_Web.Models;
             WriteLiteral("\r\n                                ");
             EndContext();
             BeginContext(925, 96, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "61b9ce26389348d79d61d1fe69cdd4af", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7f61dd0e0c354467b4fa2c29016d709a", async() => {
                 BeginContext(998, 19, true);
                 WriteLiteral("Edit Receipt Prefix");
                 EndContext();
@@ -158,7 +158,7 @@ using RFIM_Web.Models;
             WriteLiteral("                                            <tr>\r\n\r\n                                                <td>");
             EndContext();
             BeginContext(2022, 167, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84ed502c63a04dd789708b73cc01e05c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9bc0005790b343109a800115a5672947", async() => {
                 BeginContext(2168, 17, false);
 #line 38 "E:\Source\RFIM_WEB\RFIM_Web\Views\Invoice\ListAllReceipt.cshtml"
                                                                                                                                                                                                 Write(invoice.InvoiceId);
@@ -231,7 +231,7 @@ using RFIM_Web.Models;
             WriteLiteral("</td>\r\n                                                <td>\r\n                                                    ");
             EndContext();
             BeginContext(2543, 331, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "14f02a115b7248f1bf80fdf46452c353", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4678a70607b4e32a665c2e2f5b23a3a", async() => {
                 BeginContext(2711, 159, true);
                 WriteLiteral("\r\n                                                        <i class=\"fas fa-trash\" aria-hidden=\"true\"></i>\r\n                                                    ");
                 EndContext();
@@ -271,7 +271,7 @@ using RFIM_Web.Models;
             WriteLiteral("\r\n                                                    ");
             EndContext();
             BeginContext(2928, 163, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1e8ea39f61d64c3b9fddcbb54c9307fa", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d81bf14f50c84a7b92a62c9e617fabca", async() => {
                 BeginContext(3041, 46, true);
                 WriteLiteral("<i class=\"fas fa-edit\" aria-hidden=\"true\"></i>");
                 EndContext();

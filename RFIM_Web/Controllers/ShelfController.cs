@@ -49,6 +49,17 @@ namespace RFIM_Web.Controllers
                 bool shelfIdExist = ctx.ShelfExists(shelf.ShelfId);
                 if (!shelfIdExist)
                 {
+                    //if(ctx.DuplicateCoorX(shelf.CoorX) && ctx.DuplicateCoorY(shelf.CoorY))
+                    //{
+                    //    ViewBag.DuplicateCoordinate = "Coordinate [X,Y] is already existed !!!";
+                    //    ViewBag.StandardSize = new StandardSize
+                    //    {
+                    //        StandardFloor = standShelfSize.StandardFloor,
+                    //        StandardCell = standShelfSize.StandardCell
+                    //    };
+                    //    return View(shelf);
+                    //} else
+                    //{
                     ViewBag.StandardSize = new StandardSize
                     {
                         StandardFloor = standShelfSize.StandardFloor,
@@ -81,6 +92,7 @@ namespace RFIM_Web.Controllers
                         }
                     };
                     return RedirectToAction(nameof(ListAllShelf));
+                    //}
                 }
                 else
                 {
