@@ -28,20 +28,43 @@ namespace RFIM_Web.Controllers
         public IActionResult ListAllReceipt()
         {
             HttpContext.Session.SetInt32("invoiceType", 1);
-            HttpContext.Session.SetInt32("User", context.findUserIdByName(User.Identity.Name));
-            return View(context.GetPendingInvoice(1));
+            try
+            {
+                HttpContext.Session.SetInt32("User", context.findUserIdByName(User.Identity.Name));
+                return View(context.GetPendingInvoice(1));
+
+            }
+            catch(Exception)
+            {
+                return NotFound();
+            }  
         }
 
         public IActionResult ListAllIssue()
         {
             HttpContext.Session.SetInt32("invoiceType", 2);
-            HttpContext.Session.SetInt32("User", context.findUserIdByName(User.Identity.Name));
-            return View(context.GetPendingInvoice(2));
+            try
+            {
+                HttpContext.Session.SetInt32("User", context.findUserIdByName(User.Identity.Name));
+                return View(context.GetPendingInvoice(2));
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
         }
 
         public IActionResult ListAllHistory()
         {
-            return View(context.GetAllHistory());
+            try
+            {
+                return View(context.GetAllHistory());
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
+
         }
 
         public IActionResult DetailInvoice(string id)
