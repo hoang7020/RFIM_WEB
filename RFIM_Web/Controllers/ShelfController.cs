@@ -49,7 +49,22 @@ namespace RFIM_Web.Controllers
                 bool shelfIdExist = ctx.ShelfExists(shelf.ShelfId);
                 if (!shelfIdExist)
                 {
+<<<<<<< HEAD
                     if (ctx.DuplicateCoorX(shelf.CoorX) && ctx.DuplicateCoorY(shelf.CoorY))
+=======
+                    //if(ctx.DuplicateCoorX(shelf.CoorX) && ctx.DuplicateCoorY(shelf.CoorY))
+                    //{
+                    //    ViewBag.DuplicateCoordinate = "Coordinate [X,Y] is already existed !!!";
+                    //    ViewBag.StandardSize = new StandardSize
+                    //    {
+                    //        StandardFloor = standShelfSize.StandardFloor,
+                    //        StandardCell = standShelfSize.StandardCell
+                    //    };
+                    //    return View(shelf);
+                    //} else
+                    //{
+                    ViewBag.StandardSize = new StandardSize
+>>>>>>> d2ac424aa2a86c49ab35a799789a50c057ae9d26
                     {
 
                         ViewBag.DuplicateCoordinate = "Coordinate [X,Y] is already existed !!!";
@@ -77,6 +92,7 @@ namespace RFIM_Web.Controllers
                                 FloorId = $"{shelf.ShelfId}-{i}",
                                 ShelfId = shelf.ShelfId
                             };
+<<<<<<< HEAD
                             floor.Status = true;
                             ctx.AddFloor(floor);
                         };
@@ -95,6 +111,14 @@ namespace RFIM_Web.Controllers
                         };
                         return RedirectToAction(nameof(ListAllShelf));
                     }
+=======
+                            cell.Status = true;
+                            ctx.AddCell(cell);
+                        }
+                    };
+                    return RedirectToAction(nameof(ListAllShelf));
+                    //}
+>>>>>>> d2ac424aa2a86c49ab35a799789a50c057ae9d26
                 }
                 else
                 {

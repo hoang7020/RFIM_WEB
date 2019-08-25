@@ -39,11 +39,19 @@
                                                 <td>@stocktakeHistory.ProductName</td>
                                                 @if (stocktakeHistory.AvailableQuantity == stocktakeHistory.StocktakeQuantity)
                                                 {
+<<<<<<< HEAD
                                                     <td style="background-color:green">@stocktakeHistory.StocktakeQuantity</td>
                                                 }
                                                 else
                                                 {
                                                     <td class="stocktake-quantity2">@stocktakeHistory.StocktakeQuantity</td>
+=======
+                                                    <td><p style="color:green">@stocktakeHistory.StocktakeQuantity</p></td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="background-color:red">@stocktakeHistory.StocktakeQuantity</td>
+>>>>>>> d2ac424aa2a86c49ab35a799789a50c057ae9d26
                                                 }
                                                 <td>@stocktakeHistory.AvailableQuantity</td>
                                                 <td>@stocktakeHistory.UserName</td>

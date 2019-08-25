@@ -101,15 +101,14 @@ namespace RFIM_Web.Controllers
         public IActionResult DeleteConfirm(string id)
         {
             Invoice invoice = context.GetSingleInvoiceDetail(id);
-            if (invoice.InvoiceTypeId == 1)
+            if (invoice.InvoiceStatus.StatusId != 1)
             {
-
-                return RedirectToAction(nameof(ListAllReceipt));
+                return RedirectToAction(nameof(BackToInvoiceList));
             }
             else
             {
                 context.DeleteInvoiceOnAction(id);
-                return RedirectToAction(nameof(ListAllIssue));
+                return RedirectToAction(nameof(BackToInvoiceList));
             }
 
         }

@@ -306,6 +306,10 @@ namespace RFIM_Web.Controllers
                             var ctx = new MyDbContext();
                             int pCount = ctx.Products.Count() + 1;
                             
+<<<<<<< HEAD
+=======
+
+>>>>>>> d2ac424aa2a86c49ab35a799789a50c057ae9d26
                             //duyệt qua từng dòng của sheet Excel bóc tách dữ liệu ra
                             for (int i = 2; i <= rowCount; i++)
                             {

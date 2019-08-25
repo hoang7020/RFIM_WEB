@@ -31,6 +31,7 @@
                 </div>
             </th>
             <th>@item.CellId</th>
+<<<<<<< HEAD
             @if (item.Date == null)
             {
                 <th></th>
@@ -44,7 +45,25 @@
     }
     else
     {
+=======
+            <th>
+                @{
+                    if (item.Date == null)
+                    {
+                       
+                    } else
+                    {
+                        item.Date.ToString("yyyyMMdd");
+                    }
+            }
+        </th>
+        @await Component.InvokeAsync("QuantityBoxInPackage", new { packageRFID = item.PackageRFID })
+    </tr>
+}
+else
+{
+>>>>>>> d2ac424aa2a86c49ab35a799789a50c057ae9d26
 
-    }
+}
 }
 

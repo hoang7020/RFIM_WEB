@@ -208,5 +208,15 @@ namespace RFIM_Web.Repositories
         {
             return ctx.Shelfs.Any(p => p.CoorY == id);
         }
+
+        public bool DuplicateCoorXExceptId(string id, int? coorX)
+        {
+            return ctx.Shelfs.Where(p => p.ShelfId != id).Any(p => p.CoorX == coorX);
+        }
+
+        public bool DuplicateCoorYExceptId(string id, int? coorY)
+        {
+            return ctx.Shelfs.Where(p => p.ShelfId != id).Any(p => p.CoorY == coorY);
+        }
     }
 }

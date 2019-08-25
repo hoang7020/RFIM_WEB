@@ -123,9 +123,9 @@ namespace RFIM_Web.Repositories
                                      {
                                          p.ProductId,
                                          p.ProductName,
+                                         p.QuantityPerBox,
                                          p.Vendor.VendorName,
                                          p.Category.CategoryName,
-                                         p.QuantityPerBox
                                      } into p
                                      select new ProductExtendAttr
                                      {
