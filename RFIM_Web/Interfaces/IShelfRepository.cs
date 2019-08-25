@@ -42,5 +42,7 @@ namespace RFIM_Web.Interfaces
         List<Cell> ShowCell(string id);
         bool PackageInCell(string id);
         Package PackageRFIDInCell(string id);
+        bool DuplicateCoorX(int? id);
+        bool DuplicateCoorY(int? id);
     }
 }

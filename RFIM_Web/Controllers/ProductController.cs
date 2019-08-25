@@ -303,15 +303,14 @@ namespace RFIM_Web.Controllers
                         {
                             var sheet = package.Workbook.Worksheets[0];
                             int rowCount = sheet.Dimension.Rows;
-
                             var ctx = new MyDbContext();
-                            int pCount = ctx.Products.Count();
-                            var prefixId = (pCount + 1);
-                            string id = "RFIM-" + prefixId.ToString("000000");
-
+                            int pCount = ctx.Products.Count() + 1;
+                            
                             //duyệt qua từng dòng của sheet Excel bóc tách dữ liệu ra
                             for (int i = 2; i <= rowCount; i++)
                             {
+                                var prefixId = pCount;
+                                string id = "RFIM-" + prefixId.ToString("000000");
                                 productImports.Add(new Product
                                 {
                                     ProductId = id,
@@ -327,6 +326,7 @@ namespace RFIM_Web.Controllers
                                     VendorId = int.Parse(sheet.Cells[i, 4].Value.ToString()),
                                     Status = true
                                 });
+                                pCount++;
                             }
                         }
                     }

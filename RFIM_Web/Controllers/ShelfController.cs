@@ -49,38 +49,52 @@ namespace RFIM_Web.Controllers
                 bool shelfIdExist = ctx.ShelfExists(shelf.ShelfId);
                 if (!shelfIdExist)
                 {
-                    ViewBag.StandardSize = new StandardSize
+                    if (ctx.DuplicateCoorX(shelf.CoorX) && ctx.DuplicateCoorY(shelf.CoorY))
                     {
-                        StandardFloor = standShelfSize.StandardFloor,
-                        StandardCell = standShelfSize.StandardCell
-                    };
-                    shelf.Status = true;
-                    ctx.AddShelf(shelf);
 
-                    for (int i = 1; i <= shelf.FloorNumber; i++)
-                    {
-                        Floor floor = new Floor
+                        ViewBag.DuplicateCoordinate = "Coordinate [X,Y] is already existed !!!";
+                        ViewBag.StandardSize = new StandardSize
                         {
-                            FloorId = $"{shelf.ShelfId}-{i}",
-                            ShelfId = shelf.ShelfId
+                            StandardFloor = standShelfSize.StandardFloor,
+                            StandardCell = standShelfSize.StandardCell
                         };
-                        floor.Status = true;
-                        ctx.AddFloor(floor);
-                    };
-                    for (int i = 1; i <= shelf.FloorNumber; i++)
+                        return View(shelf);
+                    }
+                    else
                     {
-                        for (int j = 1; j <= shelf.CellNumber; j++)
+                        ViewBag.StandardSize = new StandardSize
                         {
-                            Cell cell = new Cell
+                            StandardFloor = standShelfSize.StandardFloor,
+                            StandardCell = standShelfSize.StandardCell
+                        };
+                        shelf.Status = true;
+                        ctx.AddShelf(shelf);
+
+                        for (int i = 1; i <= shelf.FloorNumber; i++)
+                        {
+                            Floor floor = new Floor
                             {
-                                CellId = $"{shelf.ShelfId}-{i}-{j}",
-                                FloorId = $"{shelf.ShelfId}-{i}"
+                                FloorId = $"{shelf.ShelfId}-{i}",
+                                ShelfId = shelf.ShelfId
                             };
-                            cell.Status = true;
-                            ctx.AddCell(cell);
-                        }
-                    };
-                    return RedirectToAction(nameof(ListAllShelf));
+                            floor.Status = true;
+                            ctx.AddFloor(floor);
+                        };
+                        for (int i = 1; i <= shelf.FloorNumber; i++)
+                        {
+                            for (int j = 1; j <= shelf.CellNumber; j++)
+                            {
+                                Cell cell = new Cell
+                                {
+                                    CellId = $"{shelf.ShelfId}-{i}-{j}",
+                                    FloorId = $"{shelf.ShelfId}-{i}"
+                                };
+                                cell.Status = true;
+                                ctx.AddCell(cell);
+                            }
+                        };
+                        return RedirectToAction(nameof(ListAllShelf));
+                    }
                 }
                 else
                 {

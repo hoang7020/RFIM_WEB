@@ -86,7 +86,7 @@ using RFIM_Web.Models;
                                 ");
             EndContext();
             BeginContext(798, 89, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fe34f51150ae42099aa29a8629d5d031", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1e91f9ced99647328270d2e11ff345ab", async() => {
                 BeginContext(877, 6, true);
                 WriteLiteral("Create");
                 EndContext();
@@ -111,7 +111,7 @@ using RFIM_Web.Models;
             WriteLiteral("\r\n                                ");
             EndContext();
             BeginContext(921, 94, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e6598f4ba67645c8bd267e15144601c5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9c4bca45df62479c9469af65b27297e6", async() => {
                 BeginContext(994, 17, true);
                 WriteLiteral("Edit Issue Prefix");
                 EndContext();
@@ -158,7 +158,7 @@ using RFIM_Web.Models;
             WriteLiteral("                                        <tr>\r\n\r\n                                            <td>");
             EndContext();
             BeginContext(2006, 167, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ce6b8902650347fe94340dc5113a316f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d12091764abb4c6fb1d5e7de8badb0f4", async() => {
                 BeginContext(2152, 17, false);
 #line 38 "C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\Views\Invoice\ListAllIssue.cshtml"
                                                                                                                                                                                             Write(invoice.InvoiceId);
@@ -231,7 +231,7 @@ using RFIM_Web.Models;
             WriteLiteral("</td>\r\n                                            <td>\r\n                                                ");
             EndContext();
             BeginContext(2507, 323, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "00dd77df417e403eb91279405e792c7c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "97d42e6c4ee04ff69566b8bd709d5ed4", async() => {
                 BeginContext(2675, 151, true);
                 WriteLiteral("\r\n                                                    <i class=\"fas fa-trash\" aria-hidden=\"true\"></i>\r\n                                                ");
                 EndContext();
@@ -271,7 +271,7 @@ using RFIM_Web.Models;
             WriteLiteral("\r\n                                                ");
             EndContext();
             BeginContext(2880, 163, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b3258968792541ac8f2af7e5914849b1", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "da8a18e10d4c4bfbae65344d84933a5b", async() => {
                 BeginContext(2993, 46, true);
                 WriteLiteral("<i class=\"fas fa-edit\" aria-hidden=\"true\"></i>");
                 EndContext();

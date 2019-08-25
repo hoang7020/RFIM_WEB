@@ -198,5 +198,15 @@ namespace RFIM_Web.Repositories
             ctx.Update(model);
             Save();
         }
+
+        public bool DuplicateCoorX(int? id)
+        {
+            return ctx.Shelfs.Any(p => p.CoorX == id);
+        }
+
+        public bool DuplicateCoorY(int? id)
+        {
+            return ctx.Shelfs.Any(p => p.CoorY == id);
+        }
     }
 }

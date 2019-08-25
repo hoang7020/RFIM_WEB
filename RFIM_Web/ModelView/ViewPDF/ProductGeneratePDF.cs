@@ -25,7 +25,7 @@ namespace RFIM_Web.ModelView
                                 <table class='table table-bordered'>
                                     <thead>
                                         <tr>
-                                            <th>Product ID</th>
+                                            <th style='width:150px'>Product ID</th>
                                             <th>Product Name</th>
                                             <th>Quantity Box</th>
                                         <th>Quantity Per Box</th>

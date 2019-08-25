@@ -24,3 +24,11 @@ ul {
     height: 400px;
     overflow-y: scroll;
 }
+
+td.stocktake-quantity1 {
+    background-color: green;
+}
+td.stocktake-quantity2 {
+    background-color: red;
+}
+
