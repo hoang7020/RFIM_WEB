@@ -87,7 +87,7 @@ using RFIM_Web.Models;
                                 ");
             EndContext();
             BeginContext(791, 94, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "afe8a024e34e4df2b83a66ba67e7ad1e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6fca06716a2f4788b673f2a6842bb27d", async() => {
                 BeginContext(868, 13, true);
                 WriteLiteral("Create Vendor");
                 EndContext();
@@ -180,7 +180,7 @@ using RFIM_Web.Models;
             WriteLiteral("                                                </td>\r\n                                                <td>\r\n                                                    ");
             EndContext();
             BeginContext(2639, 157, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "56f7429a787f4352b0e7d139cad1350f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d21e696acda04466a31dcf8cf228ebc5", async() => {
                 BeginContext(2746, 46, true);
                 WriteLiteral("<i class=\"fas fa-edit\" aria-hidden=\"true\"></i>");
                 EndContext();
@@ -227,7 +227,7 @@ using RFIM_Web.Models;
             WriteLiteral("                                                        ");
             EndContext();
             BeginContext(2982, 332, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3396eb9ea63042ea8675fce3276e33ca", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bc21192f748249c9940e7a7592518cec", async() => {
                 BeginContext(3145, 165, true);
                 WriteLiteral("\r\n                                                            <i class=\"fas fa-ban\" aria-hidden=\"true\"></i>\r\n                                                        ");
                 EndContext();
@@ -277,7 +277,7 @@ using RFIM_Web.Models;
             WriteLiteral("                                                        ");
             EndContext();
             BeginContext(3540, 335, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cec4eb79524f4f899744c230dc39e849", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e4f823bc0e5f410ebcfbf70c221f44f9", async() => {
                 BeginContext(3704, 167, true);
                 WriteLiteral("\r\n                                                            <i class=\"fas fa-check\" aria-hidden=\"true\"></i>\r\n                                                        ");
                 EndContext();

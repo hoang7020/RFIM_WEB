@@ -31,14 +31,14 @@
                 </div>
             </th>
             <th>@item.CellId</th>
-            @if (item.Date == null)
+            @if(item.Date == null)
             {
                 <th></th>
-            }
-            else
+            } else
             {
-                <th>@item.Date.ToString("yyyy/MM/dd")</th>
+                <th>@item.Date.Value.Year/@item.Date.Value.Month/@item.Date.Value.Day</th>
             }
+            
             @await Component.InvokeAsync("QuantityBoxInPackage", new { packageRFID = item.PackageRFID })
         </tr>
     }

@@ -13,7 +13,7 @@ namespace RFIM_Web.Models
         [Key]
         public string PackageRFID { get; set; }
         public string Description { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
         public string CellId { get; set; }
         [ForeignKey("CellId")]
         public Cell Cell { get; set; }

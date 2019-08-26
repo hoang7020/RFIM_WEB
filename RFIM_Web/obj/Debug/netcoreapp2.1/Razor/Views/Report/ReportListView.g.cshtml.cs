@@ -88,7 +88,7 @@ using RFIM_Web.Models;
             WriteLiteral("-menu btn-dropdown-menu another-drop-pro-two dropdown-toggle1\" role=\"menu\">\r\n                                    <li>\r\n                                        ");
             EndContext();
             BeginContext(1235, 67, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "40bd2b690f6149eda3e5c309dce5da5a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0573f69c875348e1bf031a4554be606e", async() => {
                 BeginContext(1286, 12, true);
                 WriteLiteral("Good Receive");
                 EndContext();
@@ -112,7 +112,7 @@ using RFIM_Web.Models;
             WriteLiteral("\r\n                                    </li>\r\n                                    <li>\r\n                                        ");
             EndContext();
             BeginContext(1429, 63, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a9787bc550cf4fc6ab00d5980b062f12", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "09e3ccb47e5e465f9909b1e03ab2bfdb", async() => {
                 BeginContext(1478, 10, true);
                 WriteLiteral("Good Issue");
                 EndContext();
@@ -136,7 +136,7 @@ using RFIM_Web.Models;
             WriteLiteral("\r\n                                    </li>\r\n                                </ul>\r\n                                ");
             EndContext();
             BeginContext(1608, 103, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "81b269671a764e6681201826a1a74005", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4ad8bc74922e41be9617ce5690f14147", async() => {
                 BeginContext(1700, 7, true);
                 WriteLiteral("Product");
                 EndContext();
@@ -161,7 +161,7 @@ using RFIM_Web.Models;
             WriteLiteral("\r\n                                ");
             EndContext();
             BeginContext(1745, 104, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "54eda05236884c3eb203140c3a227252", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "33a0c9a51c7f4f37b196d3cefb8b2460", async() => {
                 BeginContext(1837, 8, true);
                 WriteLiteral("Category");
                 EndContext();
@@ -186,7 +186,7 @@ using RFIM_Web.Models;
             WriteLiteral("\r\n                                ");
             EndContext();
             BeginContext(1883, 100, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bad3aa622e8145c1b02a20334cdd7d81", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "93db48d298f14747b5382ec0050ea0f5", async() => {
                 BeginContext(1973, 6, true);
                 WriteLiteral("Vendor");
                 EndContext();

@@ -86,7 +86,7 @@ using RFIM_Web.Models;
                                 ");
             EndContext();
             BeginContext(802, 89, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "078f6d052e7746b198946da7e880a560", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bc57c321b5f3439a91c3478fb8c677f5", async() => {
                 BeginContext(881, 6, true);
                 WriteLiteral("Create");
                 EndContext();
@@ -111,7 +111,7 @@ using RFIM_Web.Models;
             WriteLiteral("\r\n                                ");
             EndContext();
             BeginContext(925, 96, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "be2bcbbdfbc84aa29cea295521a9484c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9f4c49719ff44423977cb8bd33e468a5", async() => {
                 BeginContext(998, 19, true);
                 WriteLiteral("Edit Receipt Prefix");
                 EndContext();
@@ -158,7 +158,7 @@ using RFIM_Web.Models;
             WriteLiteral("                                            <tr>\r\n\r\n                                                <td>");
             EndContext();
             BeginContext(2022, 167, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "49e045636c7c48b79414cb87587a8534", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d16c274670d40938f0e127ece1576e7", async() => {
                 BeginContext(2168, 17, false);
 #line 38 "C:\Users\HieuDT\Documents\Visual Studio 2017\Projects\Capstone\RFIM_WEB\RFIM_Web\Views\Invoice\ListAllReceipt.cshtml"
                                                                                                                                                                                                 Write(invoice.InvoiceId);
@@ -231,7 +231,7 @@ using RFIM_Web.Models;
             WriteLiteral("</td>\r\n                                                <td>\r\n                                                    ");
             EndContext();
             BeginContext(2543, 331, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b0074d2c723a4804b1710c49d581fb63", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e10c88099bfd430991d69c29d9ad40a7", async() => {
                 BeginContext(2711, 159, true);
                 WriteLiteral("\r\n                                                        <i class=\"fas fa-trash\" aria-hidden=\"true\"></i>\r\n                                                    ");
                 EndContext();
@@ -271,7 +271,7 @@ using RFIM_Web.Models;
             WriteLiteral("\r\n                                                    ");
             EndContext();
             BeginContext(2928, 163, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "39e05d5719ac43adadc9f33c7369c315", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4883e389410b401e90f2d1f15d8cfc69", async() => {
                 BeginContext(3041, 46, true);
                 WriteLiteral("<i class=\"fas fa-edit\" aria-hidden=\"true\"></i>");
                 EndContext();

@@ -209,14 +209,28 @@ namespace RFIM_Web.Repositories
             return ctx.Shelfs.Any(p => p.CoorY == id);
         }
 
+        public bool DuplicateCoorXId(string id, int? coorX)
+        {
+            var myLetter = new String(id.Where(Char.IsLetter).ToArray());
+            return ctx.Shelfs.Where(p => p.ShelfId.Contains(myLetter)).Any(p => p.CoorX == coorX);
+        }
+
+        public bool DuplicateCoorYId(string id, int? coorY)
+        {
+            var myLetter = new String(id.Where(Char.IsLetter).ToArray());
+            return ctx.Shelfs.Where(p => p.ShelfId.Contains(myLetter)).Any(p => p.CoorY == coorY);
+        }
+
         public bool DuplicateCoorXExceptId(string id, int? coorX)
         {
-            return ctx.Shelfs.Where(p => p.ShelfId != id).Any(p => p.CoorX == coorX);
+            var myLetter = new String(id.Where(Char.IsLetter).ToArray());
+            return ctx.Shelfs.Where(p => !p.ShelfId.Contains(myLetter)).Any(p => p.CoorX == coorX);
         }
 
         public bool DuplicateCoorYExceptId(string id, int? coorY)
         {
-            return ctx.Shelfs.Where(p => p.ShelfId != id).Any(p => p.CoorY == coorY);
+            var myLetter = new String(id.Where(Char.IsLetter).ToArray());
+            return ctx.Shelfs.Where(p => !p.ShelfId.Contains(myLetter)).Any(p => p.CoorY == coorY);
         }
     }
 }

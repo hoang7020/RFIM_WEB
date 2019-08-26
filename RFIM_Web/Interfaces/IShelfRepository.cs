@@ -45,6 +45,8 @@ namespace RFIM_Web.Interfaces
 
         bool DuplicateCoorX(int? id);
         bool DuplicateCoorY(int? id);
+        bool DuplicateCoorXId(string id, int? coorX);
+        bool DuplicateCoorYId(string id, int? coorY);
         bool DuplicateCoorXExceptId(string id, int? coorX);
         bool DuplicateCoorYExceptId(string id, int? coorY);
     };
