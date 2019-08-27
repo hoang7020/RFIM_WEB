@@ -8,4 +8,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <_PublishTargetUrl>E:\test</_PublishTargetUrl>
   </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="RFIM">
+      <Value>Server=rfimv2.cvorgj7da36w.ap-southeast-1.rds.amazonaws.com%3bDatabase=RFIM_DB%3bUser Id=sa%3bPassword=hoangdien</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
 </Project>
