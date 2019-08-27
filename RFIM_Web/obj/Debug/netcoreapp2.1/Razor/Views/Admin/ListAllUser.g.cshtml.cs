@@ -96,6 +96,7 @@ using Microsoft.AspNetCore.Http;
             BeginContext(849, 89, false);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1047d9892ec6497aa4fdd0ff772ff1eb", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ce06ad66fc974ad2b1552cdb31f7f3f8", async() => {
@@ -103,6 +104,9 @@ using Microsoft.AspNetCore.Http;
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5ee68fa0f688477da005c8d49a60d61a", async() => {
 >>>>>>> dev_hoang1
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fa3049e2819940eda3f5ba0bae19582d", async() => {
+>>>>>>> dev_hoang_3
                 BeginContext(923, 11, true);
                 WriteLiteral("Create User");
                 EndContext();
@@ -241,6 +245,7 @@ using Microsoft.AspNetCore.Http;
             BeginContext(3206, 150, false);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "790ffb55ba4a4bd2a50d0cb86e2536b5", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b390f1dd412f49a1bcc01c9970be85fe", async() => {
@@ -248,6 +253,9 @@ using Microsoft.AspNetCore.Http;
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aabc20fcdd6345269462e0e466e3c3b8", async() => {
 >>>>>>> dev_hoang1
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "369dbb15bbc34a4db23912eae3c60d64", async() => {
+>>>>>>> dev_hoang_3
                 BeginContext(3306, 46, true);
                 WriteLiteral("<i class=\"fas fa-edit\" aria-hidden=\"true\"></i>");
                 EndContext();
@@ -296,6 +304,7 @@ using Microsoft.AspNetCore.Http;
             BeginContext(3540, 323, false);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9fedbf11c61a44fc9f04de0602f99c6b", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "48449b8185b94895888f2f42e3a12b77", async() => {
@@ -303,6 +312,9 @@ using Microsoft.AspNetCore.Http;
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a5a9c7e092b444b6b2b3d504074502a1", async() => {
 >>>>>>> dev_hoang1
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "63b68ce664644edaae7d3f6189d90e20", async() => {
+>>>>>>> dev_hoang_3
                 BeginContext(3694, 165, true);
                 WriteLiteral("\r\n                                                            <i class=\"fas fa-ban\" aria-hidden=\"true\"></i>\r\n                                                        ");
                 EndContext();
@@ -354,6 +366,7 @@ using Microsoft.AspNetCore.Http;
             BeginContext(4089, 326, false);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "af3487fc5a4047a2834ec7c83a680670", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c8db111985ad439bb3bbb5bd8e88b8d4", async() => {
@@ -361,6 +374,9 @@ using Microsoft.AspNetCore.Http;
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "496a04a55f80455f8020412b40ffe4bd", async() => {
 >>>>>>> dev_hoang1
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "032f060902ca4594a7b7558d7ce1264c", async() => {
+>>>>>>> dev_hoang_3
                 BeginContext(4244, 167, true);
                 WriteLiteral("\r\n                                                            <i class=\"fas fa-check\" aria-hidden=\"true\"></i>\r\n                                                        ");
                 EndContext();

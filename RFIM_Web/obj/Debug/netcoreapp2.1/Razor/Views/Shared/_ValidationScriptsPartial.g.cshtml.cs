@@ -67,6 +67,7 @@ using RFIM_Web.Models;
             BeginContext(0, 224, false);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "04ed6816c53d4cf292e56db322789288", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2439cd1e38e24610938c718683abe175", async() => {
@@ -74,10 +75,14 @@ using RFIM_Web.Models;
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e4d585ea631a448ab9cc77a5195f77c1", async() => {
 >>>>>>> dev_hoang1
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a9b714566f3348fbbbd0773001712baf", async() => {
+>>>>>>> dev_hoang_3
                 BeginContext(35, 6, true);
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(41, 71, false);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ca90850e875f47dd94544f7c97034f17", async() => {
@@ -87,6 +92,9 @@ using RFIM_Web.Models;
 =======
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ac519864d74746b9a147e912c47f5a28", async() => {
 >>>>>>> dev_hoang1
+=======
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "02212cfd70424a2b8bd449b5c27d4a10", async() => {
+>>>>>>> dev_hoang_3
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -106,6 +114,7 @@ using RFIM_Web.Models;
                 BeginContext(118, 90, false);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8511159aac1845aa9866d40a94a3d307", async() => {
 =======
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "94680ff2072e4db6a3c42ce387c847c8", async() => {
@@ -113,6 +122,9 @@ using RFIM_Web.Models;
 =======
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8d02f3cb04eb4295b104d2468727975d", async() => {
 >>>>>>> dev_hoang1
+=======
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2ac2e01f75b24e4cbf103bd542f2e7c3", async() => {
+>>>>>>> dev_hoang_3
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -149,6 +161,7 @@ using RFIM_Web.Models;
             BeginContext(226, 944, false);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2ecc4fe2f3484b37bcb95b805f8a0b95", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2d8fe130b444467a1f8bf646f646523", async() => {
@@ -156,10 +169,14 @@ using RFIM_Web.Models;
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6482a3dcc5a94dbb9d61082afd4a4ca9", async() => {
 >>>>>>> dev_hoang1
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9db9c8c2ff24444784fafa298c2fe097", async() => {
+>>>>>>> dev_hoang_3
                 BeginContext(261, 6, true);
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(267, 399, false);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "868c37fc25b74493a8d8352a3d3ef1e2", async() => {
@@ -169,6 +186,9 @@ using RFIM_Web.Models;
 =======
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "674ece735d7f4627bfd6e0227b213743", async() => {
 >>>>>>> dev_hoang1
+=======
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "830e8a7ac1bf40248e9c7633e1fc203b", async() => {
+>>>>>>> dev_hoang_3
                     BeginContext(651, 6, true);
                     WriteLiteral("\r\n    ");
                     EndContext();
@@ -198,6 +218,7 @@ using RFIM_Web.Models;
                 BeginContext(672, 482, false);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dc95a34dfc244ed19227ac177d8c3623", async() => {
 =======
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0376169bf93143629797b0db596760b4", async() => {
@@ -205,6 +226,9 @@ using RFIM_Web.Models;
 =======
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b05571188b7245f9b4176d8a6268c6be", async() => {
 >>>>>>> dev_hoang1
+=======
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e33872cdbbec427c9ab10d62039b2301", async() => {
+>>>>>>> dev_hoang_3
                     BeginContext(1139, 6, true);
                     WriteLiteral("\r\n    ");
                     EndContext();

@@ -22,9 +22,10 @@ namespace RFIM_Web.Repositories
             return ctx.StocktakeHistories.Find(id);
         }
 
-        public List<FullStockTakeHistory> GetStocktakeHistories()
+        public List<FullStockTakeHistory> GetStocktakeHistories(bool status)
         {
-            List <FullStockTakeHistory> fullStockTakeHistories = (from sh in ctx.StocktakeHistories
+            List<FullStockTakeHistory> fullStockTakeHistories = (from sh in ctx.StocktakeHistories
+                                                                 where sh.Status == status
                                                                   group new { sh, sh.Product, sh.User } by new
                                                                   {
                                                                       sh.StocktakeHistoryId,
@@ -47,7 +48,7 @@ namespace RFIM_Web.Repositories
                                                                       StocktakeQuantity = sh.Key.Quantity,
                                                                       AvailableQuantity = ctx.Boxes.Count(x => x.ProductId == sh.Key.ProductId),
                                                                       UserName = sh.Key.Username,
-                                                                  }).ToList();
+                                                                  }).OrderByDescending(i => i.Date).ToList();
             return fullStockTakeHistories;
         }
 

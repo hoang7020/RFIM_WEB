@@ -243,22 +243,22 @@ namespace RFIM_Web.Controllers
                 valA.PromptTitle = "Warning !!!";
                 valA.Prompt = "This field is required";
                 //Define the accepted values
-                valA.Formula.Values.Add("Id can't be duplicated");
+                valA.Formula.Values.Add("Product name can't be duplicated");
 
-                var valBText = sheet.DataValidations.AddTextLengthValidation("B:B");
-                valBText.ShowErrorMessage = true;
-                valBText.Formula.Value = 1;
-                valBText.Formula2.Value = 256;
-                valBText.AllowBlank = true;
+                //var valBText = sheet.DataValidations.AddTextLengthValidation("B:B");
+                //valBText.ShowErrorMessage = true;
+                //valBText.Formula.Value = 1;
+                //valBText.Formula2.Value = 256;
+                //valBText.AllowBlank = true;
 
                 sheet.DefaultColWidth = 20;
                 sheet.Cells.Style.WrapText = true;
 
-                sheet.Cells[1, 1].Value = "Product Id";
-                sheet.Cells[1, 2].Value = "Product Name";
-                sheet.Cells[1, 3].Value = "Quantity Per Box";
-                sheet.Cells[1, 4].Value = "Category";
-                sheet.Cells[1, 5].Value = "Vendor";
+                //sheet.Cells[1, 1].Value = "Product Id";
+                sheet.Cells[1, 1].Value = "Product Name";
+                sheet.Cells[1, 2].Value = "Quantity Per Box";
+                sheet.Cells[1, 3].Value = "Category";
+                sheet.Cells[1, 4].Value = "Vendor";
                 package.Save();
             }
             stream.Position = 0;
@@ -303,24 +303,31 @@ namespace RFIM_Web.Controllers
                             var sheet = package.Workbook.Worksheets[0];
                             int rowCount = sheet.Dimension.Rows;
 
+                            var ctx = new MyDbContext();
+                            int pCount = ctx.Products.Count() + 1;
+                            
+
                             //duyệt qua từng dòng của sheet Excel bóc tách dữ liệu ra
                             for (int i = 2; i <= rowCount; i++)
                             {
+                                var prefixId = pCount;
+                                string id = "RFIM-" + prefixId.ToString("000000");
                                 productImports.Add(new Product
                                 {
-                                    ProductId = sheet.Cells[i, 1].Value.ToString(),
-                                    ProductName = sheet.Cells[i, 2].Value.ToString(),
+                                    ProductId = id,
+                                    ProductName = sheet.Cells[i, 1].Value.ToString(),
                                     Weight = 0.0,
                                     Image = "",
                                     Description = "",
                                     Height = 0.0,
                                     Width = 0.0,
                                     Length = 0.0,
-                                    QuantityPerBox = int.Parse(sheet.Cells[i, 3].Value.ToString()),
-                                    CategoryId = int.Parse(sheet.Cells[i, 4].Value.ToString()),
-                                    VendorId = int.Parse(sheet.Cells[i, 5].Value.ToString()),
+                                    QuantityPerBox = int.Parse(sheet.Cells[i, 2].Value.ToString()),
+                                    CategoryId = int.Parse(sheet.Cells[i, 3].Value.ToString()),
+                                    VendorId = int.Parse(sheet.Cells[i, 4].Value.ToString()),
                                     Status = true
                                 });
+                                pCount++;
                             }
                         }
                     }

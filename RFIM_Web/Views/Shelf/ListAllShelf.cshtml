@@ -23,7 +23,6 @@
                                     <thead>
                                         <tr>
                                             <th>Shelf Id</th>
-                                            <th>Description</th>
                                             <th>Floor Number</th>
                                             <th>Cell Number</th>
                                             <th>Height(cm)</th>
@@ -39,7 +38,6 @@
                                         {
                                         <tr>
                                             <td><a asp-action="ShowCell" asp-controller="Shelf" asp-route-id="@shelf.ShelfId" data-toggle="modal" data-target="#modal-cell">@shelf.ShelfId</a></td>
-                                            <td>@shelf.Description</td>
                                             <td>@shelf.FloorNumber</td>
                                             <td>@shelf.CellNumber</td>
                                             <td>@shelf.Height</td>

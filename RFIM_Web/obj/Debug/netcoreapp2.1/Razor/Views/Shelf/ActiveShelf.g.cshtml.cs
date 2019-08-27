@@ -63,6 +63,7 @@ using RFIM_Web.Models;
             BeginContext(32, 499, false);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aedc6760767a4dd2b7065528b3b35864", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "471b80e01424408aa3dd76776dda5ead", async() => {
@@ -70,10 +71,14 @@ using RFIM_Web.Models;
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "355ce6fa54f7453c9efbddc5361a5c42", async() => {
 >>>>>>> dev_hoang1
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3655b7208e2740d4809737485e93d3c1", async() => {
+>>>>>>> dev_hoang_3
                 BeginContext(77, 42, true);
                 WriteLiteral("\r\n    <div class=\"modal-header\">\r\n        ");
                 EndContext();
                 BeginContext(119, 105, false);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1d71c5c6ea9e49b6a2971861e9bb3c99", async() => {
@@ -83,6 +88,9 @@ using RFIM_Web.Models;
 =======
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "acd047da27564b60b0ac5964d529d57c", async() => {
 >>>>>>> dev_hoang1
+=======
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c0fbb1d0762344108af7bd3b35a46c4f", async() => {
+>>>>>>> dev_hoang_3
                     BeginContext(213, 7, true);
                     WriteLiteral("&times;");
                     EndContext();

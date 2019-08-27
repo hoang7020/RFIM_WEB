@@ -191,26 +191,28 @@
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                             <div class="hpanel responsive-mg-b-30">
                                 <div class="panel-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>Invoice Id</th>
-                                                    <th>Date</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach (var receive in ViewBag.AccountantInfo.Receives)
-                                                {
+                                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
                                                     <tr>
-                                                        <td>
-                                                            <span class="text-success font-bold">@receive.InvoiceId</span>
-                                                        </td>
-                                                        <td>@receive.Date</td>
+                                                        <th>Invoice Id</th>
+                                                        <th>Date</th>
                                                     </tr>
-                                                }
-                                            </tbody>
-                                        </table>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var receive in ViewBag.AccountantInfo.Receives)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                <span class="text-success font-bold">@receive.InvoiceId</span>
+                                                            </td>
+                                                            <td>@receive.Date</td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -218,26 +220,28 @@
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                             <div class="hpanel">
                                 <div class="panel-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>Invoice Id</th>
-                                                    <th>Date</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach (var issue in ViewBag.AccountantInfo.Issues)
-                                                {
+                                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
                                                     <tr>
-                                                        <td>
-                                                            <span class="text-success font-bold">@issue.InvoiceId</span>
-                                                        </td>
-                                                        <td>@issue.Date</td>
+                                                        <th>Invoice Id</th>
+                                                        <th>Date</th>
                                                     </tr>
-                                                }
-                                            </tbody>
-                                        </table>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var issue in ViewBag.AccountantInfo.Issues)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                <span class="text-success font-bold">@issue.InvoiceId</span>
+                                                            </td>
+                                                            <td>@issue.Date</td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

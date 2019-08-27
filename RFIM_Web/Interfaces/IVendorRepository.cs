@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace RFIM_Web.Interfaces
 {
+<<<<<<< HEAD
     public interface IVendorRepository
+=======
+   public interface IVendorRepository
+>>>>>>> dev_hoang_3
     {
         List<Vendor> GetAllVendor();
         void CreateVendor(Vendor model);

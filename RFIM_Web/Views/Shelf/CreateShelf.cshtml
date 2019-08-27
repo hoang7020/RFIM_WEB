@@ -73,6 +73,7 @@
                                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                                     <input asp-for="CoorX" class="form-control" />
                                                     <span asp-validation-for="CoorX" class="text-danger"></span>
+                                                    <h6 style="color:#e74c3c">@ViewBag.DuplicateCoordinate</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -84,6 +85,7 @@
                                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                                     <input asp-for="CoorY" class="form-control" />
                                                     <span asp-validation-for="CoorY" class="text-danger"></span>
+                                                    <h6 style="color:#e74c3c">@ViewBag.DuplicateCoordinate</h6>
                                                 </div>
                                             </div>
                                         </div>

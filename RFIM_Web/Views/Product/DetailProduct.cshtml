@@ -22,9 +22,17 @@
                                 </a>
                             </div>
                         </div>
+<<<<<<< HEAD
                         
                         @await Component.InvokeAsync("ProductDetailList")
 
+=======
+                        <div class="scroll">
+                            <ul class="h-list m-t" id="list_detail">
+                                @await Component.InvokeAsync("ProductDetailList")
+                            </ul>
+                        </div>
+>>>>>>> dev_hoang_3
                     </div>
                 </div>
             </div>*@
@@ -144,7 +152,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @await Html.PartialAsync("PackageView", (List<Package>)ViewBag.PackageSelectFromProduct);
+                                                        @await Html.PartialAsync("PackageView", (List<Package>)ViewBag.PackageSelectFromProduct)
                                                     </tbody>
                                                 </table>
                                             </div>

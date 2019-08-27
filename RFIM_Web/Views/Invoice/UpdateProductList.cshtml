@@ -15,8 +15,10 @@
                 <span class="input-group-addon"><i class="fas fa-search"></i></span>
                 <input class="form-control" id="myInput" type="text" placeholder="Search..">
             </div>
+
             @using (Html.BeginForm("UpdateProductListFinished", "Invoice", FormMethod.Post))
             {
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
                 <table class="table hover-table">
                     <thead>
                         <tr>
@@ -28,7 +30,7 @@
                             <th>Vendor</th>
                             @if (Context.Session.GetInt32("invoiceType") == 2)
                             {
-                                <th>Available Quantity (Boxes)</th>
+                                <th>On-hand Quantity (Boxes)</th>
                             }
                         </tr>
                     </thead>
@@ -89,13 +91,15 @@
                         }
                     </tbody>
                 </table>
-                <div class="modal-footer">
-                    <button type="submit" onclick="Check()" class="btn btn-success">Confirm</button>
-                </div>
-            }
+            </div>
+                    <div class="modal-footer">
+                        <button type="submit" onclick="Check()" class="btn btn-success">Confirm</button>
+                    </div>
+                    }
+                
+            </div>
         </div>
     </div>
-</div>
 <script>
     $(document).ready(function () {
         $("#myInput").on("keyup", function () {

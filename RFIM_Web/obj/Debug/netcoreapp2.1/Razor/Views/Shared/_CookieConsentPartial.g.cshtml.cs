@@ -99,6 +99,7 @@ using Microsoft.AspNetCore.Http.Features;
             BeginContext(1234, 92, false);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "811659bae4814e04b2bfb5f764c3521b", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bca285046d6440e7852403f937faa3d0", async() => {
@@ -106,6 +107,9 @@ using Microsoft.AspNetCore.Http.Features;
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8059cc26db2347a2b9b617a849dd0ba0", async() => {
 >>>>>>> dev_hoang1
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d28aee4f0e374bb9b5056b2df9c76565", async() => {
+>>>>>>> dev_hoang_3
                 BeginContext(1312, 10, true);
                 WriteLiteral("Learn More");
                 EndContext();

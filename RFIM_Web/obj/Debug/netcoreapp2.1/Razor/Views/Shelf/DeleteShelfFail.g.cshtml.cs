@@ -59,6 +59,7 @@ using RFIM_Web.Models;
             BeginContext(64, 105, false);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "017e502cb9fb4b54ba32a4c727a1259d", async() => {
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "20ed971e4d8b496eac11179778ef89cd", async() => {
@@ -66,6 +67,9 @@ using RFIM_Web.Models;
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "063d2bd2c8e74c8c9540a3514ecdd4d6", async() => {
 >>>>>>> dev_hoang1
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1a25fa7ad9fd43adbb89086e10d5dce0", async() => {
+>>>>>>> dev_hoang_3
                 BeginContext(158, 7, true);
                 WriteLiteral("&times;");
                 EndContext();

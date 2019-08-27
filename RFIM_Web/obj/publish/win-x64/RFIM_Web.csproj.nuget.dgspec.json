@@ -1,0 +1,82 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\Source\\RFIM_WEB\\RFIM_Web\\RFIM_Web.csproj": {}
+  },
+  "projects": {
+    "E:\\Source\\RFIM_WEB\\RFIM_Web\\RFIM_Web.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Source\\RFIM_WEB\\RFIM_Web\\RFIM_Web.csproj",
+        "projectName": "RFIM_Web",
+        "projectPath": "E:\\Source\\RFIM_WEB\\RFIM_Web\\RFIM_Web.csproj",
+        "packagesPath": "C:\\Users\\Ryan\\.nuget\\packages\\",
+        "outputPath": "E:\\Source\\RFIM_WEB\\RFIM_Web\\obj\\publish\\win-x64\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Ryan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "DinkToPdf": {
+              "target": "Package",
+              "version": "[1.0.8, )"
+            },
+            "EPPlus": {
+              "target": "Package",
+              "version": "[4.5.2, )"
+            },
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.11, )",
+              "autoReferenced": true
+            },
+            "Microsoft.NETCore.App": {
+              "target": "Package",
+              "version": "[2.1.11, )",
+              "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.1.9, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

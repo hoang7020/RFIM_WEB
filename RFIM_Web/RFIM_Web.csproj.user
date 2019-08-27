@@ -13,5 +13,6 @@
     <WebStackScaffolding_DbContextTypeFullName>RFIM_Web.Models.MyDbContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
     <ShowAllFiles>false</ShowAllFiles>
+    <NameOfLastUsedPublishProfile>FolderProfile</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
